@@ -15,10 +15,8 @@
 	<meta content="" name="author" />
 
 	<!-- GLOBAL MANDATORY STYLES -->
-	<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet"
-		type="text/css">
-	<link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet"
-		type="text/css" />
+	<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+	<link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
 	<link href="../../resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
 	<!-- font-Glyphicon -->
