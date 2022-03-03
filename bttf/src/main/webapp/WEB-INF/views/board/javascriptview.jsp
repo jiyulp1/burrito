@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ page import ="kr.co.bttf.DTO.Board_CSS_DTO" %>
-<%@ page import ="kr.co.bttf.DTO.UserDTO" %>
 
 
 <!DOCTYPE html>
@@ -70,7 +68,6 @@
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- Service -->
-    <% UserDTO boardviewer = (UserDTO)session.getAttribute("session_id");%>
     <c:set var="boardviewer" value="${pageScope.session }" />
     <div class="bg-color-sky-light fixed_container" data-auto-height="true">
         <div class="content-lg container" style="margin-top : 50px;">

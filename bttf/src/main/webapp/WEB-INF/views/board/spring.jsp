@@ -45,7 +45,7 @@
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
-                <%@ include file="/app/pages/header_control.jsp" %>  
+		<%@ include file="../include/header_control.jsp" %>
         <!-- Navbar -->
     </header>
     <!--========== END HEADER ==========-->
@@ -154,7 +154,7 @@
     <footer class="footer fixed_footer">
 
         <!-- Copyright -->
-                <%@ include file="/app/pages/footer_control.jsp" %>  
+		<%@ include file="../include/footer_control.jsp" %>
         <!-- End Copyright -->
     </footer>
     <!--========== END FOOTER ==========-->
