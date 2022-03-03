@@ -1,4 +1,4 @@
-package com.board.controller;
+package kr.co.bttf.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
