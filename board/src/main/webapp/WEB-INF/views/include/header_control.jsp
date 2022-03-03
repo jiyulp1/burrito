@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<nav class="navbar" id="nav-menu-container" role="navigation" style="background : ">
+<nav class="navbar" id="nav-menu-container" role="navigation" >
     <div class="container header_container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="menu-container">
@@ -14,8 +14,8 @@
             <!-- Logo -->
             <div class="logo">
                 <a class="logo-wrap" href="${pageContext.request.contextPath }/index.jsp">
-                    <img class="logo-img logo-img-main" src="../../resource/img/home_logo.png" alt="Homebrew">
-                    <img class="logo-img logo-img-active" src="../../resource/img/home_logo.png" alt="Homebrew">
+                    <img class="logo-img logo-img-main" src="../../../resources/img/home_logo.png" alt="Homebrew">
+                    <img class="logo-img logo-img-active" src="../../../resources/img/home_logo.png" alt="Homebrew">
                 </a>
             </div>
             <!-- End Logo -->

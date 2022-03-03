@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.co.bttf.dao.CssBoardDAO;
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.service.CssBoardService;
 
