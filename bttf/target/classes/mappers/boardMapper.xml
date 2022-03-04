@@ -4,6 +4,52 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="kr.co.bttf.mappers.board">
+
+<!-- 
+========================================
+			01. HTML
+========================================
+ -->
+
+<select id="htmllist" resultType="kr.co.bttf.domain.HtmlBoardVO">
+		select * from html
+	</select>
+	
+	
+	<!-- 2. 게시물 작성 -->
+	<insert id="htmlwrite" parameterType="kr.co.bttf.domain.HtmlBoardVO">
+		insert into html (post_subject, post_content, writer)
+		values(#{post_subject}, #{post_content}, #{writers})
+	</insert>
+	
+	
+	<!-- 3. 게시물 조회 -->
+	<select id="htmlview" parameterType="int" resultType="kr.co.bttf.domain.HtmlBoardVO">
+		select * from html
+		where post_id = #{post_id}
+	</select>
+	
+	
+	<!-- 4. 게시물 수정 -->
+	<update id="htmlmodify" parameterType="kr.co.bttf.domain.HtmlBoardVO">
+		update html set
+		post_subject = #{post_subject}, post_content = #{post_content}, writer = #{writer}
+		where post_id = #{post_id}
+	</update>
+	
+	
+	<!--5. 게시물 삭제 -->
+	<delete id="htmldelete" parameterType="int">
+		delete from html
+		where post_id = #{post_id}
+	</delete>
+
+
+<!-- 
+========================================
+			02. CSS
+========================================
+ -->
 	<!-- 1. 게시물 목록 -->
 	<select id="csslist" resultType="kr.co.bttf.domain.CssBoardVO">
 		select * from css
@@ -37,5 +83,50 @@
 		delete from css
 		where post_id = #{post_id}
 	</delete>
+
+<!-- 
+========================================
+			03. JAVASCRIPT
+========================================
+ -->
+	<!-- 1. 게시물 목록 -->
+	<select id="jslist" resultType="kr.co.bttf.domain.JsBoardVO">
+		select * from javascript
+	</select>
+	
+	
+	<!-- 2. 게시물 작성 -->
+	<insert id="jswrite" parameterType="kr.co.bttf.domain.JsBoardVO">
+		insert into javascript (post_subject, post_content, writer)
+		values(#{post_subject}, #{post_content}, #{writers})
+	</insert>
+	
+	
+	<!-- 3. 게시물 조회 -->
+	<select id="jsview" parameterType="int" resultType="kr.co.bttf.domain.JsBoardVO">
+		select * from javascript
+		where post_id = #{post_id}
+	</select>
+	
+	
+	<!-- 4. 게시물 수정 -->
+	<update id="jsmodify" parameterType="kr.co.bttf.domain.JsBoardVO">
+		update javascript set
+		post_subject = #{post_subject}, post_content = #{post_content}, writer = #{writer}
+		where post_id = #{post_id}
+	</update>
+	
+	
+	<!--5. 게시물 삭제 -->
+	<delete id="jsdelete" parameterType="int">
+		delete from javascript
+		where post_id = #{post_id}
+	</delete>
+
+
+
+
+
+
 
 </mapper>

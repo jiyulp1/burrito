@@ -8,39 +8,41 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.bttf.domain.CssBoardVO;
+import kr.co.bttf.domain.HtmlBoardVO;
+import kr.co.bttf.domain.JsBoardVO;
 import kr.co.bttf.service.CssBoardService;
 import kr.co.bttf.service.HtmlBoardService;
-import kr.co.bttf.service.HtmlBoardVO;
+import kr.co.bttf.service.JsBoardService;
 
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
 
 	@Inject
-	private HtmlBoardService htmlservice;
-	private CssBoardService cssservice;
-//	private CssBoardService cssservice;
-//	private CssBoardService cssservice;
-//	private CssBoardService cssservice;
-//	private CssBoardService cssservice;
-//	private CssBoardService cssservice;
+	private HtmlBoardService htmlService;
+	private CssBoardService cssService;
+	private JsBoardService jsService;
+//	private JspBoardService jspService;
+//	private JavaBoardService javaService;
+//	private OracleBoardService oracleService;
+//	private SpringBoardService springService;
 	
 	/* --------------------------------
 				01. HTML
 	-------------------------------- */
 	// 1-1 [POST] 게시물 목록
-	@RequestMapping(value = "/csslist", method = RequestMethod.POST)
+	@RequestMapping(value = "/htmllist", method = RequestMethod.POST)
 	public String htmlList() throws Exception {
 		
-		htmlservice.htmlList();
-		return "redirect:/board/htmlList";
+		htmlService.htmlList();
+		return "redirect:/board/htmllist";
 	}
 	
 	// 1-2 [POST] insert 게시물 작성
 	@RequestMapping(value = "/htmlwrite", method = RequestMethod.POST)
 	public String htmlWrite(HtmlBoardVO vo) throws Exception {
 		
-	  htmlservice.htmlWrite(vo);
+	  htmlService.htmlWrite(vo);
 	  return "redirect:/board/htmllist";
 	}
 	
@@ -48,7 +50,7 @@ public class BoardController {
 	@RequestMapping(value = "/htmlview", method = RequestMethod.POST)
 	public String htmlView(@RequestParam("post_id") int post_id) throws Exception {
 		
-		htmlservice.htmlView(post_id);
+		htmlService.htmlView(post_id);
 		return "redirect:/board/htmlview?post_id=" + post_id;
 	}
 	
@@ -56,7 +58,7 @@ public class BoardController {
 	@RequestMapping(value = "/htmlmodify", method = RequestMethod.POST)
 	public String htmlModify(HtmlBoardVO vo) throws Exception {
 
-		htmlservice.htmlModify(vo);
+		htmlService.htmlModify(vo);
 		return "redirect:/board/htmlview?post_id=" + vo.getPost_id();
 	}
 	
@@ -64,7 +66,7 @@ public class BoardController {
 	@RequestMapping(value = "/htmldelete", method = RequestMethod.POST)
 	public String htmlDelete(@RequestParam("post_id") int post_id) throws Exception {
 
-		htmlservice.htmlDelete(post_id);
+		htmlService.htmlDelete(post_id);
 		return "redirect:/board/htmllist";
 	}	
 	
@@ -92,7 +94,7 @@ public class BoardController {
 	@RequestMapping(value = "/csslist", method = RequestMethod.POST)
 	public String cssList() throws Exception {
 		
-		cssservice.cssList();
+		cssService.cssList();
 		return "redirect:/board/csslist";
 	}
 	
@@ -114,7 +116,7 @@ public class BoardController {
 	@RequestMapping(value = "/csswrite", method = RequestMethod.POST)
 	public String cssWrite(CssBoardVO vo) throws Exception {
 		
-	  cssservice.cssWrite(vo);
+	  cssService.cssWrite(vo);
 	  return "redirect:/board/csslist";
 	}
 	
@@ -139,7 +141,7 @@ public class BoardController {
 	@RequestMapping(value = "/cssview", method = RequestMethod.POST)
 	public String cssView(@RequestParam("post_id") int post_id) throws Exception {
 		
-		cssservice.cssView(post_id);
+		cssService.cssView(post_id);
 		return "redirect:/board/cssview?post_id=" + post_id;
 	}
 
@@ -164,7 +166,7 @@ public class BoardController {
 	@RequestMapping(value = "/cssmodify", method = RequestMethod.POST)
 	public String cssModify(CssBoardVO vo) throws Exception {
 
-		cssservice.cssModify(vo);
+		cssService.cssModify(vo);
 		return "redirect:/board/cssview?post_id=" + vo.getPost_id();
 	}
 
@@ -187,13 +189,57 @@ public class BoardController {
 	@RequestMapping(value = "/cssdelete", method = RequestMethod.POST)
 	public String cssDelete(@RequestParam("post_id") int post_id) throws Exception {
 
-		cssservice.cssDelete(post_id);
+		cssService.cssDelete(post_id);
 		return "redirect:/board/csslist";
 	}
+	
 	
 	/* --------------------------------
 			03. JAVASCRIPT
 	-------------------------------- */
+	// 3-1 [POST] 게시물 목록
+	@RequestMapping(value = "/jslist", method = RequestMethod.POST)
+	public String jsList() throws Exception {
+		
+		jsService.jsList();
+		return "redirect:/board/jslist";
+	}
+	
+	// 3-2 [POST] insert 게시물 작성
+	@RequestMapping(value = "/jswrite", method = RequestMethod.POST)
+	public String jsWrite(JsBoardVO vo) throws Exception {
+		
+	  jsService.jsWrite(vo);
+	  return "redirect:/board/jswrite";
+	}
+	
+	// 3-3 [POST] 게시물 상세보기
+	@RequestMapping(value = "/jsview", method = RequestMethod.POST)
+	public String jsView(@RequestParam("post_id") int post_id) throws Exception {
+		
+		jsService.jsView(post_id);
+		return "redirect:/board/jsview?post_id=" + post_id;
+	}
+	
+	// 3-4 [POST] 게시물 수정
+	@RequestMapping(value = "/jsmodify", method = RequestMethod.POST)
+	public String jsModify(JsBoardVO vo) throws Exception {
+
+		jsService.jsModify(vo);
+		return "redirect:/board/jsview?post_id=" + vo.getPost_id();
+	}
+	
+	// 3-5 [POST] 게시물 삭제
+	@RequestMapping(value = "/jsdelete", method = RequestMethod.POST)
+	public String jsDelete(@RequestParam("post_id") int post_id) throws Exception {
+
+		jsService.jsDelete(post_id);
+		return "redirect:/board/jslist";
+	}	
+	
+	
+	
+	
 	
 	/* --------------------------------
 				04. JSP

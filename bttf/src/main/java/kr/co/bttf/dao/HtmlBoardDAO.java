@@ -2,7 +2,7 @@ package kr.co.bttf.dao;
 
 import java.util.List;
 
-import kr.co.bttf.service.HtmlBoardVO;
+import kr.co.bttf.domain.HtmlBoardVO;
 
 public interface HtmlBoardDAO {
 	
