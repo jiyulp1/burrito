@@ -14,38 +14,33 @@ public class CssBoardDAOImpl implements CssBoardDAO {
 
 	@Inject
 	private SqlSession sql;
-
 	private static String namespace = "kr.co.bttf.mappers.board";
 
-	// 
 	@Override
-	public List csslist() throws Exception {
+	public List<CssBoardVO> cssList() throws Exception {
 
 		return sql.selectList(namespace + ".csslist");
 	}
 
-	// 
 	@Override
-	public void csswrite(CssBoardVO vo) throws Exception {
+	public void cssWrite(CssBoardVO vo) throws Exception {
 		
 		sql.insert(namespace + ".csswrite", vo);
 	}
 
-	// 오버라이드 없음
-	public CssBoardVO cssview(int post_id) throws Exception {
+	@Override
+	public CssBoardVO cssView(int post_id) throws Exception {
 
 		return sql.selectOne(namespace + ".cssview", post_id);
 	}
 
-	// 
 	@Override
-	public void cssmodify(CssBoardVO vo) throws Exception {
+	public void cssModify(CssBoardVO vo) throws Exception {
 		sql.update(namespace + ".cssmodify", vo);
 	}
 
-	// 
-	public void cssdelete(int post_id) throws Exception {
+	@Override
+	public void cssDelete(int post_id) throws Exception {
 		sql.delete(namespace + ".cssdelete", post_id);
 	}
-
 }
