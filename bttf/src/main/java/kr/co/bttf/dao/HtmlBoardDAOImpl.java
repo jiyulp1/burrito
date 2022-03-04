@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.co.bttf.domain.CssBoardVO;
-import kr.co.bttf.service.HtmlBoardVO;
+import kr.co.bttf.domain.HtmlBoardVO;
 
 @Repository
 public class HtmlBoardDAOImpl implements HtmlBoardDAO {

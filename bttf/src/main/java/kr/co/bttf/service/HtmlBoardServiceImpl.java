@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import kr.co.bttf.dao.CssBoardDAO;
 import kr.co.bttf.dao.HtmlBoardDAO;
 import kr.co.bttf.domain.CssBoardVO;
+import kr.co.bttf.domain.HtmlBoardVO;
 
 @Service
 public class HtmlBoardServiceImpl implements HtmlBoardService {

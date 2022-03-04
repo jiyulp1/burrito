@@ -3,6 +3,7 @@ package kr.co.bttf.service;
 import java.util.List;
 
 import kr.co.bttf.domain.CssBoardVO;
+import kr.co.bttf.domain.HtmlBoardVO;
 
 public interface HtmlBoardService {
 	public List<HtmlBoardVO> htmlList() throws Exception;
