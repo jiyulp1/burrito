@@ -20,11 +20,17 @@ public class BoardController {
 
 	@Inject
 	private HtmlBoardService htmlService;
+	@Inject
 	private CssBoardService cssService;
+	@Inject
 	private JsBoardService jsService;
+//	@Inject
 //	private JspBoardService jspService;
+//	@Inject
 //	private JavaBoardService javaService;
+//	@Inject
 //	private OracleBoardService oracleService;
+//	@Inject
 //	private SpringBoardService springService;
 	
 	/* --------------------------------

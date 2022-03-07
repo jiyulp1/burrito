@@ -15,28 +15,28 @@
 <!-- GLOBAL MANDATORY STYLES -->
 <!-- GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-<link href="/src/main/webapp/resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-<link href="/src/main/webapp/resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
 
+<link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <!-- font-Glyphicon -->
 <!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
 <!-- PAGE LEVEL PLUGIN STYLES -->
-<link href="/src/main/webapp/resources/css/animate.css" rel="stylesheet">
-<link href="/src/main/webapp/resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
 
+<link href="../../../resources/css/animate.css" rel="stylesheet">
+<link href="../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
 <!-- THEME STYLES -->
-<link href="/src/main/webapp/resources/css/layout.css" rel="stylesheet" type="text/css" />
+
+<link href="../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="/src/main/webapp/resources/img/favicon/favicon-32x32.png" />
+<link rel="shortcut icon" href="../../../resources/img/favicon/favicon-32x32.png" />
 
 <!-- custom -->
-<link rel="stylesheet" href="/src/main/webapp/resources/css/custom.css">
+<link rel="stylesheet" href="../../../resources/css/custom.css">
 
-<!-- c3 chart -->
-<link href="/src/main/webapp/resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
+
 <style>
 html {
 	height: 100%;
@@ -96,11 +96,7 @@ a {
 <!-- BODY -->
 
 <body class="page-on-scroll fixed_container">
-	<c:if test = "${not empty param.flag }">
-		<c:if test = "${not param.flag }">
-			<script> alert("로그인실패")</script>
-		</c:if>
-	</c:if>
+
 	<!--========== HEADER ==========-->
 	<header class="header navbar-fixed-top">
 		<!-- Navbar -->
@@ -113,13 +109,13 @@ a {
 			<div class="card align-middle col-md-3 login_card">
 				<div class="card-title" style="margin-top: 30px;">
 					<h2 class="card-title text-center" style="color: #f58b34;">
-						<img src="../../resource/img/home_logo.png" />
+						<img src="../../../resources/img/home_logo.png" />
 					</h2>
 				</div>
 				<div class="card-body">
-					<form action="${PageContext.request.contextPath}/pages/MemberLogin.us" class="form-signin" method="POST">
+					<form action="/member/login" class="form-signin" method="POST">
 						
-						<input type="text" name="user_id" id="user_id" class="form-control" placeholder="아이디" style="margin-bottom : 48px; border-radius:10px; height : 55px; " autofocus required> 
+						<input type="text" name="user_email" id="user_email" class="form-control" placeholder="아이디" style="margin-bottom : 48px; border-radius:10px; height : 55px; " autofocus required> 
 						<input type="password" name="user_pw" id="user_pw" class="form-control" style="border-radius:10px; height : 55px; margin-bottom : 48px;" placeholder="비밀번호" required>
 						<p id="check" class="check">${login_msg}</p>
 						<input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" style="line-height:28px !important; margin-bottom: 20px;" VALUE="로그인">
@@ -146,31 +142,29 @@ a {
 
 	<!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!-- CORE PLUGINS -->
-	<script src="/src/main/webapp/resources/vendor/jquery.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/vendor/jquery-migrate.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	
+	<script src="../../../resources/vendor/jquery.min.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/jquery-migrate.min.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
 	<!-- PAGE LEVEL PLUGINS -->
-	<script src="/src/main/webapp/resources/vendor/jquery.easing.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/jquery.easing.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
 	<!--  <script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script> -->
-	<script src="/src/main/webapp/resources/vendor/jquery.wow.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/jquery.wow.min.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 
 	<!-- PAGE LEVEL SCRIPTS -->
-	<script src="/src/main/webapp/resources/js/layout.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/js/components/wow.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/js/components/swiper.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/js/components/masonry.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/js/action.js"></script>
+	<script src="../../../resources/js/layout.min.js" type="text/javascript"></script>
+	<script src="../../../resources/js/components/wow.min.js" type="text/javascript"></script>
+	<script src="../../../resources/js/components/swiper.min.js" type="text/javascript"></script>
+	<script src="../../../resources/js/components/masonry.min.js" type="text/javascript"></script>
+	<script src="../../../resources/js/action.js"></script>
 	<!-- F12 ,right click block-->
 	<!-- <script src="js/Prevention.js"></script> -->
 
-	<!-- Load d3.js and c3.js -->
-	<script src="/src/main/webapp/resources/vendor/c3-0.7.20/c3.js"></script>
-	<script src="/src/main/webapp/resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
 </body>
 <!-- END BODY -->
 

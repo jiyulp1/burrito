@@ -12,7 +12,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
  <property name="driverClassName" value="org.mariadb.jdbc.Driver" />
- <property name="url" value="jdbc:mariadb://127.0.0.1:3306/board" />
+ <property name="url" value="jdbc:mariadb://127.0.0.1:3306/bttf" />
  <property name="username" value="bbs" />
  <property name="password" value="1234" />
 </bean>

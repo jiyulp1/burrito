@@ -11,7 +11,7 @@
 ========================================
  -->
 
-<select id="htmllist" resultType="kr.co.bttf.domain.HtmlBoardVO">
+	<select id="htmllist" resultType="kr.co.bttf.domain.HtmlBoardVO">
 		select * from html
 	</select>
 	

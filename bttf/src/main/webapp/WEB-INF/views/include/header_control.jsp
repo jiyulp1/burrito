@@ -13,7 +13,7 @@
 
             <!-- Logo -->
             <div class="logo">
-                <a class="logo-wrap" href="${pageContext.request.contextPath }/index.jsp">
+                <a class="logo-wrap" href="/">
                     <img class="logo-img logo-img-main" src="../../../resources/img/home_logo.png" alt="Homebrew">
                     <img class="logo-img logo-img-active" src="../../../resources/img/home_logo.png" alt="Homebrew">
                 </a>
@@ -26,7 +26,7 @@
             <div class="menu-container">
                 <ul class="navbar-nav navbar-nav-right nav">
                     <li class="nav-item">
-                    	<a class="nav-item-child nav-item-hover active" href="${pageContext.request.contextPath }/index.jsp">
+                    	<a class="nav-item-child nav-item-hover active" href="/">
                     		Home
                     	</a>
                     </li>
@@ -77,28 +77,30 @@
                     <li class="nav-item"><a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/termsOfUse.jsp">Rules</a></li>
                     <li class="nav-item"><a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/announcements.jsp">Notice</a></li>
 					<li class="nav-item">
-						<c:if test="${sessionScope.session_id == null }" >
+						<c:if test="${member == null}" >
 							<li class="nav-item ">
-								<a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/login.jsp">MyPage</a></li>
+								<a class="nav-item-child nav-item-hover" href="/member/login">MyPage</a></li>
 						</c:if>
-						<c:if test="${sessionScope.session_id != null }" >
-							<a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/pages/MypageList.us">MyPage</a>
+						<c:if test="${member != null }" >
+							<a class="nav-item-child nav-item-hover" href="/member/mypage">MyPage</a>
 						</c:if>
 					</li>
 					<li class="nav-item ">
-						<c:if test="${sessionScope.session_id == null }" >
+						<c:if test="${member == null }" >
 							<li class="nav-item ">
-								<a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/login.jsp">
+								<a class="nav-item-child nav-item-hover" href="/member/login">
 									<i class="service-icon fas fa-sign-in-alt"></i> Login
 								</a>
 							</li>
 						</c:if>
 					</li> 
-					<c:if test="${sessionScope.session_id != null }" >
-						<p class="nav-item-child nav-item-hover" style="display:flex; float : left;">${user_id}님 반갑습니다!
+					
+					<c:if test="${member != null }" >
+						<p class="nav-item-child nav-item-hover" style="display:flex; float : left;">${member.user_id}님 반갑습니다!
 							<a class="nav-item-child" style="padding-top:0 !important; padding-left:10px !important; " href="/app/pages/logout.jsp"> Logout </a>
 						</p>
 					</c:if>
+					
 					<li class="nav-item dropdown_man">
 						<c:if test="${sessionScope.session_id !=null && sessionScope.session_id.user_id == 'admin'  }" >
 							<a class="nav-item-child nav-item-hover dropdown-toggle drop1 " data-toggle="dropdown" href="#">Admin</a>

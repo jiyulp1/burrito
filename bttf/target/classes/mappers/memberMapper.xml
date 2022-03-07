@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.bttf.mappers.member">
+
+<!-- user_id가 user_email로 대체됨 -->
+	<insert id="join">
+		INSERT INTO USER_ALL 
+		(user_pw, user_name, user_phone, user_email, main_language) 
+		VALUES ( #{user_pw }, #{user_name }, #{user_phone }, #{user_email}, #{main_language } )
+	</insert>
+
+	<select id="login" resultType="kr.co.bttf.domain.MemberVO">
+		SELECT * FROM USER_ALL 
+		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND USER_AVAILABLE = 1
+	</select>
+
+</mapper>

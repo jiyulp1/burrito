@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 
@@ -16,7 +15,7 @@
     
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-    <link href="/resource/vendor/simple-line-icons/simple-line-icons.min.css" type="text/css" />
+    <link href="../../resources/vendor/simple-line-icons/simple-line-icons.min.css" type="text/css" />
     <link href="../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <!--     <link href="../WebContent/resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /> -->
 

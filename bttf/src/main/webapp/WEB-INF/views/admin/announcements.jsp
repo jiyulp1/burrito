@@ -17,28 +17,28 @@
 
     <!-- GLOBAL MANDATORY STYLES -->
 	<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-	<link href="/src/main/webapp/resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-	<link href="/src/main/webapp/resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
 	<!-- font-Glyphicon -->
 	<!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
 	<!-- PAGE LEVEL PLUGIN STYLES -->
-	<link href="/src/main/webapp/resources/css/animate.css" rel="stylesheet">
-	<link href="/src/main/webapp/resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../../resources/css/animate.css" rel="stylesheet">
+	<link href="../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
 
 	<!-- THEME STYLES -->
-	<link href="/src/main/webapp/resources/css/layout.css" rel="stylesheet" type="text/css" />
+	<link href="../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="/src/main/webapp/resources/img/favicon/favicon-32x32.png" />
+	<link rel="shortcut icon" href="../../../resources/img/favicon/favicon-32x32.png" />
 
 	<!-- custom -->
-	<link rel="stylesheet" href="/src/main/webapp/resources/css/custom.css">
+	<link rel="stylesheet" href="../../../resources/css/custom.css">
 
 	<!-- c3 chart -->
-	<link href="/src/main/webapp/resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
+	<link href="../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
 <!-- 	<script type="text/javascript" src="../../resource/js/board.js"></script> -->
 	<script type="text/javascript">
 		jQuery(function($){
@@ -148,31 +148,31 @@
    
     <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!-- CORE PLUGINS -->
-	<script src="/src/main/webapp/resources/vendor/jquery.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/vendor/jquery-migrate.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/jquery.min.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/jquery-migrate.min.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
 	<!-- PAGE LEVEL PLUGINS -->
-	<script src="/src/main/webapp/resources/vendor/jquery.easing.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/jquery.easing.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
 	<!--  <script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script> -->
-	<script src="/src/main/webapp/resources/vendor/jquery.wow.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/jquery.wow.min.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+	<script src="../../../resources/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 
 	<!-- PAGE LEVEL SCRIPTS -->
-	<script src="/src/main/webapp/resources/js/layout.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/js/components/wow.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/js/components/swiper.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/js/components/masonry.min.js" type="text/javascript"></script>
-	<script src="/src/main/webapp/resources/js/action.js"></script>
+	<script src="../../../resources/js/layout.min.js" type="text/javascript"></script>
+	<script src="../../../resources/js/components/wow.min.js" type="text/javascript"></script>
+	<script src="../../../resources/js/components/swiper.min.js" type="text/javascript"></script>
+	<script src="../../../resources/js/components/masonry.min.js" type="text/javascript"></script>
+	<script src="../../../resources/js/action.js"></script>
 	<!-- F12 ,right click block-->
 	<!-- <script src="js/Prevention.js"></script> -->
 
 	<!-- Load d3.js and c3.js -->
-	<script src="/src/main/webapp/resources/vendor/c3-0.7.20/c3.js"></script>
-	<script src="/src/main/webapp/resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
+	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
+	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
 
 
     
