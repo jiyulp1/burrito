@@ -48,21 +48,6 @@
 <!-- BODY -->
 
 <body class="page-on-scroll fixed_container">
-	<c:if test = "${not empty param.flag }">
-		<c:if test = "${not param.flag }">
-			<script> alert("회원가입 실패")</script>
-		</c:if>
-	</c:if>
-<%-- 	<c:if test = "${not empty param.idcheck }"> --%>
-<%-- 		<c:if test = "${not param.idcheck }"> --%>
-<!-- 			<script> alert("사용 가능한 아이디입니다.")</script> -->
-<%-- 		</c:if> --%>
-<%-- 	</c:if> --%>
-<%-- 	<c:if test = "${not empty param.idcheck }"> --%>
-<%-- 		<c:if test = "${ param.idcheck }"> --%>
-<!-- 			<script> alert("이미 사용중인 아이디입니다.")</script> -->
-<%-- 		</c:if> --%>
-<%-- 	</c:if> --%>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -91,16 +76,16 @@
                             <div class="my_box_element">
                                 <i class="my_box_icon fas fa-id-card"></i>
                             </div>
-                            <form action="${PageContext.request.contextPath}/pages/MemberJoin.us" method="post" name="joinForm">
-                                <div class="col-auto">
-                                    <label>아이디</label>
-                                    <div style="display: flex;">
-	                                    <label for="user_id" style="width : 91%; margin-left: 7px;">
-		                                    <input name="user_id" id="user_id" class="form-control margin-b-50" type="text" placeholder="아이디">   
-	                                    </label>
-	                                    <input id="alert_pop" class="btn btn-primary" style="height: 50px;" type="button" value="중복확인" onclick="checkId(joinForm.user_id.value)">
-                                    </div>
-                                </div>
+                            <form action="/member/join" method="post" name="joinForm" id="joinForm">
+<!--                                 <div class="col-auto"> -->
+<!--                                     <label>아이디</label> -->
+<!--                                     <div style="display: flex;"> -->
+<!-- 	                                    <label for="user_id" style="width : 91%; margin-left: 7px;"> -->
+<!-- 		                                    <input name="user_id" id="user_id" class="form-control margin-b-50" type="text" placeholder="아이디">    -->
+<!-- 	                                    </label> -->
+<!-- 	                                    <input id="alert_pop" class="btn btn-primary" style="height: 50px;" type="button" value="중복확인" onclick="checkId(joinForm.user_id.value)"> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
                                 <div class="col-auto">
                                     <label for="user_pw">비밀번호</label>
                                     <input  id="user_pw" name="user_pw" class="form-control margin-b-50" type="password" placeholder="8자 이상 15자 이하의 영문과 숫자를 입력하세요">
@@ -134,7 +119,8 @@
                                         <option value="HTML5">HTML5</option>
                                     </select>
                                 </div>
-                                <a id="joinin" class="btn btn-primary" style="height: 50px; margin-top: 10px; line-height: 36px; "href = "java::void(0)" onclick="sendit()"> 회원가입하기</a>
+<!--                                 <a id="joinin" class="btn btn-primary" style="height: 50px; margin-top: 10px; line-height: 36px; "href = "java::void(0)" onclick="sendit()"> 회원가입하기</a> -->
+                                <input id="joinin" class="btn btn-primary" style="height: 50px; margin-top: 10px; line-height: 36px;" type="submit" onclick="sendit()" value="회원가입하기">
                             </form>
                         </div>
                     </div>
@@ -193,9 +179,9 @@
 	<!--<script src="/resource/js/Prevention.js"></script> -->
     
 	<!--validation -->
-    <script src="/resource/js/user.js"></script>
+    <script src="../../../resources/js/user.js"></script>
 	<!--checkid-->
-    <script src="/resource/js/checkId.js"  type="text/javascript"></script>
+    <script src="../../../resources/js/checkId.js"  type="text/javascript"></script>
     <!--sweetalert -->
    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
