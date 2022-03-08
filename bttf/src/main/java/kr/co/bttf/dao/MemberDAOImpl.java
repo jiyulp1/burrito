@@ -13,7 +13,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Inject
 	private SqlSession sql;
 	
-	private static String namespace = "kr.co.bttf.mappers.member";
+	private static String namespace = "kr.co.bttf.mappers.memberMapper";
 
 	//회원가입
 	@Override
