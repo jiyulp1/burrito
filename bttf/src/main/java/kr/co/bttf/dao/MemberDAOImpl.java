@@ -1,5 +1,7 @@
 package kr.co.bttf.dao;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -9,21 +11,29 @@ import kr.co.bttf.domain.MemberVO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
-	
+
 	@Inject
 	private SqlSession sql;
 	
+	// 매퍼 
 	private static String namespace = "kr.co.bttf.mappers.memberMapper";
-
-	//회원가입
+	
+	// 회원 가입
 	@Override
-	public void join(MemberVO vo) throws Exception {
-		sql.insert(namespace + ".join", vo);
+	public void signup(MemberVO vo) throws Exception {
+		sql.insert(namespace + ".signup", vo);
+	}
+	
+	// 로그인
+	@Override
+	public MemberVO signin(MemberVO vo) throws Exception {
+		return sql.selectOne(namespace + ".signin", vo);
 	}
 
-	//로그인
 	@Override
-	public MemberVO login(MemberVO vo) throws Exception {
-		return sql.selectOne(namespace + ".login", vo);
+	public MemberVO login(HashMap<String, String> map) throws Exception {
+		return sql.selectOne(namespace + ".login", map);
+	
 	}
+
 }

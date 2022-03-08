@@ -1,34 +1,54 @@
 package kr.co.bttf.service;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
-import kr.co.bttf.dao.MemberDAO;
 import kr.co.bttf.domain.MemberVO;
+import kr.co.bttf.dao.MemberDAO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
+
 	@Inject
 	private MemberDAO dao;
+
+	// 회원 가입
+	@Override 
+	public void signup(MemberVO vo) throws Exception {
+		dao.signup(vo);		
+	}
 	
+	// 로그인
 	@Override
-	public void join(MemberVO vo) throws Exception{
-		dao.join(vo);
+	public MemberVO signin(MemberVO vo) throws Exception {
+		return dao.signin(vo);
+	}
+
+	// 로그아웃
+	@Override
+	public void signout(HttpSession session) throws Exception {
+		session.invalidate();  // 세션 정보를 제거
 	}
 
 	@Override
-	public MemberVO login(MemberVO vo) throws Exception {
-		return dao.login(vo);		
+	public boolean signin(HttpServletRequest req) throws Exception {
+		HashMap<String, String> map = new HashMap<String, String>();
+		boolean loginSuccess = false;
+		String user_email = req.getParameter("user_email");
+		String user_pw = req.getParameter("user_pw");
+		map.put("user_email",user_email);
+		map.put("user_pw",user_pw);
+		MemberVO login = dao.login(map);
+		if(login!=null) {
+			HttpSession session = req.getSession();
+			session.setAttribute("login", login);
+			loginSuccess = true;
+		}
+		return loginSuccess;
 	}
-
-	@Override
-	public void logout(HttpSession session) throws Exception {
-		session.invalidate();		
-
-	}
-}
-
-	
-
+} 

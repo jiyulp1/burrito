@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ page import ="kr.co.bttf.domain.MemberVO" %>
+<% MemberVO member = (MemberVO)session.getAttribute("member"); %>
 <nav class="navbar" id="nav-menu-container" role="navigation" >
     <div class="container header_container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -79,16 +80,16 @@
 					<li class="nav-item">
 						<c:if test="${member == null}" >
 							<li class="nav-item ">
-								<a class="nav-item-child nav-item-hover" href="/member/login">MyPage</a></li>
+								<a class="nav-item-child nav-item-hover" href="/member/signin">MyPage</a></li>
 						</c:if>
 						<c:if test="${member != null }" >
-							<a class="nav-item-child nav-item-hover" href="/member/mypage">MyPage</a>
+							<a class="nav-item-child nav-item-hover" href="/member/signin">MyPage</a>
 						</c:if>
 					</li>
 					<li class="nav-item ">
 						<c:if test="${member == null }" >
 							<li class="nav-item ">
-								<a class="nav-item-child nav-item-hover" href="/member/login">
+								<a class="nav-item-child nav-item-hover" href="/member/signin">
 									<i class="service-icon fas fa-sign-in-alt"></i> Login
 								</a>
 							</li>
@@ -96,8 +97,8 @@
 					</li> 
 					
 					<c:if test="${member != null }" >
-						<p class="nav-item-child nav-item-hover" style="display:flex; float : left;">${member.user_id}님 반갑습니다!
-							<a class="nav-item-child" style="padding-top:0 !important; padding-left:10px !important; " href="/app/pages/logout.jsp"> Logout </a>
+						<p class="nav-item-child nav-item-hover" style="display:flex; float : left;">${member.user_name}님 반갑습니다!
+							<a class="nav-item-child" style="padding-top:0 !important; padding-left:10px !important; " href="/member/logout"> Logout </a>
 						</p>
 					</c:if>
 					

@@ -113,15 +113,15 @@ a {
 					</h2>
 				</div>
 				<div class="card-body">
-					<form action="/member/login" class="form-signin" method="POST">
+					<form action="/member/signin" class="form-signin" method="POST">
 						
 						<input type="text" name="user_email" id="user_email" class="form-control" placeholder="이메일" style="margin-bottom : 48px; border-radius:10px; height : 55px; " autofocus required> 
 						<input type="password" name="user_pw" id="user_pw" class="form-control" style="border-radius:10px; height : 55px; margin-bottom : 48px;" placeholder="비밀번호" required>
 						<p id="check" class="check">${login_msg}</p>
 						<input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" style="line-height:28px !important; margin-bottom: 20px;" VALUE="로그인">
 						<div class="links" style="padding: 10px 20px;">
-							<a href="${pageContext.request.contextPath }/app/pages/findId.jsp">아이디 찾기</a> | <a href="${pageContext.request.contextPath }/app/pages/findPw.jsp">비밀번호 찾기
-								</a> | <a href="${pageContext.request.contextPath }/app/pages/join.jsp">회원가입</a>
+							<a href="${pageContext.request.contextPath }/member/findId.jsp">아이디 찾기</a> | <a href="/member/findPw.jsp">비밀번호 찾기
+								</a> | <a href="/member/signup">회원가입</a>
 						</div>
 					</form>
 				</div>

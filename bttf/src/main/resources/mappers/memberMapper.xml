@@ -6,14 +6,20 @@
 <mapper namespace="kr.co.bttf.mappers.memberMapper">
 
 <!-- user_id가 user_email로 대체됨 -->
-	<insert id="join">
+	<insert id="signup">
 		INSERT INTO USER_ALL 
 		(user_pw, user_name, user_phone, user_email, main_language) 
 		VALUES ( #{user_pw }, #{user_name }, #{user_phone }, #{user_email}, #{main_language } )
 	</insert>
 
+	<select id="signin" resultType="kr.co.bttf.domain.MemberVO">
+		SELECT user_pw FROM USER_ALL 
+		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND USER_AVAILABLE = 1
+	</select>
+	
+	
 	<select id="login" resultType="kr.co.bttf.domain.MemberVO">
-		SELECT * FROM USER_ALL 
+		SELECT user_name FROM USER_ALL 
 		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND USER_AVAILABLE = 1
 	</select>
 
