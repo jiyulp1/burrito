@@ -41,8 +41,8 @@ public class MemberController {
 			
 		String inputPass = vo.getUser_pw();
 		String pass = passEncoder.encode(inputPass);  // 비밀번호를 암호화
+		// 암호화 해서 저장하는 부분을 더이상 구현하지 않으니 encode 메서드도 호출할 필요가 없어지지 않았나?
 		vo.setUser_pw(pass);  // 암호화된 비밀번호를 userPass에 저장
-	
 		service.signup(vo);
 	
 		return "redirect:/";
@@ -60,14 +60,15 @@ public class MemberController {
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public String postSignin(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		logger.info("post signin");
-		boolean loginSuccess = service.signin(req);
-		MemberVO login = service.signin(vo);  // MemverVO형 변수 login에 로그인 정보를 저장
 		HttpSession session = req.getSession();  // 현재 세션 정보를 가져옴
 		
-		if(login != null && loginSuccess) {
-			session.setAttribute("member", login);  // member 세션에 로그인 정보를 부여
-			System.out.println(login.getUser_name()); //null
-			System.out.println("login = "+ login); //login = kr.co.bttf.domain.MemberVO@6b328222
+		boolean loginSuccess = service.signin(req);
+		MemberVO loginInfo = service.signin(vo);  // MemverVO형 변수 login에 로그인 정보를 저장
+		
+		if(loginSuccess) {
+			session.setAttribute("member", loginInfo);  // member 세션에 로그인 정보를 부여
+			System.out.println(loginInfo.getUser_name()); //null
+			System.out.println("loginInfo = "+ loginInfo); //login = kr.co.bttf.domain.MemberVO@6b328222
 
 		}else {
 			session.setAttribute("member", null);

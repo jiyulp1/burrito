@@ -13,7 +13,7 @@ public interface MemberDAO {
 	public MemberVO signin(MemberVO vo) throws Exception;
 	
 	
-	public MemberVO login(HashMap<String, String> map) throws Exception;
+	public MemberVO signin(HashMap<String, String> map) throws Exception;
 	
 	
 }

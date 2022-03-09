@@ -493,10 +493,10 @@ ul.nav li.dropdown_man:hover > ul.manager_dropdown {
 .join_form li:not(:last-child){margin-bottom:20px;} 
 .join_form li:nth-of-type(7) a{float:right;margin-top:-65px;margin-right:100px;width:100px;}
 
-/*�븘�씠�뵒以묐났�솗�씤(踰붿슜)*/
+/*占쎈툡占쎌뵠占쎈탵餓λ쵎�궗占쎌넇占쎌뵥(甕곕뗄�뒠)*/
 .popup{width:300px; height:300px;background:#fff;color:#000;border:2px solid #ff6600; position:absolute; right:0; top:0;text-align:center;margin:500px 650px 0 0;/*display:none;*/}
 
-.popup h4{padding:15px 0 0 10px;width:296px; height:50px;/*�뿤�뜑 諛곌꼍�깋*/background:#175c8e;color:#fff;}
+.popup h4{padding:15px 0 0 10px;width:296px; height:50px;/*占쎈엘占쎈쐭 獄쏄퀗瑗랃옙源�*/background:#175c8e;color:#fff;}
 .popup p{margin:20px 0;}
 .popup a{width:100px;margin-left:100px;height:40px;line-height:40px;background:#ff6600;color:#fff;}
 
@@ -612,9 +612,19 @@ pre{
 	
 }
 
+/*end manager_language page */
 
 
 
+/* fixed footer */
+.fixed_container{
+	height: calc(100vh - 160px);
+}
+
+.fixed_footer{
+	height: 160px;
+}
+/* end fixed footer */
 
 
 

@@ -4,7 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
-<html lang="ko" class="no-js">
+<html lang="ko" class="no-js" style="height : 100vh;">
 <!-- BEGIN HEAD -->
 
 <head>
@@ -17,28 +17,28 @@
 
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-    <link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
     <!-- font-Glyphicon -->
     <!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
     <!-- PAGE LEVEL PLUGIN STYLES -->
-    <link href="../../resource/css/animate.css" rel="stylesheet">
-    <link href="../../resource/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../resources/css/animate.css" rel="stylesheet">
+    <link href="../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
 
     <!-- THEME STYLES -->
-    <link href="../../resource/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/resource/img/favicon/favicon-32x32.png" />
+    <link rel="shortcut icon" href="/resources/img/favicon/favicon-32x32.png" />
 
     <!-- custom -->
-    <link rel="stylesheet" href="../../resource/css/custom.css">
+    <link rel="stylesheet" href="../../../resources/css/custom.css">
 
     <!-- c3 chart -->
-    <link href="../../resource/vendor/c3-0.7.20/c3.css" rel="stylesheet">
+    <link href="../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
     <style type="text/css">
        .remove{
           display : none;
@@ -52,7 +52,7 @@
 <!-- END HEAD -->
 
 <!-- BODY -->
-<body class="page-on-scroll fixed_container">
+<body class="page-on-scroll ">
    <c:set var="board" value="${requestScope.board }"/>
    
     <!--========== HEADER ==========-->
@@ -71,7 +71,7 @@
     <!--========== PAGE LAYOUT ==========-->
     <!-- Service -->
 <%--     <c:set var="boardviewer" value="${pageScope.session }" /> --%>
-    <div class="bg-color-sky-light fixed_container" data-auto-height="true">
+    <div class="bg-color-sky-light" data-auto-height="true">
         <div class="content-lg container" style="margin-top : 50px;">
             <div class="row row-space-1 margin-b-2">
                 <div class="col-sm-12 sm-margin-b-2" style="margin-bottom: 20px;">
@@ -216,27 +216,27 @@
 
     <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- CORE PLUGINS -->
-    <script src="../../resource/vendor/jquery.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL PLUGINS -->
-    <script src="../../resource/vendor/jquery.easing.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery.easing.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
     <!--  <script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script> -->
-    <script src="../../resource/vendor/jquery.wow.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL SCRIPTS -->
-    <script src="../../resource/js/layout.min.js" type="text/javascript"></script>
-    <script src="../../resource/js/components/wow.min.js" type="text/javascript"></script>
-    <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
-    <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
-    <script src="../../resource/js/action.js"></script>
-    <script src="../../resource/vendor/ckeditor5-build-classic/translations/ko.js"></script>
-	<script src="../../resource/vendor/ckeditor5-build-classic/ckeditor.js"></script>
+    <script src="../../../resources/js/layout.min.js" type="text/javascript"></script>
+    <script src="../../../resources/js/components/wow.min.js" type="text/javascript"></script>
+    <script src="../../../resources/js/components/swiper.min.js" type="text/javascript"></script>
+    <script src="../../../resources/js/components/masonry.min.js" type="text/javascript"></script>
+    <script src="../../../resources/js/action.js"></script>
+    <script src="../../../resources/vendor/ckeditor5-build-classic/translations/ko.js"></script>
+	<script src="../../../resources/vendor/ckeditor5-build-classic/ckeditor.js"></script>
     <script>
         ClassicEditor
             .create( document.querySelector( '#classic' ))
@@ -244,7 +244,7 @@
                 console.error( error );
             } );
     </script>
-    <script src="../../resource/js/confirm.js"></script>
+    <script src="../../../resources/js/confirm.js"></script>
 </body>
 <!-- END BODY -->
 <script>

@@ -13,13 +13,13 @@
 	</insert>
 
 	<select id="signin" resultType="kr.co.bttf.domain.MemberVO">
-		SELECT user_pw FROM USER_ALL 
+		SELECT * FROM USER_ALL 
 		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND USER_AVAILABLE = 1
 	</select>
 	
 	
 	<select id="login" resultType="kr.co.bttf.domain.MemberVO">
-		SELECT user_name FROM USER_ALL 
+		SELECT * FROM USER_ALL 
 		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND USER_AVAILABLE = 1
 	</select>
 

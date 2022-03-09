@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="kr.co.bttf.mappers.board">
+<mapper namespace="kr.co.bttf.mappers.boardMapper">
 
 <!-- 
 ========================================
@@ -33,7 +33,7 @@
 	<!-- 4. 게시물 수정 -->
 	<update id="htmlmodify" parameterType="kr.co.bttf.domain.HtmlBoardVO">
 		update html set
-		post_subject = #{post_subject}, post_content = #{post_content}, writer = #{writer}
+		post_subject = #{post_subject}, post_contents = #{post_contents}, writer = #{writer}
 		where post_id = #{post_id}
 	</update>
 	
@@ -52,19 +52,19 @@
  -->
 	<!-- 1. 게시물 목록 -->
 	<select id="csslist" resultType="kr.co.bttf.domain.CssBoardVO">
-		select * from css
+		select * from css where post_available = 1
 	</select>
 	
 	
 	<!-- 2. 게시물 작성 -->
 	<insert id="csswrite" parameterType="kr.co.bttf.domain.CssBoardVO">
-		insert into css (post_subject, post_content, writer)
-		values(#{post_subject}, #{post_content}, #{writers})
+		insert into css (post_subject, post_contents, writer)
+		values(#{post_subject}, #{post_contents}, #{writer})
 	</insert>
 	
 	
 	<!-- 3. 게시물 조회 -->
-	<select id="cssview" parameterType="int" resultType="kr.co.bttf.domain.CssBoardVO">
+	<select id="cssview" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
 		select * from css
 		where post_id = #{post_id}
 	</select>
@@ -73,7 +73,7 @@
 	<!-- 4. 게시물 수정 -->
 	<update id="cssmodify" parameterType="kr.co.bttf.domain.CssBoardVO">
 		update css set
-		post_subject = #{post_subject}, post_content = #{post_content}, writer = #{writer}
+		post_subject = #{post_subject}, post_contents = #{post_contents}, writer = #{writer}
 		where post_id = #{post_id}
 	</update>
 	

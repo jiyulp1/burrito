@@ -14,7 +14,7 @@ public class CssBoardDAOImpl implements CssBoardDAO {
 
 	@Inject
 	private SqlSession sql;
-	private static String namespace = "kr.co.bttf.mappers.board";
+	private static String namespace = "kr.co.bttf.mappers.boardMapper";
 
 	@Override
 	public List<CssBoardVO> cssList() throws Exception {

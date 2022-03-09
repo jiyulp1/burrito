@@ -39,7 +39,7 @@
     
     <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
     <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.js"></script>
-	<script type="text/javascript" src="/board../../../resources/js/board.js"></script>
+	<script type="text/javascript" src="../../../resources/js/board.js"></script>
 
 </head>
 <!-- END HEAD -->
@@ -47,8 +47,6 @@
 <!-- BODY -->
 
 <body class="page-on-scroll fixed_container">
-	<c:set var="boardList" value = "${requestScope.boardList }"/>
-	<c:set var="totalCnt" value = "${requestScope.totalCnt }"/>
 	
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
@@ -88,12 +86,12 @@
 	                    </thead>
 	                    <tbody>
 		                    <c:choose>
-		                    	<c:when test = "${boardList != null and fn:length(boardList) > 0 }">
-		                    		<c:forEach var="board" items="${boardList}">
+		                    	<c:when test = "${csslist != null and fn:length(csslist) > 0 }">
+		                    		<c:forEach var="board" items="${csslist}">
 				                        <tr>
 				                            <td>${board.post_id }</td>
 				                            <td>
-				                            <a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${board.post_id }">${board.post_subject }</a>
+				                            <a href="/board/cssview?post_id=${board.post_id }">${board.post_subject }</a>
 				                            </td>
 				                            <td>${board.writer }</td>
 				                            <td>${board.post_vcount }</td>
@@ -112,10 +110,9 @@
 	            </div>
 	            <!-- End notice -->
 
-	            <c:if test="${sessionScope.session_id != null }">
-	           	 <a href="${pageContext.request.contextPath }/pages/csswrite.do"class="btn btn-primary" type="submit">글쓰기</a>
+	            <c:if test="${member != null }">
+	           	 <a href="/board/csswrite"class="btn btn-primary" type="submit">글쓰기</a>
 	            </c:if>
-				<!--<input type="hidden" name="css" value="1"> -->
             </form>
             <!-- board pagination -->
 <!-- 				<nav aria-label="Page navigation" class="text-center"> -->
@@ -164,7 +161,7 @@
     <!--========== END FOOTER ==========-->
 
     <!-- Back To Top -->
-    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>../../resource/js/action.js
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
    
     <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- CORE PLUGINS -->

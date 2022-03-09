@@ -7,6 +7,7 @@ public class CssBoardVO {
 	private String post_subject;
 	private String post_contents;
 	private int user_index;
+	private String writer;
 	private int post_available;
 	private String post_rec;
 	private int post_vcount;
@@ -38,6 +39,13 @@ public class CssBoardVO {
 	}
 	public void setUser_index(int user_index) {
 		this.user_index = user_index;
+	}
+	
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 	public int getPost_available() {
 		return post_available;

@@ -37,39 +37,39 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <!-- <a class="nav-item-child-sub" href=""></a> -->
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/html.jsp">
+                                <a class="nav-item-child-sub" href="/board/htmllist">
                                     HTML5
                                 </a>
 
                             </li>
                             <li>
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/pages/csslist.do?page=1">
+                                <a class="nav-item-child-sub" href="/board/csslist">
                                     CSS3
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/javascript.jsp">
+                                <a class="nav-item-child-sub" href="/board/jslist">
                                     JavaScript
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/jsp.jsp">
+                                <a class="nav-item-child-sub" href="/board/jsplist">
                                     JSP
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/java.jsp">
+                                <a class="nav-item-child-sub" href="/board/javalist">
                                     JAVA
                                 </a>
                                 
                             </li>
                             <li>
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/oracle.jsp">
+                                <a class="nav-item-child-sub" href="/board/oraclelist">
                                     ORACLE
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/spring.jsp">
+                                <a class="nav-item-child-sub" href="/board/springlist">
                                     SPRING
                                 </a>
                             </li>
@@ -98,7 +98,7 @@
 					
 					<c:if test="${member != null }" >
 						<p class="nav-item-child nav-item-hover" style="display:flex; float : left;">${member.user_name}님 반갑습니다!
-							<a class="nav-item-child" style="padding-top:0 !important; padding-left:10px !important; " href="/member/logout"> Logout </a>
+							<a class="nav-item-child" style="padding-top:0 !important; padding-left:10px !important; " href="/member/signout"> Logout </a>
 						</p>
 					</c:if>
 					
