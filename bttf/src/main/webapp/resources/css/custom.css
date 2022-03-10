@@ -626,6 +626,35 @@ pre{
 }
 /* end fixed footer */
 
+/* datatable */
+.dataTables_wrapper{
+	overflow: hidden;
+	
+}
+
+
+
+.dataTables_filter{
+	text-align : end;
+	margin-bottom : 40px;
+}
+
+
+.dataTables_filter input{
+    border: 1px solid #000;
+    height: 30px;
+    border-radius: 3px;
+    margin-left: 10px;
+	padding-left: 5px;
+	
+}
+
+/* .dataTables_filter label{ */
+/* 	font-size : 18px; */
+/* 	font-weight : normal ; */
+/* 	margin-bottom : 60px; */
+/* 	text-align :right; */
+/* } */
 
 
 

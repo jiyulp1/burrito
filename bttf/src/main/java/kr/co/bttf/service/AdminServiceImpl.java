@@ -31,8 +31,24 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void annwrite(AnnVO vo, String writer) throws Exception {
-		dao.annwrite(vo, writer);
+	public void annwrite(AnnVO vo) throws Exception {
+		dao.annwrite(vo);
+	}
+
+	@Override
+	public AnnVO annview(int post_id) throws Exception {
+		return dao.annview(post_id);
+	}
+
+	@Override
+	public void annedit(AnnVO vo) throws Exception {
+		dao.annedit(vo);
+	}
+
+	@Override
+	public void anndelete(int post_id) throws Exception {
+		dao.anndelete(post_id);
+
 	}
 
 }

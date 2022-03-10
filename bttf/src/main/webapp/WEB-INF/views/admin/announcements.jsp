@@ -39,23 +39,15 @@
 
 	<!-- c3 chart -->
 	<link href="../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
-	<script type="text/javascript" src="../../../resources/js/board.js"></script>
-	<script type="text/javascript">
-		jQuery(function($){
-		   $("#foo-table").DataTable({
-		      "bInfo": false,
-		      "bSort" : false,
-		      "bPaginate" : true
-		   });
-		   
-		});		
-	</script>
+	<!-- datatable  -->
+	<link href="../../../resources/vendor/DataTables/datatables.css" >
+	
 	</head>
 <!-- END HEAD -->
 	
 <!-- BODY -->
 
-<body class="page-on-scroll fixed_container">
+<body class="bg-color-sky-light page-on-scroll fixed_container">
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -75,11 +67,11 @@
 	                <table id="foo-table" class="table table-striped" data-order='[[ 1, "desc" ]]'>
 	                    <thead>
 	                    	<tr>
-		                        <th>번호</th>
-		                        <th>제목</th>
-		                        <th>작성자</th>
-		                        <th>조회수</th>
-		                        <th>날짜</th>
+		                        <th style="width: 10%;">번호</th>
+		                        <th style="width: 50%;">제목</th>
+		                        <th style="width: 10%;">작성자</th>
+		                        <th style="width: 10%;">조회수</th>
+		                        <th style="width: 20%;">날짜</th>
 	                    	</tr>
 	                    </thead>
 	                    <tbody>
@@ -89,7 +81,7 @@
 				                        <tr>
 				                            <td>${announcmentList.post_id }</td>
 				                            <td>
-				                            <a href="/admin/ann_view.mg?post_id=${announcmentList.post_id }">${announcmentList.post_subject }</a>
+				                            <a href="/admin/annview?post_id=${announcmentList.post_id }">${announcmentList.post_subject }</a>
 				                            </td>
 				                            <td>${announcmentList.writer }</td>
 				                            <td>${announcmentList.post_vcount }</td>
@@ -108,7 +100,7 @@
 	            </div>
 	            <!-- End notice -->
 	            <c:if test="${member!= null && member.authority_name == 'admin'}">
-	           	 <a href="/admin/annwrite" class="btn btn-primary" type="submit">공지사항 작성</a>
+	           		<a href="/admin/annwrite" class="btn btn-primary" type="submit">공지사항 작성</a>
 	            </c:if>
             </form>
             
@@ -157,7 +149,18 @@
 	<!-- Load d3.js and c3.js -->
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
-
+	<script type="text/javascript" src="../../../resources/vendor/DataTables/datatables.js"></script>
+	<script type="text/javascript" src="../../../resources/vendor/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.js"></script>
+ 	<script type="text/javascript"> 
+ 	$(document).ready(function() {
+ 	    $('#foo-table').DataTable( {
+ 	    	bInfo : false,
+ 	       	bSortable : false,
+ 	       	bPaginate : true,
+ 	        displayLength : 10
+ 	    } );
+ 	} );	
+ </script>  
 
     
 </body>

@@ -37,8 +37,25 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public void annwrite(AnnVO vo, String writer) throws Exception{
+	public void annwrite(AnnVO vo) throws Exception{
 		sql.insert(namespace + ".annwrite", vo);
+
+	}
+
+	@Override
+	public AnnVO annview(int post_id) throws Exception {
+		return sql.selectOne(namespace + ".annview", post_id);
+	}
+
+	@Override
+	public void annedit(AnnVO vo) throws Exception {
+		sql.update(namespace + ".annedit", vo);
+
+	}
+
+	@Override
+	public void anndelete(int post_id) throws Exception {
+		sql.delete(namespace + ".anndelete", post_id);
 
 	}
 
