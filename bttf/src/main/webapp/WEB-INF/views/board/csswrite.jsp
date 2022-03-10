@@ -162,8 +162,7 @@
 	<script src="../../../resources/js/action.js"></script>
 	<!--<script src="vendor/ckeditor5-build-classic/translations/ko.js"></script>-->
 
-	<script
-		src="${contextPath}../../../resources/vendor/ckeditor5-31.1.0-e38clgxocdpt/build/ckeditor.js"></script>
+	<script src="${contextPath}../../../resources/vendor/ckeditor5-31.1.0-e38clgxocdpt/build/ckeditor.js"></script>
 
 	<script>
         ClassicEditor

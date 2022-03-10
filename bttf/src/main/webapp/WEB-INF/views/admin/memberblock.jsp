@@ -36,26 +36,26 @@
 	<!-- custom -->
 	<link rel="stylesheet" href="../../../resources/css/custom.css">
 
-	<!-- c3 chart -->
-	<link href="../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
-	<script type="text/javascript">
+	<!-- datatable -->
+	<script type="text/javascript" src="../../../resources/js/board.js"></script>
+			<script type="text/javascript">
 		jQuery(function($){
 		   $("#foo-table").DataTable({
 		      "bInfo": false,
 		      "bSort" : false,
 		      "bPaginate" : true
 		   });
-		   
-		});		
-	</script>
-    </head>
+		});	
+		</script>
+	</head>
+
+	</head>
+	
     <!-- END HEAD -->
 
     <!-- BODY -->
 
-    <body class="page-on-scroll fixed_container">
-		<c:set var="userBlockedList" value="${requestScope.userBlockedList }" />
-        <c:set var="getUserCnt" value="${requestScope.getUserCnt }" />
+    <body class="page-on-scroll">
         <!--========== HEADER ==========-->
         <header class="header navbar-fixed-top">
             <!-- Navbar -->
@@ -70,7 +70,7 @@
 
         <!--========== PAGE LAYOUT ==========-->
         <!-- Service -->
-        <div class="bg-color-sky-light fixed_container" data-auto-height="true">
+        <div class="bg-color-sky-light" data-auto-height="true">
             <div class="content-lg container" style="margin-top : 50px;">
                 <h1 class="pt-4">
                     <i class="fas fa-user-circle title_subject_icon"></i>
@@ -85,7 +85,6 @@
                         <table id="foo-table" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>회원이름</th>
                                     <th>휴대폰번호</th>
                                     <th>가입일자</th>
@@ -94,14 +93,9 @@
                             </thead>
                             <tbody>
                                <c:choose>
-                                <c:when test="${userBlockedList != null and fn:length(userBlockedList) > 0 }">
-                                    <c:forEach var="userBlockedList" items="${userBlockedList}">
+                                <c:when test="${memberblock != null and fn:length(memberblock) > 0 }">
+                                    <c:forEach var="userBlockedList" items="${memberblock}">
                                         <tr>
-                                            <td>
-                                                <p>
-                                                    ${userBlockedList.user_id }
-                                                </p>
-                                            </td>
                                             <td>
                                                 <p>
                                                     ${userBlockedList.user_name }
@@ -118,51 +112,20 @@
                                                 </p>
                                             </td>
                                             <td>
-                                                <input type="button"
-                                                    class="btn btn-info" value="차단해제">
+                                                <input type="button" class="btn btn-info" value="신고해제">
                                             </td>
                                         </tr>
                                     </c:forEach>
                                 </c:when>
                                 <c:otherwise>
                                     <tr>
-                                        <td colspan="5" class="text-center">등록된 회원이 없습니다.</td>
+                                        <td colspan="5" class="text-center">신고된 회원이 없습니다.</td>
                                     </tr>
                                 </c:otherwise>
                             </c:choose>
                             </tbody>
                         </table>
                     </div>
-                    <!-- paging -->
-                   	<nav aria-label="Page navigation" class="text-center" style="display:none;">
-                    	<ul class="pagination">
-                        	<c:if test="${nowPage > 1 }">
-                            	<li class="page-item">
-                                	<a class="page-link" href="${pageContext.request.contextPath }/pages/MemberReported.mg?page=${nowPage - 1 }">&lt;</a>
-                            	</li>
-                         	</c:if>
-                        <c:forEach var="i" begin="${startPage}" end="${endPage }">
-                        	<c:choose>
-                            	<c:when test="${i == nowPage }">
-                                	<li class="page-item">
-                                    	<a class="page-link">${i } </a>
-                                    </li>
-                                </c:when>
-                                <c:otherwise>
-                                    <li class="page-item">
-                                        <a class="page-link" href="${pageContext.request.contextPath }/pages/MemberReported.mg?page=${i }">${i}</a>
-                                    </li>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
-                        <c:if test="${nowPage<totalPage }">
-                            <li class="page-item">
-                                <a class="page-link" href="${pageContext.request.contextPath }/pages/MemberReported.mg?page=${nowPage + 1 }">&gt;</a>
-                            </li>
-                        </c:if>
-                    	</ul>
-                    </nav>
-<!-- end of paging -->
                 </div>
                 <!--end blockedmember layout -->
             </div>
@@ -206,8 +169,6 @@
 	<!-- Load d3.js and c3.js -->
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
-
-
 	</body>
             <!-- END BODY -->
 </html>

@@ -49,7 +49,7 @@
 
 <!-- BODY -->
 
-<body class="page-on-scroll fixed_container">
+<body class="page-on-scroll" style = "height : 100vh;">
 <%-- 	<c:if test = "${not empty param.flag }"> --%>
 <%-- 		<c:if test = "${not param.flag }"> --%>
 <!-- 			<script> alert("글 쓰기 실패")</script> -->
@@ -69,7 +69,7 @@
 
 	<!--========== PAGE LAYOUT ==========-->
 	<!-- Service -->
-	<div class="bg-color-sky-light fixed_container" data-auto-height="true">
+	<div class="bg-color-sky-light" data-auto-height="true">
 		<div class="content-lg container" style="margin-top : 50px;">
 			<h1 class="pt-4">
 				<i class="fas fa-file-alt title_subject_icon"></i> 게시글 작성
@@ -79,18 +79,18 @@
 					<div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
 						<div class="my_box" data-height="height">
 							<!-- Start write Form -->
-							<form name = "annwrite" action="${pageContext.request.contextPath }/pages/AnnWriteOK.mg" method="post">
-								<input type="hidden" name="post_id" value="${board.post_id }">
+							<form name = "annwrite" method="post">
+<%-- 								<input type="hidden" name="post_id" value="${board.post_id }"> --%>
 								<div class="col-auto">
 									<label for="subject">제목</label>
 									<input id="subject" name="post_subject" class="form-control margin-b-50" type="text" placeholder="제목">
 									<textarea id="editor" name="post_contents" class="form-control" placeholder="내용을 입력해 주세요." style="height: 650px; resize: none;"></textarea>
 								</div>
-									<a href="javascript:document.annwrite.submit()" class="btn btn-info mt-4" id="writesuccess">작성완료</a>
-									<a class="btn btn-primary mt-4" id="list" onclick="confirm_backlist()">목록</a>
+									<button type="submit" class="btn btn-info mt-4" id="writesuccess">작성완료</button>
+<!-- 									<a href="/admin/announcements" class="btn btn-info mt-4" id="writesuccess">작성완료</a> -->
+									<a class="btn btn-primary mt-4" id="list" href="/admin/announcements">목록</a>
 							</form>
 							<!-- End write Form -->
-							
 						</div>
 					</div>
 				</div>
@@ -138,7 +138,7 @@
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
 
-
+	<script src="../../../resources/vendor/ckeditor5-31.1.0-e38clgxocdpt/build/ckeditor.js"></script>
 	<script>
         ClassicEditor
             .create( document.querySelector( '#editor' ),{

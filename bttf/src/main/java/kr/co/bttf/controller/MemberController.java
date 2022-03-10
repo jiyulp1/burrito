@@ -40,9 +40,9 @@ public class MemberController {
 		logger.info("post signup");
 			
 		String inputPass = vo.getUser_pw();
-		String pass = passEncoder.encode(inputPass);  // 비밀번호를 암호화
+		//String pass = passEncoder.encode(inputPass);  // 비밀번호를 암호화
 		// 암호화 해서 저장하는 부분을 더이상 구현하지 않으니 encode 메서드도 호출할 필요가 없어지지 않았나?
-		vo.setUser_pw(pass);  // 암호화된 비밀번호를 userPass에 저장
+		vo.setUser_pw(inputPass);  // 암호화된 비밀번호를 userPass에 저장
 		service.signup(vo);
 	
 		return "redirect:/";

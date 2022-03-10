@@ -5,8 +5,11 @@ import java.util.List;
 import kr.co.bttf.domain.CssBoardVO;
 
 public interface CssBoardService {
+	
+	// 게시물 목록 조회
 	public List<CssBoardVO> cssList() throws Exception;
 	
+	// 게시물 작성
 	public void cssWrite(CssBoardVO vo) throws Exception;
 	
 	// 게시물 조회

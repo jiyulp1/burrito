@@ -64,17 +64,6 @@
             <!-- notice -->
             <h2>CSS QnA</h2>
             <form>
-<!-- 	            <div class="search_box"> -->
-<!-- 	                <select class="selectpicker"> -->
-<!-- 	                    <option value="all">전체</option> -->
-<!-- 	                	<option value="subject">제목</option>  -->
-<!-- 	                    <option value="author">작성자</option> -->
-<!-- 	                </select> -->
-<!-- 	                <form novalidate required class="form-inline"> -->
-<!-- 	                    <input class="search_input" type="text" name="search"> -->
-<!-- 	                    <input class="btn btn-primary" type="button" value="검색"> -->
-<!-- 	                </form> -->
-<!-- 	            </div> -->
 	            <div class="table-responsive">
 	                <table id="foo-table" class="table table-striped" data-page-length='40' data-order='[[ 1, "desc" ]]'>
 	                    <thead>
@@ -107,7 +96,7 @@
 		                    </c:choose>
 	                    </tbody>
 	                </table>
-	            </div>
+	            </div>a
 	            <!-- End notice -->
 
 	            <c:if test="${member != null }">

@@ -40,7 +40,6 @@
                                 <a class="nav-item-child-sub" href="/board/htmllist">
                                     HTML5
                                 </a>
-
                             </li>
                             <li>
                                 <a class="nav-item-child-sub" href="/board/csslist">
@@ -78,12 +77,8 @@
                     <li class="nav-item"><a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/termsOfUse.jsp">Rules</a></li>
                     <li class="nav-item"><a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/announcements.jsp">Notice</a></li>
 					<li class="nav-item">
-						<c:if test="${member == null}" >
-							<li class="nav-item ">
-								<a class="nav-item-child nav-item-hover" href="/member/signin">MyPage</a></li>
-						</c:if>
-						<c:if test="${member != null }" >
-							<a class="nav-item-child nav-item-hover" href="/member/signin">MyPage</a>
+						<c:if test="${member != null && member.authority_name != 'admin' }" >
+							<a class="nav-item-child nav-item-hover" href="/member/mypage">MyPage</a>
 						</c:if>
 					</li>
 					<li class="nav-item ">
@@ -102,33 +97,33 @@
 						</p>
 					</c:if>
 					
-					<li class="nav-item dropdown_man">
-						<c:if test="${sessionScope.session_id !=null && sessionScope.session_id.user_id == 'admin'  }" >
-							<a class="nav-item-child nav-item-hover dropdown-toggle drop1 " data-toggle="dropdown" href="#">Admin</a>
+					<li class="nav-item dropdown_man2">
+						<c:if test="${member !=null && member.authority_name == 'admin'  }" >
+							<a class="nav-item-child nav-item-hover dropdown-toggle drop2 " data-toggle="dropdown" href="#">Admin</a>
 	                        <ul class="manager_dropdown">
 	                            <li>
 	                                <!-- <a class="nav-item-child-sub" href=""></a> -->
-	                                <a class="nav-item-child-sub_man" href="${pageContext.request.contextPath }/pages/MemberAll.mg?page=1">
+	                                <a class="nav-item-child-sub_man" href="/admin/memberall">
 	                                    	회원관리 - 전체회원
 	                                </a>
 	                            </li>
 	                            <li>
-	                                <a class="nav-item-child-sub_man" href="${pageContext.request.contextPath }/pages/MemberReported.mg?page=1">
+	                                <a class="nav-item-child-sub_man" href="/admin/memberblock">
 	                                   		 회원관리 - 신고된 회원
 	                                </a>
 	                            </li>
 	                            <li>
-	                                <a class="nav-item-child-sub_man" href="${pageContext.request.contextPath }/pages/AllBoard.mg?page=1">
+	                                <a class="nav-item-child-sub_man" href="/admin/boardall">
 											게시글관리 - 전체게시글
 	                                </a>
 	                            </li>
 	                            <li>
-	                                <a class="nav-item-child-sub_man" href="${pageContext.request.contextPath }/pages/BoardReported.mg?page=1">
+	                                <a class="nav-item-child-sub_man" href="/admin/boardblock">
 	                                    	게시글관리 - 신고된 게시글
 	                                </a>
 	                            </li>
 	                            <li>
-	                                <a class="nav-item-child-sub_man" href="${pageContext.request.contextPath }/pages/Announcements.mg?page=1">
+	                                <a class="nav-item-child-sub_man" href="/admin/announcements">
 	                                    	게시글관리 - 공지사항
 	                                </a>
 	                            </li>

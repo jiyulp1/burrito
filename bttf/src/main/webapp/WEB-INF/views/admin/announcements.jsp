@@ -39,7 +39,7 @@
 
 	<!-- c3 chart -->
 	<link href="../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
-<!-- 	<script type="text/javascript" src="../../resource/js/board.js"></script> -->
+	<script type="text/javascript" src="../../../resources/js/board.js"></script>
 	<script type="text/javascript">
 		jQuery(function($){
 		   $("#foo-table").DataTable({
@@ -50,16 +50,12 @@
 		   
 		});		
 	</script>
-
-</head>
+	</head>
 <!-- END HEAD -->
 	
 <!-- BODY -->
 
 <body class="page-on-scroll fixed_container">
-	<c:set var="announcmentList" value = "${requestScope.announcmentList }"/>
-	<c:set var="totalCnt" value = "${requestScope.totalCnt }"/>
-	
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -72,21 +68,9 @@
     <!-- notice -->
     <div class="bg-color-sky-light fixed_container">
         <div class="content-lg container" style="margin-top : 50px;">
-<%--         ${boardJSON } --%>
             <!-- notice -->
             <h2>공지사항</h2>
             <form>
-<!-- 	            <div class="search_box"> -->
-<!-- 	                <select class="selectpicker"> -->
-<!-- 	                    <option value="all">전체</option> -->
-<!-- 	                	<option value="subject">제목</option>  -->
-<!-- 	                    <option value="author">작성자</option> -->
-<!-- 	                </select> -->
-<!-- 	                <form novalidate required class="form-inline"> -->
-<!-- 	                    <input class="search_input" type="text" name="search"> -->
-<!-- 	                    <input class="btn btn-primary" type="button" value="검색"> -->
-<!-- 	                </form> -->
-<!-- 	            </div> -->
 	            <div class="table-responsive">
 	                <table id="foo-table" class="table table-striped" data-order='[[ 1, "desc" ]]'>
 	                    <thead>
@@ -100,12 +84,12 @@
 	                    </thead>
 	                    <tbody>
 		                    <c:choose>
-		                    	<c:when test = "${announcmentList != null and fn:length(announcmentList) > 0 }">
-		                    		<c:forEach var="announcmentList" items="${announcmentList}">
+		                    	<c:when test = "${announcements != null and fn:length(announcements) > 0 }">
+		                    		<c:forEach var="announcmentList" items="${announcements}">
 				                        <tr>
 				                            <td>${announcmentList.post_id }</td>
 				                            <td>
-				                            <a href="${pageContext.request.contextPath }/pages/ann_view.mg?post_id=${announcmentList.post_id }">${announcmentList.post_subject }</a>
+				                            <a href="/admin/ann_view.mg?post_id=${announcmentList.post_id }">${announcmentList.post_subject }</a>
 				                            </td>
 				                            <td>${announcmentList.writer }</td>
 				                            <td>${announcmentList.post_vcount }</td>
@@ -115,7 +99,7 @@
 		                        </c:when>
 		                        <c:otherwise>
 		                        	<tr>
-		                        		<td colspan="5" class="text-center">등록된 게시물이 없습니다 </td>
+		                        		<td colspan="5" class="text-center">등록된 공지사항이 없습니다 </td>
 		                        	</tr>
 		                        </c:otherwise>
 		                    </c:choose>
@@ -123,8 +107,8 @@
 	                </table>
 	            </div>
 	            <!-- End notice -->
-	            <c:if test="${sessionScope.session_id != null && sessionScope.session_id.user_id == 'admin'}">
-	           	 <a href="${pageContext.request.contextPath }/app/pages/ann_write.jsp"class="btn btn-primary" type="submit">글쓰기</a>
+	            <c:if test="${member!= null && member.authority_name == 'admin'}">
+	           	 <a href="/admin/annwrite" class="btn btn-primary" type="submit">공지사항 작성</a>
 	            </c:if>
             </form>
             

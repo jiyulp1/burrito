@@ -3,7 +3,7 @@ jQuery(function($){
       "bInfo": false,
       "bSortable" : false,
       "bPaginate" : true,
-      "displayLength" : 25
+      "displayLength" : 10
       //      "ajax": 'boardJson.json'   
    });
    
