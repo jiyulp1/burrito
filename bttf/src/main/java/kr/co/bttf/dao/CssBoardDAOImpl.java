@@ -35,8 +35,8 @@ public class CssBoardDAOImpl implements CssBoardDAO {
 	}
 
 	@Override
-	public void cssModify(CssBoardVO vo) throws Exception {
-		sql.update(namespace + ".cssmodify", vo);
+	public void cssEdit(CssBoardVO vo) throws Exception {
+		sql.update(namespace + ".cssedit", vo);
 	}
 
 	@Override

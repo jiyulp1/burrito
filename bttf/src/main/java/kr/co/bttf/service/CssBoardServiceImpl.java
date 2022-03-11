@@ -36,9 +36,9 @@ public class CssBoardServiceImpl implements CssBoardService {
 
 	// 게시물 수정
 	@Override
-	public void cssModify(CssBoardVO vo) throws Exception {
+	public void cssEdit(CssBoardVO vo) throws Exception {
 
-		dao.cssModify(vo);
+		dao.cssEdit(vo);
 	}
 
 	// 게시물 삭제

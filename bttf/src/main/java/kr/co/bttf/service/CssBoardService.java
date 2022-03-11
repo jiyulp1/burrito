@@ -16,7 +16,7 @@ public interface CssBoardService {
 	public CssBoardVO cssView(int post_id) throws Exception;
 	
 	// 게시물 수정
-	public void cssModify(CssBoardVO vo) throws Exception;
+	public void cssEdit(CssBoardVO vo) throws Exception;
 	
 	//게시물 삭제
 	public void cssDelete(int post_id) throws Exception;

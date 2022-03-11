@@ -90,13 +90,11 @@
 							</li>
 						</c:if>
 					</li> 
-					
 					<c:if test="${member != null }" >
 						<p class="nav-item-child nav-item-hover" style="display:flex; float : left;">${member.user_name}님 반갑습니다!
 							<a class="nav-item-child" style="padding-top:0 !important; padding-left:10px !important; " href="/member/signout"> Logout </a>
 						</p>
 					</c:if>
-					
 					<li class="nav-item dropdown_man2">
 						<c:if test="${member !=null && member.authority_name == 'admin'  }" >
 							<a class="nav-item-child nav-item-hover dropdown-toggle drop2 " data-toggle="dropdown" href="#">Admin</a>
