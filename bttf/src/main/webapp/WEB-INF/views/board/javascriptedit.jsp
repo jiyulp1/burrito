@@ -135,21 +135,10 @@
     <script src="../../resource/js/action.js"></script>
     <!--<script src="vendor/ckeditor5-build-classic/translations/ko.js"></script>-->
 	<script src="../../resource/vendor/ckeditor5-31.1.0-xp96wtdshww/src/ckeditor.js"></script>
-	<script
-		src="${contextPath}../../resource/vendor/ckeditor5-31.1.0-e38clgxocdpt/build/ckeditor.js"></script>
+	<script src="${contextPath}../../resource/vendor/ckeditor5-31.1.0-e38clgxocdpt/build/ckeditor.js"></script>
+	<script src="${contextPath}../../resource/js/editor.js"></script>
 
 	<script>
-        ClassicEditor
-            .create( document.querySelector( '#editor' ),{
-                languge:{ui : 'ko', content:'ko' }
-            } )
-            .catch( error => {
-                console.error( error );
-            } );
-        
-        
-        
-
     	// [글 수정하기] function
     	function updateReply( post_id ){
     		if (true){
