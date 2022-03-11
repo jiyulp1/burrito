@@ -98,7 +98,7 @@
 		                                <a href="java::void()" class="btn btn-warning mt-4" id="report" type="submit" style="float: right;">신고</a>
 									</c:if>
 									<c:if test="${sessionScope.session_id.user_id eq board.writer}">
-     		                       		<a href="${pageContext.request.contextPath }/pages/jsEditChange.js?post_id=${board.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글 수정</a>                          
+    		                       		<a href="${pageContext.request.contextPath }/pages/jsEditChange.js?post_id=${board.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글 수정</a>                          
     		                            <a class="btn btn-danger mt-4" onclick="deletePost(${board.post_id})">글삭제</a>
 									</c:if> 
                               	 </div>
@@ -242,7 +242,7 @@
                 console.error( error );
             } );
     </script>
-    <script src="../../resource/js/confirm.js"></script>
+    
 </body>
 <!-- END BODY -->
 <script>
@@ -253,7 +253,7 @@
 	
 
 	// [글 삭제] function
-	function deletePost(post_id){
+	function deleteJs(post_id){
 		if (true){
 			document.replyForm.action = "${pageContext.request.contextPath}/pages/jsDelete.js?post_id="+post_id;
 			document.replyForm.submit();

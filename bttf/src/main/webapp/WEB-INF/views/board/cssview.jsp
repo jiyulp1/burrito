@@ -43,8 +43,6 @@
        .remove{
           display : none;
        }
-       
-    
     </style>
     
     

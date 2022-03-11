@@ -46,6 +46,7 @@
 
 <!-- c3 chart -->
 <link href="../../resource/vendor/c3-0.7.20/c3.css" rel="stylesheet">
+<script src="../../resource/js/confirm.js" type="text/javascript"></script>
 <style>
 .ck-blurred .ck .ck-content .ck-editor__editable .ck-rounded-corners .ck-editor__editable_inline h1
 	{
@@ -96,15 +97,17 @@
 									<input id="subject" name="post_subject" class="form-control margin-b-50" type="text" placeholder="제목">
 									<textarea id="editor" name="post_contents" class="form-control" placeholder="내용을 입력해 주세요." style="height: 650px; resize: none;"></textarea>
 								</div>
+									<%-- 로그인X--%>
 									<c:if test="${sessionScope.session_id == null }">
-										<a href="login.jsp" class="btn btn-info mt-4" id="writefail">작성완료</a>
-										<a href="login.jsp" class="btn btn-default mt-4" id="edit">수정하기</a>
+<!-- 										<a href="login.jsp" class="btn btn-info mt-4" id="writefail">작성완료</a> -->
+<!-- 										<a href="login.jsp" class="btn btn-default mt-4" id="edit">수정하기</a> -->
 									</c:if>
+									<%-- 로그인O--%>
 									<c:if test="${sessionScope.session_id != null }">
 										<a href="javascript:document.jswrite.submit()" class="btn btn-info mt-4" id="writesuccess">작성완료</a>
 <%-- 										<a href="${pageContext.request.contextPath }/pages/cssBoardUpdate.do" class="btn btn-default mt-4" id="editBoard">수정 하기</a> --%>
 									</c:if>
-										<a href="${pageContext.request.contextPath }/pages/jslist.js" class="btn btn-primary mt-4" id="list">목록</a>
+										<a class="btn btn-primary mt-4" id="list" onclick="confirm_backlist()">목록</a>
 							</form>
 							<!-- End write Form -->
 							
