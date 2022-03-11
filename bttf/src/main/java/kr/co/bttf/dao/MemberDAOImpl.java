@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 
 @Repository
@@ -34,6 +35,19 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO signin(HashMap<String, String> map) throws Exception {
 		return sql.selectOne(namespace + ".login", map);
 	
+	}
+
+	@Override
+	public void cssboardreported(CssBoardVO vo) throws Exception {
+		sql.update(namespace + ".cssboardreported", vo);
+		
+	}
+
+	@Override
+	public void memberreported(MemberVO vo) throws Exception {
+		sql.update(namespace + ".memberreported", vo);
+		
+		
 	}
 
 }

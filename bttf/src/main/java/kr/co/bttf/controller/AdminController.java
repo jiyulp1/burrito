@@ -45,6 +45,9 @@ public class AdminController {
 		memberblock = adminService.memberblock();
 		model.addAttribute("memberblock", memberblock);
 	}
+	
+	
+	
 	// 4. 신고된 회원을 해제하는 버튼 기능은 admin에서 구현(set만 뒤집어서)
 	// CSS 신고 게시글 해제
 	@RequestMapping(value = "/cssundo", method = RequestMethod.POST)
@@ -62,6 +65,30 @@ public class AdminController {
 		return "redirect:/admin/memberall";
 	}
 	
+	
+	// 5. 퇴출
+	// CSS 신고 들어온 게시글 안보이게
+	@RequestMapping(value = "/cssexpell", method = RequestMethod.POST)
+	public String cssexpell(CssBoardVO vo) throws Exception {
+
+		adminService.cssexpell(vo);
+		return "redirect:/admin/memberblock";
+	}
+	
+	// 신고가 들어온 회원 퇴출
+	@RequestMapping(value = "/memberexpell", method = RequestMethod.POST)
+	public String memberexpell(MemberVO vo) throws Exception {
+
+		adminService.memberexpell(vo);
+		return "redirect:/admin/memberall";
+	}
+	
+	
+	
+	
+	
+	
+	/* 공지사항 */
 	
 	// 공지사항목록
 	@RequestMapping(value = "/announcements", method = RequestMethod.GET)
