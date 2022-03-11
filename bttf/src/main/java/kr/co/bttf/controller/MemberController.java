@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -68,8 +69,6 @@ public class MemberController {
 		
 		if(loginSuccess) {
 			session.setAttribute("member", loginInfo);  // member 세션에 로그인 정보를 부여
-			System.out.println(loginInfo.getUser_name()); //null
-			System.out.println("loginInfo = "+ loginInfo); //login = kr.co.bttf.domain.MemberVO@6b328222
 
 		}else {
 			session.setAttribute("member", null);
@@ -78,23 +77,37 @@ public class MemberController {
 		}
 		return "redirect:/";
 	}
+	
+	
 	// 1. 게시물신고와 회원신고 버튼 구분
 	// 2.1 CSS 게시물 신고 [update]
 	// 2.2 게시판별로 만들지 language index를 활용할지?
 	@RequestMapping(value = "/cssboardreported", method = RequestMethod.POST)
-	public String cssboardreported(CssBoardVO vo) throws Exception {
-
-		adminService.cssboardreported(vo);
-		return "redirect:/board/cssview?post_id=" + vo.getPost_id();
+	public void cssboardreported(CssBoardVO vo) throws Exception {
+		
+		service.cssboardreported(vo);
+	}
+	
+	@RequestMapping(value = "/cssboardreported", method = RequestMethod.GET)
+	public String cssboardreported(Model model) throws Exception {
+		
+		return "redirect:/board/csslist";
 	}
 
 	// 3. 회원 신고 [update]
 	@RequestMapping(value = "/memberreported", method = RequestMethod.POST)
-	public String memberreported(MemberVO vo) throws Exception {
+	public void memberreported(MemberVO vo) throws Exception {
 
 		service.memberreported(vo);
+	}
+	
+	@RequestMapping(value = "/memberreported", method = RequestMethod.GET)
+	public String memberreported(Model model) throws Exception {
+		
 		return "redirect:/";
 	}
+	
+	
 	
 	
 	// 로그아웃

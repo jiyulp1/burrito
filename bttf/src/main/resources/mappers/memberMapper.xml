@@ -22,5 +22,12 @@
 		SELECT * FROM USER_ALL 
 		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND USER_AVAILABLE = 1
 	</select>
+	
+	<update id="cssboardreported" parameterType="_int">
+		update css set post_reported = 0 where post_id = #{post_id }
+	</update>
 
+	<update id="memberreported" parameterType="string">
+		update user_all set user_reported = 0 where user_nickname = #{user_nickname }
+	</update>
 </mapper>

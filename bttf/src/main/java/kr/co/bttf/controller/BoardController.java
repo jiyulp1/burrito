@@ -3,6 +3,8 @@ package kr.co.bttf.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -94,13 +96,7 @@ public class BoardController {
 	/* getList
 	  게시물 목록 */
 	
-	// 1.1 [GET] 게시물 목록
-//	@RequestMapping(value = "/csslist", method = RequestMethod.POST)
-//	public String postList() throws Exception {
-//		System.out.println("post - csslist");
-//		cssService.cssList();
-//		return  "/board/csslist";
-//	}
+	// 1.1 [GET] 게시물 목
 	
 	@RequestMapping(value = "/csslist", method = RequestMethod.GET)
 	public void getList(Model model) throws Exception {
@@ -115,20 +111,7 @@ public class BoardController {
 	  게시글 작성 */
 	
 	// 2.1 [GET] insert 게시물 작성
-//	@RequestMapping(value = "/csswrite", method = RequestMethod.GET)
-//	public void cssWrite() throws Exception {
-//		System.out.println("get - csswrite");
-//
-//	}
-//	// 2-2 [POST] insert 게시물 작성
-//	@RequestMapping(value = "/csswrite", method = RequestMethod.POST)
-//	public String cssWrite(CssBoardVO vo) throws Exception {
-//		
-//		System.out.println("post - csswrite");
-//	  cssService.cssWrite(vo);
-//	  return "/board/csslist";
-//	}
-	
+
 	@RequestMapping(value = "/csswrite", method = RequestMethod.GET)
 	public void cssWrite() throws Exception {
 
@@ -136,9 +119,12 @@ public class BoardController {
 	
 	// 게시물 작성
 	@RequestMapping(value = "/csswrite", method = RequestMethod.POST)
-	public String cssWrite(CssBoardVO vo) throws Exception {
+	public String cssWrite(CssBoardVO vo, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		
+		vo.setUser_nickname(member.getUser_nickname());
 		cssService.cssWrite(vo);
-	  
 	  return "redirect:/board/csslist";
 	}
 	
@@ -188,16 +174,6 @@ public class BoardController {
 
 		cssService.cssDelete(post_id);
 	}
-	
-	
-	// 6. 게시글 신고 [update]
-	
-//	@RequestMapping(value = "/memberblock", method = RequestMethod.POST)
-//	public String memberblock(MemberVO vo) throws Exception {
-//
-//		adminService.memberblock(vo);
-//		return "redirect:/admin/annview?post_id=" + vo.getPost_id();
-//	}
 	
 	/* --------------------------------
 			03. JAVASCRIPT

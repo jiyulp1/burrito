@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
+import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.dao.MemberDAO;
 
@@ -51,4 +52,20 @@ public class MemberServiceImpl implements MemberService {
 	public void signout(HttpSession session) throws Exception {
 		session.invalidate();  // 세션 정보를 제거
 	}
+	
+	//신고접수(글)
+	@Override
+	public void cssboardreported(CssBoardVO vo) throws Exception{
+		dao.cssboardreported(vo);
+		
+	}
+
+	//신고접수(유저)
+	@Override
+	public void memberreported(MemberVO vo) throws Exception{
+		dao.memberreported(vo);
+	}
+	
+	
+	
 } 

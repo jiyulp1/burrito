@@ -58,7 +58,7 @@
     <!--========== END HEADER ==========-->
 
     <!-- notice -->
-    <div class="bg-color-sky-light fixed_container">
+    <div class="bg-color-sky-light">
         <div class="content-lg container" style="margin-top : 50px;">
 <%--         ${boardJSON } --%>
             <!-- notice -->
@@ -82,7 +82,7 @@
 				                            <td>
 				                            <a href="/board/cssview?post_id=${board.post_id }">${board.post_subject }</a>
 				                            </td>
-				                            <td>${board.writer }</td>
+				                            <td>${board.user_nickname }</td>
 				                            <td>${board.post_vcount }</td>
 				                            <td>${board.post_regdate }</td>
 				                        </tr>
@@ -96,7 +96,7 @@
 		                    </c:choose>
 	                    </tbody>
 	                </table>
-	            </div>a
+	            </div>
 	            <!-- End notice -->
 
 	            <c:if test="${member != null }">
