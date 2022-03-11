@@ -71,7 +71,7 @@
 	
 	
 	<!-- 4. 게시물 수정 -->
-	<update id="cssmodify" parameterType="kr.co.bttf.domain.CssBoardVO">
+	<update id="cssedit" parameterType="kr.co.bttf.domain.CssBoardVO">
 		update css set
 		post_subject = #{post_subject}, post_contents = #{post_contents}, writer = #{writer}
 		where post_id = #{post_id}

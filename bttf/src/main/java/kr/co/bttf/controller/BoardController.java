@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.HtmlBoardVO;
 import kr.co.bttf.domain.JsBoardVO;
+import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.service.CssBoardService;
 import kr.co.bttf.service.HtmlBoardService;
 import kr.co.bttf.service.JsBoardService;
@@ -110,9 +111,6 @@ public class BoardController {
 		model.addAttribute("csslist", csslist);
 	}
 	
-	
-	
-	
 	/* postWrite
 	  게시글 작성 */
 	
@@ -144,7 +142,6 @@ public class BoardController {
 	  return "redirect:/board/csslist";
 	}
 	
-	
 
 	/* getView
 	  게시글 상세보기 */
@@ -159,13 +156,12 @@ public class BoardController {
 	}
 	
 	
-	
 	/* getModify
 	  게시글 수정 */
 	
 	// 4.1 [GET] 게시물 수정
 	
-	@RequestMapping(value = "/cssmodify", method = RequestMethod.GET)
+	@RequestMapping(value = "/cssedit", method = RequestMethod.GET)
 	public void getModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
 
 		CssBoardVO vo = cssService.cssView(post_id);
@@ -174,15 +170,13 @@ public class BoardController {
 	
 
 	// 4.2 [POST] 게시물 수정
-	@RequestMapping(value = "/cssmodify", method = RequestMethod.POST)
-	public String cssModify(CssBoardVO vo) throws Exception {
+	@RequestMapping(value = "/cssedit", method = RequestMethod.POST)
+	public String cssedit(CssBoardVO vo) throws Exception {
 
-		cssService.cssModify(vo);
+		cssService.cssEdit(vo);
 		return "redirect:/board/cssview?post_id=" + vo.getPost_id();
 	}
 
-	
-	
 	
 	/* getDelete
 	  게시글 삭제 */
@@ -195,6 +189,15 @@ public class BoardController {
 		cssService.cssDelete(post_id);
 	}
 	
+	
+	// 6. 게시글 신고 [update]
+	
+//	@RequestMapping(value = "/memberblock", method = RequestMethod.POST)
+//	public String memberblock(MemberVO vo) throws Exception {
+//
+//		adminService.memberblock(vo);
+//		return "redirect:/admin/annview?post_id=" + vo.getPost_id();
+//	}
 	
 	/* --------------------------------
 			03. JAVASCRIPT

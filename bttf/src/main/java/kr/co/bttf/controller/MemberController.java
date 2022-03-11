@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.service.MemberService;
 
@@ -77,7 +78,23 @@ public class MemberController {
 		}
 		return "redirect:/";
 	}
-	
+	// 1. 게시물신고와 회원신고 버튼 구분
+	// 2.1 CSS 게시물 신고 [update]
+	// 2.2 게시판별로 만들지 language index를 활용할지?
+	@RequestMapping(value = "/cssboardreported", method = RequestMethod.POST)
+	public String cssboardreported(CssBoardVO vo) throws Exception {
+
+		adminService.cssboardreported(vo);
+		return "redirect:/board/cssview?post_id=" + vo.getPost_id();
+	}
+
+	// 3. 회원 신고 [update]
+	@RequestMapping(value = "/memberreported", method = RequestMethod.POST)
+	public String memberreported(MemberVO vo) throws Exception {
+
+		service.memberreported(vo);
+		return "redirect:/";
+	}
 	
 	
 	// 로그아웃

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 
 <html lang="ko" class="no-js">
@@ -73,7 +74,7 @@
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- Service -->
-    <div class="bg-color-sky-light fixed_container" data-auto-height="true">
+    <div class="bg-color-sky-light" data-auto-height="true">
     	<div class="content-lg container" style="margin-top : 50px;">
         	<div class="row row-space-1 margin-b-2">
             	<div class="col-sm-4 sm-margin-b-2">
@@ -188,53 +189,7 @@
 	        </div>
 	    </div>
     </div>
-    <!-- End Service -->
-
-    <!-- Latest Products -->
-    
-    <!-- End Latest Products -->
-
-    <!-- notice -->
-    <div class="bg-color-sky-light">
-        <div class="content-lg container">
-            <!-- notice -->
-            <h2>공지사항</h2>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-	                    <tr>
-	                        <th>제목</th>
-	                        <th>추천수</th>
-	                        <th>작성자</th>
-	                        <th>작성일자</th>
-	                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>asdasd</td>
-                            <td>11</td>
-                            <td>veiw1</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>asddfgdgf</td>
-                            <td>222</td>
-                            <td>veiw2</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>veiw3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- End notice -->
-        </div>
-    </div>
-    <!-- End notice -->
+   
     <div class="content-lg container">
         <div class="row margin-b-40">
             <div class="col-sm-6">
@@ -326,7 +281,51 @@
         <!--// end row -->
     </div>
     <!--========== END PAGE LAYOUT ==========-->
-
+	<div class="bg-color-sky-light fixed_container" data-auto-height="true">
+    	<div class="content-lg container" style="margin-top : 50px;">
+        	<div class="row row-space-1 margin-b-2">
+            	<!-- notice -->
+            <h2>공지사항</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+	                    <tr>
+	                        <th>번호</th>
+	                        <th>제목</th>
+	                        <th>작성자</th>
+	                        <th>추천수</th>
+	                        <th>작성일자</th>
+	                    </tr>
+                    </thead>
+                    <tbody>
+                       <c:choose>
+							<c:when test = "${announcements != null and fn:length(announcements) > 0 }">
+		                    	<c:forEach var="announcmentList" items="${announcements}">
+				                	<tr>
+				                    	<td>${announcmentList.post_id }</td>
+				                        <td>
+				                       		<a href="/admin/ann_view.mg?post_id=${announcmentList.post_id }">${announcmentList.post_subject }</a>
+				                        </td>
+				                        <td>${announcmentList.writer }</td>
+				                        <td>${announcmentList.post_vcount }</td>
+				                        <td>${announcmentList.post_regdate }</td>
+				                    </tr>
+		                        </c:forEach>
+		                    </c:when>
+		                    <c:otherwise>
+		                    	<tr>
+		                        	<td colspan="5" class="text-center">등록된 공지사항이 없습니다 </td>
+		                       	</tr>
+		                    </c:otherwise>
+		               </c:choose>
+                    </tbody>
+                </table>
+            </div>
+            <!-- End notice -->
+               
+	        </div>
+	    </div>
+    </div>
     <!--========== FOOTER ==========-->
     <footer class="footer fixed_footer">
 

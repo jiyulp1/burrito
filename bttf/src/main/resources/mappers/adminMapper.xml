@@ -26,6 +26,23 @@
 		values(#{post_subject}, #{post_contents},  #{writer})
 	</insert>
 	
+	<!-- 공지사항 상세보기 -->
+	<select id="annview" resultType="kr.co.bttf.domain.AnnVO" parameterType="_int">
+		select * from announcements where post_id = #{post_id}
+	</select>
+	
+	<!-- 공지사항 수정 -->
+	<update id="annedit" parameterType="kr.co.bttf.domain.AnnVO" >
+		update announcements set
+		post_subject = #{post_subject}, post_contents = #{post_contents}, writer = #{writer}
+		where post_id = #{post_id}
+	</update>
+	
+	<!--공지사항 삭제 -->
+	<delete id="anndelete" parameterType="_int">
+		delete from announcements where post_id = #{post_id}
+	</delete>
+	
 </mapper>
 
 	
