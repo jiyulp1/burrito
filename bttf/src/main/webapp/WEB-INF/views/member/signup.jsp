@@ -47,7 +47,7 @@
 
 <!-- BODY -->
 
-<body class="page-on-scroll fixed_container">
+<body class="page-on-scroll ">
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -63,7 +63,7 @@
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- Service -->
-    <div class="bg-color-sky-light fixed_container" data-auto-height="true">
+    <div class="bg-color-sky-light " data-auto-height="true">
         <div class="content-lg container" style="margin-top : 50px;">
             <h1 class="pt-4">
                 <i class="fas fa-users title_subject_icon"></i>
@@ -76,7 +76,7 @@
                             <div class="my_box_element">
                                 <i class="my_box_icon fas fa-id-card"></i>
                             </div>
-                            <form action="/member/join" method="post" name="joinForm" id="joinForm">
+                            <form action="/member/signup" method="post" name="joinForm" id="joinForm">
 <!--                                 <div class="col-auto"> -->
 <!--                                     <label>아이디</label> -->
 <!--                                     <div style="display: flex;"> -->
@@ -87,12 +87,16 @@
 <!--                                     </div> -->
 <!--                                 </div> -->
                                 <div class="col-auto">
+                                    <label for="user_email">이메일</label>
+                                    <input  id="user_email" name="user_email" class="form-control margin-b-50" type="text" placeholder="이메일">
+                                </div>
+                                <div class="col-auto">
                                     <label for="user_pw">비밀번호</label>
-                                    <input  id="user_pw" name="user_pw" class="form-control margin-b-50" type="password" placeholder="8자 이상 15자 이하의 영문과 숫자를 입력하세요">
+                                    <input  id="user_pw" name="user_pw" class="form-control margin-b-50" type="password" placeholder="8자 이상 15자 이하의 특수문자와 영문과 숫자로 입력하세요">
                                 </div>
                                 <div class="col-auto">
                                     <label for="user_pw_re">비밀번호확인</label>
-                                    <input  id="user_pw_re" name="user_pw_re"class="form-control margin-b-50" type="password" placeholder="비밀번호를 다시 입력해주세요">
+                                    <input  id="user_pw_re" name="user_pw_re" class="form-control margin-b-50" type="password" placeholder="비밀번호를 다시 입력해주세요">
                                 </div>
                                 <div class="col-auto">
                                     <label for="user_name">이름</label>
@@ -101,10 +105,6 @@
                                 <div class="col-auto">
                                     <label for="user_phone">전화번호</label>
                                     <input  id="user_phone" name="user_phone" class="form-control margin-b-50" type="text" placeholder="전화번호">
-                                </div>
-                                <div class="col-auto">
-                                    <label for="user_email">이메일</label>
-                                    <input  id="user_email" name="user_email" class="form-control margin-b-50" type="text" placeholder="이메일">
                                 </div>
                                 <div class="col-auto">
                                     <label class="form-label" for="main_language">관심언어</label>
