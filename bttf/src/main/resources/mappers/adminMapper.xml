@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.co.bttf.mappers.adminMapper">
+
+	<!-- 관리자를 제외한 일반 회원만 -->
+	<select id="memberall" resultType="kr.co.bttf.domain.MemberVO">
+		select * from user_all where authority_code = 1
+	</select>
+	
+	<!-- 신고된 회원만 -->
+	<select id="memberblock" resultType="kr.co.bttf.domain.MemberVO">
+		select * from user_all where user_reported = 0
+	</select>
+	
+	<!-- 삭제되지 않은 공지사항 -->
+	<select id="announcements" resultType="kr.co.bttf.domain.AnnVO">
+		select * from announcements where post_available = 1
+	</select>
+	
+	<!-- 공지사항 작성 -->
+	<insert id="annwrite" parameterType="kr.co.bttf.domain.AnnVO">
+		insert into announcements (post_subject, post_contents, writer)
+		values(#{post_subject}, #{post_contents},  #{writer})
+	</insert>
+	
+	<!-- 공지사항 상세보기 -->
+	<select id="annview" resultType="kr.co.bttf.domain.AnnVO" parameterType="_int">
+		select * from announcements where post_id = #{post_id}
+	</select>
+	
+	<!-- 공지사항 수정 -->
+	<update id="annedit" parameterType="kr.co.bttf.domain.AnnVO" >
+		update announcements set
+		post_subject = #{post_subject}, post_contents = #{post_contents}, writer = #{writer}
+		where post_id = #{post_id}
+	</update>
+	
+	<!--공지사항 삭제 -->
+	<delete id="anndelete" parameterType="_int">
+		delete from announcements where post_id = #{post_id}
+	</delete>
+	
+</mapper>
+
+	
+	

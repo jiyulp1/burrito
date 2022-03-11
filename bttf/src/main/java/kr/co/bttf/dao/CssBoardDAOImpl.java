@@ -14,7 +14,7 @@ public class CssBoardDAOImpl implements CssBoardDAO {
 
 	@Inject
 	private SqlSession sql;
-	private static String namespace = "kr.co.bttf.mappers.board";
+	private static String namespace = "kr.co.bttf.mappers.boardMapper";
 
 	@Override
 	public List<CssBoardVO> cssList() throws Exception {
@@ -35,8 +35,8 @@ public class CssBoardDAOImpl implements CssBoardDAO {
 	}
 
 	@Override
-	public void cssModify(CssBoardVO vo) throws Exception {
-		sql.update(namespace + ".cssmodify", vo);
+	public void cssEdit(CssBoardVO vo) throws Exception {
+		sql.update(namespace + ".cssedit", vo);
 	}
 
 	@Override

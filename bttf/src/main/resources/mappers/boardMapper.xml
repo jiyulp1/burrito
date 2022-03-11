@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="kr.co.bttf.mappers.board">
+<mapper namespace="kr.co.bttf.mappers.boardMapper">
 
 <!-- 
 ========================================
@@ -11,40 +11,7 @@
 ========================================
  -->
 
-<select id="htmllist" resultType="kr.co.bttf.domain.HtmlBoardVO">
-		select * from html
-	</select>
 	
-	
-	<!-- 2. 게시물 작성 -->
-	<insert id="htmlwrite" parameterType="kr.co.bttf.domain.HtmlBoardVO">
-		insert into html (post_subject, post_content, writer)
-		values(#{post_subject}, #{post_content}, #{writers})
-	</insert>
-	
-	
-	<!-- 3. 게시물 조회 -->
-	<select id="htmlview" parameterType="int" resultType="kr.co.bttf.domain.HtmlBoardVO">
-		select * from html
-		where post_id = #{post_id}
-	</select>
-	
-	
-	<!-- 4. 게시물 수정 -->
-	<update id="htmlmodify" parameterType="kr.co.bttf.domain.HtmlBoardVO">
-		update html set
-		post_subject = #{post_subject}, post_content = #{post_content}, writer = #{writer}
-		where post_id = #{post_id}
-	</update>
-	
-	
-	<!--5. 게시물 삭제 -->
-	<delete id="htmldelete" parameterType="int">
-		delete from html
-		where post_id = #{post_id}
-	</delete>
-
-
 <!-- 
 ========================================
 			02. CSS
@@ -58,22 +25,22 @@
 	
 	<!-- 2. 게시물 작성 -->
 	<insert id="csswrite" parameterType="kr.co.bttf.domain.CssBoardVO">
-		insert into css (post_subject, post_content, writer)
-		values(#{post_subject}, #{post_content}, #{writers})
+		insert into css (post_subject, post_contents, user_nickname)
+		values(#{post_subject}, #{post_contents}, #{user_nickname})
 	</insert>
 	
 	
 	<!-- 3. 게시물 조회 -->
-	<select id="cssview" parameterType="int" resultType="kr.co.bttf.domain.CssBoardVO">
+	<select id="cssview" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
 		select * from css
 		where post_id = #{post_id}
 	</select>
 	
 	
 	<!-- 4. 게시물 수정 -->
-	<update id="cssmodify" parameterType="kr.co.bttf.domain.CssBoardVO">
+	<update id="cssedit" parameterType="kr.co.bttf.domain.CssBoardVO">
 		update css set
-		post_subject = #{post_subject}, post_content = #{post_content}, writer = #{writer}
+		post_subject = #{post_subject}, post_contents = #{post_contents}, user_nickname = #{user_nickname}
 		where post_id = #{post_id}
 	</update>
 	
@@ -120,6 +87,46 @@
 	<!--5. 게시물 삭제 -->
 	<delete id="jsdelete" parameterType="int">
 		delete from javascript
+		where post_id = #{post_id}
+	</delete>
+	
+
+<!-- 
+========================================
+			06. ORACLE
+========================================
+ -->
+	<!-- 1. 게시물 목록 -->
+	<select id="orlist" resultType="kr.co.bttf.domain.JsBoardVO">
+		select * from oracle
+	</select>
+	
+	
+	<!-- 2. 게시물 작성 -->
+	<insert id="orwrite" parameterType="kr.co.bttf.domain.JsBoardVO">
+		insert into oracle (post_subject, post_content, writer)
+		values(#{post_subject}, #{post_content}, #{writers})
+	</insert>
+	
+	
+	<!-- 3. 게시물 조회 -->
+	<select id="orview" parameterType="int" resultType="kr.co.bttf.domain.JsBoardVO">
+		select * from oracle
+		where post_id = #{post_id}
+	</select>
+	
+	
+	<!-- 4. 게시물 수정 -->
+	<update id="ormodify" parameterType="kr.co.bttf.domain.JsBoardVO">
+		update oracle set
+		post_subject = #{post_subject}, post_content = #{post_content}, writer = #{writer}
+		where post_id = #{post_id}
+	</update>
+	
+	
+	<!--5. 게시물 삭제 -->
+	<delete id="ordelete" parameterType="int">
+		delete from oracle
 		where post_id = #{post_id}
 	</delete>
 

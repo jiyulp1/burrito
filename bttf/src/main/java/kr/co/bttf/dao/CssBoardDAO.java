@@ -12,7 +12,8 @@ public interface CssBoardDAO {
 	
 	public CssBoardVO cssView(int post_id) throws Exception;
 	
-	public void cssModify(CssBoardVO vo) throws Exception;
+	public void cssEdit(CssBoardVO vo) throws Exception;
 	
 	public void cssDelete(int post_id) throws Exception;
+
 }
