@@ -52,7 +52,7 @@
  -->
 	<!-- 1. 게시물 목록 -->
 	<select id="csslist" resultType="kr.co.bttf.domain.CssBoardVO">
-		select * from css where post_available = 1
+		select * from css
 	</select>
 	
 	
@@ -120,6 +120,46 @@
 	<!--5. 게시물 삭제 -->
 	<delete id="jsdelete" parameterType="int">
 		delete from javascript
+		where post_id = #{post_id}
+	</delete>
+	
+
+<!-- 
+========================================
+			06. ORACLE
+========================================
+ -->
+	<!-- 1. 게시물 목록 -->
+	<select id="orlist" resultType="kr.co.bttf.domain.JsBoardVO">
+		select * from oracle
+	</select>
+	
+	
+	<!-- 2. 게시물 작성 -->
+	<insert id="orwrite" parameterType="kr.co.bttf.domain.JsBoardVO">
+		insert into oracle (post_subject, post_content, writer)
+		values(#{post_subject}, #{post_content}, #{writers})
+	</insert>
+	
+	
+	<!-- 3. 게시물 조회 -->
+	<select id="orview" parameterType="int" resultType="kr.co.bttf.domain.JsBoardVO">
+		select * from oracle
+		where post_id = #{post_id}
+	</select>
+	
+	
+	<!-- 4. 게시물 수정 -->
+	<update id="ormodify" parameterType="kr.co.bttf.domain.JsBoardVO">
+		update oracle set
+		post_subject = #{post_subject}, post_content = #{post_content}, writer = #{writer}
+		where post_id = #{post_id}
+	</update>
+	
+	
+	<!--5. 게시물 삭제 -->
+	<delete id="ordelete" parameterType="int">
+		delete from oracle
 		where post_id = #{post_id}
 	</delete>
 
