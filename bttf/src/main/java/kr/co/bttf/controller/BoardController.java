@@ -3,6 +3,8 @@ package kr.co.bttf.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.HtmlBoardVO;
 import kr.co.bttf.domain.JsBoardVO;
+import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.service.CssBoardService;
 import kr.co.bttf.service.HtmlBoardService;
 import kr.co.bttf.service.JsBoardService;
@@ -138,10 +141,15 @@ public class BoardController {
 	
 	// 게시물 작성
 	@RequestMapping(value = "/csswrite", method = RequestMethod.POST)
-	public String cssWrite(CssBoardVO vo) throws Exception {
+	public String cssWrite(CssBoardVO vo, HttpServletRequest request) throws Exception {
+		
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String writer = member.getUser_nickname();
+		vo.setWriter(writer);
 		cssService.cssWrite(vo);
-	  
-	  return "redirect:/board/csslist";
+		
+		return "redirect:/board/csslist";
 	}
 	
 	

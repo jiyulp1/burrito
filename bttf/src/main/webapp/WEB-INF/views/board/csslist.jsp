@@ -58,7 +58,7 @@
     <!--========== END HEADER ==========-->
 
     <!-- notice -->
-    <div class="bg-color-sky-light fixed_container">
+    <div class="bg-color-sky-light">
         <div class="content-lg container" style="margin-top : 50px;">
 <%--         ${boardJSON } --%>
             <!-- notice -->
@@ -96,7 +96,7 @@
 		                    </c:choose>
 	                    </tbody>
 	                </table>
-	            </div>a
+	            </div>
 	            <!-- End notice -->
 
 	            <c:if test="${member != null }">

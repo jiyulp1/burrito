@@ -70,24 +70,24 @@
                 <div class="col-sm-12 sm-margin-b-2" style="margin-bottom: 20px;">
                     <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
                         <div class="my_box" data-height="height">
-                            <form action="${pageContext.request.contextPath }/pages/csslist.do" method="post">
+                            <form method="post">
                                 <div class="col-md-6">
-									<input type="hidden" name="post_id" value="${board.post_id }">
-                                    <p style="color: black; font-size: 2rem; font-weight:bold;">글 제목 : ${board.post_subject }</p>
+									<input type="hidden" name="post_id" value="${cssview.post_id }">
+                                    <p style="color: black; font-size: 2rem; font-weight:bold;">글 제목 : ${cssview.post_subject }</p>
 <!--                                     <input id="subject" class="form-control margin-b-50" type="text" placeholder="제목" disabled> -->
                                 </div>
                                 <div class="col-md-2">
-                                	<p class="margin-b-50 text-center" >조회수 ${board.post_vcount }</p>
+                                	<p class="margin-b-50 text-center" >조회수 ${cssview.post_vcount }</p>
                                 </div>
                                 <div class="col-md-2">
-                                	<p class="margin-b-50 text-center" > 작성자 ${board.writer }</p>
+                                	<p class="margin-b-50 text-center" > 작성자 ${cssview.writer }</p>
                                 </div>
                                 <div>
                                     <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; 
-                                    resize: none; background-color: #fff;" disabled>${board.post_contents }</pre>
+                                    resize: none; background-color: #fff;" disabled>${cssview.post_contents }</pre>
                                 </div> 
 	                        <div class="mb-5">
-	                        	<a href="${pageContext.request.contextPath }/pages/csslist.do" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
+	                        	<a href="/board/csslist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
 								<c:if test="${not empty sessionScope.session_id}">
 									<a href="${pageContext.request.contextPath }/pages/BookmarkOK.us?post_id=${board.post_id }" class="btn btn-default mt-4">북마크</a>
 					               	<a href="java::void()" class="btn btn-warning mt-4" id="report" type="submit" style="float: right;">신고</a>

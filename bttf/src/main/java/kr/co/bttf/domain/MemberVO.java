@@ -2,10 +2,11 @@ package kr.co.bttf.domain;
 
 public class MemberVO {
    private int user_index;
+   private String user_email;
    private String user_pw;
    private String user_name;
+   private String user_nickname;
    private String user_phone;
-   private String user_email;
    private String main_language;
    private int user_avaliable;
    private int user_reported;
@@ -37,6 +38,14 @@ public class MemberVO {
       this.user_name = user_name;
    }
 
+   public String getUser_nickname() {
+		return user_nickname;
+	}
+
+	public void setUser_nickname(String user_nickname) {
+		this.user_nickname = user_nickname;
+	}
+   
    public String getUser_phone() {
       return user_phone;
    }

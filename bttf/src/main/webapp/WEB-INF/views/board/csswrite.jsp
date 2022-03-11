@@ -81,8 +81,7 @@
 			</h1>
 			<div class="row row-space-1 margin-b-2">
 				<div class="col-sm-12 sm-margin-b-2" style="margin-bottom: 20px;">
-					<div class="wow fadeInLeft" data-wow-duration=".3"
-						data-wow-delay=".3s">
+					<div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
 						<div class="my_box" data-height="height">
 						
 							<!-- Start write Form -->
