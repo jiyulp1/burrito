@@ -88,7 +88,9 @@ public class AdminController {
 	
 	
 	
-	/* 공지사항 */
+	/*******************
+	 		공지사항 
+	 *******************/
 	
 	// 공지사항목록
 	@RequestMapping(value = "/announcements", method = RequestMethod.GET)
@@ -111,8 +113,7 @@ public class AdminController {
 
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("member");
-		String writer = member.getUser_name();
-		vo.setWriter(writer);
+		vo.setUser_nickname(member.getUser_nickname());
 		adminService.annwrite(vo);
 
 		return "redirect:/admin/announcements";

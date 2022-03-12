@@ -5,29 +5,36 @@
 
 <mapper namespace="kr.co.bttf.mappers.memberMapper">
 
-<!-- user_id가 user_email로 대체됨 -->
+	<!-- user_id가 user_email로 대체됨 -->
 	<insert id="signup">
-		INSERT INTO USER_ALL 
-		(user_email, user_pw, user_name, user_phone, main_language) 
-		VALUES (#{user_email}, #{user_pw }, #{user_name }, #{user_phone }, #{main_language } )
+		INSERT INTO USER_ALL
+		(user_email, user_pw, user_name, user_phone, main_language)
+		VALUES (#{user_email}, #{user_pw }, #{user_name }, #{user_phone },
+		#{main_language } )
 	</insert>
 
 	<select id="signin" resultType="kr.co.bttf.domain.MemberVO">
-		SELECT * FROM USER_ALL 
-		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND USER_AVAILABLE = 1
+		SELECT * FROM USER_ALL
+		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND
+		USER_AVAILABLE = 1
 	</select>
-	
-	
+
 	<select id="login" resultType="kr.co.bttf.domain.MemberVO">
-		SELECT * FROM USER_ALL 
-		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND USER_AVAILABLE = 1
+		SELECT * FROM USER_ALL
+		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND
+		USER_AVAILABLE = 1
 	</select>
-	
+
 	<update id="cssboardreported" parameterType="_int">
-		update css set post_reported = 0 where post_id = #{post_id }
+		update css set
+		post_reported = 0 where post_id = #{post_id }
 	</update>
 
-	<update id="memberreported" parameterType="string">
+	<select id="memreportcard" parameterType="string" resultType="kr.co.bttf.domain.MemberVO">
+		select * from user_all where user_nickname = #{user_nickname}
+	</select>
+
+	<update id="memreportupdate" parameterType="kr.co.bttf.domain.MemberVO">
 		update user_all set user_reported = 0 where user_nickname = #{user_nickname }
 	</update>
 </mapper>

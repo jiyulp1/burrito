@@ -110,7 +110,7 @@ public class BoardController {
 	/* postWrite
 	  게시글 작성 */
 	
-	// 2.1 [GET] insert 게시물 작성
+	// 2. write페이지이동
 
 	@RequestMapping(value = "/csswrite", method = RequestMethod.GET)
 	public void cssWrite() throws Exception {
@@ -122,7 +122,6 @@ public class BoardController {
 	public String cssWrite(CssBoardVO vo, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("member");
-		
 		vo.setUser_nickname(member.getUser_nickname());
 		cssService.cssWrite(vo);
 	  return "redirect:/board/csslist";
@@ -132,7 +131,7 @@ public class BoardController {
 	/* getView
 	  게시글 상세보기 */
 	
-	// 3.1 [GET] 게시물 상세보기
+	// 3. 게시물 상세보기 페이지 이동
 	
 	@RequestMapping(value = "/cssview", method = RequestMethod.GET)
 	public void getView(@RequestParam("post_id") int post_id, Model model) throws Exception {
@@ -145,7 +144,7 @@ public class BoardController {
 	/* getModify
 	  게시글 수정 */
 	
-	// 4.1 [GET] 게시물 수정
+	// 4. 게시물 수정 페이지 이동
 	
 	@RequestMapping(value = "/cssedit", method = RequestMethod.GET)
 	public void getModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
@@ -155,7 +154,6 @@ public class BoardController {
 	}
 	
 
-	// 4.2 [POST] 게시물 수정
 	@RequestMapping(value = "/cssedit", method = RequestMethod.POST)
 	public String cssedit(CssBoardVO vo) throws Exception {
 
@@ -167,12 +165,13 @@ public class BoardController {
 	/* getDelete
 	  게시글 삭제 */
 	
-	// 5.1 [GET] 게시물 삭제
-	
+	// 5. vo가 없으니 get방식 삭제
 	@RequestMapping(value = "/cssdelete", method = RequestMethod.GET)
-	public void getDelete(@RequestParam("post_id") int post_id, Model model) throws Exception {
+	public String getDelete(@RequestParam("post_id") int post_id, Model model) throws Exception {
 
 		cssService.cssDelete(post_id);
+		return "redirect:/board/csslist";
+
 	}
 	
 	/* --------------------------------
