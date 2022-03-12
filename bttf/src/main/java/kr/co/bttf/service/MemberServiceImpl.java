@@ -61,9 +61,15 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	//신고접수(유저)
+
 	@Override
-	public void memberreported(MemberVO vo) throws Exception{
-		dao.memberreported(vo);
+	public MemberVO memreportcard(String user_nickname) throws Exception {
+		return dao.memreportcard(user_nickname);
+	}
+
+	@Override
+	public void memreportupdate(MemberVO vo) throws Exception {
+		dao.memreportupdate(vo);
 	}
 	
 	

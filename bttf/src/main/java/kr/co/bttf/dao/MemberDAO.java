@@ -13,12 +13,18 @@ public interface MemberDAO {
 	// 로그인
 	public MemberVO signin(MemberVO vo) throws Exception;
 	
-	
+	// 성공여부
 	public MemberVO signin(HashMap<String, String> map) throws Exception;
 
+	//신고접수(글)
 	public void cssboardreported(CssBoardVO vo) throws Exception;
 
-	public void memberreported(MemberVO vo) throws Exception;
+	//신고접수(유저)
+		//신고사유
+	public MemberVO memreportcard(String user_nickname) throws Exception;
+	
+		//신고목록등재
+	public void memreportupdate(MemberVO vo) throws Exception;
 	
 	
 }

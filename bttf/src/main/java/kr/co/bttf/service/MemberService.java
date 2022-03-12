@@ -22,7 +22,12 @@ public interface MemberService {
 	
 	//신고접수(글)
 	public void cssboardreported(CssBoardVO vo) throws Exception;
-
+	
 	//신고접수(유저)
-	public void memberreported(MemberVO vo) throws Exception;
+		//신고사유
+	public MemberVO memreportcard(String user_nickname) throws Exception;
+		//신고목록등재
+	public void memreportupdate(MemberVO vo) throws Exception;
+
+
 }

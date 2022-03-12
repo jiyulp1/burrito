@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.bttf.domain.CssBoardVO;
@@ -79,33 +80,40 @@ public class MemberController {
 	}
 	
 	
-	// 1. 게시물신고와 회원신고 버튼 구분
-	// 2.1 CSS 게시물 신고 [update]
-	// 2.2 게시판별로 만들지 language index를 활용할지?
-	@RequestMapping(value = "/cssboardreported", method = RequestMethod.POST)
-	public void cssboardreported(CssBoardVO vo) throws Exception {
+	// 3. 회원/작성자 신고 [update]
+	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
+	public void memreportcard(@RequestParam("user_nickname") String user_nickname, Model model) throws Exception {
 		
-		service.cssboardreported(vo);
+		//신고사유를 접수받는 memreportcard.jsp화면에
+		//게시글 작성자는 자동으로 뿌리기 위한 화면이동(get)
+		//신고사유를 접수받을 DB칼럼 추가 이전에 n글자 이내의 신고사유 String으로 입력 혹은 checkbox/radius 활용 방법 논의 필요
+		MemberVO vo = service.memreportcard(user_nickname);
+		model.addAttribute("memreportcard", vo);
+		
+		//참고로 게시글도 신고사유 접수받을 boardreport.jsp필요, 
+		//button에서 파라미터로 post_category(게시판카테고리) get방식으로 넘기면 될듯하니
+		//신고접수폼은 회원신고용과 게시글신고용 2개로 가져가면 될듯
+		//<a href="/member/cssboardreported?post_id=${cssview.post_id }&category_id=0" ...>게시글 신고</a>
+
 	}
 	
-	@RequestMapping(value = "/cssboardreported", method = RequestMethod.GET)
-	public String cssboardreported(Model model) throws Exception {
-		
-		return "redirect:/board/csslist";
-	}
-
-	// 3. 회원 신고 [update]
-	@RequestMapping(value = "/memberreported", method = RequestMethod.POST)
-	public void memberreported(MemberVO vo) throws Exception {
-
-		service.memberreported(vo);
-	}
 	
-	@RequestMapping(value = "/memberreported", method = RequestMethod.GET)
-	public String memberreported(Model model) throws Exception {
-		
+	@RequestMapping(value = "/memberreport", method = RequestMethod.POST)
+	public String memberreportupdate(MemberVO vo) throws Exception {
+		service.memreportupdate(vo);
 		return "redirect:/";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
