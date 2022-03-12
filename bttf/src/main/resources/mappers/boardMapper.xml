@@ -97,7 +97,7 @@
 ========================================
  -->
 	<!-- 1. 게시물 목록 -->
-	<select id="orlist" resultType="kr.co.bttf.domain.JsBoardVO">
+	<select id="orlist" resultType="kr.co.bttf.domain.OrBoardVO">
 		select * from oracle
 	</select>
 	
@@ -110,14 +110,14 @@
 	
 	
 	<!-- 3. 게시물 조회 -->
-	<select id="orview" parameterType="int" resultType="kr.co.bttf.domain.JsBoardVO">
+	<select id="orview" parameterType="int" resultType="kr.co.bttf.domain.OrBoardVO">
 		select * from oracle
 		where post_id = #{post_id}
 	</select>
 	
 	
 	<!-- 4. 게시물 수정 -->
-	<update id="ormodify" parameterType="kr.co.bttf.domain.JsBoardVO">
+	<update id="ormodify" parameterType="kr.co.bttf.domain.OrBoardVO">
 		update oracle set
 		post_subject = #{post_subject}, post_content = #{post_content}, writer = #{writer}
 		where post_id = #{post_id}
