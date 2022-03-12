@@ -64,8 +64,8 @@
 	
 	<!-- 2. 게시물 작성 -->
 	<insert id="jswrite" parameterType="kr.co.bttf.domain.JsBoardVO">
-		insert into javascript (post_subject, post_content, writer)
-		values(#{post_subject}, #{post_content}, #{writers})
+		insert into css (post_subject, post_contents, user_nickname)
+		values(#{post_subject}, #{post_contents}, #{user_nickname})
 	</insert>
 	
 	
@@ -79,7 +79,7 @@
 	<!-- 4. 게시물 수정 -->
 	<update id="jsmodify" parameterType="kr.co.bttf.domain.JsBoardVO">
 		update javascript set
-		post_subject = #{post_subject}, post_content = #{post_content}, writer = #{writer}
+		post_subject = #{post_subject}, post_contents = #{post_contents}, user_nickname = #{user_nickname}
 		where post_id = #{post_id}
 	</update>
 	
@@ -97,35 +97,35 @@
 ========================================
  -->
 	<!-- 1. 게시물 목록 -->
-	<select id="orlist" resultType="kr.co.bttf.domain.OrBoardVO">
+	<select id="oraclelist" resultType="kr.co.bttf.domain.OracleBoardVO">
 		select * from oracle
 	</select>
 	
 	
 	<!-- 2. 게시물 작성 -->
-	<insert id="orwrite" parameterType="kr.co.bttf.domain.JsBoardVO">
-		insert into oracle (post_subject, post_content, writer)
-		values(#{post_subject}, #{post_content}, #{writers})
+	<insert id="oraclewrite" parameterType="kr.co.bttf.domain.OracleBoardVO">
+		insert into css (post_subject, post_contents, user_nickname)
+		values(#{post_subject}, #{post_contents}, #{user_nickname})
 	</insert>
 	
 	
 	<!-- 3. 게시물 조회 -->
-	<select id="orview" parameterType="int" resultType="kr.co.bttf.domain.OrBoardVO">
+	<select id="oracleview" parameterType="int" resultType="kr.co.bttf.domain.OracleBoardVO">
 		select * from oracle
 		where post_id = #{post_id}
 	</select>
 	
 	
 	<!-- 4. 게시물 수정 -->
-	<update id="ormodify" parameterType="kr.co.bttf.domain.OrBoardVO">
+	<update id="oraclemodify" parameterType="kr.co.bttf.domain.OracleBoardVO">
 		update oracle set
-		post_subject = #{post_subject}, post_content = #{post_content}, writer = #{writer}
+		post_subject = #{post_subject}, post_contents = #{post_contents}, user_nickname = #{user_nickname}
 		where post_id = #{post_id}
 	</update>
 	
 	
 	<!--5. 게시물 삭제 -->
-	<delete id="ordelete" parameterType="int">
+	<delete id="oracledelete" parameterType="int">
 		delete from oracle
 		where post_id = #{post_id}
 	</delete>

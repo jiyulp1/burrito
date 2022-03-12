@@ -2,7 +2,6 @@ package kr.co.bttf.dao;
 
 import java.util.List;
 
-import kr.co.bttf.domain.HtmlBoardVO;
 import kr.co.bttf.domain.JsBoardVO;
 
 public interface JsBoardDAO {
@@ -16,4 +15,5 @@ public interface JsBoardDAO {
 	public void jsModify(JsBoardVO vo) throws Exception;
 	
 	public void jsDelete(int post_id) throws Exception;
+	
 }

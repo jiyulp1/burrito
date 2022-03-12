@@ -18,19 +18,16 @@ public class CssBoardDAOImpl implements CssBoardDAO {
 
 	@Override
 	public List<CssBoardVO> cssList() throws Exception {
-
 		return sql.selectList(namespace + ".csslist");
 	}
 
 	@Override
 	public void cssWrite(CssBoardVO vo) throws Exception {
-		
 		sql.insert(namespace + ".csswrite", vo);
 	}
 
 	@Override
 	public CssBoardVO cssView(int post_id) throws Exception {
-
 		return sql.selectOne(namespace + ".cssview", post_id);
 	}
 

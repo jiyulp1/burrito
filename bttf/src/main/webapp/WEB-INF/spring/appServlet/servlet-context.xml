@@ -28,6 +28,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="kr.co.bttf.controller" />
+<!-- 	<context:component-scan base-package="kr.co.bttf.*" /> -->
 	
 	
 	

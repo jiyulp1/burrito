@@ -20,7 +20,7 @@ import kr.co.bttf.domain.OracleBoardVO;
 import kr.co.bttf.service.CssBoardService;
 import kr.co.bttf.service.HtmlBoardService;
 import kr.co.bttf.service.JsBoardService;
-import kr.co.bttf.service.OrBoardService;
+import kr.co.bttf.service.OracleBoardService;
 
 @Controller
 @RequestMapping("/board/*")
@@ -41,8 +41,8 @@ public class BoardController {
 //	@Inject
 //	private JavaBoardService javaService;
 	
-//	@Inject
-	private OrBoardService orService;
+	@Inject
+	private OracleBoardService oracleService;
 	
 //	@Inject
 //	private SpringBoardService springService;
@@ -51,7 +51,7 @@ public class BoardController {
 				01. HTML
 	-------------------------------- */
 	// 1-1 [POST] 게시물 목록
-	@RequestMapping(value = "/htmllist", method = RequestMethod.POST)
+	@RequestMapping(value = "/htmllist", method = RequestMethod.GET)
 	public String htmlList() throws Exception {
 		
 		htmlService.htmlList();
@@ -98,13 +98,13 @@ public class BoardController {
 	/* getList
 	  게시물 목록 */
 	
-	// 1.1 [GET] 게시물 목
+	// 1.1 [GET] 게시물 목록
 	
 	@RequestMapping(value = "/csslist", method = RequestMethod.GET)
-	public void getList(Model model) throws Exception {
+	public void cssList(Model model) throws Exception {
 
 		System.out.println("get - csslist");
-		List csslist = null;
+		List<CssBoardVO> csslist = null;
 		csslist = cssService.cssList();
 		model.addAttribute("csslist", csslist);
 	}
@@ -136,7 +136,7 @@ public class BoardController {
 	// 3. 게시물 상세보기 페이지 이동
 	
 	@RequestMapping(value = "/cssview", method = RequestMethod.GET)
-	public void getView(@RequestParam("post_id") int post_id, Model model) throws Exception {
+	public void cssView(@RequestParam("post_id") int post_id, Model model) throws Exception {
 		
 		CssBoardVO vo = cssService.cssView(post_id);
 		model.addAttribute("cssview", vo);
@@ -149,7 +149,7 @@ public class BoardController {
 	// 4. 게시물 수정 페이지 이동
 	
 	@RequestMapping(value = "/cssedit", method = RequestMethod.GET)
-	public void getModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
+	public void cssModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
 
 		CssBoardVO vo = cssService.cssView(post_id);
 		model.addAttribute("cssview", vo);
@@ -169,7 +169,7 @@ public class BoardController {
 	
 	// 5. vo가 없으니 get방식 삭제
 	@RequestMapping(value = "/cssdelete", method = RequestMethod.GET)
-	public String getDelete(@RequestParam("post_id") int post_id, Model model) throws Exception {
+	public String cssDelete(@RequestParam("post_id") int post_id, Model model) throws Exception {
 
 		cssService.cssDelete(post_id);
 		return "redirect:/board/csslist";
@@ -179,47 +179,65 @@ public class BoardController {
 	/* --------------------------------
 			03. JAVASCRIPT
 	-------------------------------- */
-	// 3-1 [POST] 게시물 목록
-	@RequestMapping(value = "/jslist", method = RequestMethod.POST)
-	public String jsList() throws Exception {
-		
-		jsService.jsList();
-		return "redirect:/board/jslist";
+	// 3-1 [GET] 게시물 목록
+	@RequestMapping(value = "/jslist", method = RequestMethod.GET)
+	public void jsList(Model model) throws Exception{
+		List<JsBoardVO> jslist = null;
+		jslist = jsService.jsList();
+		model.addAttribute("jslist", jslist);
 	}
 	
-	// 3-2 [POST] insert 게시물 작성
+	// 3-2. write페이지이동
 	@RequestMapping(value = "/jswrite", method = RequestMethod.GET)
-	public String jsWrite(JsBoardVO vo) throws Exception {
-		
-	  jsService.jsWrite(vo);
-	  return "redirect:/board/jswrite";
+	public void jsWrite() throws Exception {
+
 	}
 	
-	// 3-3 [POST] 게시물 상세보기
-	@RequestMapping(value = "/jsview", method = RequestMethod.POST)
-	public String jsview(@RequestParam("post_id") int post_id) throws Exception {
-		
-		jsService.jsView(post_id);
-		return "redirect:/board/jsview?post_id=" + post_id;
+	// 3-2-1. 게시물 작성
+	@RequestMapping(value = "/jswrite", method = RequestMethod.POST)
+	public String jsWrite(JsBoardVO vo, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		vo.setUser_nickname(member.getUser_nickname());
+		jsService.jsWrite(vo);
+	  return "redirect:/board/jslist";
 	}
 	
-	// 3-4 [POST] 게시물 수정
+	// 3-3. 게시물 상세보기 페이지 이동
+	
+	@RequestMapping(value = "/jsview", method = RequestMethod.GET)
+	public void jsView(@RequestParam("post_id") int post_id, Model model) throws Exception {
+		
+		JsBoardVO vo = jsService.jsView(post_id);
+		model.addAttribute("jsview", vo);
+	}
+	
+	// 4. 게시물 수정 페이지 이동
+	
 	@RequestMapping(value = "/jsmodify", method = RequestMethod.GET)
+	public void jsModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
+
+		JsBoardVO vo = jsService.jsView(post_id);
+		model.addAttribute("jsview", vo);
+	}
+	
+
+	@RequestMapping(value = "/jsmodify", method = RequestMethod.POST)
 	public String jsModify(JsBoardVO vo) throws Exception {
 
 		jsService.jsModify(vo);
 		return "redirect:/board/jsview?post_id=" + vo.getPost_id();
 	}
+
 	
-	// 3-5 [POST] 게시물 삭제
-	@RequestMapping(value = "/jsdelete", method = RequestMethod.POST)
-	public String jsdelete(@RequestParam("post_id") int post_id) throws Exception {
+	// 5. vo가 없으니 get방식으로 삭제
+	@RequestMapping(value = "/jsdelete", method = RequestMethod.GET)
+	public String jsDelete(@RequestParam("post_id") int post_id, Model model) throws Exception {
 
 		jsService.jsDelete(post_id);
 		return "redirect:/board/jslist";
+
 	}
-	
-	
 	
 	
 	
@@ -234,45 +252,65 @@ public class BoardController {
 	/* --------------------------------
 				06. ORACLE
 	-------------------------------- */
-	// 6-1 [POST] 게시물 목록
-	@RequestMapping(value = "/orlist", method = RequestMethod.POST)
-	public String orList() throws Exception {
+	// 3-1 [GET] 게시물 목록
+		@RequestMapping(value = "/oraclelist", method = RequestMethod.GET)
+		public void oracleList(Model model) throws Exception{
+			List<OracleBoardVO> oraclelist = null;
+			oraclelist = oracleService.oracleList();
+			model.addAttribute("oraclelist", oraclelist);
+		}
 		
-		orService.orList();
-		return "redirect:/board/orlist";
-	}
-	
-	// 6-2 [POST] insert 게시물 작성
-	@RequestMapping(value = "/orwrite", method = RequestMethod.GET)
-	public String orWrite(OracleBoardVO vo) throws Exception {
-		
-		orService.orWrite(vo);
-	  return "redirect:/board/orwrite";
-	}
-	
-	// 6-3 [POST] 게시물 상세보기
-	@RequestMapping(value = "/orview", method = RequestMethod.POST)
-	public String orView(@RequestParam("post_id") int post_id) throws Exception {
-		
-		orService.orView(post_id);
-		return "redirect:/board/orview?post_id=" + post_id;
-	}
-	
-	// 6-4 [POST] 게시물 수정
-	@RequestMapping(value = "/ormodify", method = RequestMethod.GET)
-	public String orModify(OracleBoardVO vo) throws Exception {
+		// 3-2. write페이지이동
+		@RequestMapping(value = "/oraclewrite", method = RequestMethod.GET)
+		public void oracleWrite() throws Exception {
 
-		orService.orModify(vo);
-		return "redirect:/board/orview?post_id=" + vo.getPost_id();
-	}
-	
-	// 6-5 [POST] 게시물 삭제
-	@RequestMapping(value = "/ordelete", method = RequestMethod.POST)
-	public String orDelete(@RequestParam("post_id") int post_id) throws Exception {
+		}
+		
+		// 3-2-1. 게시물 작성
+		@RequestMapping(value = "/oraclewrite", method = RequestMethod.POST)
+		public String oracleWrite(OracleBoardVO vo, HttpServletRequest request) throws Exception {
+			HttpSession session = request.getSession();
+			MemberVO member = (MemberVO) session.getAttribute("member");
+			vo.setUser_nickname(member.getUser_nickname());
+			oracleService.oracleWrite(vo);
+		  return "redirect:/board/oraclelist";
+		}
+		
+		// 3-3. 게시물 상세보기 페이지 이동
+		
+		@RequestMapping(value = "/oracleview", method = RequestMethod.GET)
+		public void oracleView(@RequestParam("post_id") int post_id, Model model) throws Exception {
+			
+			OracleBoardVO vo = oracleService.oracleView(post_id);
+			model.addAttribute("oracleview", vo);
+		}
+		
+		// 4. 게시물 수정 페이지 이동
+		
+		@RequestMapping(value = "/oraclemodify", method = RequestMethod.GET)
+		public void oracleModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
 
-		orService.orDelete(post_id);
-		return "redirect:/board/orlist";
-	}
+			OracleBoardVO vo = oracleService.oracleView(post_id);
+			model.addAttribute("oracleview", vo);
+		}
+		
+
+		@RequestMapping(value = "/oraclemodify", method = RequestMethod.POST)
+		public String oracleModify(OracleBoardVO vo) throws Exception {
+
+			oracleService.oracleModify(vo);
+			return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
+		}
+
+		
+		// 5. vo가 없으니 get방식으로 삭제
+		@RequestMapping(value = "/oracledelete", method = RequestMethod.GET)
+		public String oracleDelete(@RequestParam("post_id") int post_id, Model model) throws Exception {
+
+			oracleService.oracleDelete(post_id);
+			return "redirect:/board/oraclelist";
+
+		}
 	
 	
 	/* --------------------------------

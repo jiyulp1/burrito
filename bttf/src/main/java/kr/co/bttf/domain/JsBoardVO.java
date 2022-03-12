@@ -6,6 +6,7 @@ public class JsBoardVO {
 	private String post_subject;
 	private String post_contents;
 	private int user_index;
+	private String user_nickname;
 	private int post_available;
 	private String post_rec;
 	private int post_vcount;
@@ -37,6 +38,13 @@ public class JsBoardVO {
 	}
 	public void setUser_index(int user_index) {
 		this.user_index = user_index;
+	}
+	
+	public String getUser_nickname() {
+		return user_nickname;
+	}
+	public void setUser_nickname(String user_nickname) {
+		this.user_nickname = user_nickname;
 	}
 	public int getPost_available() {
 		return post_available;

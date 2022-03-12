@@ -1,6 +1,5 @@
 package kr.co.bttf.domain;
 
-
 public class CssBoardVO {
 
 	private int post_id;
@@ -83,6 +82,5 @@ public class CssBoardVO {
 	public void setCategory_id(int category_id) {
 		this.category_id = category_id;
 	}
-	
 	
 }
