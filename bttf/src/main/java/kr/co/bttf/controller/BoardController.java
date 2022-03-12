@@ -16,9 +16,11 @@ import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.HtmlBoardVO;
 import kr.co.bttf.domain.JsBoardVO;
 import kr.co.bttf.domain.MemberVO;
+import kr.co.bttf.domain.OracleBoardVO;
 import kr.co.bttf.service.CssBoardService;
 import kr.co.bttf.service.HtmlBoardService;
 import kr.co.bttf.service.JsBoardService;
+import kr.co.bttf.service.OrBoardService;
 
 @Controller
 @RequestMapping("/board/*")
@@ -40,7 +42,7 @@ public class BoardController {
 //	private JavaBoardService javaService;
 	
 //	@Inject
-//	private OracleBoardService oracleService;
+	private OrBoardService orService;
 	
 //	@Inject
 //	private SpringBoardService springService;
@@ -186,7 +188,7 @@ public class BoardController {
 	}
 	
 	// 3-2 [POST] insert 게시물 작성
-	@RequestMapping(value = "/jswrite", method = RequestMethod.POST)
+	@RequestMapping(value = "/jswrite", method = RequestMethod.GET)
 	public String jsWrite(JsBoardVO vo) throws Exception {
 		
 	  jsService.jsWrite(vo);
@@ -195,14 +197,14 @@ public class BoardController {
 	
 	// 3-3 [POST] 게시물 상세보기
 	@RequestMapping(value = "/jsview", method = RequestMethod.POST)
-	public String jsView(@RequestParam("post_id") int post_id) throws Exception {
+	public String jsview(@RequestParam("post_id") int post_id) throws Exception {
 		
 		jsService.jsView(post_id);
 		return "redirect:/board/jsview?post_id=" + post_id;
 	}
 	
 	// 3-4 [POST] 게시물 수정
-	@RequestMapping(value = "/jsmodify", method = RequestMethod.POST)
+	@RequestMapping(value = "/jsmodify", method = RequestMethod.GET)
 	public String jsModify(JsBoardVO vo) throws Exception {
 
 		jsService.jsModify(vo);
@@ -211,11 +213,11 @@ public class BoardController {
 	
 	// 3-5 [POST] 게시물 삭제
 	@RequestMapping(value = "/jsdelete", method = RequestMethod.POST)
-	public String jsDelete(@RequestParam("post_id") int post_id) throws Exception {
+	public String jsdelete(@RequestParam("post_id") int post_id) throws Exception {
 
 		jsService.jsDelete(post_id);
 		return "redirect:/board/jslist";
-	}	
+	}
 	
 	
 	
@@ -232,6 +234,46 @@ public class BoardController {
 	/* --------------------------------
 				06. ORACLE
 	-------------------------------- */
+	// 6-1 [POST] 게시물 목록
+	@RequestMapping(value = "/orlist", method = RequestMethod.POST)
+	public String orList() throws Exception {
+		
+		orService.orList();
+		return "redirect:/board/orlist";
+	}
+	
+	// 6-2 [POST] insert 게시물 작성
+	@RequestMapping(value = "/orwrite", method = RequestMethod.GET)
+	public String orWrite(OracleBoardVO vo) throws Exception {
+		
+		orService.orWrite(vo);
+	  return "redirect:/board/orwrite";
+	}
+	
+	// 6-3 [POST] 게시물 상세보기
+	@RequestMapping(value = "/orview", method = RequestMethod.POST)
+	public String orView(@RequestParam("post_id") int post_id) throws Exception {
+		
+		orService.orView(post_id);
+		return "redirect:/board/orview?post_id=" + post_id;
+	}
+	
+	// 6-4 [POST] 게시물 수정
+	@RequestMapping(value = "/ormodify", method = RequestMethod.GET)
+	public String orModify(OracleBoardVO vo) throws Exception {
+
+		orService.orModify(vo);
+		return "redirect:/board/orview?post_id=" + vo.getPost_id();
+	}
+	
+	// 6-5 [POST] 게시물 삭제
+	@RequestMapping(value = "/ordelete", method = RequestMethod.POST)
+	public String orDelete(@RequestParam("post_id") int post_id) throws Exception {
+
+		orService.orDelete(post_id);
+		return "redirect:/board/orlist";
+	}
+	
 	
 	/* --------------------------------
 				07. SPRING

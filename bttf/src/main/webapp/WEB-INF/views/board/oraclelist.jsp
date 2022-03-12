@@ -50,7 +50,11 @@
 	<c:set var="boardList" value = "${requestScope.boardList }"/>
 	<c:set var="totalCnt" value = "${requestScope.totalCnt }"/>
 	<c:set var="boardJSON" value="${requestScope.boardJSON }"/>
+<<<<<<< Updated upstream
 
+=======
+	
+>>>>>>> Stashed changes
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -58,6 +62,7 @@
         <!-- Navbar -->
     </header>
     <!--========== END HEADER ==========-->
+<<<<<<< Updated upstream
     
     <!-- notice -->
     <div class="bg-color-sky-light fixed_container">
@@ -66,6 +71,12 @@
    			<!-- notice -->
    			
             <h2>ORACLE QnA</h2>
+=======
+
+   			<!-- notice -->
+   			
+            <h2>JAVASCRIPT QnA</h2>
+>>>>>>> Stashed changes
 
 			<form>
 	            <div class="table-responsive">
@@ -102,6 +113,7 @@
 	                </table>
 	            </div>
 	            <!-- End notice -->
+<<<<<<< Updated upstream
 	            <c:if test="${sessionScope.session_id != null }">
 		       	<a href="${pageContext.request.contextPath }/pages/jswrite.js"class="btn btn-primary" type="submit">글쓰기</a>
 		        </c:if>
@@ -110,6 +122,14 @@
     <!-- board pagination -->
     <!-- end board pagination -->
     
+=======
+
+	            <c:if test="${sessionScope.session_id != null }">
+	           	 <a href="${pageContext.request.contextPath }/pages/jswrite.js"class="btn btn-primary" type="submit">글쓰기</a>
+	            </c:if>
+            </form>
+   
+>>>>>>> Stashed changes
     <!--========== END PAGE LAYOUT ==========-->
 
     <!--========== FOOTER ==========-->

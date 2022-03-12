@@ -6,11 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import kr.co.bttf.dao.CssBoardDAO;
-import kr.co.bttf.dao.HtmlBoardDAO;
 import kr.co.bttf.dao.JsBoardDAO;
-import kr.co.bttf.domain.CssBoardVO;
-import kr.co.bttf.domain.HtmlBoardVO;
 import kr.co.bttf.domain.JsBoardVO;
 
 @Service
@@ -43,7 +39,5 @@ public class JsBoardServiceImpl implements JsBoardService {
 	public void jsDelete(int post_id) throws Exception {
 		dao.jsDelete(post_id);
 	}
-
-	
 
 }

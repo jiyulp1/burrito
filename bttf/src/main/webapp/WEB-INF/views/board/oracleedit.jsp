@@ -77,7 +77,11 @@
                     <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
                         <div class="my_box" data-height="height">
                             <!-- Start write Form -->
+<<<<<<< Updated upstream
 							<form name = "javascriptedit" action="${pageContext.request.contextPath }/pages/jsBoardUpdate.js" method="post">
+=======
+							<form name = "oracleedit" action="${pageContext.request.contextPath }/pages/orBoardUpdate.js" method="post">
+>>>>>>> Stashed changes
 								<input type="hidden" name="post_id" value="${board.post_id }">
 								<div class="col-auto">
 									<label for="subject">제목</label>
