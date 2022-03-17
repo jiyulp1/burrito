@@ -1,0 +1,78 @@
+@charset "utf-8";
+
+.radio {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+
+  input {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+
+    &:checked {
+      + label {
+        &::after {
+          background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='8' cy='8' r='5'/%3E%3C/svg%3E") no-repeat center;
+          background-size: .75em;
+        }
+      }
+    }
+  }
+
+  label {
+    position: relative;
+    min-width: 1.5em;
+    min-height: 1.5em;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1.5em;
+      height: 1.5em;
+      text-align: center;
+    }
+
+    &::before {
+      background-color: $white;
+      border: 1px solid $border-color;
+      border-radius: 50%;
+      transition: background-color ease-in-out .25s, border-color ease-in-out .25s;
+    }
+
+    &::after {
+      top: 0;
+      left: 0;
+    }
+
+    &::before,
+    span,
+    p {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    span,
+    p {
+      min-height: 1.5em;
+      padding-left: 2em;
+      line-height: 1.4;
+    }
+  }
+
+  &.is-readonly,
+  &.is-disabled {
+    opacity: .25;
+
+    label {
+      cursor: default;
+    }
+  }
+}

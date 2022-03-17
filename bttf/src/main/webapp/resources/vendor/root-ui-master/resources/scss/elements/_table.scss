@@ -1,0 +1,126 @@
+@charset "utf-8";
+
+* + .table {
+  margin-top: rem(15);
+}
+
+.table {
+  table {
+    width: 100%;
+    border-top: 1px solid $gray-400;
+    border-bottom: 1px solid $gray-400;
+    border-spacing: 0;
+  }
+
+  caption {
+    margin-bottom: 1em;
+    text-align: left;
+    font-weight: 600;
+  }
+  
+  th,
+  td {
+    padding: rem(15);
+    border-top: 1px solid $table-border-color;
+  }
+  
+  th {
+    font-weight: 600;
+  }
+
+  thead {
+    th {
+      background-color: $thead-th-bg-color;
+    }
+    
+    td {
+      background-color: $thead-td-bg-color;
+    }
+  }
+  
+  tbody {
+    th {
+      background-color: $tbody-th-bg-color;
+    }
+    
+    td {
+      background-color: $tbody-td-bg-color;
+    }
+  }
+  
+  tfoot {
+    th {
+      background-color: $tfoot-th-bg-color;
+    }
+    
+    td {
+      background-color: $tfoot-td-bg-color;
+    }
+  }
+}
+
+.table-striped {
+  tbody {
+    tr {
+      &:nth-child(even) {
+        td {
+          background-color: $table-accent-bg;
+        }
+      }
+    }
+  }
+}
+
+.table-bordered {
+  th,
+  td {
+    border: 1px solid $table-border-color;
+  }
+
+  &.type-2 {
+    th,
+    td {
+      &:first-child {
+        border-left: 0;
+      }
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+}
+
+.table-responsive {
+  @if $enable-responsive-table-classes {
+    @each $breakpoint in map-keys($grid-breakpoints) {
+      $next: breakpoint-next($breakpoint, $grid-breakpoints);
+      $infix: breakpoint-infix($next, $grid-breakpoints);
+  
+      &#{$infix} {
+        @include media-breakpoint-down($breakpoint) {
+          display: block;
+          width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          @if $enable-responsive-table-nowrap {
+            white-space: nowrap;
+          }
+  
+          > .table-bordered {
+            border: 0;
+          }
+        }
+      }
+    }
+  }
+  @else {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    @if $enable-responsive-table-nowrap {
+      white-space: nowrap;
+    }
+  }
+}

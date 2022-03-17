@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+* + [class*=-box] {
+  margin-top: $spacer;
+}
+
+*.is-blind + [class*=-box],
+.hidden-box + [class*=-box],
+.row-box > .right-box,
+.btn-box > .right-box,
+.hidden-box {
+  margin-top: 0;
+}
+
+.row-box {
+  @include clearfix();
+}
+
+.row-box > .left-box {
+  float: left;
+}
+
+.row-box > .right-box {
+  float: right;
+}

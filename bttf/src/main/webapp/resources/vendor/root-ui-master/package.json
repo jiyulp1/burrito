@@ -1,0 +1,26 @@
+{
+  "name": "root-ui",
+  "version": "1.0.9",
+  "license": "MIT",
+  "author": {
+    "name": "grappphy",
+    "email": "grappphy@gmail.com",
+    "url": "http://root-ui.com"
+  },
+  "description": "가장 효율적인 웹 UI 개발 방법 ROOT UI는 부트스트랩 기반의 웹 UI 개발 프랜차이즈입니다.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grappphy/root-ui.git"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "bootstrap",
+    "web",
+    "ui",
+    "smacss",
+    "oocss",
+    "bem"
+  ],
+  "main": "/index.html"
+}

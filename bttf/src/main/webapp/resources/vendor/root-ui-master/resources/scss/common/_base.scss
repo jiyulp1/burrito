@@ -1,0 +1,103 @@
+@charset "utf-8";
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+p {
+  line-height: $line-height-base;
+}
+
+ul,
+dl,
+ol,
+dt,
+dd {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+pre,
+xmp,
+plaintext,
+listing {
+  margin: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: $gray-300;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: $gray-300;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: $gray-300;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: $gray-300;
+}
+
+input,
+input + label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+label+input {
+  margin-left: .5em;
+}
+
+textarea {
+  line-height: $line-height-base;
+}
+
+fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+::selection {
+  background-color: $secondary;
+  color: $white;
+}

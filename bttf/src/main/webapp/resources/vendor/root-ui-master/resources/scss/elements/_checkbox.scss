@@ -1,0 +1,86 @@
+@charset "utf-8";
+
+.checkbox {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+
+  input {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+
+    &:checked {
+      + label {
+        &::after {
+          background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M1 7.301L2.399 5.9l4.199 4.2 7.001-7 1.399 1.4-8.4 8.4L1 7.301z'/%3E%3C/svg%3E") no-repeat center;
+          background-size: 1em;
+        }
+      }
+    }
+  }
+
+  label {
+    position: relative;
+    min-width: 1.5em;
+    min-height: 1.5em;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1.5em;
+      height: 1.5em;
+      text-align: center;
+    }
+
+    &::before {
+      background-color: $white;
+      border: 1px solid $border-color;
+      transition: background-color ease-in-out .25s, border-color ease-in-out .25s;
+    }
+
+    &::after {
+      top: 0;
+      left: 0;
+    }
+
+    &::before,
+    span,
+    p {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    span,
+    p {
+      min-height: 1.5em;
+      padding-left: 2em;
+      line-height: 1.4;
+    }
+  }
+
+  &.is-indeterminate {
+    label {
+      &::after {
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M2 7h12v2H2z'/%3E%3C/svg%3E") no-repeat center;
+        background-size: 1em;
+      }
+    }
+  }
+
+  &.is-readonly,
+  &.is-disabled {
+    opacity: .25;
+
+    label {
+      cursor: default;
+    }
+  }
+}

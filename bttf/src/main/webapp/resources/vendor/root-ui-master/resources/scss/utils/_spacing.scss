@@ -1,0 +1,133 @@
+@charset "utf-8";
+
+@if $enable-spacing-classes {
+  @if $enable-responsive-spacing-classes {
+    @each $grid-breakpoint in map-keys($grid-breakpoints) {
+      @include media-breakpoint-up($grid-breakpoint) {
+        $infix: breakpoint-infix($grid-breakpoint, $grid-breakpoints);
+    
+        @each $prop, $abbrev in (margin: m, padding: p) {
+          @for $i from $spacing-start-number through $spacing-end-number {
+            @if $i % $spacing-multiplication == 0 {
+              $value: $i * $spacer / 10 !important;
+
+              @if $i == 0 {
+                $value: 0 !important;
+              }
+
+              .#{$abbrev}#{$infix}-#{$i} {
+                #{$prop}: $value;
+              }
+
+              .#{$abbrev}t#{$infix}-#{$i},
+              .#{$abbrev}y#{$infix}-#{$i} {
+                #{$prop}-top: $value;
+              }
+
+              .#{$abbrev}r#{$infix}-#{$i},
+              .#{$abbrev}x#{$infix}-#{$i} {
+                #{$prop}-right: $value;
+              }
+
+              .#{$abbrev}b#{$infix}-#{$i},
+              .#{$abbrev}y#{$infix}-#{$i} {
+                #{$prop}-bottom: $value;
+              }
+
+              .#{$abbrev}l#{$infix}-#{$i},
+              .#{$abbrev}x#{$infix}-#{$i} {
+                #{$prop}-left: $value;
+              }
+            }
+          }
+        }
+    
+        // Some special margin utils
+        .m#{$infix}-auto {
+          margin: auto !important;
+        }
+        .mt#{$infix}-auto,
+        .my#{$infix}-auto {
+          margin-top: auto !important;
+        }
+
+        .mr#{$infix}-auto,
+        .mx#{$infix}-auto {
+          margin-right: auto !important;
+        }
+
+        .mb#{$infix}-auto,
+        .my#{$infix}-auto {
+          margin-bottom: auto !important;
+        }
+
+        .ml#{$infix}-auto,
+        .mx#{$infix}-auto {
+          margin-left: auto !important;
+        }
+      }
+    }
+  }
+  @else {
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @for $i from $spacing-start-number through $spacing-end-number {
+        @if $i % $spacing-multiplication == 0 {
+          $value: $i * $spacer / 10 !important;
+
+          @if $i == 0 {
+            $value: 0 !important;
+          }
+          
+          .#{$abbrev}-#{$i} {
+            #{$prop}: $value;
+          }
+
+          .#{$abbrev}t-#{$i},
+          .#{$abbrev}y-#{$i} {
+            #{$prop}-top: $value;
+          }
+
+          .#{$abbrev}r-#{$i},
+          .#{$abbrev}x-#{$i} {
+            #{$prop}-right: $value;
+          }
+
+          .#{$abbrev}b#-#{$i},
+          .#{$abbrev}y#-#{$i} {
+            #{$prop}-bottom: $value;
+          }
+
+          .#{$abbrev}l-#{$i},
+          .#{$abbrev}x-#{$i} {
+            #{$prop}-left: $value;
+          }
+        }
+      }
+    }
+
+    // Some special margin utils
+    .m-auto {
+      margin: auto !important;
+    }
+
+    .mt-auto,
+    .my-auto {
+      margin-top: auto !important;
+    }
+    
+    .mr-auto,
+    .mx-auto {
+      margin-right: auto !important;
+    }
+
+    .mb-auto,
+    .my-auto {
+      margin-bottom: auto !important;
+    }
+    
+    .ml-auto,
+    .mx-auto {
+      margin-left: auto !important;
+    }
+  }
+}
