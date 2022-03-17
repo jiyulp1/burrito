@@ -52,7 +52,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/lombok.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/spring-security-jwt-1.0.10.RELEASE.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/spring-security-oauth2-2.3.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jjwt-0.9.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
