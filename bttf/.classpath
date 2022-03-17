@@ -45,12 +45,14 @@
 			<attribute name="owner.project.facets" value="#system#;jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/lombok.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/spring-security-jwt-1.0.10.RELEASE.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/spring-security-oauth2-2.3.3.RELEASE.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

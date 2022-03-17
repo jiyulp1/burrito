@@ -1,0 +1,205 @@
+@charset "utf-8";
+
+.select {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  
+  select,
+  .pseudo-selected {
+    display: block;
+    width: 100%;
+    padding: .5em 2.5em .5em 1em;
+    line-height: $line-height-base;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M13.656 5.879l-1.414-1.415L8 8.707 3.758 4.464 2.344 5.879 8 11.535z'/%3E%3C/svg%3E") no-repeat center right .75em;
+    background-color: $white;
+    background-size: 1em;
+    border: 1px solid $border-color;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  select {
+    border-radius: 0;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &.is-hidden {
+      overflow: hidden !important;
+      display: block !important;
+      height: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      margin-right: 1px !important;
+      margin-left: 1px !important;
+      border: 0 !important;
+    }
+  }
+
+  option {
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .pseudo-select {
+    position: relative;
+  }
+
+  .pseudo-selected {
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .pseudo-list {
+    position: absolute;
+    overflow-y: auto;
+    display: none;
+    width: 100%;
+    max-height: 12em;
+    margin-top: -1px;
+    background-color: #fff;
+    border: 1px solid $border-color;
+    @include vendor-prefix(transform, translateY(-1px));
+    z-index: 1;
+
+    .pseudo-optgroup,
+    .pseudo-option,
+    .pseudo-label {
+      display: block;
+    }
+
+    .pseudo-optgroup {
+      .pseudo-item {
+        padding-left: 2em;
+      }
+    }
+
+    .pseudo-label,
+    .pseudo-item {
+      display: block;
+      width: 100%;
+      padding: .5em 1em;
+      line-height: 1.4;
+      border: 0;
+      background-color: $white;
+    }
+
+    .pseudo-label {
+      font-weight: 600;
+    }
+
+    .pseudo-item {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: left;
+      cursor: pointer;
+
+      &.is-selected {
+        background-color: $light;
+      }
+
+      &:focus {
+        color: $white;
+        background-color: #1e90ff;
+      }
+    }
+  }
+
+  &.is-active {
+    select,
+    .pseudo-selected {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M2.344 10.12l1.414 1.415L8 7.292l4.242 4.243 1.414-1.415L8 4.464z'/%3E%3C/svg%3E");
+    }
+
+    .pseudo-list {
+      display: block;
+      z-index: $zindex-select;
+    }
+  }
+
+  &.is-upward {
+    .pseudo-list {
+      top: 0;
+      margin-top: auto;
+      @include vendor-prefix(transform, translateY(-100%) translateY(1px));
+    }
+  }
+
+  &.select-modal {
+    .pseudo-list {
+      position: fixed;
+      top: 0;
+      left: 0;
+      visibility: hidden;
+      opacity: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      padding: rem(20);
+      margin-top: auto;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0);
+      border: 0;
+      @include vendor-prefix(transform, none);
+      transition: background-color ease-in-out .25s, visibility ease-in-out .25s, opacity ease-in-out .25s;
+      z-index: $zindex-modal;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+      
+      > ul {
+        position: relative;
+        top: rem(30);
+        visibility: hidden;
+        opacity: 0;
+        display: inline-block;
+        vertical-align: middle;
+        width: 95vw;
+        max-width: rem(300);
+        text-align: left;
+        transition: top ease-in-out .25s, visibility ease-in-out .25s, opacity ease-in-out .25s;
+      }
+
+      .pseudo-label,
+      .pseudo-item {
+        padding: .75em 1em;
+      }
+
+      .pseudo-optgroup {
+        .pseudo-item {
+          padding-left: 2em;
+        }
+      }
+    }
+
+    &.is-active {
+      .pseudo-list {
+        visibility: visible;
+        opacity: 1;
+        background-color: rgba(0, 0, 0, .75);
+        
+        > ul {
+          top: 0;
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+@each $size, $value in $font-sizes {
+  .txt-#{$size} {
+    font-size: $value !important;
+  }
+}
+
+.txt-justify  { text-align: justify !important; }
+.txt-wrap     { white-space: normal !important; }
+.txt-nowrap   { white-space: nowrap !important; }
+
+.txt-ellipsis {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .txt#{$infix}-left   { text-align: left !important; }
+    .txt#{$infix}-right  { text-align: right !important; }
+    .txt#{$infix}-center { text-align: center !important; }
+  }
+}
+
+.txt-lowercase  { text-transform: lowercase !important; }
+.txt-uppercase  { text-transform: uppercase !important; }
+.txt-capitalize { text-transform: capitalize !important; }
+
+.txt-underline { text-decoration: underline !important; }
+.txt-decoration-none { text-decoration: none !important; }
+
+.txt-break {
+  word-break: break-word !important; // IE & < Edge 18
+  overflow-wrap: break-word !important;
+}
+
+@each $color, $value in $colors {
+  .txt-#{$color} {
+    color: $value !important;
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .txt-#{$color} {
+    color: $value !important;
+  }
+}

@@ -1,0 +1,277 @@
+@charset "utf-8";
+
+// 버전
+$version: 1.0.9;
+
+// 웹사이트 기본 단위 설정
+$unit: 'rem'; // default: rem (px|rem)
+
+// <html> 태그 기본 폰트 크기(px) 설정
+$browser-context: 10; // default: 10 (10|100)
+
+// 기본 폰트 패밀리 설정 default: 'Malgun Gothic', '맑은고딕', 'Dotum', '돋움'
+$font-family-html: 'Malgun Gothic', '맑은고딕', 'Dotum', '돋움' !default;
+
+// 코드 폰트 패밀리 설정 default: 'Consolas', 'Courier', 'Malgun Gothic', '맑은고딕', 'Dotum', '돋움'
+$font-family-code: 'Consolas', 'Courier', 'Malgun Gothic', '맑은고딕', 'Dotum', '돋움' !default;
+
+// 폰트 굵기 설정
+$font-weight-lighter: lighter !default; //default: lighter
+$font-weight-light:   300 !default;     //default: 300
+$font-weight-normal:  400 !default;     //default: 400
+$font-weight-bold:    700 !default;     //default: 700
+$font-weight-bolder:  bolder !default;  //default: bolder
+$font-weight-base:    $font-weight-normal !default; //default: $font-weight-normal
+
+// 폰트 크기 설정
+$font-size-mini:    rem(11); //default: rem(11)
+$font-size-tiny:    rem(12); //default: rem(12)
+$font-size-small:   rem(14); //default: rem(14)
+$font-size-medium:  rem(16); //default: rem(16)
+$font-size-large:   rem(18); //default: rem(18)
+$font-size-big:     rem(20); //default: rem(20)
+$font-size-huge:    rem(24); //default: rem(24)
+$font-size-massive: rem(28); //default: rem(28)
+$font-size-h1:      rem(40); //default: rem(40)
+$font-size-h2:      rem(30); //default: rem(30)
+$font-size-h3:      rem(22); //default: rem(22)
+$font-size-h4:      rem(20); //default: rem(20)
+$font-size-h5:      rem(18); //default: rem(18)
+$font-size-h6:      rem(16); //default: rem(16)
+
+$font-sizes: () !default;
+$font-sizes: map-merge(
+  (
+    "mini":    $font-size-mini,   //default: $font-size-mini
+    "tiny":    $font-size-tiny,   //default: $font-size-tiny
+    "small":   $font-size-small,  //default: $font-size-small
+    "medium":  $font-size-medium, //default: $font-size-medium
+    "large":   $font-size-large,  //default: $font-size-large
+    "big":     $font-size-big,    //default: $font-size-big
+    "huge":    $font-size-huge,   //default: $font-size-huge
+    "massive": $font-size-massive //default: $font-size-massive
+  ),
+  $font-sizes
+);
+
+// 줄간격 설정
+$line-height-base: 1.4 !default; //default: 1.4
+
+// 회색조 설정
+$white:    #fff !default;    //default: #fff
+$gray-100: #f8f9fa !default; //default: #f8f9fa
+$gray-200: #e9ecef !default; //default: #e9ecef
+$gray-300: #dee2e6 !default; //default: #dee2e6
+$gray-400: #ced4da !default; //default: #ced4da
+$gray-500: #adb5bd !default; //default: #adb5bd
+$gray-600: #6c757d !default; //default: #6c757d
+$gray-700: #495057 !default; //default: #495057
+$gray-800: #343a40 !default; //default: #343a40
+$gray-900: #212529 !default; //default: #212529
+$black:    #000 !default;    //default: #000
+
+// 회색조 맵 데이터 설정
+$grays: () !default;
+$grays: map-merge(
+  (
+    "100": $gray-100, //default: $gray-100
+    "200": $gray-200, //default: $gray-200
+    "300": $gray-300, //default: $gray-300
+    "400": $gray-400, //default: $gray-400
+    "500": $gray-500, //default: $gray-500
+    "600": $gray-600, //default: $gray-600
+    "700": $gray-700, //default: $gray-700
+    "800": $gray-800, //default: $gray-800
+    "900": $gray-900  //default: $gray-900
+  ),
+  $grays
+);
+
+// 기본 색상 설정
+$blue:     #179bfc !default; //default: #179bfc
+$indigo:   #353575 !default; //default: #1a1448
+$purple:   #7e5cdf !default; //default: #7e5cdf
+$pink:     #ee5555 !default; //default: #ea4c89
+$red:      #e4111d !default; //default: #e4111d
+$orange:   #ff5a2d !default; //default: #ff5a2d
+$yellow:   #fec001 !default; //default: #fec001
+$green:    #46b266 !default; //default: #46b266
+$teal:     #33cabb !default; //default: #33cabb
+$cyan:     #17a2b8 !default; //default: #17a2b8
+$darknavy: #1e3142 !default; //default: #1e3142
+
+$colors: () !default;
+$colors: map-merge(
+  (
+    "blue":      $blue,     //default: $blue
+    "indigo":    $indigo,   //default: $indigo
+    "purple":    $purple,   //default: $purple
+    "pink":      $pink,     //default: $pink
+    "red":       $red,      //default: $red
+    "orange":    $orange,   //default: $orange
+    "yellow":    $yellow,   //default: $yellow
+    "green":     $green,    //default: $green
+    "teal":      $teal,     //default: $teal
+    "cyan":      $cyan,     //default: $cyan
+    "darknavy":  $darknavy, //default: $darknavy
+    "white":     $white,    //default: $white
+    "lightgray": $gray-200, //default: $gray-200
+    "gray":      $gray-500, //default: $gray-500
+    "darkgray":  $gray-800  //default: $gray-800
+  ),
+  $colors
+);
+
+// 테마 색상 설정
+$primary:   $indigo !default;   //default: $indigo
+$secondary: $pink !default;     //default: $pink
+$success:   $green !default;    //default: $green
+$info:      $cyan !default;     //default: $cyan
+$warning:   $yellow !default;   //default: $yellow
+$danger:    $red !default;      //default: $red
+$light:     $gray-200 !default; //default: $gray-200
+$gray:      $gray-500 !default; //default: $gray-500
+$dark:      $gray-800 !default; //default: $gray-800
+
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    "primary":   $primary,   //default: $primary
+    "secondary": $secondary, //default: $secondary
+    "success":   $success,   //default: $success
+    "info":      $info,      //default: $info
+    "warning":   $warning,   //default: $warning
+    "danger":    $danger,    //default: $danger
+    "light":     $light,     //default: $light
+    "dark":      $dark       //default: $dark
+  ),
+  $theme-colors
+);
+
+//색상 대비 설정
+//-- $yiq-contrasted-threshold 값을 기준으로 밝은 색상과 어두운 색상을 구분
+$yiq-contrasted-threshold: 191 !default;       //default: 191
+$yiq-text-dark:            $gray-900 !default; //default: $gray-900
+$yiq-text-light:           $white !default;    //default: $white
+
+//선 설정
+$border-color: $gray-300 !default; //default: $gray-300
+$border-radius: .25em;             //default: .25em
+
+//테이블 설정
+//-- 반응형 테이블 클래스 사용 유무
+$enable-responsive-table-classes: false !default; //default: false (true|false)
+//-- 반응형 테이블 클래스 사용시 th, td 태그에 white-space: nowrap 사용 유무
+$enable-responsive-table-nowrap:  true !default; //default: true (true|false)
+$table-border-color: $gray-300; //default: $gray-300
+$thead-th-bg-color:  $gray-200;  //default: $gray-200
+$thead-td-bg-color:  $white;     //default: $white;
+$tbody-th-bg-color:  $gray-100;  //default: $gray-100
+$tbody-td-bg-color:  $white;     //default: $white;
+$tfoot-th-bg-color:  $gray-200;  //default: $gray-200
+$tfoot-td-bg-color:  $white;     //default: $white;
+$table-accent-bg:    $gray-100;  //default: $gray-100
+
+
+//그리드 설정
+//-- 그리드 클래스 사용 유무
+$enable-grid-classes: true !default; //default: true (true|false)
+//-- 반응형 그리드 클래스 사용 유무
+$enable-responsive-grid-classes: true !default; //default: true (true|false)
+//-- 그리드 타입
+$grid-type: 'float'; // default: float (float|flex)
+//-- 그리드 컬럼
+$grid-columns : 12; // default: 12
+//-- 그리드 컬럼간 여백
+$grid-gutter-width: 30px; // default: 30px
+$grid-breakpoints: (
+  xxxs: 0,     // default: 0
+  xxs:  360px, // default: 360px
+  xs:   480px, // default: 480px
+  sm:   576px, // default: 576px
+  md:   768px, // default: 768px
+  lg:   992px, // default: 992px
+  xl:   1200px // default: 1200px
+) !default;
+
+
+// 컨테이너 설정
+//-- 컨테이너 클래스 사용 유무
+$enable-container-classes: true !default; //default: true (true|false)
+//-- 반응형 컨테이너 클래스 사용 유무
+$enable-responsive-container-classes: false !default; //default: false (true|false)
+//-- 컨테이너 여백
+$container-gutter-width: 15px; // default: 15px
+$container-max-widths: (
+  xxs: 320px, // default: 320px
+  xs:  460px, // default: 460px
+  sm:  540px, // default: 540px
+  md:  720px, // default: 720px
+  lg:  960px, // default: 960px
+  xl:  1140px // default: 1140px
+);
+
+
+// z-index 설정
+$zindex-select:         1000 !default; // default: 1000
+$zindex-dropdown:       1000 !default; // default: 1000
+$zindex-sticky:         1020 !default; // default: 1020
+$zindex-fixed:          1030 !default; // default: 1030
+$zindex-nav:            1030 !default; // default: 1030
+$zindex-gnb:            1030 !default; // default: 1030
+$zindex-lnb:            1030 !default; // default: 1030
+$zindex-header:         1030 !default; // default: 1030
+$zindex-footer:         1030 !default; // default: 1030
+$zindex-modal-backdrop: 1040 !default; // default: 1040
+$zindex-modal:          1050 !default; // default: 1050
+$zindex-popover:        1060 !default; // default: 1060
+$zindex-tooltip:        1070 !default; // default: 1070
+$zindex-skip:           1080 !default; // default: 1080
+
+
+// 스페이싱 설정
+//-- 스페이싱 클래스 사용 유무
+$enable-spacing-classes: true !default; // default: true (true|false)
+//-- 반응형 스페이싱 클래스 사용 유무
+$enable-responsive-spacing-classes: true !default; // default: true (true|false)
+
+//-- 스페이싱 기준 단위
+$spacer: 10rem / $browser-context;
+@if $unit == 'px' { $spacer: 10px; }
+//-- 스페이싱 시작값
+$spacing-start-number: 0;   // default: 0
+//-- 스페이싱 종료값
+$spacing-end-number: 100;   // default: 100
+//-- 스페이싱 증가값
+$spacing-multiplication: 5; // default: 5
+
+
+// 사이징 설정
+//-- 사이징 클래스 사용 유무
+$enable-sizing-classes: true !default; // default: true (true|false)
+//-- 반응형 사이징 클래스 사용 유무
+$enable-responsive-sizing-classes: false !default; // default: false (true|false)
+//-- 사이징 기준 단위
+$sizer: 10rem / $browser-context;
+@if $unit == 'px' { $sizer: 10px; }
+//-- 사이징 시작값
+$sizing-start-number: 0;    // default: 0
+//-- 사이징 종료값
+$sizing-end-number: 500;    // default: 500
+//-- 사이징 증가값
+$sizing-multiplication: 10; // default: 10
+
+
+// 디스플레이 설정
+//-- 디스플레이 클래스 사용 유무
+$enable-display-classes: true !default; // default: true (true|false)
+//-- 반응형 디스플레이 클래스 사용 유무
+$enable-responsive-display-classes: true !default; // default: true (true|false)
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
+
+
+// 모달 설정
+$modal-dialog-width: 95%;
+$modal-dialog-max-width: rem(600);
+$modal-transition: visibility ease-in-out .25s, background-color ease-in-out .25s;
+$modal-dialog-transition: opacity ease-in-out .25s, top ease-in-out .25s;

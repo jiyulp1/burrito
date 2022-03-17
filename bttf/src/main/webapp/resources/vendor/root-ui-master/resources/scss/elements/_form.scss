@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+.form {
+  .form-group {
+    + .form-group {
+      margin-top: rem(10);
+    }
+  }
+
+  .form-label {
+    display: inline-block;
+    vertical-align: middle;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    line-height: 1.4;
+
+    + .form-element {
+      margin-left: rem(10);
+    }
+  }
+
+  .checkbox,
+  .radio {
+    padding-top: .5em;
+    padding-bottom: .5em;
+  }
+}

@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+.table {
+  &.table-horizontal {
+    @if $enable-responsive-table-classes {
+      @each $breakpoint in map-keys($grid-breakpoints) {
+        $next: breakpoint-next($breakpoint, $grid-breakpoints);
+        $infix: breakpoint-infix($next, $grid-breakpoints);
+    
+        &#{$infix} {
+          @include media-breakpoint-down($breakpoint) {
+            table {
+              display: -ms-flexbox;
+              display: flex;
+              overflow: hidden;
+              background-color: $thead-th-bg-color;
+            }
+
+            thead,
+            tbody {
+              display: block;
+            }
+
+            thead {
+              width: 25%;
+              min-width: rem(120);
+          
+              tr {
+                display: block;
+              }
+          
+              th {
+                display: block;
+              }
+            }
+          
+            tbody {
+              display: -ms-flexbox;
+              display: flex;
+              overflow-x: auto;
+              overflow-y: hidden;
+              width: 75%;
+          
+              tr {
+                display: block;
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+              }
+          
+              th,
+              td {
+                display: block;
+          
+                > * {
+                  white-space: nowrap;
+                }
+              }
+            }
+
+            th,
+            td {
+              &:first-child {
+                border-top: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+    @else {
+      table {
+        display: -ms-flexbox;
+        display: flex;
+        overflow: hidden;
+        background-color: $thead-th-bg-color;
+      }
+    
+      thead {
+        width: 25%;
+    
+        tr {
+          display: block;
+        }
+    
+        th {
+          display: block;
+        }
+      }
+    
+      tbody {
+        display: -ms-flexbox;
+        display: flex;
+        overflow-x: auto;
+        width: 75%;
+    
+        tr {
+          display: block;
+          -ms-flex: 1 1 0;
+          flex: 1 1 0;
+        }
+    
+        th,
+        td {
+          display: block;
+    
+          > * {
+            white-space: nowrap;
+          }
+        }
+      }
+
+      th,
+      td {
+        &:first-child {
+          border-top: 0;
+        }
+      }
+    }
+  }
+}

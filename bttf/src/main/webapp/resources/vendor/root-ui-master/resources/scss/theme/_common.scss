@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+#skip {
+  position: fixed;
+  top: -999px;
+  left: 0;
+  width: 100%;
+  height: rem(60);
+  padding: rem(22.5);
+  background-color: $secondary;
+  text-align: center;
+  color: $white;
+  line-height: 1;
+  z-index: $zindex-skip;
+  
+  &:focus {
+    top: 0;
+  }
+}
+
+
+
+@include media-breakpoint-down(lg) { // max-width: 1199.98px
+
+}
+
+@include media-breakpoint-down(md) { // max-width: 991.98px
+
+}
+
+@include media-breakpoint-down(sm) { // max-width: 767.98px
+
+}
+
+@include media-breakpoint-down(xs) { // max-width: 575.98px
+
+}
+
+@include media-breakpoint-down(xxs) { // max-width: 479.98px
+
+}
+
+@include media-breakpoint-down(xxxs) { // max-width: 359.98px
+  
+}
