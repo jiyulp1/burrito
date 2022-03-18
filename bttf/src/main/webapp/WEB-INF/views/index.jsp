@@ -337,6 +337,7 @@
     <!--========== END FOOTER ==========-->
 
     <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js_chatting_btn chatt_btn chatt_btn-is-visible">실시간 채팅</a>
     <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
 
     <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->

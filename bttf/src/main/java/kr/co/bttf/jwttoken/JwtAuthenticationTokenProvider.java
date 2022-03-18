@@ -8,14 +8,17 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import com.sun.org.slf4j.internal.Logger;
 import com.sun.org.slf4j.internal.LoggerFactory;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.SignatureException;
+import io.jsonwebtoken.UnsupportedJwtException;
 
 @Component
 public class JwtAuthenticationTokenProvider implements AuthenticationTokenProvider {
@@ -38,6 +41,8 @@ public class JwtAuthenticationTokenProvider implements AuthenticationTokenProvid
 	@Override
 	public AuthenticationToken issue(Long userNo) {
 		return AuthenticationToken.builder().token(buildToken(userNo)).build();
+		
+		
 	}
 	
 	private String buildToken(Long userNo) {

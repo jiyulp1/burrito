@@ -657,6 +657,100 @@ pre{
 /* } */
 
 
+/* start realTime chatting style*/
+.chatt_btn.chatt_btn-is-visible{
+	visibility: visible;
+    opacity: .6;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    transition-duration: 300ms;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
+		
+}
+
+.chatt_btn{
+	
+	position: fixed;
+    width: 200px !important;
+    height: 40px;
+    line-height: 30px;
+    opacity: 1.0 !important;
+    right: 60px;
+	bottom: 10px;
+    display: inline-block;
+    z-index: 9;
+    width: 40px;
+    height: 40px;
+    font-size: 11px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: #515769;
+    border-radius: 3px;
+    visibility: hidden;
+    /* opacity: 0; */
+    padding: 5px;
+    -webkit-transform: translate3d(0, 50px, 0);
+    -moz-transform: translate3d(0, 50px, 0);
+    transform: translate3d(0, 50px, 0);
+    transition-duration: 300ms;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
+	
+}
+
+  .chatt_btn:hover {
+    color: #fff;
+    transition-duration: 300ms;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
+  }
+  
+  .chatt_btn:focus, .chatt_btn:hover {
+    text-decoration: none;
+  }
+  
+  /* The Button Becomes Visible */
+  .chatt_btn.chatt_btn-is-visible {
+    visibility: visible;
+    opacity: .6;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    transition-duration: 300ms;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
+  }
+  
+  .chatt_btn.chatt_btn-is-visible:hover {
+    opacity: 1;
+    transition-duration: 300ms;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
+  }
+  
+  /* If the user keeps scrolling down, the button is out of focus and becomes less visible */
+  .chatt_btn.chatt_btn-fade-out {
+    opacity: .4;
+  }
+  
+  .chatt_btn.chatt_btn-fade-out:hover {
+    opacity: 1; 
+    transition-duration: 300ms;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
+  }
+
+
+
+
+
+
+/* end realTime chatting style*/
 
 
 /* 3. content section end */
