@@ -10,28 +10,24 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import kr.co.bttf.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
-@Setter
 @Component
 @RequiredArgsConstructor
 public class JwtTokenProvider {
+	
 	@Value("${spring.jwt.secretKey}")
 	private String secretKey;
-	
-	
 	private long tokenValidTime = 1000L * 60 * 30;
 	private long refreshTokenValidTime = 1000L * 60 * 60 * 24 * 7;
-	
-	private final MemberService memberService;
+	private final UserDetailsService userDetailsService;
 	
 	@PostConstruct
 	protected void init() {
@@ -39,11 +35,9 @@ public class JwtTokenProvider {
 		
 	}
 	
-	public String createToken() {
-		Claims claims = Jwts.claims().setSubject(secretKey);
+	public String createToken(String email) {
+		Claims claims = Jwts.claims().setSubject(email);
 		Date now = new Date();
-		
-		
 		
 		return Jwts.builder()
 				 .setClaims(claims)
@@ -51,7 +45,6 @@ public class JwtTokenProvider {
 	                .setExpiration(new Date(now.getTime() + tokenValidTime))
 	                .signWith(SignatureAlgorithm.HS256, secretKey)
 	                .compact();
-		
 	}
 	
 	public String createRefreshToken() {
@@ -89,12 +82,4 @@ public class JwtTokenProvider {
             return false;
         }
     }
-	
-	
-	
-	
-	
-	
-	
-	
 }
