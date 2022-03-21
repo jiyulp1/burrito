@@ -84,19 +84,21 @@
                                     <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; resize: none; background-color: #fff;" disabled>${cssview.post_contents }</pre>
                                 </div> 
 	                        	<div class="mb-5">
-	                        	<a href="/board/csslist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
-								<c:if test="${not empty member}">
-									<a href="#" class="btn btn-default mt-4">북마크</a>
-					               	<a href="/member/cssboardreported?post_id=${cssview.post_id }&category_id=0" class="btn btn-warning mt-4" id="boardreport" type="submit" style="float: right;">게시글 신고</a>
-					               	<a href="/member/memberreport?user_nickname=${cssview.user_nickname }" class="btn btn-warning mt-4" id="memberreport" type="submit" style="float: right;">작성자 신고</a>
-								</c:if>
-								<c:if test="${member.user_name eq cssview.user_nickname}">
-		 		                    <a href="/board/cssedit?post_id=${cssview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
-				                	<a href="/board/cssdelete?post_id=${cssview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
-								</c:if> 
+	                        		<a href="/board/csslist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
+									<c:if test="${not empty member}">
+										<a href="#" class="btn btn-default mt-4">북마크</a>
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#boardreport" data-whatever="@getbootstrap" style="float: right;">게시글 신고</button>
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberreport" data-whatever="@getbootstrap" style="float: right;" >작성자 신고</button>
+<%-- 					               		<a href="/member/cssboardreported?post_id=${cssview.post_id }&category_id=0" class="btn btn-warning mt-4" id="boardreport" type="submit" style="float: right;">게시글 신고</a> --%>
+<%-- 					               		<a href="/member/memberreport?user_nickname=${cssview.user_nickname }" class="btn btn-warning mt-4" id="memberreport" type="submit" style="float: right;">작성자 신고</a> --%>
+									</c:if>
+									<c:if test="${member.user_name eq cssview.user_nickname}">
+		 		                    	<a href="/board/cssedit?post_id=${cssview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
+				                		<a href="/board/cssdelete?post_id=${cssview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
+									</c:if> 
                               	 </div>
                             </form>
-
+							
            					<!-- 댓글 작성 -->
 							<form name="replyForm" method="post">
 								<input type="hidden" name="post_id" value="${cssview.post_id }">
@@ -181,8 +183,59 @@
             </div>
             <!--// end row -->
         </div>
-    </div>
-    
+    </div>				
+	<div class="modal fade" id="boardreport" tabindex="-1" role="dialog" aria-labelledby="#boardreport" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="exampleModalLabel">New message</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="recipient-name" class="control-label">Recipient:</label>
+								<input type="text" class="form-control" id="recipient-name">
+						</div>
+						<div class="form-group">
+							<label for="message-text" class="control-label">Message:</label>
+							<textarea class="form-control" id="message-text"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Send message</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="memberreport" tabindex="-1" role="dialog" aria-labelledby="memberreport" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="exampleModalLabel">New message</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="recipient-name" class="control-label">Recipient:</label>
+								<input type="text" class="form-control" id="recipient-name">
+						</div>
+						<div class="form-group">
+							<label for="message-text" class="control-label">Message:</label>
+							<textarea class="form-control" id="message-text"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Send message</button>
+				</div>
+			</div>
+		</div>
+	</div>
     <!-- End join Form -->
     <!--========== END PAGE LAYOUT ==========-->
 
