@@ -2,6 +2,7 @@ package kr.co.bttf.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,8 +59,6 @@ public class MemberController {
 		logger.info("get signin");
 	}
 	
-	
-	
 	// 로그인 post
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public String postSignin(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
@@ -105,25 +105,26 @@ public class MemberController {
 	}
 	
 	
+	// 비밀번호 찾기
+	@RequestMapping(value = "/findpw", method = RequestMethod.GET)
+	public void findpw() throws Exception{
+	}
+
+	@RequestMapping(value = "/findpw", method = RequestMethod.POST)
+	public void findpw(@ModelAttribute MemberVO member, HttpServletResponse response) throws Exception{
+		service.findpw(response, member);
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(value = "/updatepw", method = RequestMethod.GET)
+	public void updatepw() throws Exception{
+	}
 	
 	// 로그아웃
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
 	public String signout(HttpSession session) throws Exception {
 		logger.info("get logout");
 		
-		service.signout(session);  // 세션 정보를 제거
+		service.signout(session);
 				
 		return "redirect:/";
 	}

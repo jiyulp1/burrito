@@ -14,7 +14,7 @@
     <meta content="" name="description" />
     <meta content="" name="author" />
 
-    <!-- GLOBAL MANDATORY STYLES -->
+   <!-- GLOBAL MANDATORY STYLES -->
 	<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
 	<link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
 	<link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -90,13 +90,64 @@
             color : blue;
          }
     </style>
+	<script>
+		$(function(){
+			$("#findBtn").click(function(){
+				$.ajax({
+					url : "/member/findpw",
+					type : "POST",
+					data : {
+						email : $("#user_email").val()
+					},
+					success : function(result) {
+						alert(result);
+					},
+				})
+			});
+		})
+	</script>
+    <!-- <script type="text/javascript">
+		function sendEMail() {
+		     
+		    var form = document.formEMail;
+		 
+		    //
+		    try {
+		        $.ajax({
+		            type: 'GET',
+		            url: 'mail',
+		            dataType: 'html',
+		            data: {
+		                from_email : form.from_email.value,
+		                to_email : form.to_email.value,
+		                subtitle : form.subtitle.value,
+		                content : form.content.value
+		            },
+		            success: function(data)
+		            {
+		                //alert(data);
+		                $('.clsResult').html(data.result);
+		            },
+		            error : function(XMLHttpRequest, textStatus, errorThrown) {
+		                alert('There was an error.');
+		            }
+		        });
+		         
+		    } catch(e) {
+		        alert(e);
+		    }
+		     
+		    return false;
+		}
+
+	</script>-->
 </head>
 <!-- END HEAD -->
 
 <!-- BODY -->
 
 <body class="page-on-scroll fixed_container">
-	<c:set var="member" value="${requestScope.member }"/>
+	<c:set var="pwresult" value="${requestScope.member }"/>
 	<c:if test = "${not empty param.findPw }">
 		<c:if test = "${not param.findPw }">
 			<script> alert("일치하는 회원 정보가 없습니다.")</script>
@@ -113,22 +164,19 @@
         <div class="row">
             <div class="card align-middle col-md-3 login_card" >
                 <div class="card-title" style="margin-top:30px;">         
-                    <h2 class="card-title" style="color:#f58b34;"><img src="/resource/img/home_logo.png"/></h2>
+                    <h2 class="card-title" style="color:#f58b34;"><img src="../../../resource/img/home_logo.png"/></h2>
                 </div>     
                 <div class="card-body">
-                    <form action="${pageContext.request.contextPath }/pages/updatePw.us" class="form-signin" method="POST">                    	
-                        <input type="text" name="user_email" id="user_email" class="form-control" style="display:none;" value="${user_email }" minlength="11" maxlength="18" autofocus required ><br>
-                        <input type="text" name="user_email" id="user_email" class="form-control" value="${member.user_email }" minlength="11" maxlength="18" autofocus required ><br>
-                        <input type="password" name="user_pw" id="user_pw" class="form-control" placeholder="비밀번호 변경"  minlength="11" maxlength="18" autofocus required ><br>
-                        <input type="password" name="user_pw_re" id="user_pw_re" class="form-control" placeholder="비밀번호 재확인" minlength="11" maxlength="18" required ><br>
-                        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" onclick="confirm()">비밀번호 변경</button>
+                    <form class="form-signin" method="POST">
+                        <input type="email" name="user_email" id="user_email" class="form-control" placeholder="이메일" required><br>
+                        <input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" value="비밀번호찾기" onclick="send()">
                     </form>
                 </div>
                 <div class="links" style="padding: 10px 20px;">
-                    <a href="${pageContext.request.contextPath }/app/pages/findId.jsp">아이디 찾기</a> | <a href="${pageContext.request.contextPath }/app/pages/login.jsp">로그인</a> | <a href="${pageContext.request.contextPath }/app/pages/join.jsp">회원가입</a>
+                    <a href="/member/findId" id="findBtn">아이디 찾기</a> | <a onclick="history.go(-1);">로그인</a> | <a href="/member/signup">회원가입</a>
                 </div>
             </div>
-        </div>           
+        </div>
     </div> 
     <footer class="footer fixed_footer">
 
@@ -168,25 +216,6 @@
 	<!-- Load d3.js and c3.js -->
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
-    <script type="text/javascript">
-	    $(document).on("keyup", "#user_pw", function () {  // 전화번호
-	        var val = $(this).val();
-	        $(this).val(autoHypenPwNum(val));
-	    });
-	
-	    function autoHypenPwNum(str) {
-	        str = str.replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})/, "$1-$2-$3").replace("--", "-");
-	        return str;
-	    }  	
-    
-    	function confirm(){
-    		
-    		
-    		
-    		alert("비밀번호가 정상적으로 변경 되었습니다.");
-    	}
-    
-    </script>
 </body>
 <!-- END BODY -->
 
