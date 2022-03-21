@@ -1,8 +1,0 @@
-@charset "utf-8";
-
-//vendor prefix
-@mixin vendor-prefix($property, $value) {
-  @each $prefix in -webkit-, -moz-, -ms-, -o-, '' {
-    #{$prefix}#{$property}: $value;
-  }
-}

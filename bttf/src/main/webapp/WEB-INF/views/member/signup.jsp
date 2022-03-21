@@ -103,6 +103,10 @@
                                     <input  id="user_name" name="user_name" class="form-control margin-b-50" type="text" placeholder="이름">
                                 </div>
                                 <div class="col-auto">
+                                    <label for="user_nickname">닉네임</label>
+                                    <input  id="user_nickname" name="user_nickname" class="form-control margin-b-50" type="text" placeholder="닉네임">
+                                </div>
+                                <div class="col-auto">
                                     <label for="user_phone">전화번호</label>
                                     <input  id="user_phone" name="user_phone" class="form-control margin-b-50" type="text" placeholder="전화번호">
                                 </div>

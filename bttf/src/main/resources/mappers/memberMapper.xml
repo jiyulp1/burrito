@@ -8,8 +8,8 @@
 	<!-- user_id가 user_email로 대체됨 -->
 	<insert id="signup">
 		INSERT INTO USER_ALL
-		(user_email, user_pw, user_name, user_phone, main_language)
-		VALUES (#{user_email}, #{user_pw }, #{user_name }, #{user_phone },
+		(user_email, user_pw, user_name, user_nickname ,  user_phone, main_language)
+		VALUES (#{user_email}, #{user_pw }, #{user_name }, #{user_nickname }, #{user_phone },
 		#{main_language } )
 	</insert>
 
