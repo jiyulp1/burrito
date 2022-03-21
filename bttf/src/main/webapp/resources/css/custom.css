@@ -494,11 +494,11 @@ ul.nav li.dropdown_man:hover > ul.manager_dropdown {
 .join_form li:nth-of-type(7) a{float:right;margin-top:-65px;margin-right:100px;width:100px;}
 
 /*占쎈툡占쎌뵠占쎈탵餓λ쵎�궗占쎌넇占쎌뵥(甕곕뗄�뒠)*/
-.popup{width:300px; height:300px;background:#fff;color:#000;border:2px solid #ff6600; position:absolute; right:0; top:0;text-align:center;margin:500px 650px 0 0;/*display:none;*/}
+.popup_join{width:300px; height:300px;background:#fff;color:#000;border:2px solid #ff6600; position:absolute; right:0; top:0;text-align:center;margin:500px 650px 0 0;/*display:none;*/}
 
-.popup h4{padding:15px 0 0 10px;width:296px; height:50px;/*占쎈엘占쎈쐭 獄쏄퀗瑗랃옙源�*/background:#175c8e;color:#fff;}
-.popup p{margin:20px 0;}
-.popup a{width:100px;margin-left:100px;height:40px;line-height:40px;background:#ff6600;color:#fff;}
+.popup_join h4{padding:15px 0 0 10px;width:296px; height:50px;/*占쎈엘占쎈쐭 獄쏄퀗瑗랃옙源�*/background:#175c8e;color:#fff;}
+.popup_join p{margin:20px 0;}
+.popup_join a{width:100px;margin-left:100px;height:40px;line-height:40px;background:#ff6600;color:#fff;}
 
 /* join end */
 
@@ -658,7 +658,7 @@ pre{
 
 
 /* start realTime chatting style*/
-.chatt_btn.chatt_btn-is-visible{
+.chat_btn.chat_btn-is-visible{
 	visibility: visible;
     opacity: .6;
     -webkit-transform: translate3d(0, 0, 0);
@@ -670,7 +670,7 @@ pre{
 		
 }
 
-.chatt_btn{
+.chat_btn{
 	
 	position: fixed;
     width: 200px !important;
@@ -703,19 +703,19 @@ pre{
 	
 }
 
-  .chatt_btn:hover {
+  .chat_btn:hover {
     color: #fff;
     transition-duration: 300ms;
     transition-property: all;
     transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
   }
   
-  .chatt_btn:focus, .chatt_btn:hover {
+  .chat_btn:focus, .chat_btn:hover {
     text-decoration: none;
   }
   
   /* The Button Becomes Visible */
-  .chatt_btn.chatt_btn-is-visible {
+  .chat_btn.chat_btn-is-visible {
     visibility: visible;
     opacity: .6;
     -webkit-transform: translate3d(0, 0, 0);
@@ -726,7 +726,7 @@ pre{
     transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
   }
   
-  .chatt_btn.chatt_btn-is-visible:hover {
+  .chat_btn.chat_btn-is-visible:hover {
     opacity: 1;
     transition-duration: 300ms;
     transition-property: all;
@@ -734,23 +734,179 @@ pre{
   }
   
   /* If the user keeps scrolling down, the button is out of focus and becomes less visible */
-  .chatt_btn.chatt_btn-fade-out {
+  .chat_btn.chat_btn-fade-out {
     opacity: .4;
   }
   
-  .chatt_btn.chatt_btn-fade-out:hover {
+  .chat_btn.chat_btn-fade-out:hover {
     opacity: 1; 
     transition-duration: 300ms;
     transition-property: all;
     transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
   }
 
+.chatting_btn{
+	border:0; 
+	padding:10px 15px; 
+	background:#000; 
+	color:#fff;
+	line-height: 1.5px;
+}
 
+.popup{
+	width:350px; 
+/* 	height:600px;  */
+	background:transparent; 
+	color:#fff; 
+	position:fixed; 
+	left:1541px; 
+	top:310px; 
+	display:none;
+/* 	box-shadow: 2px 3px 5px 0px; */
+/* 	padding : 20px;  */
+	border-radius: 30px;  
+}
 
+.chorok_header{
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;	
+}
+
+.chorok-header .close {
+    margin-top: -2px;
+  }
+  
+  .chorok-title {
+    margin: 0;
+    line-height: 1.42857143;
+  }
+  
+  .chorok-body {
+    position: relative;
+    padding: 15px;
+    height: 473px;
+  }
+  
+  .chorok-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+  }
+  
+  .chorok-footer .btn + .btn {
+    margin-bottom: 0;
+    margin-left: 5px;
+  }
+  
+  .chorok-footer .btn-group .btn + .btn {
+    margin-left: -1px;
+  }
+  
+  .chorok-footer .btn-block + .btn-block {
+    margin-left: 0;
+  }
+  
+  .chorok-scrollbar-measure {
+    position: absolute;
+    top: -9999px;
+    width: 50px;
+    height: 50px;
+    overflow: scroll;
+  }
+  
+  .chorok-form-control {
+    height: 314px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #a6a7aa;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding-left: 15px;
+    width:100%;
+    
+}
+  
+  .chorok-msg-form-control {
+    height: 314px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #a6a7aa;
+    background: #d9d9d9;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding-left: 15px;
+    
+}
+  
+  
+  button.close .chorok_btn{
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    font-size: 38px;
+    font-weight: 400;
+    font-family: Hind, sans-serif;
+    color: #000;
+  }
+  
+  
+  
+  .chorok_btn span{
+  	font-size: 38px;
+    font-weight: 400;
+    font-family: Hind, sans-serif;
+    color: #000;
+  }
+  
+  .form-control {
+    height: 50px;
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 1px solid #b8b8b8;
+    background: transparent;
+    color: #000 !important;
+    resize: none;
+}
+  
+  
+  @media (min-width: 768px) {
+    .chorok-dialog {
+     	width:350px; 
+		height:600px; 
+/* 		padding : 20px;  */
+		border-radius: 10px;  
+    }
+    
+    .chorok-content {
+      -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+              box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+              
+    }
+    
+    .chorok-sm {
+      width: 300px;
+    }
+    
+  }
+  @media (min-width: 992px) {
+  
+    .chorok-lg {
+      width: 900px;
+    }
+    
+  }
 
 
 
 /* end realTime chatting style*/
+
+
+
 
 
 /* 3. content section end */

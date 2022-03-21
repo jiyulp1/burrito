@@ -337,9 +337,37 @@
     <!--========== END FOOTER ==========-->
 
     <!-- Back To Top -->
-    <a href="javascript:void(0);" class="js_chatting_btn chatt_btn chatt_btn-is-visible">실시간 채팅</a>
+	<div class="layer_popup">
+<!-- 	    <a href="javascript:void(0);" class="js_chatting_btn chat_btn chat_btn-is-visible chatting_btn" style="z-index: 100000;">실시간 채팅</a> -->
+   		<p><button class="js_chatting_btn chat_btn chat_btn-is-visible chatting_btn" >채팅방</button></p>
+        <div class="popup">
+            <div class="chorok-dialog">
+				<div class="chorok-content">
+					<div class="chorok_header">
+						<button type="button" class="close close_chat chorok_btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="chorok-title" id="exampleModalLabel">New message</h4>
+					</div>
+					<div class="chorok-body">
+						<form>
+							<div class="form-group">
+								<input type="text" class="chorok-form-control" id="recipient-name" readonly="readonly">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="control-label" style="color:#000 !important; ">Message:</label>
+								<textarea class="form-control" id="message-text"></textarea>
+							</div>
+						</form>
+					</div>
+					<div class="chorok-footer">
+<!-- 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+						<button type="button" class="btn btn-primary">Send message</button>
+					</div>
+				</div>
+			</div>     
+        </div>
+    </div>
+<!--             <p><button class="close_chat">닫기</button></p> -->
     <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
-
     <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- CORE PLUGINS -->
     
@@ -367,6 +395,7 @@
     <script src="../../resources/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resources/js/action.js"></script>
     
+    <script type="text/javascript" src="../../resources/js/chatting_action.js"></script>
 </body>
 <!-- END BODY -->
 
