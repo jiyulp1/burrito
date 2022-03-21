@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>가장 효율적인 웹 UI 개발 방법 | ROOT UI</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="가장 효율적인 웹 UI 개발 방법 ROOT UI는 부트스트랩 기반의 웹 UI 개발 프랜차이즈입니다.">
+  <meta name="keywords" content="ROOT UI 시작">
+
+  <link rel="stylesheet" href="./resources/css/root-ui.css">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="./resources/js/root-ui.js"></script>
+
+  <script>
+    $(function() {
+      var rui = new RootUI();
+
+      $('.txt-version').html(rui.version);
+    });
+  </script>
+
+  <style>
+    main {
+      background-color: #f3f4ff;
+    }
+
+    .article-content {
+      position: relative;
+      height: 100vh;
+    }
+
+    .content-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .img-box {
+      width: 20rem;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .img-box img {
+      display: block;
+      width: 100%;
+    }
+
+    .img-box .txt-version {
+      font-size: 1.2rem;
+    }
+
+    .txt-box {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .txt-box p {
+      color: #353575;
+      font-size: 2.4rem;
+    }
+
+    .btn-box {
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .btn-box .btn {
+      color: #fff;
+      background-color: #e55;
+      border-color: #e55;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- #skip-->
+  <a id="skip" href="#">본문으로 바로가기</a>
+  <!-- #skip //-->
+
+  <!-- #root-->
+  <div id="root">
+    <!-- main-->
+    <main id="index">
+      <div class="container">
+        <header class="main-header is-blind">
+          <h1>가장 효율적인 마크업 개발 가이드 ROOT UI</h1>
+        </header>
+  
+        <article class="main-article">
+          <header class="article-header is-blind">
+            <h2>ROOT UI 시작하기</h2>
+          </header>
+          <div class="article-content">
+            <div class="content-box">
+              <div class="img-box">
+                <img src="./resources/svg/logo/logo_default.svg" alt="ROOT UI">
+                <span class="txt-version">v1.0.9</span>
+              </div>
+              <div class="txt-box">
+                <p>지금 <strong>ROOT UI</strong>를 시작하세요!</p>
+              </div>
+              <div class="btn-box">
+                <a href="http://root-ui.com" target="_blank" class="btn">ROOT UI 알아보기</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+    <!-- main //-->
+  </div>
+  <!-- #root //-->
+</body>
+</html>

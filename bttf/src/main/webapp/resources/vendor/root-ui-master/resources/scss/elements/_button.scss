@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  padding: .5em 1.5em;
+  color: inherit;
+  line-height: $line-height-base;
+  background-color: $white;
+  border: 1px solid $border-color;
+  border-radius: 0;
+
+  &:disabled,
+  &.btn-disabled {
+    opacity: .5;
+  }
+
+  span {
+    display: inline-block;
+  }
+}
+
+a.btn {
+  text-decoration: none;
+}
+
+.btn-outline {
+  color: $white;
+  background-color: transparent;
+  border-color: $white;
+
+  &:not(:disabled):hover {
+    color: $black;
+    background-color: $white;
+  }
+}
+
+.btn-round {
+  border-radius: 10em !important;
+}
+
+.btn-circle {
+  width: 2.5em;
+  height: 2.5em;
+  padding: 0;
+  border-radius: 50% !important;
+  
+  span {
+    display: none !important;
+  }
+}
+
+.btn-square {
+  border-radius: 0 !important;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+@each $size, $value in $font-sizes {
+  .btn-#{$size} {
+    font-size: $value;
+  }
+}
