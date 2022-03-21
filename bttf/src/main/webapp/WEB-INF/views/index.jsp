@@ -86,9 +86,9 @@
                             <div class="service-info">
                                 <h3>HTML5</h3>
                                 <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiatdolor</p>
-                                <a class="link" href="${pageContext.request.contextPath }/app/pages/html.jsp">Read More</a>
+                                <a class="link" href="/board/htmllist">Read More</a>
                             </div>
-                            <a href="${pageContext.request.contextPath }/app/pages/html.jsp" class="content-wrapper-link"></a>
+                            <a href="/board/htmllist" class="content-wrapper-link"></a>
                         </div>
                     </div>
                 </div>
@@ -101,9 +101,9 @@
                             <div class="service-info">
                                 <h3>CSS3</h3>
                                 <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-                                <a class="link" href="${pageContext.request.contextPath }/pages/csslist.do?page=1">Read More</a>
+                                <a class="link" href="/board/csslist">Read More</a>
                             </div>
-                            <a href="${pageContext.request.contextPath }/pages/csslist.do?page=1" class="content-wrapper-link"></a>
+                            <a href="/board/csslist" class="content-wrapper-link"></a>
                         </div>
                     </div>
                 </div>
@@ -350,7 +350,7 @@
     
     <!-- PAGE LEVEL PLUGINS -->
     <script src="../../resources/vendor/jquery.easing.js" type="text/javascript"></script>
-    <script src="../../resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="../../resources/vendor/jquery.back-to-top.js" type="text/javascript"></script> 
     
     
     <!--  <script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script> --> 
