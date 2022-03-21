@@ -64,8 +64,13 @@
 	
 	<!-- 2. 게시물 작성 -->
 	<insert id="jswrite" parameterType="kr.co.bttf.domain.JsBoardVO">
+<<<<<<< Updated upstream
 		insert into javascript (post_subject, post_content, writer)
 		values(#{post_subject}, #{post_content}, #{writers})
+=======
+		insert into javascript (post_subject, post_contents, user_nickname)
+		values(#{post_subject}, #{post_contents}, #{user_nickname})
+>>>>>>> Stashed changes
 	</insert>
 	
 	
@@ -103,9 +108,15 @@
 	
 	
 	<!-- 2. 게시물 작성 -->
+<<<<<<< Updated upstream
 	<insert id="orwrite" parameterType="kr.co.bttf.domain.JsBoardVO">
 		insert into oracle (post_subject, post_content, writer)
 		values(#{post_subject}, #{post_content}, #{writers})
+=======
+	<insert id="oraclewrite" parameterType="kr.co.bttf.domain.OracleBoardVO">
+		insert into oracle (post_subject, post_contents, user_nickname)
+		values(#{post_subject}, #{post_contents}, #{user_nickname})
+>>>>>>> Stashed changes
 	</insert>
 	
 	

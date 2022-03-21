@@ -54,6 +54,7 @@
     <!-- notice -->
     <div class="bg-color-sky-light fixed_container">
         <div class="content-lg container" style="margin-top : 50px;">
+<<<<<<< Updated upstream
             <!-- notice -->
             <h2>Oracle QnA</h2>
             <div class="search_box">
@@ -140,6 +141,44 @@
                     </tbody>
                 </table>
             </div>
+=======
+            <h2>ORACLE QnA</h2>
+            <form>
+	            <div class="table-responsive">
+	                <table id="foo-table" class="table table-striped" data-page-length='40' data-order='[[ 1, "desc" ]]'>
+	                    <thead>
+	                        <th>번호</th>
+	                        <th>제목</th>
+	                        <th>작성자</th>
+	                        <th>조회수</th>
+	                        <th>날짜</th>
+	                    </thead>
+	                    <tbody>
+	                    	<c:choose>
+		                    <c:when test = "${oraclelist != null and fn:length(oraclelist) > 0 }">
+		                    		<c:forEach var="board" items="${oraclelist}">
+				                        <tr>
+				                            <td>${board.post_id }</td>
+				                            <td>
+				                            <a href="/board/oracleview?post_id=${board.post_id }">${board.post_subject }</a>
+				                            </td>
+				                            <td>${board.user_nickname }</td>
+				                            <td>${board.post_vcount }</td>
+				                            <td>${board.post_regdate }</td>
+				                        </tr>
+		                        	</c:forEach>
+		                        </c:when>
+		                        <c:otherwise>
+		                        	<tr>
+		                        		<td colspan="5" class="text-center">등록된 게시물이 없습니다 </td>
+		                        	</tr>
+		                        </c:otherwise>
+		                    </c:choose>
+	                    </tbody>
+	                </table>
+	            </div>
+			</form>
+>>>>>>> Stashed changes
             <!-- End notice -->
             <button class="btn btn-primary" type="submit">글쓰기</button>
         </div>

@@ -17,19 +17,19 @@
 
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-    <link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/board../../../resources//vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/board../../../resources//vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
     <!-- font-Glyphicon -->
     <!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
     <!-- PAGE LEVEL PLUGIN STYLES -->
-    <link href="../../resource/css/animate.css" rel="stylesheet">
-    <link href="../../resource/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/board../../../resources/animate.css" rel="stylesheet">
+    <link href="/board../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
 
     <!-- THEME STYLES -->
-    <link href="../../resource/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="/board../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/resource/img/favicon/favicon-32x32.png" />
@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="../../resource/css/custom.css">
 
     <!-- c3 chart -->
-    <link href="../../resource/vendor/c3-0.7.20/c3.css" rel="stylesheet">
+    <link href="/board../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
     <style>
 .ck-blurred .ck .ck-content .ck-editor__editable .ck-rounded-corners .ck-editor__editable_inline h1
 	{
