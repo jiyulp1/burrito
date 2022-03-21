@@ -120,8 +120,7 @@ a {
 						<p id="check" class="check">${login_msg}</p>
 						<input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" style="line-height:28px !important; margin-bottom: 20px;" VALUE="로그인">
 						<div class="links" style="padding: 10px 20px;">
-							<a href="${pageContext.request.contextPath }/member/findId.jsp">아이디 찾기</a> | <a href="/member/findPw.jsp">비밀번호 찾기
-								</a> | <a href="/member/signup">회원가입</a>
+							<a href="/member/findId">아이디 찾기</a> | <a href="/member/findpw">비밀번호 찾기</a> | <a href="/member/signup">회원가입</a>
 						</div>
 					</form>
 				</div>

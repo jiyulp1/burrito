@@ -1,6 +1,7 @@
 package kr.co.bttf.service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.co.bttf.domain.CssBoardVO;
@@ -29,5 +30,11 @@ public interface MemberService {
 		//신고목록등재
 	public void memreportupdate(MemberVO vo) throws Exception;
 
+	//비밀번호 찾기
+	public void findpw(HttpServletResponse response, MemberVO member) throws Exception;
 
+	//이메일발송
+	public void sendemail(MemberVO vo, String div) throws Exception;
+
+	
 }

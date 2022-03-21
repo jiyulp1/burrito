@@ -14,7 +14,7 @@
     <meta content="" name="description" />
     <meta content="" name="author" />
 
-   <!-- GLOBAL MANDATORY STYLES -->
+    <!-- GLOBAL MANDATORY STYLES -->
 	<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
 	<link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
 	<link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -90,53 +90,12 @@
             color : blue;
          }
     </style>
-    <!-- <script type="text/javascript">
-		function sendEMail() {
-		     
-		    var form = document.formEMail;
-		 
-		    //
-		    try {
-		        $.ajax({
-		            type: 'GET',
-		            url: 'mail',
-		            dataType: 'html',
-		            data: {
-		                from_email : form.from_email.value,
-		                to_email : form.to_email.value,
-		                subtitle : form.subtitle.value,
-		                content : form.content.value
-		            },
-		            success: function(data)
-		            {
-		                //alert(data);
-		                $('.clsResult').html(data.result);
-		            },
-		            error : function(XMLHttpRequest, textStatus, errorThrown) {
-		                alert('There was an error.');
-		            }
-		        });
-		         
-		    } catch(e) {
-		        alert(e);
-		    }
-		     
-		    return false;
-		}
-
-	</script>-->
 </head>
 <!-- END HEAD -->
 
 <!-- BODY -->
 
 <body class="page-on-scroll fixed_container">
-	<c:set var="pwresult" value="${requestScope.member }"/>
-	<c:if test = "${not empty param.findPw }">
-		<c:if test = "${not param.findPw }">
-			<script> alert("일치하는 회원 정보가 없습니다.")</script>
-		</c:if>
-	</c:if>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -151,21 +110,17 @@
                     <h2 class="card-title" style="color:#f58b34;"><img src="/resource/img/home_logo.png"/></h2>
                 </div>     
                 <div class="card-body">
-                    <form action="${pageContext.request.contextPath }/pages/findPw.us" class="form-signin" method="POST">
-                        <input type="text" name="user_id" id="user_id" class="form-control" placeholder="아이디" required autofocus ><br>
-                        <input type="email" name="user_email" id="user_email" class="form-control" placeholder="이메일" required><br>
-<%-- 						   <c:if test="${ param.findPw }"> --%>
-<%-- 						      <p class="check" id="check">회원님의 비밀번호는 ${pwresult} 입니다.</p><br/> --%>
-<%-- 						   </c:if> --%>
-<!--                         <a id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="send_mail()">비밀번호찾기</a> -->
-                        <input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" value="비밀번호찾기" onclick="send()">
+                    <form class="form-signin" method="POST">                    	
+                        <input type="password" name="user_pw" id="user_pw" class="form-control" placeholder="비밀번호 변경"  minlength="11" maxlength="18" autofocus required ><br>
+                        <input type="password" name="user_pw_re" id="user_pw_re" class="form-control" placeholder="비밀번호 재확인" minlength="11" maxlength="18" required ><br>
+                        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" onclick="confirm()">비밀번호 변경</button>
                     </form>
                 </div>
                 <div class="links" style="padding: 10px 20px;">
-                    <a href="${pageContext.request.contextPath }/app/pages/findId.jsp">아이디 찾기</a> | <a href="${pageContext.request.contextPath }/app/pages/login.jsp">로그인</a> | <a href="${pageContext.request.contextPath }/app/pages/join.jsp">회원가입</a>
+                    <a href="/member/findId">아이디 찾기</a> | <a href="/member/signin">로그인</a> | <a href="/member/signup">회원가입</a>
                 </div>
             </div>
-        </div>
+        </div>           
     </div> 
     <footer class="footer fixed_footer">
 
@@ -205,6 +160,22 @@
 	<!-- Load d3.js and c3.js -->
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+	    $(document).on("keyup", "#user_pw", function () {  // 전화번호
+	        var val = $(this).val();
+	        $(this).val(autoHypenPwNum(val));
+	    });
+	
+	    function autoHypenPwNum(str) {
+	        str = str.replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})/, "$1-$2-$3").replace("--", "-");
+	        return str;
+	    }  	
+    
+    	function confirm(){
+    		alert("비밀번호가 정상적으로 변경 되었습니다.");
+    	}
+    
+    </script>
 </body>
 <!-- END BODY -->
 

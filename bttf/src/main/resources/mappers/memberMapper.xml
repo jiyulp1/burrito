@@ -5,7 +5,6 @@
 
 <mapper namespace="kr.co.bttf.mappers.memberMapper">
 
-	<!-- user_id가 user_email로 대체됨 -->
 	<insert id="signup">
 		INSERT INTO USER_ALL
 		(user_email, user_pw, user_name, user_nickname ,  user_phone, main_language)
@@ -37,4 +36,17 @@
 	<update id="memreportupdate" parameterType="kr.co.bttf.domain.MemberVO">
 		update user_all set user_reported = 0 where user_nickname = #{user_nickname }
 	</update>
+	
+	<select id="readMember" resultType="kr.co.bttf.domain.MemberVO">
+		select * from user_all where user_email= #{user_email}
+	</select>
+	
+	<select id="idCheck" resultType="_int">
+		SELECT COUNT(*) FROM USER_ALL WHERE where user_email= #{user_email} 	 
+	</select>
+	
+	<update id="updatePw" parameterType="kr.co.bttf.domain.MemberVO">
+		update user_all set user_pw = #{user_pw} where user_email= #{user_email}
+	</update>
+	
 </mapper>
