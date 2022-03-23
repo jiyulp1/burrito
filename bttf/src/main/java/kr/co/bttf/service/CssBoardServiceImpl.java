@@ -15,33 +15,41 @@ public class CssBoardServiceImpl implements CssBoardService {
 	@Inject
 	private CssBoardDAO dao;
 
+	// 게시글 목록
 	@Override
 	public List<CssBoardVO> cssList() throws Exception {
 
 		return dao.cssList();
 	}
 
+	// 게시글 작성
 	@Override
 	public void cssWrite(CssBoardVO vo) throws Exception {
 		// insert, update인 경우니 return이 없고 redirect방식으로 통신함
 		dao.cssWrite(vo);
 	}
 
-	// 게시물 조회
+	// 게시글 상세
 	@Override
 	public CssBoardVO cssView(int post_id) throws Exception {
 
 		return dao.cssView(post_id);
 	}
+	
+	// 게시글 조회수
+	@Override
+	public int cssvcnt(int post_id) throws Exception {
+		return dao.cssvcnt(post_id);
+	}
 
-	// 게시물 수정
+	// 게시글 수정
 	@Override
 	public void cssEdit(CssBoardVO vo) throws Exception {
 
 		dao.cssEdit(vo);
 	}
 
-	// 게시물 삭제
+	// 게시글 삭제
 	public void cssDelete(int post_id) throws Exception {
 		
 		dao.cssDelete(post_id);

@@ -33,6 +33,12 @@ public class OracleBoardDAOImpl implements OracleBoardDAO {
 	public OracleBoardVO oracleView(int post_id) throws Exception {
 		return sql.selectOne(namespace + ".oracleview", post_id);
 	}
+
+	@Override
+	public int oraclevcnt(int post_id) throws Exception {
+		return sql.update(namespace + ".oraclevcnt", post_id);
+		
+	}
 	
 	@Override
 	public void oracleModify(OracleBoardVO vo) throws Exception {

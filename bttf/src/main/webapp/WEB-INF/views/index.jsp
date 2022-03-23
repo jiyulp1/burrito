@@ -306,7 +306,7 @@
 				                        <td>
 				                       		<a href="/admin/ann_view.mg?post_id=${announcmentList.post_id }">${announcmentList.post_subject }</a>
 				                        </td>
-				                        <td>${announcmentList.writer }</td>
+				                        <td>${announcmentList.user_nickname }</td>
 				                        <td>${announcmentList.post_vcount }</td>
 				                        <td>${announcmentList.post_regdate }</td>
 				                    </tr>

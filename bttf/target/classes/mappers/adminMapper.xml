@@ -22,8 +22,8 @@
 	
 	<!-- 공지사항 작성 -->
 	<insert id="annwrite" parameterType="kr.co.bttf.domain.AnnVO">
-		insert into announcements (post_subject, post_contents, writer)
-		values(#{post_subject}, #{post_contents},  #{writer})
+		insert into announcements (post_subject, post_contents, user_nickname)
+		values(#{post_subject}, #{post_contents},  #{user_nickname})
 	</insert>
 	
 	<!-- 공지사항 상세보기 -->
@@ -42,6 +42,11 @@
 	<delete id="anndelete" parameterType="_int">
 		delete from announcements where post_id = #{post_id}
 	</delete>
+	
+	<!-- 조회수 갱신 -->
+	<update id="annvcnt">
+			update announcements set post_vcount = post_vcount + 1 where post_id = #{post_id}
+	</update>
 	
 </mapper>
 

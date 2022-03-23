@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.catalina.mapper.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -46,6 +47,13 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public AnnVO annview(int post_id) throws Exception {
 		return sql.selectOne(namespace + ".annview", post_id);
+	}
+	
+
+	@Override
+	public int annvcnt(int post_id) throws Exception {
+		return sql.update(namespace + ".annvcnt", post_id);
+		
 	}
 
 	@Override

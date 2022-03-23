@@ -74,8 +74,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/termsOfUse.jsp">Rules</a></li>
-                    <li class="nav-item"><a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/announcements.jsp">Notice</a></li>
+                    <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/admin/termsOfUse">Rules</a></li>
+                    <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/admin/announcements">Notice</a></li>
 					<li class="nav-item">
 						<c:if test="${member != null && member.authority_name != 'admin' }" >
 							<a class="nav-item-child nav-item-hover" href="/member/mypage">MyPage</a>

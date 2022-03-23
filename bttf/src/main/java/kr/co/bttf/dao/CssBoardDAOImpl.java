@@ -30,6 +30,12 @@ public class CssBoardDAOImpl implements CssBoardDAO {
 	public CssBoardVO cssView(int post_id) throws Exception {
 		return sql.selectOne(namespace + ".cssview", post_id);
 	}
+	
+	@Override
+	public int cssvcnt(int post_id) throws Exception {
+		return sql.update(namespace + ".cssvcnt", post_id);
+		
+	}
 
 	@Override
 	public void cssEdit(CssBoardVO vo) throws Exception {

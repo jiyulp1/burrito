@@ -22,7 +22,10 @@ public interface AdminService {
 
 	// 공지사항 상세보기
 	public AnnVO annview(int post_id) throws Exception;
-
+	
+	// 공지사항 조회수
+	public int annvcnt(int post_id) throws Exception;
+	
 	// 공지사항 수정
 	public void annedit(AnnVO vo) throws Exception;
 	

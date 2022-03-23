@@ -17,27 +17,31 @@
 			02. CSS
 ========================================
  -->
-	<!-- 1. 게시물 목록 -->
+	<!-- 2-1. 게시물 목록 -->
 	<select id="csslist" resultType="kr.co.bttf.domain.CssBoardVO">
 		select * from css
 	</select>
 	
 	
-	<!-- 2. 게시물 작성 -->
+	<!-- 2-2. 게시물 작성 -->
 	<insert id="csswrite" parameterType="kr.co.bttf.domain.CssBoardVO">
 		insert into css (post_subject, post_contents, user_nickname)
 		values(#{post_subject}, #{post_contents}, #{user_nickname})
 	</insert>
 	
 	
-	<!-- 3. 게시물 조회 -->
+	<!-- 2-3. 게시물 조회 -->
 	<select id="cssview" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
 		select * from css
 		where post_id = #{post_id}
 	</select>
+
+	<!-- 2-3-1. 조회수 갱신 -->
+	<update id="cssvcnt">
+			update css set post_vcount = post_vcount + 1 where post_id = #{post_id}
+	</update>		
 	
-	
-	<!-- 4. 게시물 수정 -->
+	<!-- 2-4. 게시물 수정 -->
 	<update id="cssedit" parameterType="kr.co.bttf.domain.CssBoardVO">
 		update css set
 		post_subject = #{post_subject}, post_contents = #{post_contents}
@@ -45,7 +49,7 @@
 	</update>
 	
 	
-	<!--5. 게시물 삭제 -->
+	<!-- 2-5. 게시물 삭제 -->
 	<delete id="cssdelete" parameterType="int">
 		delete from css
 		where post_id = #{post_id}
@@ -56,27 +60,31 @@
 			03. JAVASCRIPT
 ========================================
  -->
-	<!-- 1. 게시물 목록 -->
+	<!-- 3-1. 게시물 목록 -->
 	<select id="jslist" resultType="kr.co.bttf.domain.JsBoardVO">
 		select * from javascript
 	</select>
 	
 	
-	<!-- 2. 게시물 작성 -->
+	<!-- 3-2. 게시물 작성 -->
 	<insert id="jswrite" parameterType="kr.co.bttf.domain.JsBoardVO">
 		insert into css (post_subject, post_contents, user_nickname)
 		values(#{post_subject}, #{post_contents}, #{user_nickname})
 	</insert>
 	
 	
-	<!-- 3. 게시물 조회 -->
+	<!-- 3-3. 게시물 조회 -->
 	<select id="jsview" parameterType="int" resultType="kr.co.bttf.domain.JsBoardVO">
 		select * from javascript
 		where post_id = #{post_id}
 	</select>
+
+	<!-- 3-3-1. 조회수 갱신 -->
+	<update id="javascriptvcnt">
+			update javascript set post_vcount = post_vcount + 1 where post_id = #{post_id}
+	</update>	
 	
-	
-	<!-- 4. 게시물 수정 -->
+	<!-- 3-4. 게시물 수정 -->
 	<update id="jsmodify" parameterType="kr.co.bttf.domain.JsBoardVO">
 		update javascript set
 		post_subject = #{post_subject}, post_contents = #{post_contents}, user_nickname = #{user_nickname}
@@ -84,7 +92,7 @@
 	</update>
 	
 	
-	<!--5. 게시물 삭제 -->
+	<!-- 3-5. 게시물 삭제 -->
 	<delete id="jsdelete" parameterType="int">
 		delete from javascript
 		where post_id = #{post_id}
@@ -96,41 +104,45 @@
 			06. ORACLE
 ========================================
  -->
-	<!-- 1. 게시물 목록 -->
+	<!-- 6-1. 게시물 목록 -->
 	<select id="oraclelist" resultType="kr.co.bttf.domain.OracleBoardVO">
 		select * from oracle
 	</select>
 	
 	
-	<!-- 2. 게시물 작성 -->
+	<!-- 6-2. 게시물 작성 -->
 	<insert id="oraclewrite" parameterType="kr.co.bttf.domain.OracleBoardVO">
 		insert into oracle (post_subject, post_contents, user_nickname)
 		values(#{post_subject}, #{post_contents}, #{user_nickname})
 	</insert>
 	
 	
-	<!-- 3. 게시물 조회 -->
+	<!-- 6-3. 게시물 조회 -->
 	<select id="oracleview" parameterType="int" resultType="kr.co.bttf.domain.OracleBoardVO">
 		select * from oracle
 		where post_id = #{post_id}
 	</select>
 	
 	
-	<!-- 4. 게시물 수정 -->
+	<!-- 6-3-1. 조회수 갱신 -->
+	<update id="oraclevcnt">
+			update oracle set post_vcount = post_vcount + 1 where post_id = #{post_id}
+	</update>
+	
+	
+	<!-- 6-4. 게시물 수정 -->
 	<update id="oraclemodify" parameterType="kr.co.bttf.domain.OracleBoardVO">
 		update oracle set
-		post_subject = #{post_subject}, post_contents = #{post_contents}, user_nickname = #{user_nickname}
+		post_subject = #{post_subject}, post_contents = #{post_contents}
 		where post_id = #{post_id}
 	</update>
 	
 	
-	<!--5. 게시물 삭제 -->
+	<!-- 6-5. 게시물 삭제 -->
 	<delete id="oracledelete" parameterType="int">
 		delete from oracle
 		where post_id = #{post_id}
 	</delete>
-
-
 
 
 

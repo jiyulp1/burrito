@@ -40,6 +40,12 @@ public class AdminServiceImpl implements AdminService {
 	public AnnVO annview(int post_id) throws Exception {
 		return dao.annview(post_id);
 	}
+	
+
+	@Override
+	public int annvcnt(int post_id) throws Exception {
+		return dao.annvcnt(post_id);
+	}
 
 	@Override
 	public void annedit(AnnVO vo) throws Exception {
