@@ -35,15 +35,15 @@
 
 	<!-- 1. 댓글 조회 --> 
 	<select id="oracle_reply_list" parameterType="int" resultType="kr.co.bttf.domain.OracleReplyVO">
-		select reply_id , post_id , user_id , reply_regdate
+		select *
 		from reply_oracle 
 		where post_id = #{post_id}
 	</select>
 
 	<!-- 2. 댓글 작성 --> 
 	<insert id="oracle_reply_write" parameterType="kr.co.bttf.domain.OracleReplyVO">
-		insert into reply_oracle(post_id, user_id, reply_contents, reply_regdate) 
-		values(#{post_id}, #{user_id}, #{reply_contents}, #{reply_regdate})
+		insert into reply_oracle(post_id, user_nickname, reply_contents, reply_regdate) 
+		values(#{post_id}, #{user_nickname}, #{reply_contents}, #{reply_regdate})
 	</insert>
 
 	<!-- 3. 댓글 수정 --> 
@@ -61,3 +61,5 @@
  
 
 </mapper>
+
+

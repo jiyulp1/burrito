@@ -97,27 +97,29 @@
                               	 </div>
                             </form>
 
+
            					<!-- 댓글 작성 -->
-							<form name="replyForm" method="post">
+							<form name="replyForm" method="GET">
 								<input type="hidden" name="post_id" value="${oracleview.post_id }">
 								<div class="col-auto" style="display: flex;">
-                           			<input id="reply_contents" name="reply_contents" class="form-control mt-5" style="width: 95%;" type="text" placeholder="댓글을 작성해보세요">
+                           			<input id="reply_contents" name="reply_contents" class="form-control mt-5" style="width: 95%;" type="text" placeholder="댓글을 입력해 주세요.">
                            			<a href="javascript:document.replyForm.submit()" class="btn btn-default mt-5" style="height: 50px; margin-left: 20px; line-height:36px; ">댓글등록</a>
                          		</div>
+								
 								<!-- 댓글 리스트 -->
 								<div>
 									<c:choose>
-										<c:when test="${replylist != null and fn:length(replylist) > 0 }">
-											<c:forEach var="reply" items="${replylist }">
+										<c:when test="${oracleReplyList != null and fn:length(oracleReplyList) > 0 }">
+											<c:forEach var="reply" items="${oracleReplyList }">
 												<div class="reply_box mt-5 col-md-12 col-sm-12">
+													
 													<!-- 정상적인 접근 경로 -->
 														<div align="center" width="200px" >
-															<p id="re_author" name="user_id" class="text-left reply_subject" style="display:hidden;">${reply.replyer }</p>
+															<p id="re_author" name="user_nickname" class="text-left reply_subject" style="display:hidden;">${reply.user_nickname }</p>
 														</div>
 													<c:if test="${member != null }" >
 														<div class="col-md-12 col-sm-12 row">
 															<textarea id="reply${reply.reply_id }" class="reply_con_box" name="reply${reply.reply_id }" readonly>${reply.reply_contents }</textarea>
-															<%--<c:if test= ${sessionScope.session_id ==  dto.user_nickname} 자신이 쓴 댓글에 대해서만 수정삭제가 가능하도록 처리해야, 게시글도 마찬가지--%>
 															<div class="row mt-5" style="padding-left:10px;">
 																<a class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})" id="editfail">수정완료</a>
 																<a class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a>
@@ -125,6 +127,7 @@
 															</div>
 														</div>
 													</c:if>
+													
 													<!-- 비정상적인 접근 경로 -->
 													<c:if test="${member == null }" >
 														<div >
@@ -143,36 +146,38 @@
 										</c:otherwise>
 									</c:choose>     
 								</div>
+								
 								<!-- reply pagination -->
-								<nav aria-label="Page navigation" class="text-center">
-									<ul class="pagination">
-										<c:if test="${nowPage > 1 }">
-											<li class="page-item">							
-												<a class="page-link" href="${pageContext.request.contextPath }/pages/oracleBoardView.do?page=${nowPage - 1 }&post_id=${board.post_id }">&lt;</a>
-											</li>
-										</c:if>
-										<c:forEach var="i" begin="${startPage}" end="${endPage }">
-											<c:choose>
-												<c:when test="${i == nowPage }">
-													<li class="page-item">
-														<a class="page-link">${i }	</a>						
-													</li>
-												</c:when>
-												<c:otherwise>
-													<li class="page-item">									
-														<a class="page-link" href="${pageContext.request.contextPath }/pages/oracleBoardView.do?page=${i }&post_id=${board.post_id }">${i }</a>
-													</li>
-												</c:otherwise>
-											</c:choose>
-										</c:forEach>	
-										<c:if test="${nowPage<totalPage }">
-											<li class="page-item">
-												<a class="page-link" href="${pageContext.request.contextPath }/pages/oracleBoardView.do?page=${nowPage + 1 }&post_id=${board.post_id }">&gt;</a>
-											</li>
-										</c:if>						
-									</ul>
-								</nav>
-								<!-- end of reply pagination -->						
+<!-- 								<nav aria-label="Page navigation" class="text-center"> -->
+<!-- 									<ul class="pagination"> -->
+<%-- 										<c:if test="${nowPage > 1 }"> --%>
+<!-- 											<li class="page-item">							 -->
+<%-- 												<a class="page-link" href="${pageContext.request.contextPath }/pages/oracleBoardView.do?page=${nowPage - 1 }&post_id=${board.post_id }">&lt;</a> --%>
+<!-- 											</li> -->
+<%-- 										</c:if> --%>
+<%-- 										<c:forEach var="i" begin="${startPage}" end="${endPage }"> --%>
+<%-- 											<c:choose> --%>
+<%-- 												<c:when test="${i == nowPage }"> --%>
+<!-- 													<li class="page-item"> -->
+<%-- 														<a class="page-link">${i }	</a>						 --%>
+<!-- 													</li> -->
+<%-- 												</c:when> --%>
+<%-- 												<c:otherwise> --%>
+<!-- 													<li class="page-item">									 -->
+<%-- 														<a class="page-link" href="${pageContext.request.contextPath }/pages/oracleBoardView.do?page=${i }&post_id=${board.post_id }">${i }</a> --%>
+<!-- 													</li> -->
+<%-- 												</c:otherwise> --%>
+<%-- 											</c:choose> --%>
+<%-- 										</c:forEach>	 --%>
+<%-- 										<c:if test="${nowPage<totalPage }"> --%>
+<!-- 											<li class="page-item"> -->
+<%-- 												<a class="page-link" href="${pageContext.request.contextPath }/pages/oracleBoardView.do?page=${nowPage + 1 }&post_id=${board.post_id }">&gt;</a> --%>
+<!-- 											</li> -->
+<%-- 										</c:if>						 --%>
+<!-- 									</ul> -->
+<!-- 								</nav> -->
+								<!-- end of reply pagination -->
+													
 							</form>                                
                         </div>
                     </div>

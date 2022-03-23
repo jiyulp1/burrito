@@ -17,10 +17,12 @@ import kr.co.bttf.domain.HtmlBoardVO;
 import kr.co.bttf.domain.JsBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.OracleBoardVO;
+import kr.co.bttf.domain.OracleReplyVO;
 import kr.co.bttf.service.CssBoardService;
 import kr.co.bttf.service.HtmlBoardService;
 import kr.co.bttf.service.JsBoardService;
 import kr.co.bttf.service.OracleBoardService;
+import kr.co.bttf.service.OracleReplyService;
 
 @Controller
 @RequestMapping("/board/*")
@@ -43,6 +45,9 @@ public class BoardController {
 	
 	@Inject
 	private OracleBoardService oracleService;
+	
+	@Inject
+	private OracleReplyService oracleReplyService;
 	
 //	@Inject
 //	private SpringBoardService springService;
@@ -181,6 +186,8 @@ public class BoardController {
 
 	}
 	
+	
+	
 	/* --------------------------------
 			03. JAVASCRIPT
 	-------------------------------- */
@@ -293,6 +300,10 @@ public class BoardController {
 			
 			OracleBoardVO vo = oracleService.oracleView(post_id);
 			model.addAttribute("oracleview", vo);
+			
+			// 상세보기 시 댓글 조회
+			List<OracleReplyVO> oraclereplylist = oracleReplyService.oracleReplyList(post_id);
+			model.addAttribute("oraclereplylist", oraclereplylist);
 		}
 		
 		// 6-4. 게시물 수정 페이지 이동
