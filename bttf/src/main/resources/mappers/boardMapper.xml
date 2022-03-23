@@ -130,7 +130,11 @@
 	<!-- 4. 게시물 수정 -->
 	<update id="ormodify" parameterType="kr.co.bttf.domain.JsBoardVO">
 		update oracle set
+<<<<<<< Updated upstream
 		post_subject = #{post_subject}, post_content = #{post_content}, writer = #{writer}
+=======
+		post_subject = #{post_subject}, post_contents = #{post_contents}
+>>>>>>> Stashed changes
 		where post_id = #{post_id}
 	</update>
 	

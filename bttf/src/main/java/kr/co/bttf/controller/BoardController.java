@@ -232,6 +232,71 @@ public class BoardController {
 	/* --------------------------------
 				06. ORACLE
 	-------------------------------- */
+<<<<<<< Updated upstream
+=======
+	// 3-1 [GET] 게시물 목록
+		@RequestMapping(value = "/oraclelist", method = RequestMethod.GET)
+		public void oracleList(Model model) throws Exception{
+			List<OracleBoardVO> oraclelist = null;
+			oraclelist = oracleService.oracleList();
+			model.addAttribute("oraclelist", oraclelist);
+		}
+		
+		// 3-2. write페이지이동
+		@RequestMapping(value = "/oraclewrite", method = RequestMethod.GET)
+		public void oracleWrite() throws Exception {
+
+		}
+		
+		// 3-2-1. 게시물 작성
+		@RequestMapping(value = "/oraclewrite", method = RequestMethod.POST)
+		public String oracleWrite(OracleBoardVO vo, HttpServletRequest request) throws Exception {
+			HttpSession session = request.getSession();
+			MemberVO member = (MemberVO) session.getAttribute("member");
+			vo.setUser_nickname(member.getUser_nickname());
+			oracleService.oracleWrite(vo);
+		  return "redirect:/board/oraclelist";
+		}
+		
+		// 3-3. 게시물 상세보기 페이지 이동
+		
+		@RequestMapping(value = "/oracleview", method = RequestMethod.GET)
+		public void oracleView(@RequestParam("post_id") int post_id, Model model) throws Exception {
+			
+			OracleBoardVO vo = oracleService.oracleView(post_id);
+			model.addAttribute("oracleview", vo);
+		}
+		
+		// 4. 게시물 수정 페이지 이동
+		
+		@RequestMapping(value = "/oraclemodify", method = RequestMethod.GET)
+		public void oracleModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
+
+			OracleBoardVO vo = oracleService.oracleView(post_id);
+			model.addAttribute("oracleview", vo);
+		}
+		
+
+		@RequestMapping(value = "/oraclemodify", method = RequestMethod.POST)
+		public String oracleModify(OracleBoardVO vo) throws Exception {
+
+			oracleService.oracleModify(vo);
+			return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
+		}
+
+		
+		// 5. vo가 없으니 get방식으로 삭제
+		@RequestMapping(value = "/oracledelete", method = RequestMethod.GET)
+		public String oracleDelete(@RequestParam("post_id") int post_id, Model model) throws Exception {
+
+			oracleService.oracleDelete(post_id);
+			return "redirect:/board/oraclelist";
+
+		}
+		
+		
+	
+>>>>>>> Stashed changes
 	
 	/* --------------------------------
 				07. SPRING

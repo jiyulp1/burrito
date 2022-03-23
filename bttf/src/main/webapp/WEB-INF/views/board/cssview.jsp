@@ -118,6 +118,7 @@
 										<button type="button" class="btn btn-danger mt-4" data-toggle="modal" data-target="#userModal" data-whatever="게시글 신고">작성자 신고</button>
 									</c:if>
 									<c:if test="${member.user_nickname eq cssview.user_nickname}">
+<<<<<<< Updated upstream
 										<a href="/board/cssedit?post_id=${cssview.post_id }"
 											class="btn btn-primary mt-4" id="list" type="submit">글수정</a>
 										<a href="/board/cssdelete?post_id=${cssview.post_id }"
@@ -127,6 +128,14 @@
 							</form>
 >>>>>>> Stashed changes
 
+=======
+		 		                    	<a href="/board/cssedit?post_id=${cssview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
+				                		<a href="/board/cssdelete?post_id=${cssview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
+									</c:if> 
+                              	 </div>
+                            </form>
+							
+>>>>>>> Stashed changes
            					<!-- 댓글 작성 -->
 							<form name="replyForm" method="post">
 								<input type="hidden" name="post_id" value="${cssview.post_id }">

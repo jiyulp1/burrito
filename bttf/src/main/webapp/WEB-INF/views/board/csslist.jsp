@@ -18,25 +18,25 @@
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
 
-    <link href="/board../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="/board../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/board/../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/board/../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
     <!-- font-Glyphicon -->
     <!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
     <!-- PAGE LEVEL PLUGIN STYLES -->
-    <link href="/board../../../resources/css/animate.css" rel="stylesheet">
-    <link href="/board../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/board/../../resources/css/animate.css" rel="stylesheet">
+    <link href="/board/../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
 
     <!-- THEME STYLES -->
-    <link href="/board../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="/board/../../resources/css/layout.css" rel="stylesheet" type="text/css" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/board../../../resources/img/favicon/favicon-32x32.png" />
+    <link rel="shortcut icon" href="/board/../../resources/img/favicon/favicon-32x32.png" />
 
     <!-- custom -->
-    <link rel="stylesheet" href="/board../../../resources/css/custom.css">
+    <link rel="stylesheet" href="/board/../../resources/css/custom.css">
     
     <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
     <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.js"></script>
@@ -155,25 +155,25 @@
    
     <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- CORE PLUGINS -->
-    <script src="/board../../../resources/vendor/jquery.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/vendor/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/board/../../resources/vendor/jquery.min.js" type="text/javascript"></script>
+    <script src="/board/../../resources/vendor/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/board/../../resources/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL PLUGINS -->
-    <script src="/board../../../resources/vendor/jquery.easing.js" type="text/javascript"></script>
-    <script src="/board../../../resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/board/../../resources/vendor/jquery.easing.js" type="text/javascript"></script>
+    <script src="/board/../../resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
     <!--  <script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script> -->
-    <script src="/board../../../resources/vendor/jquery.wow.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <script src="/board/../../resources/vendor/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/board/../../resources/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/board/../../resources/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/board/../../resources/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL SCRIPTS -->
-    <script src="/board../../../resources/js/layout.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/js/components/wow.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/js/components/swiper.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/js/components/masonry.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/js/action.js"></script>
+    <script src="/board/../../resources/js/layout.min.js" type="text/javascript"></script>
+    <script src="/board/../../resources/js/components/wow.min.js" type="text/javascript"></script>
+    <script src="/board/../../resources/js/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/board/../../resources/js/components/masonry.min.js" type="text/javascript"></script>
+    <script src="/board/../../resources/js/action.js"></script>
 </body>
 <!-- END BODY -->
 

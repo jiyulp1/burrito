@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.co.bttf.mappers.replyMapper">
+
+<!-- 
+========================================
+			01. HTML
+========================================
+-->
+
+	
+<!-- 
+========================================
+			02. CSS
+========================================
+-->
+ 
+ 
+<!-- 
+========================================
+			03. JAVASCRIPT
+========================================
+-->
+ 
+ 
+
+<!-- 
+========================================
+			06. ORACLE
+========================================
+-->
+
+	<!-- 1. 댓글 조회 --> 
+	<select id="oracle_reply_list" parameterType="int" resultType="kr.co.bttf.domain.OracleReplyVO">
+		select reply_id , post_id , user_id , reply_regdate
+		from reply_oracle 
+		where post_id = #{post_id}
+	</select>
+
+	<!-- 2. 댓글 작성 --> 
+	<insert id="oracle_reply_write" parameterType="kr.co.bttf.domain.OracleReplyVO">
+		insert into reply_oracle(post_id, user_id, reply_contents, reply_regdate) 
+		values(#{post_id}, #{user_id}, #{reply_contents}, #{reply_regdate})
+	</insert>
+
+	<!-- 3. 댓글 수정 --> 
+	<update id="oracle_reply_modify" parameterType="kr.co.bttf.domain.OracleReplyVO">
+		update reply_oracle set
+		post_contents = #{post_contents}
+		where post_id = #{post_id} and reply_id = #{reply_id}
+	</update>
+
+	<!-- 4. 댓글 삭제 --> 
+ 	<delete id="oracle_reply_delete" parameterType="int">
+		delete from reply_oracle
+		where post_id = #{post_id} and reply_id = #{reply_id}
+	</delete>
+ 
+
+</mapper>
