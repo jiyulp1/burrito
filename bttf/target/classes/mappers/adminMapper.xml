@@ -15,9 +15,9 @@
 		select * from user_all where user_reported = 0
 	</select>
 	
-	<!-- 삭제되지 않은 공지사항 -->
+	<!-- 공지사항 -->
 	<select id="announcements" resultType="kr.co.bttf.domain.AnnVO">
-		select * from announcements where post_available = 1
+		select * from announcements where avaliability_category_id= 1
 	</select>
 	
 	<!-- 공지사항 작성 -->
@@ -34,7 +34,7 @@
 	<!-- 공지사항 수정 -->
 	<update id="annedit" parameterType="kr.co.bttf.domain.AnnVO" >
 		update announcements set
-		post_subject = #{post_subject}, post_contents = #{post_contents}, writer = #{writer}
+		post_subject = #{post_subject}, post_contents = #{post_contents}, user_nickname = #{user_nickname}
 		where post_id = #{post_id}
 	</update>
 	
