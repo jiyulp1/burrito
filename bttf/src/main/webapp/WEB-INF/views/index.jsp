@@ -304,7 +304,7 @@
 				                	<tr>
 				                    	<td>${announcmentList.post_id }</td>
 				                        <td>
-				                       		<a href="/admin/ann_view.mg?post_id=${announcmentList.post_id }">${announcmentList.post_subject }</a>
+				                       		<a href="/admin/annview?post_id=${announcmentList.post_id }">${announcmentList.post_subject }</a>
 				                        </td>
 				                        <td>${announcmentList.user_nickname }</td>
 				                        <td>${announcmentList.post_vcount }</td>
