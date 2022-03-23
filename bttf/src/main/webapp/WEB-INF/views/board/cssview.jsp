@@ -72,7 +72,6 @@
                             <form method="post">
                                 <div class="col-md-6">
 									<input type="hidden" name="post_id" value="${cssview.post_id }">
-<<<<<<< Updated upstream
                                     <p style="color: black; font-size: 2rem; font-weight:bold;">글 제목 : ${cssview.post_subject }</p>
                                 </div>
                                 <div class="col-md-2">
@@ -97,45 +96,8 @@
 								</c:if> 
                               	 </div>
                             </form>
-=======
-									<p style="color: black; font-size: 2rem; font-weight: bold;">글 제목 : ${cssview.post_subject }</p>
-								</div>
-								<div class="col-md-2">
-									<p class="margin-b-50 text-center">조회수 ${cssview.post_vcount }</p>
-								</div>
-								<div class="col-md-2">
-									<p class="margin-b-50 text-center">작성자 ${cssview.user_nickname }</p>
-								</div>
-								<div>
-									<pre class="form-control" placeholder="내용을 입력해 주세요." style="height: 650px; resize: none; background-color: #fff;" disabled>${cssview.post_contents }</pre>
-								</div>
-								<div class="mb-5">
-									<a href="/board/csslist" class="btn btn-default mt-4" id="edit"
-										type="submit">글 목록</a>
-									<c:if test="${not empty member}">
-										<a href="#" class="btn btn-default mt-4">북마크</a>
-										<button type="button" class="btn btn-danger mt-4" data-toggle="modal" data-target="#boardModal" data-whatever="게시글 신고">게시글 신고</button>
-										<button type="button" class="btn btn-danger mt-4" data-toggle="modal" data-target="#userModal" data-whatever="게시글 신고">작성자 신고</button>
-									</c:if>
-									<c:if test="${member.user_nickname eq cssview.user_nickname}">
-<<<<<<< Updated upstream
-										<a href="/board/cssedit?post_id=${cssview.post_id }"
-											class="btn btn-primary mt-4" id="list" type="submit">글수정</a>
-										<a href="/board/cssdelete?post_id=${cssview.post_id }"
-											class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
-									</c:if>
-								</div>
-							</form>
->>>>>>> Stashed changes
-
-=======
-		 		                    	<a href="/board/cssedit?post_id=${cssview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
-				                		<a href="/board/cssdelete?post_id=${cssview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
-									</c:if> 
-                              	 </div>
-                            </form>
+						</div>
 							
->>>>>>> Stashed changes
            					<!-- 댓글 작성 -->
 							<form name="replyForm" method="post">
 								<input type="hidden" name="post_id" value="${cssview.post_id }">

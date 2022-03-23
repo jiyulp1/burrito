@@ -12,28 +12,6 @@
    <!-- Enables the Spring MVC @Controller programming model -->
    <annotation-driven />
 
-<<<<<<< Updated upstream
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
-	<resources location="/webapp/resources/img" mapping="/img/**"/>
-	<resources location="/webapp/resources/css" mapping="/css/**"/>
-	<resources location="/webapp/resources/js" mapping="/js/**"/>
-	<resources location="/webapp/resources/sass" mapping="/sass/**"/>
-	<resources location="/webapp/resources/vendor" mapping="/vendor/**"/>
-<!-- 	<resources location="/webapp/resources/vendor" mapping="/vendor/DataTables/datatables.css"/> -->
-	
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
-	</beans:bean>
-	
-	<context:component-scan base-package="kr.co.bttf.controller" />
-	
-	
-	
-</beans:beans>
-=======
    <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
    <resources mapping="/resources/**" location="/resources/" />
    <resources location="/webapp/resources/img" mapping="/img/**"/>
@@ -55,4 +33,3 @@
    
    
 </beans:beans>
->>>>>>> Stashed changes

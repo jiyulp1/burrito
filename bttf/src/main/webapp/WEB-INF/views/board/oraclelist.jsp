@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 
 <html lang="ko" class="no-js">
@@ -155,7 +157,7 @@
 	                    </thead>
 	                    <tbody>
 	                    	<c:choose>
-		                    <c:when test = "${oraclelist != null and fn:length(oraclelist) > 0 }">
+		                    <c:when test = "${csslist != null and fn:length(csslist) > 0 }">
 		                    		<c:forEach var="board" items="${oraclelist}">
 				                        <tr>
 				                            <td>${board.post_id }</td>
