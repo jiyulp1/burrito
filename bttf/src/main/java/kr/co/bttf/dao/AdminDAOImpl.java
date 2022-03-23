@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.co.bttf.domain.AnnVO;
+import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 @Repository
 public class AdminDAOImpl implements AdminDAO {
@@ -57,6 +58,31 @@ public class AdminDAOImpl implements AdminDAO {
 	public void anndelete(int post_id) throws Exception {
 		sql.delete(namespace + ".anndelete", post_id);
 
+	}
+
+	@Override
+	public void cssundo(CssBoardVO vo) {
+		sql.update(namespace + ".cssundo", vo );
+		
+	}
+
+	@Override
+	public void memberundo(MemberVO vo) {
+		sql.update(namespace + "memberundo", vo);
+		
+	}
+
+	@Override
+	public void cssexpell(CssBoardVO vo) {
+		sql.delete(namespace + "cssexpell", vo);
+		
+	}
+
+	@Override
+	public void memberexpell(MemberVO vo) {
+		sql.delete(namespace + "memberexpell", vo);
+		
+		
 	}
 
 }

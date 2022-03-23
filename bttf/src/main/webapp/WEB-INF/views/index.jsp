@@ -366,7 +366,7 @@
 			</div>     
         </div>
     </div>
-<!--             <p><button class="close_chat">닫기</button></p> -->
+<!-- <p><button class="close_chat">닫기</button></p> -->
     <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
     <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- CORE PLUGINS -->

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.bttf.dao.AdminDAO;
 import kr.co.bttf.domain.AnnVO;
+import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -49,6 +50,34 @@ public class AdminServiceImpl implements AdminService {
 	public void anndelete(int post_id) throws Exception {
 		dao.anndelete(post_id);
 
+	}
+	
+	@Override
+	public void cssundo(CssBoardVO vo) throws Exception {
+		dao.cssundo(vo);
+		
+		
+	}
+
+	@Override
+	public void memberundo(MemberVO vo) throws Exception {
+		dao.memberundo(vo);
+		
+		
+	}
+
+	@Override
+	public void cssexpell(CssBoardVO vo) throws Exception {
+		dao.cssexpell(vo);
+		
+		
+	}
+
+	@Override
+	public void memberexpell(MemberVO vo) throws Exception {
+		dao.memberexpell(vo);
+		
+		
 	}
 
 }
