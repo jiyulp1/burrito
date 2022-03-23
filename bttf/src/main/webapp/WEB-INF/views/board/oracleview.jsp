@@ -90,7 +90,7 @@
 					               	<a href="/member/oracleboardreported?post_id=${oracleview.post_id }&category_id=0" class="btn btn-warning mt-4" id="boardreport" type="submit" style="float: right;">게시글 신고</a>
 					               	<a href="/member/memberreport?user_nickname=${oracleview.user_nickname }" class="btn btn-warning mt-4" id="memberreport" type="submit" style="float: right;">작성자 신고</a>
 								</c:if>
-								<c:if test="${member.user_name eq oracleview.user_nickname}">
+								<c:if test="${member.user_nickname eq oracleview.user_nickname}">
 		 		                    <a href="/board/oraclemodify?post_id=${oracleview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
 				                	<a href="/board/oracledelete?post_id=${oracleview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
 								</c:if> 

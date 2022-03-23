@@ -73,7 +73,7 @@
 	                    </thead>
 	                    <tbody>
 	                    	<c:choose>
-		                    <c:when test = "${oraclelist != null and fn:length(csslist) > 0 }">
+		                    <c:when test = "${oraclelist != null and fn:length(oraclelist) > 0 }">
 		                    		<c:forEach var="board" items="${oraclelist}">
 				                        <tr>
 				                            <td>${board.post_id }</td>

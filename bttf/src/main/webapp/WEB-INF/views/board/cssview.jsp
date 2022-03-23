@@ -92,7 +92,7 @@
 <%-- 					               		<a href="/member/cssboardreported?post_id=${cssview.post_id }&category_id=0" class="btn btn-warning mt-4" id="boardreport" type="submit" style="float: right;">게시글 신고</a> --%>
 <%-- 					               		<a href="/member/memberreport?user_nickname=${cssview.user_nickname }" class="btn btn-warning mt-4" id="memberreport" type="submit" style="float: right;">작성자 신고</a> --%>
 									</c:if>
-									<c:if test="${member.user_name eq cssview.user_nickname}">
+									<c:if test="${member.user_nickname eq cssview.user_nickname}">
 		 		                    	<a href="/board/cssedit?post_id=${cssview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
 				                		<a href="/board/cssdelete?post_id=${cssview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
 									</c:if> 
