@@ -122,11 +122,16 @@ public class AdminController {
 	// 공지사항 상세보기
 	@RequestMapping(value = "/annview", method = RequestMethod.GET)
 	public void getView(@RequestParam("post_id") int post_id, Model model) throws Exception {
+		
+		// 상세보기 시 조회수 갱신
+		int annvcnt = 0;
+		adminService.annvcnt(post_id);
+		model.addAttribute("annvcnt", annvcnt);
 
 		AnnVO vo = adminService.annview(post_id);
 		model.addAttribute("annview", vo);
 	}
-
+	
 	// 공지사항 수정 화면이동 [selectOne]
 	@RequestMapping(value = "/annedit", method = RequestMethod.GET)
 	public void annedit(@RequestParam("post_id") int post_id, Model model) throws Exception {

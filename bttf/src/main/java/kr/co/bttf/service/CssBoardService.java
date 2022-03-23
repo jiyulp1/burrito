@@ -12,8 +12,11 @@ public interface CssBoardService {
 	// 게시물 작성
 	public void cssWrite(CssBoardVO vo) throws Exception;
 	
-	// 게시물 조회
+	// 게시물 상세
 	public CssBoardVO cssView(int post_id) throws Exception;
+	
+	// 게시글 조회수
+	public int cssvcnt(int post_id) throws Exception;
 	
 	// 게시물 수정
 	public void cssEdit(CssBoardVO vo) throws Exception;

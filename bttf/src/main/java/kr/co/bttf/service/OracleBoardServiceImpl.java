@@ -31,6 +31,11 @@ public class OracleBoardServiceImpl implements OracleBoardService {
 	}
 
 	@Override
+	public int oraclevcnt(int post_id) throws Exception {
+		return dao.oraclevcnt(post_id);
+	}
+	
+	@Override
 	public void oracleModify(OracleBoardVO vo) throws Exception {
 		dao.oracleModify(vo);
 	}

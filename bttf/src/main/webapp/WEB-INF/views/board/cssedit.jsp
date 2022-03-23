@@ -17,28 +17,28 @@
 
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-    <link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
     <!-- font-Glyphicon -->
     <!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
     <!-- PAGE LEVEL PLUGIN STYLES -->
-    <link href="../../resource/css/animate.css" rel="stylesheet">
-    <link href="../../resource/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../resources/css/animate.css" rel="stylesheet">
+    <link href="../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
 
     <!-- THEME STYLES -->
-    <link href="../../resource/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/resource/img/favicon/favicon-32x32.png" />
+    <link rel="shortcut icon" href="/resources/img/favicon/favicon-32x32.png" />
 
     <!-- custom -->
-    <link rel="stylesheet" href="../../resource/css/custom.css">
+    <link rel="stylesheet" href="../../../resources/css/custom.css">
 
     <!-- c3 chart -->
-    <link href="../../resource/vendor/c3-0.7.20/c3.css" rel="stylesheet">
+    <link href="../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
     <style>
 .ck-blurred .ck .ck-content .ck-editor__editable .ck-rounded-corners .ck-editor__editable_inline h1
 	{
@@ -77,16 +77,16 @@
                     <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
                         <div class="my_box" data-height="height">
                             <!-- Start write Form -->
-							<form name = "cssedit" action="${pageContext.request.contextPath }/pages/cssBoardUpdate.do" method="post">
-								<input type="hidden" name="post_id" value="${board.post_id }">
+							<form name = "cssedit" action="${pageContext.request.contextPath }/board/cssedit" method="post">
+								<input type="hidden" name="post_id" value="${cssview.post_id }">
 								<div class="col-auto">
 									<label for="subject">제목</label>
-									<input id="subject" name="post_subject" class="form-control margin-b-50" type="text" placeholder="제목" value="${board.post_subject }">
+									<input id="subject" name="post_subject" class="form-control margin-b-50" type="text" placeholder="제목" value="${cssview.post_subject }">
 									<textarea id="editor" name="post_contents" class="form-control" placeholder="내용을 입력해 주세요." 
-									style="height: 650px; resize: none;">${board.post_contents }</textarea>
+									style="height: 650px; resize: none;">${cssview.post_contents }</textarea>
                                 </div> 
                             <a href="javascript:document.cssedit.submit()" class="btn btn-info mt-4" id="writesuccess">작성완료</a>
-                        	<a href="${pageContext.request.contextPath }/pages/csslist.do" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
+                        	<a href="${pageContext.request.contextPath }/board/csslist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
                             </form>
                         </div>
                     </div>
@@ -114,29 +114,29 @@
 	
     <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- CORE PLUGINS -->
-    <script src="../../resource/vendor/jquery.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL PLUGINS -->
-    <script src="../../resource/vendor/jquery.easing.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery.easing.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
     <!--  <script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script> -->
-    <script src="../../resource/vendor/jquery.wow.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL SCRIPTS -->
-    <script src="../../resource/js/layout.min.js" type="text/javascript"></script>
-    <script src="../../resource/js/components/wow.min.js" type="text/javascript"></script>
-    <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
-    <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
-    <script src="../../resource/js/action.js"></script>
+    <script src="../../../resources/js/layout.min.js" type="text/javascript"></script>
+    <script src="../../../resources/js/components/wow.min.js" type="text/javascript"></script>
+    <script src="../../../resources/js/components/swiper.min.js" type="text/javascript"></script>
+    <script src="../../../resources/js/components/masonry.min.js" type="text/javascript"></script>
+    <script src="../../../resources/js/action.js"></script>
     <!--<script src="vendor/ckeditor5-build-classic/translations/ko.js"></script>-->
-	<script src="../../resource/vendor/ckeditor5-31.1.0-xp96wtdshww/src/ckeditor.js"></script>
-	<script src="${contextPath}../../resource/vendor/ckeditor5-31.1.0-e38clgxocdpt/build/ckeditor.js"></script>
-	<script src="${contextPath}../../resource/js/editor.js"></script>
+	<script src="../../../resources/vendor/ckeditor5-31.1.0-xp96wtdshww/src/ckeditor.js"></script>
+	<script src="../../../resources/vendor/ckeditor5-31.1.0-e38clgxocdpt/build/ckeditor.js"></script>
+	<script src="../../../resources/js/editor.js"></script>
 
 	<script>
     	// [글 수정하기] function

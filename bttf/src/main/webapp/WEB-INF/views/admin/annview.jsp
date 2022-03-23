@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <!DOCTYPE html>
 <html lang="ko" class="no-js">
 <!-- BEGIN HEAD -->
@@ -77,20 +78,20 @@
                                 	<p class="margin-b-50 text-center" >조회수 ${annview.post_vcount }</p>
                                 </div>
                                 <div class="col-md-2">
-                                	<p class="margin-b-50 text-center" > 작성자 ${annview.writer }</p>
+                                	<p class="margin-b-50 text-center" > 작성자 ${annview.user_nickname }</p>
                                 </div>
                                 <div>
                                     <pre class="form-control" style="height : 650px; resize: none; background-color: #fff;" disabled>${annview.post_contents }</pre>
                                 </div>
 	                       		<div class="mb-5">
-	                        		<a href="/admin/announcements" class="btn btn-default mt-4" id="edit" type="submit">공지사항 목록</a>
+									<c:if test="${member.authority_name == 'admin'}">
+			    		                <a href="/admin/annedit?post_id=${annview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글 수정</a>                          
+										<a href="/admin/anndelete?post_id=${annview.post_id }" class="btn btn-danger mt-4" id="list" type="submit"> 글 삭제</a>
+									</c:if> 
+	                        		<a href="/admin/announcements" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
 									<c:if test="${not empty member && member != null }">
 										<a href="#" class="btn btn-default mt-4">북마크</a>
 									</c:if>
-									<c:if test="${member.authority_name == 'admin'}">
-			    		                <a href="/admin/annedit?post_id=${annview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">공지사항 수정</a>                          
-										<a href="/admin/anndelete?post_id=${annview.post_id }" class="btn btn-danger mt-4" id="list" type="submit"> 공지사항 삭제</a>
-									</c:if> 
                               	</div>
                             </form>
                         </div>

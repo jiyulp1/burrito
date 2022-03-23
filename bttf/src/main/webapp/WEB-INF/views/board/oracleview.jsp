@@ -17,28 +17,28 @@
 
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-    <link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/board/../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/board/../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
     <!-- font-Glyphicon -->
     <!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
     <!-- PAGE LEVEL PLUGIN STYLES -->
-    <link href="../../../resources/css/animate.css" rel="stylesheet">
-    <link href="../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/board/../../../resources/css/animate.css" rel="stylesheet">
+    <link href="/board/../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
 
     <!-- THEME STYLES -->
-    <link href="../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="/board/../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/resources/img/favicon/favicon-32x32.png" />
 
     <!-- custom -->
-    <link rel="stylesheet" href="../../../resources/css/custom.css">
+    <link rel="stylesheet" href="/board/../../../resources/css/custom.css">
 
     <!-- c3 chart -->
-    <link href="../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
+    <link href="/board/../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
     <style type="text/css">
        .remove{
           display : none;
@@ -84,16 +84,16 @@
                                     <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; resize: none; background-color: #fff;" disabled>${oracleview.post_contents }</pre>
                                 </div> 
 	                        	<div class="mb-5">
+								<c:if test="${member.user_nickname eq oracleview.user_nickname}">
+		 		                    <a href="/board/oraclemodify?post_id=${oracleview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
+				                	<a href="/board/oracledelete?post_id=${oracleview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
+								</c:if> 
 	                        	<a href="/board/oraclelist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
 								<c:if test="${not empty member}">
 									<a href="#" class="btn btn-default mt-4">북마크</a>
 					               	<a href="/member/oracleboardreported?post_id=${oracleview.post_id }&category_id=0" class="btn btn-warning mt-4" id="boardreport" type="submit" style="float: right;">게시글 신고</a>
 					               	<a href="/member/memberreport?user_nickname=${oracleview.user_nickname }" class="btn btn-warning mt-4" id="memberreport" type="submit" style="float: right;">작성자 신고</a>
 								</c:if>
-								<c:if test="${member.user_nickname eq oracleview.user_nickname}">
-		 		                    <a href="/board/oraclemodify?post_id=${oracleview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
-				                	<a href="/board/oracledelete?post_id=${oracleview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
-								</c:if> 
                               	 </div>
                             </form>
 
@@ -200,27 +200,27 @@
 
     <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- CORE PLUGINS -->
-    <script src="../../../resources/vendor/jquery.min.js" type="text/javascript"></script>
-    <script src="../../../resources/vendor/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="../../../resources/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/jquery.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL PLUGINS -->
-    <script src="../../../resources/vendor/jquery.easing.js" type="text/javascript"></script>
-    <script src="../../../resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/jquery.easing.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
     <!--  <script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script> -->
-    <script src="../../../resources/vendor/jquery.wow.min.js" type="text/javascript"></script>
-    <script src="../../../resources/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
-    <script src="../../../resources/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
-    <script src="../../../resources/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL SCRIPTS -->
-    <script src="../../../resources/js/layout.min.js" type="text/javascript"></script>
-    <script src="../../../resources/js/components/wow.min.js" type="text/javascript"></script>
-    <script src="../../../resources/js/components/swiper.min.js" type="text/javascript"></script>
-    <script src="../../../resources/js/components/masonry.min.js" type="text/javascript"></script>
-    <script src="../../../resources/js/action.js"></script>
-    <script src="../../../resources/vendor/ckeditor5-build-classic/translations/ko.js"></script>
-	<script src="../../../resources/vendor/ckeditor5-build-classic/ckeditor.js"></script>
+    <script src="/board/../../../resources/js/layout.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/js/components/wow.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/js/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/js/components/masonry.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/js/action.js"></script>
+    <script src="/board/../../../resources/vendor/ckeditor5-build-classic/translations/ko.js"></script>
+	<script src="/board/../../../resources/vendor/ckeditor5-build-classic/ckeditor.js"></script>
     <script>
         ClassicEditor
             .create( document.querySelector( '#classic' ))
