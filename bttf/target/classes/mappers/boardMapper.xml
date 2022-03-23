@@ -40,7 +40,7 @@
 	<!-- 4. 게시물 수정 -->
 	<update id="cssedit" parameterType="kr.co.bttf.domain.CssBoardVO">
 		update css set
-		post_subject = #{post_subject}, post_contents = #{post_contents}, user_nickname = #{user_nickname}
+		post_subject = #{post_subject}, post_contents = #{post_contents}
 		where post_id = #{post_id}
 	</update>
 	

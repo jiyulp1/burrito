@@ -18,8 +18,8 @@
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
 
-    <link href="/board../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="/board../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/board/../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/board/../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
     <!-- font-Glyphicon -->
     <!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
@@ -155,25 +155,25 @@
    
     <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- CORE PLUGINS -->
-    <script src="/board../../../resources/vendor/jquery.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/vendor/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/jquery.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL PLUGINS -->
-    <script src="/board../../../resources/vendor/jquery.easing.js" type="text/javascript"></script>
-    <script src="/board../../../resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/jquery.easing.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
     <!--  <script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script> -->
-    <script src="/board../../../resources/vendor/jquery.wow.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL SCRIPTS -->
-    <script src="/board../../../resources/js/layout.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/js/components/wow.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/js/components/swiper.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/js/components/masonry.min.js" type="text/javascript"></script>
-    <script src="/board../../../resources/js/action.js"></script>
+    <script src="/board/../../../resources/js/layout.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/js/components/wow.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/js/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/js/components/masonry.min.js" type="text/javascript"></script>
+    <script src="/board/../../../resources/js/action.js"></script>
 </body>
 <!-- END BODY -->
 

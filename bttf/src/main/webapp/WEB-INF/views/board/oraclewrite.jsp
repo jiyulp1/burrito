@@ -15,26 +15,18 @@
 <meta content="" name="author" />
 
 <!-- GLOBAL MANDATORY STYLES -->
-<link
-	href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700"
-	rel="stylesheet" type="text/css">
-<link
-	href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css"
-	rel="stylesheet" type="text/css" />
-<link href="../../../resources/vendor/bootstrap/css/bootstrap.css"
-	rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+<link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
 <!-- PAGE LEVEL PLUGIN STYLES -->
 <link href="../../../resources/css/animate.css" rel="stylesheet">
-<link href="../../../resources/vendor/swiper/css/swiper.min.css"
-	rel="stylesheet" type="text/css" />
+<link href="../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
 
 <!-- THEME STYLES -->
-<link href="../../../resources/css/layout.css" rel="stylesheet"
-	type="text/css" />
+<link href="../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="/resources/img/favicon/favicon-32x32.png" />
