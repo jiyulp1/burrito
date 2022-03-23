@@ -184,142 +184,75 @@
             <!--// end row -->
         </div>
     </div>				
-	<div class="modal fade" id="boardreport" tabindex="-1" role="dialog" aria-labelledby="#boardreport" aria-hidden="true">
+	<div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="#report" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="boardModalLabel">게시글 신고</h4>
+						<h4 class="modal-title" id="reportModalLabel">게시글 신고</h4>
 				</div>
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
 							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="boardreport1" value="욕설 등 부적절한 게시글">
-							  <label class="form-check-label" for="boardreport1">욕설 등 부적절한 게시글</label>
+							  <input class="form-check-input" type="checkbox" id="report1" value="욕설 등 부적절한 게시글, 댓글 또는 채팅">
+							  <label class="form-check-label" for="report1">욕설 등 부적절한 게시글, 댓글 또는 채팅</label>
 							</div>
 							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="boardreport2" value="갈등 조장, 불쾌감 조성 및 허위사실 유포성 게시글">
-							  <label class="form-check-label" for="boardreport2">갈등 조장, 불쾌감 조성 및 허위사실 유포성 게시글</label>
+							  <input class="form-check-input" type="checkbox" id="report2" value="갈등 조장, 불쾌감 조성 및 허위사실 유포성 게시글 , 댓글 또는 채팅">
+							  <label class="form-check-label" for="report2">갈등 조장, 불쾌감 조성 및 허위사실 유포성 게시글 , 댓글 또는 채팅</label>
 							</div>
 							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="boardreport3" value="악성코드/스파이웨어 유포성 게시글" >
-							  <label class="form-check-label" for="boardreport3">악성코드/스파이웨어 유포성 게시글</label>
+							  <input class="form-check-input" type="checkbox" id="report3" value="악성코드/스파이웨어 유포성 게시글 , 댓글 또는 채팅" >
+							  <label class="form-check-label" for="report3">악성코드/스파이웨어 유포성 게시글 , 댓글 또는 채팅</label>
 							</div>
 							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="boardreport4" value="도배성 게시글" >
-							  <label class="form-check-label" for="boardreport4">도배성 게시글</label>
+							  <input class="form-check-input" type="checkbox" id="report4" value="도배성 게시글, 댓글 또는 채팅" >
+							  <label class="form-check-label" for="report4">도배성 게시글, 댓글 또는 채팅</label>
 							</div>	
 							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="boardreport5" value="부적절한 홍보 게시글" >
-							  <label class="form-check-label" for="boardreport5">부적절한 홍보 게시글</label>
+							  <input class="form-check-input" type="checkbox" id="report5" value="부적절한 홍보 게시글, 댓글 또는 채팅" >
+							  <label class="form-check-label" for="report5">부적절한 홍보 게시글, 댓글 또는 채팅</label>
 							</div>	
 							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="boardreport6" value="명예훼손/사생활 침해 및 저작권 침해 게시글" >
-							  <label class="form-check-label" for="boardreport6">명예훼손/사생활 침해 및 저작권 침해 게시글</label>
+							  <input class="form-check-input" type="checkbox" id="report6" value="명예훼손/사생활 침해 및 저작권 침해 게시글, 댓글 또는 채팅" >
+							  <label class="form-check-label" for="report6">명예훼손/사생활 침해 및 저작권 침해 게시글, 댓글 또는 채팅</label>
 							</div>	
 							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="boardreport7" value="음란성 또는 청소년에게 부적합한 게시글" >
-							  <label class="form-check-label" for="boardreport7">음란성 또는 청소년에게 부적합한 게시글</label>
+							  <input class="form-check-input" type="checkbox" id="report7" value="음란성 또는 청소년에게 부적합한 게시글, 댓글 또는 채팅" >
+							  <label class="form-check-label" for="report7">음란성 또는 청소년에게 부적합한 게시글, 댓글 또는 채팅</label>
 							</div>	
 							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="boardreport8" value="운영자 사칭 게시글" >
-							  <label class="form-check-label" for="boardreport8">운영자 사칭 게시글</label>
+							  <input class="form-check-input" type="checkbox" id="report8" value="운영자 사칭 게시글, 댓글 또는 채팅" >
+							  <label class="form-check-label" for="report8">운영자 사칭 게시글, 댓글 또는 채팅</label>
 							</div>	
 							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="boardreport9" value="개인정보 유포 게시글" >
-							  <label class="form-check-label" for="boardreport9">개인정보 유포 게시글</label>
+							  <input class="form-check-input" type="checkbox" id="report9" value="개인정보 유포 게시글, 댓글 또는 채팅" >
+							  <label class="form-check-label" for="report9">개인정보 유포 게시글, 댓글 또는 채팅</label>
 							</div>	
 							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="boardreport10" value="금전거래 유도 및 도박 조장 게시글" >
-							  <label class="form-check-label" for="boardreport10">금전거래 유도 및 도박 조장 게시글</label>
+							  <input class="form-check-input" type="checkbox" id="report10" value="금전거래 유도 및 도박 조장 게시글, 댓글 또는 채팅" >
+							  <label class="form-check-label" for="report10">금전거래 유도 및 도박 조장 게시글, 댓글 또는 채팅</label>
 							</div>	
 							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="boardreport11" value="기타(하단 신고 사유 작성)" >
-							  <label class="form-check-label" for="boardreport11">기타(하단 신고 사유 작성)</label>
+							  <input class="form-check-input" type="checkbox" id="report11" value="기타(하단 신고 사유 작성)" >
+							  <label class="form-check-label" for="report11">기타(하단 신고 사유 작성)</label>
 							</div>	
 						</div>
 						<div class="form-group">
-							<label for="message-text" class="control-label">게시글 신고 사유</label>
+							<label for="message-text" class="control-label">기타 신고 사유</label>
 							<textarea class="form-control" id="message-text"></textarea>
 						</div>
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-					<button type="button" class="btn btn-danger">게시글 신고하기</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">신고 취소</button>
+					<button type="button" class="btn btn-danger">신고하기</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="memberreport" tabindex="-1" role="dialog" aria-labelledby="memberreport" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="memberModalLabel">회원 신고</h4>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="form-group">
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="memberreport1" value="욕설 등 부적절한 언행, 댓글 및 채팅">
-							  <label class="form-check-label" for="memberreport1">욕설 등 부적절한 언행, 댓글 및 채팅</label>
-							</div>
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="memberreport2" value="갈등 조장, 불쾌감 조성 및 허위사실 유포 댓글 및 채팅">
-							  <label class="form-check-label" for="memberreport2">갈등 조장, 불쾌감 조성 및 허위사실 유포 댓글 및 채팅</label>
-							</div>
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="memberreport3" value="악성코드/스파이웨어 유포 댓글 및 채팅" >
-							  <label class="form-check-label" for="memberreport3">악성코드/스파이웨어 유포 댓글 및 채팅</label>
-							</div>
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="memberreport4" value="도배성 댓글 및 채팅" >
-							  <label class="form-check-label" for="memberreport4">도배성 댓글 및 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="memberreport5" value="부적절한 홍보 댓글 및 채팅" >
-							  <label class="form-check-label" for="memberreport5">부적절한 홍보 댓글 및 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="memberreport6" value="명예훼손/사생활 침해 및 저작권 침해 댓글 및 채팅" >
-							  <label class="form-check-label" for="memberreport6">명예훼손/사생활 침해 및 저작권 침해 댓글 및 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="memberreport7" value="음란성 또는 청소년에게 부적합한 댓글 및 채팅" >
-							  <label class="form-check-label" for="memberreport7">음란성 또는 청소년에게 부적합한 댓글 및 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="memberreport8" value="운영자 사칭 댓글 및 채팅" >
-							  <label class="form-check-label" for="memberreport8">운영자 사칭 댓글 및 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="memberreport9" value="개인정보 유포 댓글 및 채팅" >
-							  <label class="form-check-label" for="memberreport9">개인정보 유포 댓글 및 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="memberreport10" value="금전거래 유도 및 도박 조장 댓글 및 채팅" >
-							  <label class="form-check-label" for="memberreport10">금전거래 유도 및 도박 조장 댓글 및 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="memberreport11" value="기타(하단 신고 사유 작성)" >
-							  <label class="form-check-label" for="memberreport11">기타(하단 신고 사유 작성)</label>
-							</div>							
-						</div>
-						<div class="form-group">
-							<label for="message-text" class="control-label">회원 신고 사유</label>
-							<textarea class="form-control" id="message-text"></textarea>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-					<button type="button" class="btn btn-danger">회원 신고 하기</button>
-				</div>
-			</div>
-		</div>
-	</div>
+	
     <!-- End join Form -->
     <!--========== END PAGE LAYOUT ==========-->
 
