@@ -4,7 +4,13 @@ import java.util.List;
 
 import kr.co.bttf.domain.AnnVO;
 import kr.co.bttf.domain.CssBoardVO;
+import kr.co.bttf.domain.HtmlBoardVO;
+import kr.co.bttf.domain.JavaBoardVO;
+import kr.co.bttf.domain.JsBoardVO;
+import kr.co.bttf.domain.JspBoardVO;
 import kr.co.bttf.domain.MemberVO;
+import kr.co.bttf.domain.OracleBoardVO;
+import kr.co.bttf.domain.SpringBoardVO;
 
 public interface AdminService {
 
@@ -46,6 +52,24 @@ public interface AdminService {
 	
 	//CSS 전체 게시물
 	public List<CssBoardVO> boardallcss() throws Exception;
+
+	//html 전체 게시물
+	public List<HtmlBoardVO> boardallhtml() throws Exception;
+
+	//js 전체 게시물
+	public List<JsBoardVO> boardalljs() throws Exception;
+
+	//java 전체 게시물
+	public List<JavaBoardVO> boardalljava() throws Exception;
+
+	//jsp 전체 게시물
+	public List<JspBoardVO> boardalljsp() throws Exception;
+
+	//oracle 전체 게시물
+	public List<OracleBoardVO> boardalloracle() throws Exception;
+
+	//spring 전체 게시물
+	public List<SpringBoardVO> boardallspring() throws Exception;
 
 	
 

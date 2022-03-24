@@ -111,7 +111,7 @@
 	                                </a>
 	                            </li>
 	                            <li>
-	                                <a class="nav-item-child-sub_man" href="/admin/boardallcss">
+	                                <a class="nav-item-child-sub_man" href="/admin/boardallhtml">
 											게시글관리 - 전체게시글
 	                                </a>
 	                            </li>

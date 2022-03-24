@@ -68,10 +68,36 @@
 	<update id="memberexpell" parameterType="_int">
 			update user_all set avaliability_category_id = 4 where user_index = #{user_index}
 	</update>
-	
+	<!-- 관리자 - 전체 게시판 -->
 	<select id="boardallcss" resultType="kr.co.bttf.domain.CssBoardVO">
 		select * from css
 	</select>
+	
+	<select id="boardallhtml" resultType="kr.co.bttf.domain.HtmlBoardVO">
+		select * from html
+	</select>
+	
+	<select id="boardalljs" resultType="kr.co.bttf.domain.JsBoardVO">
+		select * from javascript
+	</select>
+	
+	<select id="boardalljava" resultType="kr.co.bttf.domain.JavaBoardVO">
+		select * from java
+	</select>
+	
+	<select id="boardalljsp" resultType="kr.co.bttf.domain.JspBoardVO">
+		select * from jsp
+	</select>
+	
+	<select id="boardalloracle" resultType="kr.co.bttf.domain.OracleBoardVO">
+		select * from oracle
+	</select>
+	
+	<select id="boardallspring" resultType="kr.co.bttf.domain.SpringBoardVO">
+		select * from spring
+	</select>
+	
+
 </mapper>
 
 	

@@ -74,7 +74,8 @@ public class AdminController {
 	/*******************
 	 * 신고 게시판
 	 *******************/
-	// 전체게시판
+		// 전체게시판
+		//css
 		@RequestMapping(value = "/boardallcss", method = RequestMethod.GET)
 		public void boardallcss(Model model) throws Exception {
 
@@ -83,7 +84,68 @@ public class AdminController {
 			boardallcss = adminService.boardallcss();
 			model.addAttribute("boardallcss", boardallcss);
 		}
-	
+		
+		//html
+		@RequestMapping(value = "/boardallhtml", method = RequestMethod.GET)
+		public void boardallhtml(Model model) throws Exception {
+
+			System.out.println("get - boardallhtml");
+			List boardallhtml = null;
+			boardallhtml = adminService.boardallhtml();
+			model.addAttribute("boardallhtml", boardallhtml);
+		}
+		
+		
+		
+		//js
+		@RequestMapping(value = "/boardalljs", method = RequestMethod.GET)
+		public void boardalljs(Model model) throws Exception {
+
+			System.out.println("get - boardalljs");
+			List boardalljs = null;
+			boardalljs = adminService.boardalljs();
+			model.addAttribute("boardalljs", boardalljs);
+		}
+		
+		//java
+		@RequestMapping(value = "/boardalljava", method = RequestMethod.GET)
+		public void boardalljava(Model model) throws Exception {
+
+			System.out.println("get - boardalljava");
+			List boardalljava = null;
+			boardalljava = adminService.boardalljava();
+			model.addAttribute("boardalljava", boardalljava);
+		}
+		
+		//jsp
+		@RequestMapping(value = "/boardalljsp", method = RequestMethod.GET)
+		public void boardalljsp(Model model) throws Exception {
+
+			System.out.println("get - boardallcss");
+			List boardalljsp = null;
+			boardalljsp = adminService.boardalljsp();
+			model.addAttribute("boardalljsp", boardalljsp);
+		}
+		
+		//oracle
+		@RequestMapping(value = "/boardalloracle", method = RequestMethod.GET)
+		public void boardalloracle(Model model) throws Exception {
+
+			System.out.println("get - boardalloracle");
+			List boardalloracle = null;
+			boardalloracle = adminService.boardalloracle();
+			model.addAttribute("boardalloracle", boardalloracle);
+		}
+		
+		//spring
+		@RequestMapping(value = "/boardallspring", method = RequestMethod.GET)
+		public void boardallspring(Model model) throws Exception {
+
+			System.out.println("get - boardallspring");
+			List boardallspring = null;
+			boardallspring = adminService.boardallspring();
+			model.addAttribute("boardallspring", boardallspring);
+		}
 	
 		// 4. 신고된 회원을 해제하는 버튼 기능은 admin에서 구현(set만 뒤집어서)
 		// CSS 신고 게시글 해제
