@@ -7,13 +7,21 @@
 
 	<!-- 관리자를 제외한 일반 회원만 -->
 	<select id="memberall" resultType="kr.co.bttf.domain.MemberVO">
-		select * from user_all where authority_code = 1
+		select * from user_all where authority_code = 1 and avaliability_category_id != 4
 	</select>
 	
 	<!-- 신고된 회원만 -->
 	<select id="memberblock" resultType="kr.co.bttf.domain.MemberVO">
 		select * from user_all where avaliability_category_id= 2 or avaliability_category_id= 3
 	</select>
+	
+	<!-- 회원 차단 -->
+	<update id="memberexpell" parameterType="_int">
+			update user_all set avaliability_category_id = 4 where user_index = #{user_index}
+	</update>
+	
+	
+	
 	
 	<!-- 공지사항 -->
 	<select id="announcements" resultType="kr.co.bttf.domain.AnnVO">
@@ -65,9 +73,9 @@
 	</update>
 	
 	<!-- 회원 퇴출 -->
-	<update id="memberexpell" parameterType="_int">
-			update user_all set avaliability_category_id = 4 where user_index = #{user_index}
-	</update>
+<!-- 	<update id="memberexpell" parameterType="_int"> -->
+<!-- 			update user_all set avaliability_category_id = 4 where user_index = #{user_index} -->
+<!-- 	</update> -->
 	<!-- 관리자 - 전체 게시판 -->
 	<select id="boardallcss" resultType="kr.co.bttf.domain.CssBoardVO">
 		select * from css
