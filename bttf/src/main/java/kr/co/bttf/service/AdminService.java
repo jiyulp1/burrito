@@ -43,6 +43,9 @@ public interface AdminService {
 	
 	// 신고가 들어온 회원 퇴출
 	public void memberexpell(int user_index) throws Exception;
+	
+	//CSS 전체 게시물
+	public List<CssBoardVO> boardallcss() throws Exception;
 
 	
 

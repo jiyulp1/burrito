@@ -69,6 +69,9 @@
 			update user_all set avaliability_category_id = 4 where user_index = #{user_index}
 	</update>
 	
+	<select id="boardallcss" resultType="kr.co.bttf.domain.CssBoardVO">
+		select * from css
+	</select>
 </mapper>
 
 	

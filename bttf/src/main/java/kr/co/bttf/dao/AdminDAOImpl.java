@@ -67,7 +67,7 @@ public class AdminDAOImpl implements AdminDAO {
 		sql.delete(namespace + ".anndelete", post_id);
 
 	}
-
+	
 	@Override
 	public void cssundo(int post_id) {
 		sql.update(namespace + ".cssundo", post_id );
@@ -79,7 +79,7 @@ public class AdminDAOImpl implements AdminDAO {
 		sql.update(namespace + ".memberundo", user_index);
 		
 	}
-
+	
 	@Override
 	public void cssexpell(int post_id) {
 		sql.delete(namespace + ".cssexpell", post_id);
@@ -91,6 +91,11 @@ public class AdminDAOImpl implements AdminDAO {
 		sql.delete(namespace + ".memberexpell", user_index);
 		
 		
+	}
+
+	@Override
+	public List<CssBoardVO> boardallcss() throws Exception {
+		return sql.selectList(namespace + ".boardallcss");
 	}
 
 }

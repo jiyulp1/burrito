@@ -36,6 +36,10 @@ public class AdminController {
 		memberall = adminService.memberall();
 		model.addAttribute("memberall", memberall);
 	}
+	
+	/*******************
+	 * 신고 회원
+	 *******************/
 
 	// 신고회원목록
 	@RequestMapping(value = "/memberblock", method = RequestMethod.GET)
@@ -47,14 +51,7 @@ public class AdminController {
 		model.addAttribute("memberblock", memberblock);
 	}
 
-	// 4. 신고된 회원을 해제하는 버튼 기능은 admin에서 구현(set만 뒤집어서)
-	// CSS 신고 게시글 해제
-	@RequestMapping(value = "/cssundo", method = RequestMethod.GET)
-	public String cssundo(@RequestParam("post_id") int post_id, Model model) throws Exception {
 
-		adminService.cssundo(post_id);
-		return "redirect:/admin/memberblock";
-	}
 
 	// 신고 회원 해제
 	@RequestMapping(value = "/memberundo", method = RequestMethod.GET)
@@ -64,14 +61,6 @@ public class AdminController {
 		return "redirect:/admin/memberall";
 	}
 
-	// 5. 퇴출
-	// CSS 신고 들어온 게시글 안보이게
-	@RequestMapping(value = "/cssexpell", method = RequestMethod.GET)
-	public String cssexpell(@RequestParam("post_id") int post_id, Model model) throws Exception {
-
-		adminService.cssexpell(post_id);
-		return "redirect:/admin/memberblock";
-	}
 
 	// 신고가 들어온 회원 퇴출
 	@RequestMapping(value = "/memberexpell", method = RequestMethod.GET)
@@ -80,10 +69,40 @@ public class AdminController {
 		adminService.memberexpell(user_index);
 		return "redirect:/admin/memberall";
 	}
+	
+	
+	/*******************
+	 * 신고 게시판
+	 *******************/
+	// 전체게시판
+		@RequestMapping(value = "/boardallcss", method = RequestMethod.GET)
+		public void boardallcss(Model model) throws Exception {
 
+			System.out.println("get - boardallcss");
+			List boardallcss = null;
+			boardallcss = adminService.boardallcss();
+			model.addAttribute("boardallcss", boardallcss);
+		}
 	
 	
-	
+		// 4. 신고된 회원을 해제하는 버튼 기능은 admin에서 구현(set만 뒤집어서)
+		// CSS 신고 게시글 해제
+		@RequestMapping(value = "/cssundo", method = RequestMethod.GET)
+		public String cssundo(@RequestParam("post_id") int post_id, Model model) throws Exception {
+
+			adminService.cssundo(post_id);
+			return "redirect:/admin/memberblock";
+		}
+
+		
+		// 5. 퇴출
+		// CSS 신고 들어온 게시글 안보이게
+		@RequestMapping(value = "/cssexpell", method = RequestMethod.GET)
+		public String cssexpell(@RequestParam("post_id") int post_id, Model model) throws Exception {
+
+			adminService.cssexpell(post_id);
+			return "redirect:/admin/memberblock";
+		}
 	
 	/*******************
 	 * 공지사항
@@ -154,4 +173,6 @@ public class AdminController {
 		return "redirect:/admin/announcements";
 	}
 
+	
+	
 }
