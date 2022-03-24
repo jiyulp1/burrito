@@ -47,21 +47,7 @@
 
 <!-- BODY -->
 
-<body class="page-on-scroll fixed_container">
-	<c:set var="CSSboardBlockedList" value = "${requestScope.CSSboardBlockedList }"/>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-	<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" />
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
+<body class="page-on-scroll ">
 	
 	<!--========== HEADER ==========-->
 	<header class="header navbar-fixed-top">
@@ -77,7 +63,7 @@
 
 	<!--========== PAGE LAYOUT ==========-->
 	<!-- Service -->
-	<div class="bg-color-sky-light fixed_container" data-auto-height="true">
+	<div class="bg-color-sky-light" data-auto-height="true">
 		<div class="content-lg container" style="margin-top : 50px;">
 			<h1 class="pt-4">
 				<i class="fas fa-user-circle title_subject_icon"></i>
@@ -200,14 +186,14 @@
 							</thead>
 							<tbody>
 								<c:choose>
-                   					<c:when test = "${CSSboardBlockedList != null and fn:length(CSSboardBlockedList) > 0 }">
-                   						<c:forEach var="css" items="${CSSboardBlockedList}">
+                   					<c:when test = "${boardblockcss != null and fn:length(boardblockcss) > 0 }">
+                   						<c:forEach var="css" items="${boardblockcss}">
 											<tr>
 												<td>${css.post_id }</td>
 												<td>
-													<a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${css.post_id }">${css.post_subject }</a>
+													<a href="/board/cssview?post_id=${css.post_id}">${css.post_subject }</a>
 												</td>
-												<td>${css.writer }</td>
+												<td>${css.user_nickname }</td>
 												<td>${css.post_regdate }</td>
 											</tr>
 										</c:forEach>

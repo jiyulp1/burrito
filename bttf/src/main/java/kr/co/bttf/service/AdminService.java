@@ -70,8 +70,28 @@ public interface AdminService {
 
 	//spring 전체 게시물
 	public List<SpringBoardVO> boardallspring() throws Exception;
-
 	
+	//css 신고된 게시물
+	public List<CssBoardVO> boardblockcss() throws Exception;
+
+	//html 신고된 게시물
+	public List<HtmlBoardVO> boardblockhtml() throws Exception;
+
+	//js 신고된 게시물
+	public List<JsBoardVO> boardblockjs() throws Exception;
+
+	//java 신고된 게시물
+	public List<JavaBoardVO> boardblockjava() throws Exception;
+
+	//jsp 신고된 게시물
+	public List<JspBoardVO> boardblockjsp() throws Exception;
+
+	//oracle 신고된 게시물
+	public List<OracleBoardVO> boardblockoracle() throws Exception;
+
+	//spring 신고된 게시물
+	public List<SpringBoardVO> boardblockspring() throws Exception;
+
 
 
 
