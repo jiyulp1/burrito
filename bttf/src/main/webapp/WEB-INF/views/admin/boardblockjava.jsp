@@ -47,21 +47,7 @@
 
 <!-- BODY -->
 
-<body class="page-on-scroll fixed_container">
-	<c:set var="CSSboardBlockedList" value = "${requestScope.CSSboardBlockedList }"/>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-	<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" />
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
+<body class="page-on-scroll ">
 	
 	<!--========== HEADER ==========-->
 	<header class="header navbar-fixed-top">
@@ -77,7 +63,7 @@
 
 	<!--========== PAGE LAYOUT ==========-->
 	<!-- Service -->
-	<div class="bg-color-sky-light fixed_container" data-auto-height="true">
+	<div class="bg-color-sky-light" data-auto-height="true">
 		<div class="content-lg container" style="margin-top : 50px;">
 			<h1 class="pt-4">
 				<i class="fas fa-user-circle title_subject_icon"></i>
@@ -182,10 +168,11 @@
 						</div>
 					</div>	
 				</div>
-				<!-- Java table -->
+				<!-- java table -->
 				<div class="mt-10">
 					<h2>
-						<i class="fas fa-list title_subject_icon"></i>Java
+						<i class="fas fa-list title_subject_icon"></i>
+						JAVA
 					</h2>
 					<div class="table-responsive">
 						<table id="foo-table" class="table table-striped">
@@ -198,17 +185,30 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>asdasd</td>
-									<td>111</td>
-									<td>view1</td>
-									<td>2021-12-08</td>
-								</tr>
+								<c:choose>
+                   					<c:when test = "${boardblockjava != null and fn:length(boardblockjava) > 0 }">
+                   						<c:forEach var="java" items="${boardblockjava}">
+											<tr>
+												<td>${java.post_id }</td>
+												<td>
+													<a href="/board/javaview?post_id=${java.post_id} }">${java.post_subject }</a>
+												</td>
+												<td>${java.user_nickname }</td>
+												<td>${java.post_regdate }</td>
+											</tr>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+			                        	<tr>
+			                        		<td colspan="5" class="text-center">신고된 게시물이 없습니다 </td>
+			                        	</tr>
+			                        </c:otherwise>
+								</c:choose>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<!--end Java table -->
+				<!--end CSS3 table -->
 			</div>
 		</div>
 		<!--// end row -->

@@ -41,26 +41,13 @@
 	
 	<!-- datatable  -->
 	<link href="../../../resources/vendor/DataTables/datatables.css" >
+	
 </head>
 <!-- END HEAD -->
 
 <!-- BODY -->
 
-<body class="page-on-scroll fixed_container">
-	<c:set var="CSSboardBlockedList" value = "${requestScope.CSSboardBlockedList }"/>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-	<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" />
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
+<body class="page-on-scroll ">
 	
 	<!--========== HEADER ==========-->
 	<header class="header navbar-fixed-top">
@@ -76,7 +63,7 @@
 
 	<!--========== PAGE LAYOUT ==========-->
 	<!-- Service -->
-	<div class="bg-color-sky-light fixed_container" data-auto-height="true">
+	<div class="bg-color-sky-light" data-auto-height="true">
 		<div class="content-lg container" style="margin-top : 50px;">
 			<h1 class="pt-4">
 				<i class="fas fa-user-circle title_subject_icon"></i>
@@ -181,10 +168,11 @@
 						</div>
 					</div>	
 				</div>
-				<!-- ORACLE table -->
-				<div>
+				<!-- oracle table -->
+				<div class="mt-10">
 					<h2>
-						<i class="fas fa-list title_subject_icon"></i>ORACLE
+						<i class="fas fa-list title_subject_icon"></i>
+						Oracle
 					</h2>
 					<div class="table-responsive">
 						<table id="foo-table" class="table table-striped">
@@ -197,17 +185,30 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>asdasd</td>
-									<td>111</td>
-									<td>view1</td>
-									<td>2021-12-08</td>
-								</tr>
+								<c:choose>
+                   					<c:when test = "${boardblockoracle != null and fn:length(boardblockoracle) > 0 }">
+                   						<c:forEach var="oracle" items="${boardblockoracle}">
+											<tr>
+												<td>${oracle.post_id }</td>
+												<td>
+													<a href="/board/oracleview?post_id=${oracle.post_id}">${oracle.post_subject }</a>
+												</td>
+												<td>${oracle.user_nickname}</td>
+												<td>${oracle.post_regdate }</td>
+											</tr>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+			                        	<tr>
+			                        		<td colspan="5" class="text-center">신고된 게시물이 없습니다 </td>
+			                        	</tr>
+			                        </c:otherwise>
+								</c:choose>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<!--end ORACLE table -->
+				<!--end oracle table -->
 			</div>
 		</div>
 		<!--// end row -->
@@ -253,7 +254,7 @@
 	<!-- Load d3.js and c3.js -->
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
-
+	
 	<!-- datatables -->
 	<script type="text/javascript" src="../../../resources/vendor/DataTables/datatables.js"></script>
 	<script type="text/javascript" src="../../../resources/vendor/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.js"></script>
@@ -266,7 +267,8 @@
  	        displayLength : 10
  	    } );
  	} );	
- 	</script> 
+ </script> 
+
 </body>
 <!-- END BODY -->
 

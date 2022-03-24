@@ -116,7 +116,7 @@
 	                                </a>
 	                            </li>
 	                            <li>
-	                                <a class="nav-item-child-sub_man" href="/admin/boardblock">
+	                                <a class="nav-item-child-sub_man" href="/admin/boardblockhtml">
 	                                    	게시글관리 - 신고된 게시글
 	                                </a>
 	                            </li>

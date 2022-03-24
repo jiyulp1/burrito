@@ -134,4 +134,46 @@ public class AdminServiceImpl implements AdminService {
 		return dao.boardallspring();
 	}
 
+	@Override
+	public List<CssBoardVO> boardblockcss() throws Exception {
+
+		return dao.boardblockcss();
+	}
+
+	@Override
+	public List<HtmlBoardVO> boardblockhtml() throws Exception {
+
+		return dao.boardblockhtml();
+	}
+
+	@Override
+	public List<JsBoardVO> boardblockjs() throws Exception {
+		
+		return dao.boardblockjs();
+	}
+
+	@Override
+	public List<JavaBoardVO> boardblockjava() throws Exception {
+
+		return dao.boardblockjava();
+	}
+
+	@Override
+	public List<JspBoardVO> boardblockjsp() throws Exception {
+		
+		return dao.boardblockjsp();
+	}
+
+	@Override
+	public List<OracleBoardVO> boardblockoracle() throws Exception {
+
+		return dao.boardblockoracle();
+	}
+
+	@Override
+	public List<SpringBoardVO> boardblockspring() throws Exception {
+
+		return dao.boardblockspring();
+	}
+
 }

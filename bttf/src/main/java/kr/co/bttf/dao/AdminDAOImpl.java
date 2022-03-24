@@ -140,4 +140,46 @@ public class AdminDAOImpl implements AdminDAO {
 		return sql.selectList(namespace + ".boardallspring");
 	}
 
-}
+	@Override
+	public List<CssBoardVO> boardblockcss() throws Exception {
+
+		return sql.selectList(namespace + ".boardblockcss");
+	}
+
+	@Override
+	public List<HtmlBoardVO> boardblockhtml() throws Exception {
+
+		return sql.selectList(namespace + ".boardblockhtml");
+	}
+
+	@Override
+	public List<JsBoardVO> boardblockjs() throws Exception {
+
+		return sql.selectList(namespace + ".boardblockjs");
+	}
+
+	@Override
+	public List<JavaBoardVO> boardblockjava() throws Exception {
+
+		return sql.selectList(namespace + ".boardblockjava");
+	}
+
+	@Override
+	public List<JspBoardVO> boardblockjsp() throws Exception {
+		
+		return sql.selectList(namespace + ".boardblockjsp");
+	}
+
+	@Override
+	public List<OracleBoardVO> boardblockoracle() throws Exception {
+		
+		return sql.selectList(namespace + ".boardblockoracle");
+	}
+
+	@Override
+	public List<SpringBoardVO> boardblockspring() throws Exception {
+		
+		return sql.selectList(namespace + ".boardblockspring");
+	}
+
+}         

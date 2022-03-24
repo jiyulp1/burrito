@@ -146,25 +146,107 @@ public class AdminController {
 			boardallspring = adminService.boardallspring();
 			model.addAttribute("boardallspring", boardallspring);
 		}
-	
+		
+		
+		// 신고된 게시판
+ 		//css
+		@RequestMapping(value = "/boardblockcss", method = RequestMethod.GET)
+		public void boardblockcss(Model model) throws Exception {
+
+			System.out.println("get - boardblockcss");
+			List boardblockcss = null;
+			boardblockcss = adminService.boardblockcss();
+			model.addAttribute("boardblockcss", boardblockcss);
+		}
+		
+		//html
+		@RequestMapping(value = "/boardblockhtml", method = RequestMethod.GET)
+		public void boardblockhtml(Model model) throws Exception {
+
+			System.out.println("get - boardblockhtml");
+			List boardblockhtml = null;
+			boardblockhtml = adminService.boardblockhtml();
+			model.addAttribute("boardblockhtml", boardblockhtml);
+		}
+		
+		
+		
+		//js
+		@RequestMapping(value = "/boardblockjs", method = RequestMethod.GET)
+		public void boardblockjs(Model model) throws Exception {
+
+			System.out.println("get - boardblockjs");
+			List boardblockjs = null;
+			boardblockjs = adminService.boardblockjs();
+			model.addAttribute("boardblockjs", boardblockjs);
+		}
+		
+		//java
+		@RequestMapping(value = "/boardblockjava", method = RequestMethod.GET)
+		public void boardblockjava(Model model) throws Exception {
+
+			System.out.println("get - boardblockjava");
+			List boardblockjava = null;
+			boardblockjava = adminService.boardblockjava();
+			model.addAttribute("boardblockjava", boardblockjava);
+		}
+		
+		//jsp
+		@RequestMapping(value = "/boardblockjsp", method = RequestMethod.GET)
+		public void boardblockjsp(Model model) throws Exception {
+
+			System.out.println("get - boardblockjsp");
+			List boardblockjsp = null;
+			boardblockjsp = adminService.boardblockjsp();
+			model.addAttribute("boardblockjsp", boardblockjsp);
+		}
+		
+		//oracle
+		@RequestMapping(value = "/boardblockoracle", method = RequestMethod.GET)
+		public void boardblockoracle(Model model) throws Exception {
+
+			System.out.println("get - boardblockoracle");
+			List boardblockoracle = null;
+			boardblockoracle = adminService.boardblockoracle();
+			model.addAttribute("boardblockoracle", boardblockoracle);
+		}
+		
+		//spring
+		@RequestMapping(value = "/boardblockspring", method = RequestMethod.GET)
+		public void boardblockspring(Model model) throws Exception {
+
+			System.out.println("get - boardblockspring");
+			List boardblockspring = null;
+			boardblockspring = adminService.boardblockspring();
+			model.addAttribute("boardblockspring", boardblockspring);
+		}
+		
+		
+		
 		// 4. 신고된 회원을 해제하는 버튼 기능은 admin에서 구현(set만 뒤집어서)
 		// CSS 신고 게시글 해제
-		@RequestMapping(value = "/cssundo", method = RequestMethod.GET)
-		public String cssundo(@RequestParam("post_id") int post_id, Model model) throws Exception {
-
-			adminService.cssundo(post_id);
-			return "redirect:/admin/memberblock";
-		}
-
+//		@RequestMapping(value = "/cssundo", method = RequestMethod.GET)
+//		public String cssundo(@RequestParam("post_id") int post_id, Model model) throws Exception {
+//
+//			adminService.cssundo(post_id);
+//			return "redirect:/admin/memberblock";
+//		}
+		
+		
+		
+		
+		
+		
+		
 		
 		// 5. 퇴출
 		// CSS 신고 들어온 게시글 안보이게
-		@RequestMapping(value = "/cssexpell", method = RequestMethod.GET)
-		public String cssexpell(@RequestParam("post_id") int post_id, Model model) throws Exception {
-
-			adminService.cssexpell(post_id);
-			return "redirect:/admin/memberblock";
-		}
+//		@RequestMapping(value = "/cssexpell", method = RequestMethod.GET)
+//		public String cssexpell(@RequestParam("post_id") int post_id, Model model) throws Exception {
+//
+//			adminService.cssexpell(post_id);
+//			return "redirect:/admin/memberblock";
+//		}
 	
 	/*******************
 	 * 공지사항
