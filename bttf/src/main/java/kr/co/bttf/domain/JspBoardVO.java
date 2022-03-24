@@ -3,7 +3,7 @@ package kr.co.bttf.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-public class JsBoardVO {
+public class JspBoardVO {
 	@Getter @Setter
 	private int post_id;
 	@Getter @Setter
@@ -24,6 +24,5 @@ public class JsBoardVO {
 	private String post_regdate;
 	@Getter @Setter
 	private int category_id;
-	
 	
 }

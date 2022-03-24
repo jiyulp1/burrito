@@ -3,7 +3,7 @@ package kr.co.bttf.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-public class JsBoardVO {
+public class SpringBoardVO {
 	@Getter @Setter
 	private int post_id;
 	@Getter @Setter
