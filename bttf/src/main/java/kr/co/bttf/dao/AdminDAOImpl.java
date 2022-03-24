@@ -69,26 +69,26 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public void cssundo(CssBoardVO vo) {
-		sql.update(namespace + ".cssundo", vo );
+	public void cssundo(int post_id) {
+		sql.update(namespace + ".cssundo", post_id );
 		
 	}
 
 	@Override
-	public void memberundo(MemberVO vo) {
-		sql.update(namespace + "memberundo", vo);
+	public void memberundo(int user_index) {
+		sql.update(namespace + ".memberundo", user_index);
 		
 	}
 
 	@Override
-	public void cssexpell(CssBoardVO vo) {
-		sql.delete(namespace + "cssexpell", vo);
+	public void cssexpell(int post_id) {
+		sql.delete(namespace + ".cssexpell", post_id);
 		
 	}
 
 	@Override
-	public void memberexpell(MemberVO vo) {
-		sql.delete(namespace + "memberexpell", vo);
+	public void memberexpell(int user_index) {
+		sql.delete(namespace + ".memberexpell", user_index);
 		
 		
 	}

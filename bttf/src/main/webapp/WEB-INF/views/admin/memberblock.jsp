@@ -112,7 +112,12 @@
                                                 </p>
                                             </td>
                                             <td>
-                                                <input type="button" class="btn btn-info" value="신고해제">
+                                            	<a href="/admin/memberundo?user_index=${userBlockedList.user_index }" class="btn btn-warning mt-4" id="boardreport" type="submit" style="float: right;">신고해제</a>
+<!--                                                 <input type="button" class="btn btn-info" value="신고해제" onclick="/admin/memberundo"> -->
+                                            </td>
+                                            <td>
+                                            	<a href="/admin/memberexpell?user_index=${userBlockedList.user_index }" class="btn btn-warning mt-4" id="boardreport" type="submit" style="float: right;">회원퇴출</a>
+<!--                                                 <input type="button" class="btn btn-danger" value="회원퇴출" onclick="/admin/memberexpell"> -->
                                             </td>
                                         </tr>
                                     </c:forEach>

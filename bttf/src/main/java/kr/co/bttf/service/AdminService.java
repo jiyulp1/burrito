@@ -33,16 +33,16 @@ public interface AdminService {
 	public void anndelete(int post_id) throws Exception;
 	
 	// CSS 신고 게시글 해제
-	public void cssundo(CssBoardVO vo) throws Exception;
+	public void cssundo(int post_id) throws Exception;
 	
 	// 신고 회원 해제
-	public void memberundo(MemberVO vo) throws Exception;
+	public void memberundo(int user_index) throws Exception;
 	
 	// CSS 신고 들어온 게시글 안보이게 퇴출
-	public void cssexpell(CssBoardVO vo) throws Exception;
+	public void cssexpell(int post_id) throws Exception;
 	
 	// 신고가 들어온 회원 퇴출
-	public void memberexpell(MemberVO vo) throws Exception;
+	public void memberexpell(int user_index) throws Exception;
 
 	
 

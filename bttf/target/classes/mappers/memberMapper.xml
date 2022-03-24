@@ -21,7 +21,7 @@
 	<select id="login" resultType="kr.co.bttf.domain.MemberVO">
 		SELECT * FROM USER_ALL
 		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND
-		avaliability_category_id = 1
+		avaliability_category_id != 4
 	</select>
 
 	<update id="cssboardreported" parameterType="_int">

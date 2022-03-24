@@ -88,7 +88,6 @@
 				                            <td>${announcmentList.user_nickname }</td>
 				                            <td>${announcmentList.post_vcount }</td>
 				                            <td>${announcmentList.post_regdate }</td>
-</td>
 				                        </tr>
 		                        	</c:forEach>
 		                        </c:when>
@@ -152,6 +151,8 @@
 	<!-- Load d3.js and c3.js -->
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
+	
+	<!-- datatables -->
 	<script type="text/javascript" src="../../../resources/vendor/DataTables/datatables.js"></script>
 	<script type="text/javascript" src="../../../resources/vendor/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.js"></script>
  	<script type="text/javascript"> 

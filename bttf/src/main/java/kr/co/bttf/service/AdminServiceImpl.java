@@ -59,29 +59,29 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public void cssundo(CssBoardVO vo) throws Exception {
-		dao.cssundo(vo);
+	public void cssundo(int post_id) throws Exception {
+		dao.cssundo(post_id);
 		
 		
 	}
 
 	@Override
-	public void memberundo(MemberVO vo) throws Exception {
-		dao.memberundo(vo);
+	public void memberundo(int user_index) throws Exception {
+		dao.memberundo(user_index);
 		
 		
 	}
 
 	@Override
-	public void cssexpell(CssBoardVO vo) throws Exception {
-		dao.cssexpell(vo);
+	public void cssexpell(int post_id) throws Exception {
+		dao.cssexpell(post_id);
 		
 		
 	}
 
 	@Override
-	public void memberexpell(MemberVO vo) throws Exception {
-		dao.memberexpell(vo);
+	public void memberexpell(int user_index) throws Exception {
+		dao.memberexpell(user_index);
 		
 		
 	}

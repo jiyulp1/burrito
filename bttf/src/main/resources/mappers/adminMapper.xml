@@ -12,7 +12,7 @@
 	
 	<!-- 신고된 회원만 -->
 	<select id="memberblock" resultType="kr.co.bttf.domain.MemberVO">
-		select * from user_all where user_reported = 0
+		select * from user_all where avaliability_category_id= 2 or avaliability_category_id= 3
 	</select>
 	
 	<!-- 공지사항 -->
@@ -44,8 +44,29 @@
 	</delete>
 	
 	<!-- 조회수 갱신 -->
-	<update id="annvcnt">
+	<update id="annvcnt" parameterType="_int">
 			update announcements set post_vcount = post_vcount + 1 where post_id = #{post_id}
+	</update>
+	
+										<!-- 신고기능 -->
+	<!-- 게시글 정상화 -->
+	<update id="cssundo" parameterType="_int">
+			update css set avaliability_category_id = 1 where post_id = #{post_id}
+	</update>
+	
+	<!-- 회원 정상화 -->
+	<update id="memberundo" parameterType="_int">
+			update user_all set avaliability_category_id = 1 where user_index = #{user_index}
+	</update>
+	
+	<!-- 게시글 퇴출 -->
+	<update id="cssexpell" parameterType="_int">
+			update css set avaliability_category_id = 4 where post_id = #{post_id}
+	</update>
+	
+	<!-- 회원 퇴출 -->
+	<update id="memberexpell" parameterType="_int">
+			update user_all set avaliability_category_id = 4 where user_index = #{user_index}
 	</update>
 	
 </mapper>
