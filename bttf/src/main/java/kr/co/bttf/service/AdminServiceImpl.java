@@ -86,4 +86,10 @@ public class AdminServiceImpl implements AdminService {
 		
 	}
 
+	@Override
+	public List<CssBoardVO> boardallcss() throws Exception {
+		
+		return dao.boardallcss();
+	}
+
 }

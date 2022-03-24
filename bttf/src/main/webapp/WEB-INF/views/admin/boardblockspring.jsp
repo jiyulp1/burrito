@@ -38,6 +38,9 @@
 
 	<!-- c3 chart -->
 	<link href="../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
+	
+	<!-- datatable  -->
+	<link href="../../../resources/vendor/DataTables/datatables.css" >
 </head>
 <!-- END HEAD -->
 
@@ -81,8 +84,8 @@
 			</h1>
 			<div class="content-lg container">
 				<h2>
-                             <i class="fas fa-window-close title_subject_icon"></i>신고된게시글
-                         </h2>
+                	<i class="fas fa-window-close title_subject_icon"></i>신고된게시글
+                </h2>
 				<div class="content-lg container">
 					<div class="row row-space-1 margin-b-2 col-md-12 col-sm-12" style="display: flex;">
 						<div class="col-sm-4 sm-margin-b-2">
@@ -94,7 +97,7 @@
 									<div class="service-info text-center">
 										<h3>HTML5</h3>
 									</div>	
-									<a href="#" class="content-wrapper-link"></a>
+									<a href="/admin/boardblockhtml" class="content-wrapper-link"></a>
 								</div>
 							</div>
 						</div>
@@ -107,7 +110,7 @@
 									<div class="service-info text-center">
 										<h3>CSS3</h3>
 									</div>
-									<a href="#" class="content-wrapper-link"></a>
+									<a href="/admin/boardblockcss" class="content-wrapper-link"></a>
 								</div>
 							</div>
 						</div>
@@ -120,7 +123,7 @@
 									<div class="service-info text-center">
 										<h3>JAVASCRIPT</h3>
 									</div>
-									<a href="#" class="content-wrapper-link"></a>
+									<a href="/admin/boardblockjs" class="content-wrapper-link"></a>
 								</div>
 							</div>
 						</div>
@@ -133,7 +136,7 @@
 									<div class="service-info text-center" >
 										<h3>JAVA</h3>
 									</div>
-									<a href="#" class="content-wrapper-link"></a>
+									<a href="/admin/boardblockjava" class="content-wrapper-link"></a>
 								</div>
 							</div>
 						</div>
@@ -146,7 +149,7 @@
 									<div class="service-info text-center">
 										<h3>JSP</h3>
 									</div>
-									<a href="#" class="content-wrapper-link"></a>
+									<a href="/admin/boardblockjsp" class="content-wrapper-link"></a>
 								</div>
 							</div>
 						</div>
@@ -159,7 +162,7 @@
 									<div class="service-info text-center" >
 										<h3>SPRING</h3>
 									</div>
-									<a href="#" class="content-wrapper-link"></a>
+									<a href="/admin/boardblockspring" class="content-wrapper-link"></a>
 								</div>
 							</div>
 						</div>
@@ -172,19 +175,19 @@
 									<div class="service-info text-center">
 										<h3>ORACLE</h3>
 									</div>
-									<a href="#" class="content-wrapper-link"></a>
+									<a href="/admin/boardblockoracle" class="content-wrapper-link"></a>
 								</div>
 							</div>
 						</div>
 					</div>	
 				</div>
-				<!-- HTML5 table -->
+				<!-- SPRING table -->
 				<div>
 					<h2>
-						<i class="fas fa-list title_subject_icon"></i>HTML5
+						<i class="fas fa-list title_subject_icon"></i>SPRING
 					</h2>
 					<div class="table-responsive">
-						<table class="table table-striped">
+						<table id="foo-table" class="table table-striped">
 							<thead>
 								<tr>
 									<th>게시글</th>
@@ -204,188 +207,7 @@
 						</table>
 					</div>
 				</div>
-				<!--end HTML5 table -->
-
-				<!-- CSS3 table -->
-				<div class="mt-10">
-					<h2>
-						<i class="fas fa-list title_subject_icon"></i>CSS3
-					</h2>
-					<div class="table-responsive">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>게시글</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일자</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:choose>
-                   					<c:when test = "${CSSboardBlockedList != null and fn:length(CSSboardBlockedList) > 0 }">
-                   						<c:forEach var="css" items="${CSSboardBlockedList}">
-											<tr>
-												<td>${css.post_id }</td>
-												<td>
-													<a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${css.post_id }">${css.post_subject }</a>
-												</td>
-												<td>${css.writer }</td>
-												<td>${css.post_regdate }</td>
-											</tr>
-										</c:forEach>
-									</c:when>
-									<c:otherwise>
-			                        	<tr>
-			                        		<td colspan="5" class="text-center">신고된 게시물이 없습니다 </td>
-			                        	</tr>
-			                        </c:otherwise>
-								</c:choose>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!--end CSS3 table -->
-
-				<!-- JS table -->
-				<div class="mt-10">
-					<h2>
-						<i class="fas fa-list title_subject_icon"></i>Javascript
-					</h2>
-					<div class="table-responsive">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>게시글</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일자</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>asdasd</td>
-									<td>111</td>
-									<td>view1</td>
-									<td>2021-12-08</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!--end JS table -->
-
-				<!-- Java table -->
-				<div class="mt-10">
-					<h2>
-						<i class="fas fa-list title_subject_icon"></i>Java
-					</h2>
-					<div class="table-responsive">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>게시글</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일자</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>asdasd</td>
-									<td>111</td>
-									<td>view1</td>
-									<td>2021-12-08</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!--end Java table -->
-
-				<!-- Oracle table -->
-				<div class="mt-10">
-					<h2>
-						<i class="fas fa-list title_subject_icon"></i>Oracle
-					</h2>
-					<div class="table-responsive">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>게시글</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일자</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>asdasd</td>
-									<td>111</td>
-									<td>view1</td>
-									<td>2021-12-08</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!--end Oracle table -->
-
-				<!-- JSP table -->
-				<div class="mt-10">
-					<h2>
-						<i class="fas fa-list title_subject_icon"></i>JSP
-					</h2>
-					<div class="table-responsive">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>게시글</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일자</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>asdasd</td>
-									<td>111</td>
-									<td>view1</td>
-									<td>2021-12-08</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!--end JSP table -->
-
-				<!-- Spring table -->
-				<div class="mt-10">
-					<h2>
-						<i class="fas fa-list title_subject_icon"></i>Spring
-					</h2>
-					<div class="table-responsive">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>게시글</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일자</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>asdasd</td>
-									<td>111</td>
-									<td>view1</td>
-									<td>2021-12-08</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!--end Spring table -->
+				<!--end SPRING table -->
 			</div>
 		</div>
 		<!--// end row -->
@@ -432,7 +254,19 @@
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
 
-
+	<!-- datatables -->
+	<script type="text/javascript" src="../../../resources/vendor/DataTables/datatables.js"></script>
+	<script type="text/javascript" src="../../../resources/vendor/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.js"></script>
+ 	<script type="text/javascript"> 
+ 	$(document).ready(function() {
+ 	    $('#foo-table').DataTable( {
+ 	    	bInfo : false,
+ 	       	bSortable : false,
+ 	       	bPaginate : true,
+ 	        displayLength : 10
+ 	    } );
+ 	} );	
+ 	</script> 
 </body>
 <!-- END BODY -->
 
