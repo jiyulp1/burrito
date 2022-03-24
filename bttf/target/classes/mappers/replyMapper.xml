@@ -34,16 +34,16 @@
 -->
 
 	<!-- 1. 댓글 조회 --> 
-	<select id="oracle_reply_list" parameterType="int" resultType="kr.co.bttf.domain.OracleReplyVO">
-		select reply_id , post_id , user_id , reply_regdate
+	<select id="oracle_reply_list" parameterType="_int" resultType="kr.co.bttf.domain.OracleReplyVO">
+		select *
 		from reply_oracle 
 		where post_id = #{post_id}
 	</select>
 
 	<!-- 2. 댓글 작성 --> 
 	<insert id="oracle_reply_write" parameterType="kr.co.bttf.domain.OracleReplyVO">
-		insert into reply_oracle(post_id, user_id, reply_contents, reply_regdate) 
-		values(#{post_id}, #{user_id}, #{reply_contents}, #{reply_regdate})
+		insert into reply_oracle(post_id, reply_id, user_nickname, reply_contents) 
+		values(#{post_id}, #{reply_id}, #{user_nickname}, #{reply_contents})
 	</insert>
 
 	<!-- 3. 댓글 수정 --> 
@@ -54,10 +54,12 @@
 	</update>
 
 	<!-- 4. 댓글 삭제 --> 
- 	<delete id="oracle_reply_delete" parameterType="int">
+ 	<delete id="oracle_reply_delete" parameterType="kr.co.bttf.domain.OracleReplyVO">
 		delete from reply_oracle
 		where post_id = #{post_id} and reply_id = #{reply_id}
 	</delete>
  
 
 </mapper>
+
+

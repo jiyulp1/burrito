@@ -1,5 +1,7 @@
 package kr.co.bttf.domain;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,7 +23,7 @@ public class OracleBoardVO {
 	@Getter @Setter
 	private int post_vcount;
 	@Getter @Setter
-	private String post_regdate;
+	private Date post_regdate;
 	@Getter @Setter
 	private int category_id;
 }

@@ -87,7 +87,7 @@
 				                            </td>
 				                            <td>${announcmentList.user_nickname }</td>
 				                            <td>${announcmentList.post_vcount }</td>
-				                            <td>${announcmentList.post_regdate }</td>
+				                            <td><fmt:formatDate value="${announcmentList.post_regdate}" pattern="yyyy-MM-dd" /></td>
 				                        </tr>
 		                        	</c:forEach>
 		                        </c:when>
