@@ -1,11 +1,14 @@
 package kr.co.bttf.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.OracleReplyVO;
 import kr.co.bttf.service.OracleReplyService;
 
@@ -39,17 +42,15 @@ public class ReplyController {
 				06. ORACLE
 	-------------------------------- */
 	
-	// 6-1. 댓글 조회
-	
 	// 6-2. 댓글 작성
 	@RequestMapping(value = "/oracle_reply_write", method = RequestMethod.POST)
-	public String oracleReplyWrite(OracleReplyVO vo) throws Exception {
-		
+	public String oracleReplyWrite(OracleReplyVO vo , HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		vo.setUser_nickname(member.getUser_nickname());
 		oracleService.oracleReplyWrite(vo);
-		
-	  return "redirect:/board/oraclelist?post_id=" + vo.getPost_id();
+	  return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
 	}
-	
 	
 	// 6-3. 댓글 수정
 	

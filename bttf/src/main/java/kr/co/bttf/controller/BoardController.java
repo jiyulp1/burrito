@@ -298,12 +298,13 @@ public class BoardController {
 			oracleService.oraclevcnt(post_id);
 			model.addAttribute("oraclevcnt", oraclevcnt);
 			
-			OracleBoardVO vo = oracleService.oracleView(post_id);
-			model.addAttribute("oracleview", vo);
-			
 			// 상세보기 시 댓글 조회
 			List<OracleReplyVO> oraclereplylist = oracleReplyService.oracleReplyList(post_id);
 			model.addAttribute("oraclereplylist", oraclereplylist);
+			
+			OracleBoardVO vo = oracleService.oracleView(post_id);
+			model.addAttribute("oracleview", vo);
+			
 		}
 		
 		// 6-4. 게시물 수정 페이지 이동

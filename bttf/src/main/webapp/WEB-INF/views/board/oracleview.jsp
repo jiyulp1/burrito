@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <!DOCTYPE html>
 <html lang="ko" class="no-js" style="height : 100vh;">
@@ -80,6 +82,9 @@
                                 <div class="col-md-2">
                                 	<p class="margin-b-50 text-center" > 작성자 ${oracleview.user_nickname }</p>
                                 </div>
+                                <div class="col-md-2">
+                                	<p class="margin-b-50 text-center" > <fmt:formatDate value="${oracleview.post_regdate}" pattern="yyyy-MM-dd HH:mm:ss" />
+                                </div>
                                 <div>
                                     <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; resize: none; background-color: #fff;" disabled>${oracleview.post_contents }</pre>
                                 </div> 
@@ -96,26 +101,25 @@
 								</c:if>
                               	 </div>
                             </form>
-
-
            					<!-- 댓글 작성 -->
-							<form name="replyForm" method="GET">
+							<form action="/reply/oracle_reply_write" name="replyForm" method="post">
 								<input type="hidden" name="post_id" value="${oracleview.post_id }">
 								<div class="col-auto" style="display: flex;">
                            			<input id="reply_contents" name="reply_contents" class="form-control mt-5" style="width: 95%;" type="text" placeholder="댓글을 입력해 주세요.">
                            			<a href="javascript:document.replyForm.submit()" class="btn btn-default mt-5" style="height: 50px; margin-left: 20px; line-height:36px; ">댓글등록</a>
+<!--                            			<a href="/board/oracle_reply_write" class="btn btn-default mt-5" style="height: 50px; margin-left: 20px; line-height:36px; ">댓글등록a태그</a> -->
+<!-- 									<button type="submit" class="btn btn-info mt-4" id="writesuccess">작성완료버튼태그</button> -->
+<!--                            			<input id="sumbitreply" name ="submitreply" class= "btn btn-default" type="submit" value="작성완료인풋태그"> -->
                          		</div>
-								
 								<!-- 댓글 리스트 -->
 								<div>
 									<c:choose>
-										<c:when test="${oracleReplyList != null and fn:length(oracleReplyList) > 0 }">
-											<c:forEach var="reply" items="${oracleReplyList }">
+										<c:when test="${oraclereplylist != null and fn:length(oraclereplylist) > 0 }">
+											<c:forEach var="reply" items="${oraclereplylist }">
 												<div class="reply_box mt-5 col-md-12 col-sm-12">
-													
 													<!-- 정상적인 접근 경로 -->
 														<div align="center" width="200px" >
-															<p id="re_author" name="user_nickname" class="text-left reply_subject" style="display:hidden;">${reply.user_nickname }</p>
+															<p id="re_author" name="user_nickname" class="text-left reply_subject" style="display:hidden;">${reply.user_nickname } | <fmt:formatDate value="${oracleview.post_regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 														</div>
 													<c:if test="${member != null }" >
 														<div class="col-md-12 col-sm-12 row">
@@ -127,7 +131,6 @@
 															</div>
 														</div>
 													</c:if>
-													
 													<!-- 비정상적인 접근 경로 -->
 													<c:if test="${member == null }" >
 														<div >
@@ -177,7 +180,6 @@
 <!-- 									</ul> -->
 <!-- 								</nav> -->
 								<!-- end of reply pagination -->
-													
 							</form>                                
                         </div>
                     </div>

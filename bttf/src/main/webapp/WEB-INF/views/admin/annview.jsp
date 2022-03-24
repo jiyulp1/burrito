@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="ko" class="no-js">
@@ -79,6 +80,9 @@
                                 </div>
                                 <div class="col-md-2">
                                 	<p class="margin-b-50 text-center" > 작성자 ${annview.user_nickname }</p>
+                                </div>
+                                <div class="col-md-2">
+                                	<p class="margin-b-50 text-center" > <fmt:formatDate value="${annview.post_regdate}" pattern="yyyy-MM-dd HH:mm:ss" />
                                 </div>
                                 <div>
                                     <pre class="form-control" style="height : 650px; resize: none; background-color: #fff;" disabled>${annview.post_contents }</pre>

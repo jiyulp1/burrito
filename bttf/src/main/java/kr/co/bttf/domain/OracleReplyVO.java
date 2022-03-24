@@ -1,5 +1,7 @@
 package kr.co.bttf.domain;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,7 +23,7 @@ public class OracleReplyVO {
 	@Getter @Setter
 	private String user_nickname;
 	@Getter @Setter
-	private String reply_regdate;
+	private Date reply_regdate;
 	@Getter @Setter
 	private int post_id;
 	

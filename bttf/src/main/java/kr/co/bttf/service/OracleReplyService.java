@@ -12,10 +12,10 @@ public interface OracleReplyService {
 	// 댓글 작성
 	public void oracleReplyWrite(OracleReplyVO vo) throws Exception;
 	
-	// 댓글 수정
+	// 댓글 수정 
 	public void oracleReplyModify(OracleReplyVO vo) throws Exception;
 	
-	// 댓글 삭제
+	// 댓글 삭제 
 	public void oracleReplyDelete(OracleReplyVO vo) throws Exception;
 	
 }
