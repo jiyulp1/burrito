@@ -20,11 +20,7 @@ public class MemberVO {
 	@Getter @Setter
 	private String main_language;
 	@Getter @Setter
-	private int user_avaliable;
-	@Getter @Setter
-	private int user_expelled;
-	@Getter @Setter
-	private int user_reported;
+	private int avaliability_category_id;
 	@Getter @Setter
 	private String user_regdate;
 	@Getter @Setter

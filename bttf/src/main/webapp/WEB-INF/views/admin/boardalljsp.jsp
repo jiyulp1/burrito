@@ -47,22 +47,8 @@
 
 <!-- BODY -->
 
-<body class="page-on-scroll fixed_container">
-	<c:set var="CSSboardBlockedList" value = "${requestScope.CSSboardBlockedList }"/>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-	<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" />
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-	
+<body class="page-on-scroll">
+
 	<!--========== HEADER ==========-->
 	<header class="header navbar-fixed-top">
 		<!-- Navbar -->
@@ -77,7 +63,7 @@
 
 	<!--========== PAGE LAYOUT ==========-->
 	<!-- Service -->
-	<div class="bg-color-sky-light fixed_container" data-auto-height="true">
+	<div class="bg-color-sky-light" data-auto-height="true">
 		<div class="content-lg container" style="margin-top : 50px;">
 			<h1 class="pt-4">
 				<i class="fas fa-user-circle title_subject_icon"></i>
@@ -195,29 +181,31 @@
 									<th>게시글</th>
 									<th>제목</th>
 									<th>작성자</th>
+									<th>조회수</th>
 									<th>작성일자</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:choose>
-                   					<c:when test = "${CSSboardBlockedList != null and fn:length(CSSboardBlockedList) > 0 }">
-                   						<c:forEach var="css" items="${CSSboardBlockedList}">
-											<tr>
-												<td>${css.post_id }</td>
-												<td>
-													<a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${css.post_id }">${css.post_subject }</a>
-												</td>
-												<td>${css.writer }</td>
-												<td>${css.post_regdate }</td>
-											</tr>
-										</c:forEach>
-									</c:when>
-									<c:otherwise>
+			                    	<c:when test = "${boardalljsp != null and fn:length(boardalljsp) > 0 }">
+			                    		<c:forEach var="board" items="${boardalljsp}">
+					                        <tr>
+					                            <td>${board.post_id }</td>
+					                            <td>
+					                            	<a href="/board/jspview?post_id=${board.post_id }">${board.post_subject }</a>
+					                            </td>
+					                            <td>${board.user_nickname }</td>
+					                            <td>${board.post_vcount }</td>
+					                            <td>${board.post_regdate }</td>
+					                        </tr>
+			                        	</c:forEach>
+			                        </c:when>
+			                        <c:otherwise>
 			                        	<tr>
-			                        		<td colspan="5" class="text-center">신고된 게시물이 없습니다 </td>
+			                        		<td colspan="5" class="text-center">등록된 게시물이 없습니다 </td>
 			                        	</tr>
 			                        </c:otherwise>
-								</c:choose>
+			                    </c:choose>
 							</tbody>
 						</table>
 					</div>

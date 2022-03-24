@@ -46,22 +46,8 @@
 
 <!-- BODY -->
 
-<body class="page-on-scroll fixed_container">
-	<c:set var="CSSboardBlockedList" value = "${requestScope.CSSboardBlockedList }"/>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
-	<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" />
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-<%-- 				<c:set var="getReportedCssBoardCnt" value="${requestScope.getReportedCssBoardCnt }" /> --%>
-	
+<body class="page-on-scroll">
+
 	<!--========== HEADER ==========-->
 	<header class="header navbar-fixed-top">
 		<!-- Navbar -->
@@ -76,7 +62,7 @@
 
 	<!--========== PAGE LAYOUT ==========-->
 	<!-- Service -->
-	<div class="bg-color-sky-light fixed_container" data-auto-height="true">
+	<div class="bg-color-sky-light" data-auto-height="true">
 		<div class="content-lg container" style="margin-top : 50px;">
 			<h1 class="pt-4">
 				<i class="fas fa-user-circle title_subject_icon"></i>
@@ -193,16 +179,31 @@
 									<th>게시글</th>
 									<th>제목</th>
 									<th>작성자</th>
+									<th>조회수</th>
 									<th>작성일자</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>asdasd</td>
-									<td>111</td>
-									<td>view1</td>
-									<td>2021-12-08</td>
-								</tr>
+								<c:choose>
+			                    	<c:when test = "${boardalloracle != null and fn:length(boardalloracle) > 0 }">
+			                    		<c:forEach var="board" items="${boardalloracle}">
+					                        <tr>
+					                            <td>${board.post_id }</td>
+					                            <td>
+					                            	<a href="/board/oracleview?post_id=${board.post_id }">${board.post_subject }</a>
+					                            </td>
+					                            <td>${board.user_nickname }</td>
+					                            <td>${board.post_vcount }</td>
+					                            <td>${board.post_regdate }</td>
+					                        </tr>
+			                        	</c:forEach>
+			                        </c:when>
+			                        <c:otherwise>
+			                        	<tr>
+			                        		<td colspan="5" class="text-center">등록된 게시물이 없습니다 </td>
+			                        	</tr>
+			                        </c:otherwise>
+			                    </c:choose>
 							</tbody>
 						</table>
 					</div>

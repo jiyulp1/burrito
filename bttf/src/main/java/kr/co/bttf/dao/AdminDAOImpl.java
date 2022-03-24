@@ -10,7 +10,13 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.bttf.domain.AnnVO;
 import kr.co.bttf.domain.CssBoardVO;
+import kr.co.bttf.domain.HtmlBoardVO;
+import kr.co.bttf.domain.JavaBoardVO;
+import kr.co.bttf.domain.JsBoardVO;
+import kr.co.bttf.domain.JspBoardVO;
 import kr.co.bttf.domain.MemberVO;
+import kr.co.bttf.domain.OracleBoardVO;
+import kr.co.bttf.domain.SpringBoardVO;
 @Repository
 public class AdminDAOImpl implements AdminDAO {
 	
@@ -96,6 +102,42 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public List<CssBoardVO> boardallcss() throws Exception {
 		return sql.selectList(namespace + ".boardallcss");
+	}
+
+	@Override
+	public List<HtmlBoardVO> boardallhtml() throws Exception {
+
+		return sql.selectList(namespace + ".boardallhtml");
+	}
+
+	@Override
+	public List<JsBoardVO> boardalljs() throws Exception {
+
+		return sql.selectList(namespace + ".boardalljs");
+	}
+
+	@Override
+	public List<JavaBoardVO> boardalljava() throws Exception {
+
+		return sql.selectList(namespace + ".boardalljava");
+	}
+
+	@Override
+	public List<JspBoardVO> boardalljsp() throws Exception {
+
+		return sql.selectList(namespace + ".boardalljsp");
+	}
+
+	@Override
+	public List<OracleBoardVO> boardalloracle() throws Exception {
+
+		return sql.selectList(namespace + ".boardalloracle");
+	}
+
+	@Override
+	public List<SpringBoardVO> boardallspring() throws Exception {
+
+		return sql.selectList(namespace + ".boardallspring");
 	}
 
 }

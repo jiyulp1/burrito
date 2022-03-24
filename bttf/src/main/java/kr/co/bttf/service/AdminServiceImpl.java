@@ -9,7 +9,13 @@ import org.springframework.stereotype.Service;
 import kr.co.bttf.dao.AdminDAO;
 import kr.co.bttf.domain.AnnVO;
 import kr.co.bttf.domain.CssBoardVO;
+import kr.co.bttf.domain.HtmlBoardVO;
+import kr.co.bttf.domain.JavaBoardVO;
+import kr.co.bttf.domain.JsBoardVO;
+import kr.co.bttf.domain.JspBoardVO;
 import kr.co.bttf.domain.MemberVO;
+import kr.co.bttf.domain.OracleBoardVO;
+import kr.co.bttf.domain.SpringBoardVO;
 @Service
 public class AdminServiceImpl implements AdminService {
 
@@ -90,6 +96,42 @@ public class AdminServiceImpl implements AdminService {
 	public List<CssBoardVO> boardallcss() throws Exception {
 		
 		return dao.boardallcss();
+	}
+
+	@Override
+	public List<HtmlBoardVO> boardallhtml() throws Exception {
+
+		return dao.boardallhtml();
+	}
+
+	@Override
+	public List<JsBoardVO> boardalljs() throws Exception {
+		
+		return dao.boardalljs();
+	}
+
+	@Override
+	public List<JavaBoardVO> boardalljava() throws Exception {
+
+		return dao.boardalljava();
+	}
+
+	@Override
+	public List<JspBoardVO> boardalljsp() throws Exception {
+
+		return dao.boardalljsp();
+	}
+
+	@Override
+	public List<OracleBoardVO> boardalloracle() throws Exception {
+		
+		return dao.boardalloracle();
+	}
+
+	@Override
+	public List<SpringBoardVO> boardallspring() throws Exception {
+		
+		return dao.boardallspring();
 	}
 
 }
