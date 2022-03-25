@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
+import kr.co.bttf.domain.ReportVO;
 
 public interface MemberDAO {
 
@@ -13,28 +14,35 @@ public interface MemberDAO {
 	// 로그인
 	public MemberVO signin(MemberVO vo) throws Exception;
 	
-		// 로그인 성공여부
+	// 로그인 성공여부
 	public MemberVO signin(HashMap<String, String> map) throws Exception;
-
-	//신고접수(글)
-	public void cssboardreported(CssBoardVO vo) throws Exception;
-
-	
-	//신고접수(유저)
-		//신고사유
-	public MemberVO memreportcard(String user_nickname) throws Exception;
-	
-		//신고목록등재
-	public void memreportupdate(MemberVO vo) throws Exception;
-
 	
 	//비밀번호 찾기
-		// 등록된 회원이면 회원 정보 가져오기
+	// 등록된 회원이면 회원 정보 가져오기
 	public MemberVO readMember(String user_email) throws Exception;
-		// 등록된 회원인지 검사하기
+	
+	// 등록된 회원인지 검사하기
 	public boolean idCheck(String user_email) throws Exception;
-		// 비밀번호 갱신하기
+	
+	// 비밀번호 갱신하기
 	public void updatePw(MemberVO vo) throws Exception;
+
+	// 신고 건수 업데이트
+	public void  memreportcnt( int user_index) throws Exception;
 	
+	// 신고된 유저의 정보를 변수에 저장
+	public ReportVO memcategoryselect(int user_index) throws Exception;
 	
+	// 신고된 유저의 report category를 2번으로 업데이트
+	public void memcategory2(int user_index) throws Exception;
+
+	// 신고된 유저의 report category를 3번으로 업데이트
+	public void memcategory3(int user_index) throws Exception;
+	
+	// 최초 신고된 유저
+	public void insert_report_user(HashMap<String, Integer> map) throws Exception;
+
+
+
+
 }
