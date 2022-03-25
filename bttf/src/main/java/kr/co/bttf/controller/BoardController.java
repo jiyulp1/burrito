@@ -186,6 +186,19 @@ public class BoardController {
 
 	}
 	
+	// 게시글 신고
+	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
+	public void memreportcard(@RequestParam("user_index") int user_index, Model model) throws Exception {
+		
+		MemberVO vo = cssService.memreportcard(user_index);
+		model.addAttribute("memreportcard", vo);
+		
+		//참고로 게시글도 신고사유 접수받을 boardreport.jsp필요, 
+		//button에서 파라미터로 post_category(게시판카테고리) get방식으로 넘기면 될듯하니
+		//신고접수폼은 회원신고용과 게시글신고용 2개로 가져가면 될듯
+		//<a href="/member/cssboardreported?post_id=${cssview.post_id }&category_id=0" ...>게시글 신고</a>
+
+	}
 	
 	
 	/* --------------------------------

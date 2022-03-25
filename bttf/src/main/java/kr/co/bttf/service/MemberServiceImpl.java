@@ -15,6 +15,7 @@ import kr.co.bttf.controller.ScriptUtils;
 import kr.co.bttf.dao.MemberDAO;
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
+import kr.co.bttf.domain.ReportVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -68,24 +69,6 @@ public class MemberServiceImpl implements MemberService {
 		session.invalidate();  // 세션 정보를 제거
 	}
 	
-	//신고접수(글)
-	@Override
-	public void cssboardreported(CssBoardVO vo) throws Exception{
-		dao.cssboardreported(vo);
-		
-	}
-
-	//신고접수(유저)
-	@Override
-	public MemberVO memreportcard(String user_nickname) throws Exception {
-		return dao.memreportcard(user_nickname);
-	}
-
-	@Override
-	public void memreportupdate(MemberVO vo) throws Exception {
-		dao.memreportupdate(vo);
-	}
-
 	//비밀번호 찾기 이메일발송
 	@Override
 	public void sendemail(MemberVO vo, String div) throws Exception {
@@ -189,5 +172,40 @@ public class MemberServiceImpl implements MemberService {
 			ScriptUtils.alertAndMovePage(response, "입력하신 이메일로 임시 비밀번호를 발송했습니다", "/");
 		}
 	}
+
+	@Override
+	public void  memreportcnt( int user_index) throws Exception {
+			dao.memreportcnt(user_index);
+		
+		
+	}
+
+	@Override
+	public ReportVO memcategoryselect(int user_index) throws Exception {
+		
+		return dao.memcategoryselect(user_index);
+	}
+
+	@Override
+	public void memcategory2(int user_index) throws Exception {
+		dao.memcategory2(user_index);
+		
+	}
+
+	@Override
+	public void memcategory3(int user_index) throws Exception {
+		dao.memcategory3(user_index);
+		
+	}
+
+	@Override
+	public void insert_report_user( int report_category_id, int user_index) throws Exception {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("report_category_id",report_category_id);
+		map.put("user_index",user_index);
+		dao.insert_report_user(map);
+		
+	}
+
 	
 } 
