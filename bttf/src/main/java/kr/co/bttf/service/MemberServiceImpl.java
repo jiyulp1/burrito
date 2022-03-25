@@ -27,7 +27,18 @@ public class MemberServiceImpl implements MemberService {
 	public void signup(MemberVO vo) throws Exception {
 		dao.signup(vo);		
 	}
-	
+	// 이메일 중복확인
+	@Override
+	public int emailcheck(MemberVO vo) throws Exception {
+		int result = dao.emailcheck(vo);
+		return result;
+	}
+	// 닉네임 중복확인
+	@Override
+	public int nickcheck(MemberVO vo) throws Exception {
+		int result = dao.nickcheck(vo);
+		return result;
+	}
 	// 로그인
 	@Override
 	public MemberVO signin(MemberVO vo) throws Exception {

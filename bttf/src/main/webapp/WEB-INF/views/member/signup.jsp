@@ -46,7 +46,6 @@
 <!-- END HEAD -->
 
 <!-- BODY -->
-
 <body class="page-on-scroll ">
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
@@ -86,9 +85,12 @@
 <!-- 	                                    <input id="alert_pop" class="btn btn-primary" style="height: 50px;" type="button" value="중복확인" onclick="checkId(joinForm.user_id.value)"> -->
 <!--                                     </div> -->
 <!--                                 </div> -->
-                                <div class="col-auto">
+                                <div class="col-auto margin-b-50" >
                                     <label for="user_email">이메일</label>
-                                    <input  id="user_email" name="user_email" class="form-control margin-b-50" type="text" placeholder="이메일">
+                                    <div style="display:flex;">
+	                                    <input  id="user_email" name="user_email" class="form-control mr-5" style="width:86%;" type="text" placeholder="이메일">
+	                                    <button class="emailcheck btn btn-info" type="button" id="emailcheck" onclick="fn_emailcheck();" value="N">중복확인</button>
+                                    </div>
                                 </div>
                                 <div class="col-auto">
                                     <label for="user_pw">비밀번호</label>
@@ -102,9 +104,12 @@
                                     <label for="user_name">이름</label>
                                     <input  id="user_name" name="user_name" class="form-control margin-b-50" type="text" placeholder="이름">
                                 </div>
-                                <div class="col-auto">
+                                <div class="col-auto margin-b-50">
                                     <label for="user_nickname">닉네임</label>
-                                    <input  id="user_nickname" name="user_nickname" class="form-control margin-b-50" type="text" placeholder="닉네임">
+                                	<div style="display:flex;">
+                                    	<input  id="user_nickname" name="user_nickname" class="form-control mr-5" style="width:86%;" type="text" placeholder="닉네임">
+                                    	<button class="nickcheck btn btn-info" type="button" id="nickcheck" onclick="fn_nickcheck();" value="N">중복확인</button>
+                                	</div>
                                 </div>
                                 <div class="col-auto">
                                     <label for="user_phone">전화번호</label>
@@ -193,5 +198,40 @@
    
 </body>
 <!-- END BODY -->
-
+	<script type="text/javascript">
+		function fn_emailcheck(){
+			$.ajax({
+				url : "/member/emailcheck",
+				type : "post",
+				dataType : "json",
+				data : {"user_email" : $("#user_email").val()},
+				success : function(data){
+					if(data == 1){
+						alert("중복된 아이디입니다.");
+					}else if(data == 0){
+						$("#emailcheck").attr("value", "Y");
+						alert("사용가능한 아이디입니다.");
+					}
+				}
+			})
+		}
+		
+		function fn_nickcheck(){
+			$.ajax({
+				url : "/member/nickcheck",
+				type : "post",
+				dataType : "json",
+				data : {"user_nickname" : $("#user_nickname").val()},
+				success : function(data){
+					if(data == 1){
+						alert("중복된 닉네임입니다.");
+					}else if(data == 0){
+						$("#nickcheck").attr("value", "Y");
+						alert("사용가능한 닉네임입니다.");
+					}
+				}
+			})
+		}
+		
+	</script>
 </html>
