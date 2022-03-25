@@ -91,15 +91,15 @@ public class MemberServiceImpl implements MemberService {
 			msg +="<meta charset='UTF-8'>";
 			msg +="<meta http-equiv='X-UA-Compatible' content='IE=edge'>";
 			msg +="<title>Insert title here</title>";
-			msg +="<link href='../../resource/vendor/bootstrap/css/bootstrap.css' rel='stylesheet'” type='text/css' />";
-			msg +="<link rel='stylesheet' href='../../resource/css/custom.css'>";
+			msg +="<link href='../../../resources/vendor/bootstrap/css/bootstrap.css' rel='stylesheet'” type='text/css' />";
+			msg +="<link rel='stylesheet' href='../../../resources/css/custom.css'>";
 			msg +="</head>";
 			msg +="<body>";
 			msg +="<div class='container'>";
 			msg +="<form action=''>";
 			msg +="<div class='mail_content_center'>";
 			msg +="<div class='row'>";
-			msg +="<h1 class='mail_subject'> <img src='../../resource/img/favicon/favicon-32x32.png'” style='padding: 0px 7px 7px 0px;'>Back to the Front </h1>";
+			msg +="<h1 class='mail_subject'> <img src='../../../resources/img/favicon/favicon-32x32.png'” style='padding: 0px 7px 7px 0px;'>Back to the Front </h1>";
 			msg +="</div>";
 			msg +="<div class='row'>";
 			msg +="<div style='padding: 40px 0;'>";
@@ -110,13 +110,13 @@ public class MemberServiceImpl implements MemberService {
 			msg +="<p>하단 비밀번호 번경 버튼을 클릭하여 비밀번호 변경을 진행해주세요.</p>";
 			msg +="</div>";
 			msg +="<div>";
-			msg +="<a class='btn btn-primary' href='http://localhost:9091/member/updatepw'> 비밀번호 변경 </a>";
+			msg +="<a class='btn btn-primary' href='http://localhost:9090/member/updatepw'> 비밀번호 변경 </a>";
 			msg +="</div>";
 			msg +="</div>";
 			msg +="</div>";
 			msg +="</form>";
 			msg +="</div>";
-			msg +="<script src='../../resource/vendor/bootstrap/js/bootstrap.min.js' type='text/javascript'></script>";
+			msg +="<script src='../../../resources/vendor/bootstrap/js/bootstrap.min.js' type='text/javascript'></script>";
 			msg +="</body>";
 			msg +="</html>";
 		}

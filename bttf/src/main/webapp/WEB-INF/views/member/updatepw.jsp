@@ -107,7 +107,7 @@
         <div class="row">
             <div class="card align-middle col-md-3 login_card" >
                 <div class="card-title" style="margin-top:30px;">         
-                    <h2 class="card-title" style="color:#f58b34;"><img src="/resource/img/home_logo.png"/></h2>
+                    <h2 class="card-title" style="color:#f58b34;"><img src="/resources/img/home_logo.png"/></h2>
                 </div>     
                 <div class="card-body">
                     <form class="form-signin" method="POST">                    	
@@ -160,22 +160,7 @@
 	<!-- Load d3.js and c3.js -->
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
-    <script type="text/javascript">
-	    $(document).on("keyup", "#user_pw", function () {  // 전화번호
-	        var val = $(this).val();
-	        $(this).val(autoHypenPwNum(val));
-	    });
-	
-	    function autoHypenPwNum(str) {
-	        str = str.replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})/, "$1-$2-$3").replace("--", "-");
-	        return str;
-	    }  	
     
-    	function confirm(){
-    		alert("비밀번호가 정상적으로 변경 되었습니다.");
-    	}
-    
-    </script>
 </body>
 <!-- END BODY -->
 
