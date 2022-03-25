@@ -1,12 +1,16 @@
 package kr.co.bttf.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.bttf.dao.OracleReplyDAO;
+import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.OracleReplyVO;
 
 @Service
@@ -37,6 +41,16 @@ public class OracleReplyServiceImpl implements OracleReplyService {
 	@Override
 	public void oracleReplyDelete(OracleReplyVO vo) throws Exception {
 		dao.oracleReplyDelete(vo);
+		
 	}
+	
+//	@Override
+//	public void oracleReplyDelete(OracleReplyVO vo) throws Exception {
+//		HashMap<String, String> map = new HashMap<String, String>();
+//		int reply_id = vo.getReply_id();
+//		int post_id = vo.getPost_id();
+//		map.
+//	}
+
 
 }

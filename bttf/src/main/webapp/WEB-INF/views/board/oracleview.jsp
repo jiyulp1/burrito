@@ -106,7 +106,7 @@
 								<input type="hidden" name="post_id" value="${oracleview.post_id }">
 								<div class="col-auto" style="display: flex;">
                            			<input id="reply_contents" name="reply_contents" class="form-control mt-5" style="width: 95%;" type="text" placeholder="댓글을 입력해 주세요.">
-                           			<a href="javascript:document.replyForm.submit()" class="btn btn-default mt-5" style="height: 50px; margin-left: 20px; line-height:36px; ">댓글등록</a>
+                           			<a href="javascript:document.replyForm.submit()" class="btn btn-default mt-5" style="height: 50px; margin-left: 20px; line-height:36px; ">댓글 등록</a>
 <!--                            			<a href="/board/oracle_reply_write" class="btn btn-default mt-5" style="height: 50px; margin-left: 20px; line-height:36px; ">댓글등록a태그</a> -->
 <!-- 									<button type="submit" class="btn btn-info mt-4" id="writesuccess">작성완료버튼태그</button> -->
 <!--                            			<input id="sumbitreply" name ="submitreply" class= "btn btn-default" type="submit" value="작성완료인풋태그"> -->
@@ -127,7 +127,8 @@
 															<div class="row mt-5" style="padding-left:10px;">
 																<a class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})" id="editfail">수정완료</a>
 																<a class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a>
-																<a class="btn btn-danger" href="javascript:deleteReply( ${reply.reply_id})" id="deletefail">삭제</a>
+																<a href="/reply/oracle_reply_delete?reply_id=${reply.reply_id }&post_id=${reply.post_id}" class="btn btn-danger mt-4" id="list" type="submit">삭제</a>
+<%-- 																<a class="btn btn-danger" href="javascript:deleteReply( ${reply.reply_id})" id="deletefail">삭제</a> --%>
 															</div>
 														</div>
 													</c:if>
@@ -246,12 +247,12 @@
 	
 
 	// [글 삭제] function
-	function deletePost(post_id){
-		if (true){
-			document.replyForm.action = "${pageContext.request.contextPath}/pages/oracleDelete.do?post_id="+post_id;
-			document.replyForm.submit();
-		}
-	}
+// 	function deletePost(post_id){
+// 		if (true){
+// 			document.replyForm.action = "${pageContext.request.contextPath}/pages/oracleDelete.do?post_id="+post_id;
+// 			document.replyForm.submit();
+// 		}
+// 	}
 	
 	// [댓글 수정하기] function
 	function updateReadonlyReply( reply_id ){
@@ -272,12 +273,12 @@
 	}
 	
 	// [댓글삭제] function
-	function deleteReply( reply_id ){
-		if (true){
-			document.replyForm.action = "${pageContext.request.contextPath}/pages/oracleDeleteReply.do?reply_id="+reply_id;
-			document.replyForm.submit();
-		}
-	}
+// 	function deleteReply( reply_id ){
+// 		if (true){
+// 			document.replyForm.action = "${pageContext.request.contextPath}/pages/oracleDeleteReply.do?reply_id="+reply_id;
+// 			document.replyForm.submit();
+// 		}
+// 	}
 	
 </script>
 </html>

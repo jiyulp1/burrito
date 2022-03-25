@@ -37,7 +37,7 @@
 	<select id="oracle_reply_list" parameterType="_int" resultType="kr.co.bttf.domain.OracleReplyVO">
 		select *
 		from reply_oracle 
-		where post_id = #{post_id}
+		where post_id = #{post_id} and avaliability_category_id = 1
 	</select>
 
 	<!-- 2. 댓글 작성 --> 
@@ -49,15 +49,21 @@
 	<!-- 3. 댓글 수정 --> 
 	<update id="oracle_reply_modify" parameterType="kr.co.bttf.domain.OracleReplyVO">
 		update reply_oracle set
-		post_contents = #{post_contents}
+		reply_contents = #{reply_contents}
 		where post_id = #{post_id} and reply_id = #{reply_id}
 	</update>
 
 	<!-- 4. 댓글 삭제 --> 
- 	<delete id="oracle_reply_delete" parameterType="kr.co.bttf.domain.OracleReplyVO">
-		delete from reply_oracle
+<!--  	<delete id="oracle_reply_delete" parameterType="kr.co.bttf.domain.OracleReplyVO"> -->
+<!-- 		delete from reply_oracle -->
+<!-- 		where post_id = #{post_id} and reply_id = #{reply_id} -->
+<!-- 	</delete> -->
+
+	<update id="oracle_reply_delete" parameterType="kr.co.bttf.domain.OracleReplyVO">
+		update reply_oracle set
+		avaliability_category_id = 4
 		where post_id = #{post_id} and reply_id = #{reply_id}
-	</delete>
+	</update>
  
 
 </mapper>

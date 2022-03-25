@@ -18,4 +18,5 @@ public interface OracleReplyDAO {
 	// 댓글 삭제
 	public void oracleReplyDelete(OracleReplyVO vo) throws Exception;
 
+//	public List<OracleReplyVO> oracleReplyDelete(OracleReplyVO vo) throws Exception;
 }
