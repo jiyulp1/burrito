@@ -17,10 +17,12 @@ import kr.co.bttf.domain.HtmlBoardVO;
 import kr.co.bttf.domain.JsBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.OracleBoardVO;
+import kr.co.bttf.domain.OracleReplyVO;
 import kr.co.bttf.service.CssBoardService;
 import kr.co.bttf.service.HtmlBoardService;
 import kr.co.bttf.service.JsBoardService;
 import kr.co.bttf.service.OracleBoardService;
+import kr.co.bttf.service.OracleReplyService;
 
 @Controller
 @RequestMapping("/board/*")
@@ -43,6 +45,9 @@ public class BoardController {
 	
 	@Inject
 	private OracleBoardService oracleService;
+	
+	@Inject
+	private OracleReplyService oracleReplyService;
 	
 //	@Inject
 //	private SpringBoardService springService;
@@ -98,7 +103,7 @@ public class BoardController {
 	/* getList
 	  게시물 목록 */
 	
-	// 1.1 [GET] 게시물 목록
+	// 2-1 [GET] 게시물 목록
 	
 	@RequestMapping(value = "/csslist", method = RequestMethod.GET)
 	public void cssList(Model model) throws Exception {
@@ -112,14 +117,14 @@ public class BoardController {
 	/* postWrite
 	  게시글 작성 */
 	
-	// 2. write페이지이동
+	// 2-2. write페이지이동
 
 	@RequestMapping(value = "/csswrite", method = RequestMethod.GET)
 	public void cssWrite() throws Exception {
 
 	}
 	
-	// 게시물 작성
+	// 2-2-1. 게시물 작성
 	@RequestMapping(value = "/csswrite", method = RequestMethod.POST)
 	public String cssWrite(CssBoardVO vo, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
@@ -133,10 +138,15 @@ public class BoardController {
 	/* getView
 	  게시글 상세보기 */
 	
-	// 3. 게시물 상세보기 페이지 이동
+	// 2-3. 게시물 상세보기 페이지 이동
 	
 	@RequestMapping(value = "/cssview", method = RequestMethod.GET)
 	public void cssView(@RequestParam("post_id") int post_id, Model model) throws Exception {
+		
+		// 상세보기 시 조회수 갱신
+		int cssvcnt = 0;
+		cssService.cssvcnt(post_id);
+		model.addAttribute("cssvcnt", cssvcnt);
 		
 		CssBoardVO vo = cssService.cssView(post_id);
 		model.addAttribute("cssview", vo);
@@ -146,7 +156,7 @@ public class BoardController {
 	/* getModify
 	  게시글 수정 */
 	
-	// 4. 게시물 수정 페이지 이동
+	// 2-4. 게시물 수정 페이지 이동
 	
 	@RequestMapping(value = "/cssedit", method = RequestMethod.GET)
 	public void cssModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
@@ -167,7 +177,7 @@ public class BoardController {
 	/* getDelete
 	  게시글 삭제 */
 	
-	// 5. vo가 없으니 get방식 삭제
+	// 2-5. vo가 없으니 get방식 삭제
 	@RequestMapping(value = "/cssdelete", method = RequestMethod.GET)
 	public String cssDelete(@RequestParam("post_id") int post_id, Model model) throws Exception {
 
@@ -175,6 +185,8 @@ public class BoardController {
 		return "redirect:/board/csslist";
 
 	}
+	
+	
 	
 	/* --------------------------------
 			03. JAVASCRIPT
@@ -252,7 +264,7 @@ public class BoardController {
 	/* --------------------------------
 				06. ORACLE
 	-------------------------------- */
-	// 3-1 [GET] 게시물 목록
+	// 6-1 [GET] 게시물 목록
 		@RequestMapping(value = "/oraclelist", method = RequestMethod.GET)
 		public void oracleList(Model model) throws Exception{
 			List<OracleBoardVO> oraclelist = null;
@@ -260,13 +272,13 @@ public class BoardController {
 			model.addAttribute("oraclelist", oraclelist);
 		}
 		
-		// 3-2. write페이지이동
+		// 6-2. write페이지이동
 		@RequestMapping(value = "/oraclewrite", method = RequestMethod.GET)
 		public void oracleWrite() throws Exception {
 
 		}
 		
-		// 3-2-1. 게시물 작성
+		// 6-2-1. 게시물 작성
 		@RequestMapping(value = "/oraclewrite", method = RequestMethod.POST)
 		public String oracleWrite(OracleBoardVO vo, HttpServletRequest request) throws Exception {
 			HttpSession session = request.getSession();
@@ -276,16 +288,26 @@ public class BoardController {
 		  return "redirect:/board/oraclelist";
 		}
 		
-		// 3-3. 게시물 상세보기 페이지 이동
+		// 6-3. 게시물 상세보기 페이지 이동
 		
 		@RequestMapping(value = "/oracleview", method = RequestMethod.GET)
 		public void oracleView(@RequestParam("post_id") int post_id, Model model) throws Exception {
 			
+			// 상세보기 시 조회수 갱신
+			int oraclevcnt = 0;
+			oracleService.oraclevcnt(post_id);
+			model.addAttribute("oraclevcnt", oraclevcnt);
+			
+			// 상세보기 시 댓글 조회
+			List<OracleReplyVO> oraclereplylist = oracleReplyService.oracleReplyList(post_id);
+			model.addAttribute("oraclereplylist", oraclereplylist);
+			
 			OracleBoardVO vo = oracleService.oracleView(post_id);
 			model.addAttribute("oracleview", vo);
+			
 		}
 		
-		// 4. 게시물 수정 페이지 이동
+		// 6-4. 게시물 수정 페이지 이동
 		
 		@RequestMapping(value = "/oraclemodify", method = RequestMethod.GET)
 		public void oracleModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
@@ -303,7 +325,7 @@ public class BoardController {
 		}
 
 		
-		// 5. vo가 없으니 get방식으로 삭제
+		// 6-5. vo가 없으니 get방식으로 삭제
 		@RequestMapping(value = "/oracledelete", method = RequestMethod.GET)
 		public String oracleDelete(@RequestParam("post_id") int post_id, Model model) throws Exception {
 

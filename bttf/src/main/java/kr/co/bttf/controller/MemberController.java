@@ -118,7 +118,6 @@ public class MemberController {
 
 	}
 	
-	
 	@RequestMapping(value = "/memberreport", method = RequestMethod.POST)
 	public String memberreportupdate(MemberVO vo) throws Exception {
 		service.memreportupdate(vo);
@@ -149,6 +148,7 @@ public class MemberController {
 				
 		return "redirect:/";
 	}
-		
+	
+	
 		
 }

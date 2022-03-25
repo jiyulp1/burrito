@@ -121,7 +121,7 @@
                                                                     </p>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="button" class="btn btn-danger" value="차단하기">
+                                                                    <a href="/admin/memberexpell?user_index=${UserAll.user_index }" class="btn btn-danger">차단하기</a>
                                                                 </td>
                                                             </tr>
                                                         </c:forEach>

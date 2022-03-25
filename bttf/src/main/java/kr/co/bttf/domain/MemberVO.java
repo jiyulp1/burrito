@@ -13,9 +13,7 @@ public class MemberVO {
 	private String user_nickname;
 	private String user_phone;
 	private String main_language;
-	private int user_avaliable;
-	private int user_expelled;
-	private int user_reported;
+	private int avaliability_category_id;
 	private String user_regdate;
 	private String authority_name;
 	private int authority_code;

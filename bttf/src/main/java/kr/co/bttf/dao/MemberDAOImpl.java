@@ -54,12 +54,14 @@ public class MemberDAOImpl implements MemberDAO {
 		sql.update(namespace + ".cssboardreported", vo);
 
 	}
-
+	
+	
 	@Override
 	public MemberVO memreportcard(String user_nickname) throws Exception {
 		return sql.selectOne(namespace + ".memreportcard", user_nickname);
 	}
-
+	
+	
 	@Override
 	public void memreportupdate(MemberVO vo) throws Exception {
 		sql.update(namespace + ".memberreportupdate", vo);

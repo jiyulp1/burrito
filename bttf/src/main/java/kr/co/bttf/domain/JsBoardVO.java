@@ -11,10 +11,10 @@ public class JsBoardVO {
 	private String post_contents;
 	private int user_index;
 	private String user_nickname;
-	private int post_available;
+	private int avaliability_category_id;
 	private String post_rec;
 	private int post_vcount;
 	private String post_regdate;
-	private int post_reported;
 	private int category_id;
+  
 }

@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="ko" class="no-js">
 
@@ -65,15 +66,17 @@
 	            <div class="table-responsive">
 	                <table id="foo-table" class="table table-striped" data-page-length='40' data-order='[[ 1, "desc" ]]'>
 	                    <thead>
-	                        <th>번호</th>
-	                        <th>제목</th>
-	                        <th>작성자</th>
-	                        <th>조회수</th>
-	                        <th>날짜</th>
+	                    	<tr>
+		                        <th>번호</th>
+		                        <th>제목</th>
+		                        <th>작성자</th>
+		                        <th>조회수</th>
+		                        <th>날짜</th>
+	                    	</tr>
 	                    </thead>
 	                    <tbody>
 	                    	<c:choose>
-		                    <c:when test = "${oraclelist != null and fn:length(csslist) > 0 }">
+		                    <c:when test = "${oraclelist != null and fn:length(oraclelist) > 0 }">
 		                    		<c:forEach var="board" items="${oraclelist}">
 				                        <tr>
 				                            <td>${board.post_id }</td>
@@ -82,13 +85,13 @@
 				                            </td>
 				                            <td>${board.user_nickname }</td>
 				                            <td>${board.post_vcount }</td>
-				                            <td>${board.post_regdate }</td>
+				                            <td><fmt:formatDate value="${board.post_regdate}" pattern="yyyy-MM-dd" /></td>
 				                        </tr>
 		                        	</c:forEach>
 		                        </c:when>
 		                        <c:otherwise>
 		                        	<tr>
-		                        		<td colspan="5" class="text-center">등록된 게시물이 없습니다 </td>
+		                        		<td colspan="5" class="text-center">등록된 게시물이 없습니다. </td>
 		                        	</tr>
 		                        </c:otherwise>
 		                    </c:choose>

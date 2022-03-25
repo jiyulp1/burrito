@@ -74,8 +74,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/termsOfUse.jsp">Rules</a></li>
-                    <li class="nav-item"><a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/announcements.jsp">Notice</a></li>
+                    <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/admin/termsOfUse">Rules</a></li>
+                    <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/admin/announcements">Notice</a></li>
 					<li class="nav-item">
 						<c:if test="${member != null && member.authority_name != 'admin' }" >
 							<a class="nav-item-child nav-item-hover" href="/member/mypage">MyPage</a>
@@ -111,12 +111,12 @@
 	                                </a>
 	                            </li>
 	                            <li>
-	                                <a class="nav-item-child-sub_man" href="/admin/boardall">
+	                                <a class="nav-item-child-sub_man" href="/admin/boardallhtml">
 											게시글관리 - 전체게시글
 	                                </a>
 	                            </li>
 	                            <li>
-	                                <a class="nav-item-child-sub_man" href="/admin/boardblock">
+	                                <a class="nav-item-child-sub_man" href="/admin/boardblockhtml">
 	                                    	게시글관리 - 신고된 게시글
 	                                </a>
 	                            </li>

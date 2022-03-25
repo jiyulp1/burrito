@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="ko" class="no-js">
 
@@ -83,9 +85,9 @@
 				                            <td>
 				                            <a href="/admin/annview?post_id=${announcmentList.post_id }">${announcmentList.post_subject }</a>
 				                            </td>
-				                            <td>${announcmentList.writer }</td>
+				                            <td>${announcmentList.user_nickname }</td>
 				                            <td>${announcmentList.post_vcount }</td>
-				                            <td>${announcmentList.post_regdate }</td>
+				                            <td><fmt:formatDate value="${announcmentList.post_regdate}" pattern="yyyy-MM-dd" /></td>
 				                        </tr>
 		                        	</c:forEach>
 		                        </c:when>
@@ -100,7 +102,7 @@
 	            </div>
 	            <!-- End notice -->
 	            <c:if test="${member!= null && member.authority_name == 'admin'}">
-	           		<a href="/admin/annwrite" class="btn btn-primary" type="submit">공지사항 작성</a>
+	           		<a href="/admin/annwrite" class="btn btn-primary" type="submit">글 작성</a>
 	            </c:if>
             </form>
             
@@ -149,6 +151,8 @@
 	<!-- Load d3.js and c3.js -->
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
+	
+	<!-- datatables -->
 	<script type="text/javascript" src="../../../resources/vendor/DataTables/datatables.js"></script>
 	<script type="text/javascript" src="../../../resources/vendor/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.js"></script>
  	<script type="text/javascript"> 
