@@ -90,22 +90,22 @@
             color : blue;
          }
     </style>
-	<script>
-		$(function(){
+<!-- 	<script>
+ 		$(function(){
 			$("#findBtn").click(function(){
-				$.ajax({
-					url : "/member/findpw",
-					type : "POST",
-					data : {
-						email : $("#user_email").val()
-					},
-					success : function(result) {
-						alert(result);
-					},
-				})
-			});
-		})
-	</script>
+ 				$.ajax({
+ 					url : "/member/findpw",
+ 					type : "POST",
+ 					data : {
+ 						email : $("#user_email").val()
+ 					},
+ 					success : function(result) {
+ 						alert(result);
+ 					},
+ 				})
+ 			});
+ 		})
+	 	</script> -->
     <!-- <script type="text/javascript">
 		function sendEMail() {
 		     
@@ -147,12 +147,6 @@
 <!-- BODY -->
 
 <body class="page-on-scroll fixed_container">
-	<c:set var="pwresult" value="${requestScope.member }"/>
-	<c:if test = "${not empty param.findPw }">
-		<c:if test = "${not param.findPw }">
-			<script> alert("일치하는 회원 정보가 없습니다.")</script>
-		</c:if>
-	</c:if>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -164,7 +158,7 @@
         <div class="row">
             <div class="card align-middle col-md-3 login_card" >
                 <div class="card-title" style="margin-top:30px;">         
-                    <h2 class="card-title" style="color:#f58b34;"><img src="../../../resource/img/home_logo.png"/></h2>
+                    <h2 class="card-title" style="color:#f58b34;"><img src="../../../resources/img/home_logo.png"/></h2>
                 </div>     
                 <div class="card-body">
                     <form class="form-signin" method="POST">
@@ -173,7 +167,7 @@
                     </form>
                 </div>
                 <div class="links" style="padding: 10px 20px;">
-                    <a href="/member/findId" id="findBtn">아이디 찾기</a> | <a onclick="history.go(-1);">로그인</a> | <a href="/member/signup">회원가입</a>
+                    <a href="/member/findId">아이디 찾기</a> | <a onclick="history.go(-1);">로그인</a> | <a href="/member/signup">회원가입</a>
                 </div>
             </div>
         </div>
