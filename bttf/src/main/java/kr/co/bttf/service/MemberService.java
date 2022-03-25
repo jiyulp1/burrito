@@ -12,7 +12,11 @@ public interface MemberService {
 
 	// 회원 가입
 	public void signup(MemberVO vo) throws Exception;
-
+		// 이메일 중복확인
+	public int emailcheck(MemberVO vo) throws Exception;
+		// 닉네임 중복확인
+	public int nickcheck(MemberVO vo) throws Exception;
+	
 	// 로그인
 	public MemberVO signin(MemberVO vo) throws Exception;
 	
