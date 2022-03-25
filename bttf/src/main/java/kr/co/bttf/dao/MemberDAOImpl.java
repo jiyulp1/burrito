@@ -24,7 +24,19 @@ public class MemberDAOImpl implements MemberDAO {
 	public void signup(MemberVO vo) throws Exception {
 		sql.insert(namespace + ".signup", vo);
 	}
-
+	// 이메일 중복확인
+	@Override
+	public int emailcheck(MemberVO vo) throws Exception {
+		int result = sql.selectOne(namespace + ".emailcheck", vo);
+		return result;
+	}
+	// 닉네임 중복확인
+	@Override
+	public int nickcheck(MemberVO vo) throws Exception {
+		int result = sql.selectOne(namespace + ".nickcheck", vo);
+		return result;
+	}
+	
 	// 로그인
 	@Override
 	public MemberVO signin(MemberVO vo) throws Exception {
