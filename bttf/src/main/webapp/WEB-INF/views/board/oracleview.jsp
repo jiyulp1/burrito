@@ -105,11 +105,16 @@
 							<form action="/reply/oracle_reply_write" name="replyForm" method="post">
 								<input type="hidden" name="post_id" value="${oracleview.post_id }">
 								<div class="col-auto" style="display: flex;">
+								<c:if test="${member != null }">
                            			<input id="reply_contents" name="reply_contents" class="form-control mt-5" style="width: 95%;" type="text" placeholder="댓글을 입력해 주세요.">
                            			<a href="javascript:document.replyForm.submit()" class="btn btn-default mt-5" style="height: 50px; margin-left: 20px; line-height:36px; ">댓글 등록</a>
 <!--                            			<a href="/board/oracle_reply_write" class="btn btn-default mt-5" style="height: 50px; margin-left: 20px; line-height:36px; ">댓글등록a태그</a> -->
 <!-- 									<button type="submit" class="btn btn-info mt-4" id="writesuccess">작성완료버튼태그</button> -->
 <!--                            			<input id="sumbitreply" name ="submitreply" class= "btn btn-default" type="submit" value="작성완료인풋태그"> -->
+								</c:if>
+								<c:if test="${member == null }">
+                         			<textarea name="reply_contents" class="form-control mt-5" style="width: 95%;" type="text"> 로그인 후 댓글을 작성할 수 있습니다. </textarea>
+                         		</c:if>
                          		</div>
 								<!-- 댓글 리스트 -->
 								<div>
@@ -121,14 +126,19 @@
 														<div align="center" width="200px" >
 															<p id="re_author" name="user_nickname" class="text-left reply_subject" style="display:hidden;">${reply.user_nickname } | <fmt:formatDate value="${oracleview.post_regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 														</div>
-													<c:if test="${member != null }" >
+														<c:if test="${member != null }" >
 														<div class="col-md-12 col-sm-12 row">
 															<textarea id="reply${reply.reply_id }" class="reply_con_box" name="reply${reply.reply_id }" readonly>${reply.reply_contents }</textarea>
 															<div class="row mt-5" style="padding-left:10px;">
-																<a class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})" id="editfail">수정완료</a>
-																<a class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a>
+																<c:if test="${member.user_nickname eq reply.user_nickname}">
+																		<!-- 경로잘못잡음!! -->
+																<a href="/board/oracleview?post_id=${reply.post_id }" class="btn btn-primary mt-4" id="editfail" type="submit">수정</a>
+<%-- 																<a href="/reply/oracle_reply_modify?reply_id=${reply.reply_id }&post_id=${reply.post_id}" class="btn btn-primary mt-4" id="editfail" type="submit">수정</a> --%>
+<%-- 																<a class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})" id="editfail">수정</a> --%>
+<%-- 																<a class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a> --%>
 																<a href="/reply/oracle_reply_delete?reply_id=${reply.reply_id }&post_id=${reply.post_id}" class="btn btn-danger mt-4" id="list" type="submit">삭제</a>
 <%-- 																<a class="btn btn-danger" href="javascript:deleteReply( ${reply.reply_id})" id="deletefail">삭제</a> --%>
+															</c:if>
 															</div>
 														</div>
 													</c:if>
