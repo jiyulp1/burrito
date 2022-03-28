@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.service.MemberService;
 
@@ -137,6 +136,15 @@ public class MemberController {
 	
 	@RequestMapping(value = "/updatepw", method = RequestMethod.GET)
 	public void updatepw() throws Exception{
+		logger.info("GET updatepw");
+	}
+	
+	@RequestMapping(value = "/updatepw", method = RequestMethod.POST)
+	public void updatepw(HttpServletResponse response, MemberVO vo) throws Exception{
+		logger.info("post updatepw");
+		service.updatePw(response, vo);
+		System.out.println(vo.getUser_pw());
+		
 	}
 	
 	// 로그아웃

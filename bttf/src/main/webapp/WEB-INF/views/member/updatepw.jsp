@@ -110,9 +110,11 @@
                     <h2 class="card-title" style="color:#f58b34;"><img src="/resources/img/home_logo.png"/></h2>
                 </div>     
                 <div class="card-body">
-                    <form class="form-signin" method="POST">                    	
-                        <input type="password" name="user_pw" id="user_pw" class="form-control" placeholder="비밀번호 변경"  minlength="11" maxlength="18" autofocus required ><br>
-                        <input type="password" name="user_pw_re" id="user_pw_re" class="form-control" placeholder="비밀번호 재확인" minlength="11" maxlength="18" required ><br>
+                    <form class="form-signin" action="/member/updatepw" id="pwForm" method="POST"> 
+                                       	
+                        <input type="password" name="user_pw" id="user_pw" class="form-control" placeholder="현재 비밀번호" autofocus required ><br>
+                        <input type="password" name="user_pw" id="user_pw" class="form-control" placeholder="변경할 비밀번호" autofocus required ><br>
+                        <input type="password" name="user_pw_re" id="user_pw_re" class="form-control" placeholder="비밀번호 재확인" required ><br>
                         <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" onclick="confirm()">비밀번호 변경</button>
                     </form>
                 </div>

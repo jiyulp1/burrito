@@ -136,4 +136,47 @@
    document.joinForm.submit();
 }	
 
+	const confirm = function() {
+	const pwForm = document.getElementById('pwForm');
+	const user_pw = document.pwForm.user_pw;
+	const user_pw_re = document.pwForm.user_pw_re;
+
+	// 비밀번호 공백 체크
+   if (user_pw.value == '') {
+      alert("비밀번호를 입력해주세요");
+      user_pw.focus();
+      event.preventDefault();
+      return false;
+   }
+      
+   // 비밀번호 정규식
+   const ck_user_pw = document.getElementById('user_pw');
+   const expuser_pwText = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/;
+   if (!expuser_pwText.test(ck_user_pw.value)) {
+      alert("비밀번호는 8자이상 15자이하 숫자+영문+특수문자 조합으로 생성가능합니다.");
+      ck_user_pw.focus();
+      event.preventDefault();
+      return false;
+   }
+
+   
+   // 비밀번호재확인 공백 체크
+   if (user_pw_re.value == '') {
+      alert("비밀번호 재확인을 입력해주세요.");
+      user_pw_re.focus();
+      event.preventDefault();
+      return false;
+   }
+   
+   // 비밀번호 일치여부 확인
+   if (user_pw.value != user_pw_re.value) {
+      $('#user_pw_re').blur(function() {
+         alert("비밀번호와 일치하게 입력해주세요.")
+      });
+      user_pw_re.focus();
+      event.preventDefault();
+      return false;
+   }
+   document.pwForm.submit();
+}
 

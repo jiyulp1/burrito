@@ -3,6 +3,7 @@ package kr.co.bttf.dao;
 import java.util.HashMap;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -83,7 +84,17 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public void updatePw(MemberVO vo) {
+	public void temporaryPw(MemberVO vo) {
+		sql.update(namespace + ".temporaryPw", vo);
+	}
+	
+	@Override
+	public String pwCheck(String user_pw) {
+		return sql.selectOne(namespace + ".readPw", user_pw);
+	}
+	
+	@Override
+	public void updatePw(HttpServletResponse response, MemberVO vo) {
 		sql.update(namespace + ".updatePw", vo);
 	}
 

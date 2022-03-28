@@ -2,6 +2,8 @@ package kr.co.bttf.dao;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletResponse;
+
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 
@@ -37,8 +39,12 @@ public interface MemberDAO {
 	public MemberVO readMember(String user_email) throws Exception;
 		// 등록된 회원인지 검사하기
 	public boolean idCheck(String user_email) throws Exception;
-		// 비밀번호 갱신하기
-	public void updatePw(MemberVO vo) throws Exception;
+		// 임시비밀번호로 변경
+	public void temporaryPw(MemberVO vo) throws Exception;
+		// 임시비밀번호 체크
+	public String pwCheck(String user_pw) throws Exception;
+		// 비밀번호 변경하기
+	public void updatePw(HttpServletResponse response, MemberVO vo) throws Exception;
 	
 	
 }

@@ -159,7 +159,7 @@ public class MemberServiceImpl implements MemberService {
 			System.out.println("메일발송 실패 : " + e);
 		}
 	}
-
+	
 	//비밀번호찾기
 	@Override
 	public void findpw(HttpServletResponse response, MemberVO vo) throws Exception {
@@ -182,12 +182,28 @@ public class MemberServiceImpl implements MemberService {
 			}
 			vo.setUser_pw(pw);
 			// 비밀번호 변경
-			dao.updatePw(vo);
+			dao.temporaryPw(vo);
 			// 비밀번호 변경 메일 발송
 			sendemail(vo, "findpw");
 
 			ScriptUtils.alertAndMovePage(response, "입력하신 이메일로 임시 비밀번호를 발송했습니다", "/");
 		}
 	}
+	
+	
+	@Override
+	public void updatePw(HttpServletResponse response, MemberVO vo) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		String pw = dao.pwCheck(vo.getUser_pw());
+		PrintWriter out = response.getWriter();
+		System.out.println(pw);
+		if(!vo.getUser_pw().equals(pw)) {
+			ScriptUtils.alertAndBackPage(response, "임시비밀번호가 틀립니다.");
+			out.close();
+		}else {
+			dao.updatePw(response, vo);
+			ScriptUtils.alertAndMovePage(response, "비밀번호가 성공적으로 변경되었습니다.", "/");
+		}
+	} 
 	
 } 
