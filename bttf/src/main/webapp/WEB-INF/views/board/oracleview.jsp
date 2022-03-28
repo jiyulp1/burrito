@@ -103,7 +103,7 @@
                             </form>
            					<!-- 댓글 작성 -->
 							<form action="/reply/oracle_reply_write" name="replyForm" method="post">
-								<input type="hidden" name="post_id" value="${oracleview.post_id }">
+								<input type="hidden" id = "post_id" name="post_id" value="${oracleview.post_id }">
 								<div class="col-auto" style="display: flex;">
 								<c:if test="${member != null }">
                            			<input id="reply_contents" name="reply_contents" class="form-control mt-5" style="width: 95%;" type="text" placeholder="댓글을 입력해 주세요.">
@@ -134,7 +134,8 @@
 																		<!-- 경로잘못잡음!! -->
 <%-- 																<a class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})" id="editfail">등록</a> --%>
 <%-- 																<a href="/reply/oracle_reply_modify?reply_id=${reply.reply_id }&post_id=${reply.post_id}" class="btn btn-danger mt-4" id="list" type="submit">등록</a> --%>
-																<input  class="btn btn-danger mt-4" id="list" onclick="updateReply()" type="submit">등록</a>
+<!-- 																<input class="btn btn-danger mt-4" id="list" onclick="updateReply()" type="submit" > -->
+																<a class="btn btn-danger mt-4" href="javascript:updateReply( ${reply.reply_id} );">등록하기</a>
 																<a class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a>
 																<a href="/reply/oracle_reply_delete?reply_id=${reply.reply_id }&post_id=${reply.post_id}" class="btn btn-danger mt-4" id="list" type="submit">삭제</a>
 <%-- 																<a class="btn btn-danger" href="javascript:deleteReply( ${reply.reply_id})" id="deletefail">삭제</a> --%>
@@ -282,18 +283,25 @@
 // 			// 수정하기 버튼 block, 수정완료(펑션) none
 // 		}
 // 	}
-	// [댓글 수정] function
-	function updateReply( ){
-		
-		let reply_id = $("#reply_id").val();
-		let reply_contents = $("#reply_contents").text();
-		let post_id = $("post_id").val();
-		
-// 			document.replyForm.action = "${pageContext.request.contextPath}/pages/oracleUpdateReply.do?reply_id="+reply_id;
-			document.replyForm.action = "/reply/oracle_reply_modify?reply_id="+reply_id+"&reply_contents="+reply_contents+"&post_id="+post_id;
+
+// [댓글 수정] function
+	function updateReply( reply_id ){
+			document.replyForm.action = "/reply/oracle_reply_modify?reply_id="+reply_id;
 			document.replyForm.submit();
-			// 수정하기 버튼 block, 수정완료(펑션) none
 	}
+
+// 	// [댓글 수정] function
+// 	function updateReply( ){
+		
+// 		let reply_id = $("#reply_id").val();
+// 		let reply_contents = $("#reply_contents").text();
+// 		let post_id = $("post_id").val();
+		
+// // 			document.replyForm.action = "${pageContext.request.contextPath}/pages/oracleUpdateReply.do?reply_id="+reply_id;
+// 			document.replyForm.action = "/reply/oracle_reply_modify?reply_id="+reply_id+"&reply_contents="+reply_contents+"&post_id="+post_id;
+// 			document.replyForm.submit();
+// 			// 수정하기 버튼 block, 수정완료(펑션) none
+// 	}
 	
 	// [댓글삭제] function
 // 	function deleteReply( reply_id ){

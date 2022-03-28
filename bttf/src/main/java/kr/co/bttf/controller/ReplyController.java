@@ -24,6 +24,7 @@ import kr.co.bttf.service.OracleReplyService;
 @Controller
 @RequestMapping("/reply/*")
 public class ReplyController {
+	
 
 	@Inject
 	private MemberService memberService;
@@ -70,13 +71,11 @@ public class ReplyController {
 	
 	// 6-3. 댓글 수정
 	
-	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.GET)
-	public String oracleReplyModify(@RequestParam("post_id") int post_id, OracleReplyVO vo, Model model) throws Exception {
-
+	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.POST)
+	public String oracleReplyModify(OracleReplyVO vo) throws Exception {
+		System.out.println("post reply modify controller");
+		System.out.println(vo.getReply_contents());
 		oracleService.oracleReplyModify(vo);
-		
-		List<OracleReplyVO> oraclereplylist = oracleService.oracleReplyList(post_id);
-		model.addAttribute("oraclereplylist", oraclereplylist);
 		
 		return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
 	}
