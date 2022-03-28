@@ -1,5 +1,8 @@
 package kr.co.bttf.service;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -45,7 +48,7 @@ public interface MemberService {
 	public void memcategory3(int user_index) throws Exception;
 	
 	// 최초 신고된 유저
-	public void insert_report_user( int report_category_id, int user_index) throws Exception;
+	public void insert_report_user(String[] urlparam) throws Exception;
 
 	
 }

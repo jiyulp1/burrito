@@ -1,5 +1,10 @@
 package kr.co.bttf.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -102,47 +107,68 @@ public class MemberController {
 	}
 	
 	
+	
+	
+	
 	// 작성자 신고 [update]
-	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
+	@RequestMapping(value = "/memberReportUpdate", method = RequestMethod.GET)
 	public String memreportcard(int user_index) throws Exception {
 		return "redirect:/member/memberreport";
 	}
 	
 	
-	@RequestMapping(value = "/memberreport", method = RequestMethod.POST)
-	public String memreportcard(@RequestParam("user_index") int user_index, int report_category_id) throws Exception {
-		
-		report_category_id = 0;		
-		
-		ReportVO memcategoryupdate = service.memcategoryselect(user_index);
-		
-		if(memcategoryupdate == null) {
-			service.insert_report_user(report_category_id, user_index);
-		}else if(memcategoryupdate.getUser_reportcnt() == 1) {
-			service.memcategory2(user_index);
-			service.memreportcnt(user_index);
+//	@RequestMapping(value = "/memberreport", method = RequestMethod.POST)
+//	public String memreportcard(@RequestParam("user_index") int user_index, int report_category_id) throws Exception {
+//		
+//		report_category_id = 0;		
+//		
+//		ReportVO memcategoryupdate = service.memcategoryselect(user_index);
+//		
+//		if(memcategoryupdate == null) {
+//			service.insert_report_user(report_category_id, user_index);
+//		}else if(memcategoryupdate.getUser_reportcnt() == 1) {
+//			service.memcategory2(user_index);
+//			service.memreportcnt(user_index);
+//
+//		}else{
+//			service.memcategory3(user_index);
+//			service.memreportcnt(user_index);
+//
+//		}
+//		return "redirect:/";
+//	}
 
-		}else{
-			service.memcategory3(user_index);
-			service.memreportcnt(user_index);
-
-		}
+//	작성자 신고[insert] GET	
+//	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
+//	public void memreportcard(@RequestParam("urlparam") String[] urlparam, HttpServletResponse response ) throws Exception {
+//
+//	}
+	
+	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
+	public String memreportcard() throws Exception {
+		logger.info("get reported");
 		return "redirect:/";
 	}
-
-		
-		
 	
 	
-	
-	private int Integer(int report_category_id) {
-		// TODO Auto-generated method stub
-		return 0;
+	//작성자 신고[insert]GET
+	@RequestMapping(value = "/memberreport", method = RequestMethod.POST)
+	public String memreportcard(@RequestParam("urlparam") String[] urlparam, HttpServletResponse response ) throws Exception {
+		System.out.println("controller 들어옴");
+		service.insert_report_user(urlparam );
+		ScriptUtils.alert(response, "신고가 접수되었습니다.");
+		logger.info("post reported");
+		return "redirect:/";
 	}
+	
+	
+	
+	
 
 	// 비밀번호 찾기
 	@RequestMapping(value = "/findpw", method = RequestMethod.GET)
 	public void findpw() throws Exception{
+		
 	}
 
 	@RequestMapping(value = "/findpw", method = RequestMethod.POST)

@@ -65,7 +65,7 @@
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- Service -->
-    <div class="bg-color-sky-light" data-auto-height="true">
+    <div class="bg-color-sky-light" data-auto-height="true" style="height:calc(100vh - 160px) ;">
         <div class="content-lg container" style="margin-top : 50px;">
             <div class="row row-space-1 margin-b-2">
                 <div class="col-sm-12 sm-margin-b-2" style="margin-bottom: 20px;">

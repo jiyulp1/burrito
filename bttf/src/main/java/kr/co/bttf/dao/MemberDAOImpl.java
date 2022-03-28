@@ -1,5 +1,6 @@
 package kr.co.bttf.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.inject.Inject;
@@ -96,9 +97,9 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	@Override
-	public void insert_report_user(HashMap<String, Integer> map) throws Exception {
+	public void insert_report_user(String[] urlparam) throws Exception {
 		
-		sql.insert(namespace + ".insert_report_user", map);
+		sql.insert(namespace + ".insert_report_user", urlparam);
 		
 	}
 
