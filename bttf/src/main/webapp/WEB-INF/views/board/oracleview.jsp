@@ -117,7 +117,7 @@
                          		</c:if>
                          		</div>
 								<!-- 댓글 리스트 -->
-								<div>
+								<div>	
 									<c:choose>
 										<c:when test="${oraclereplylist != null and fn:length(oraclereplylist) > 0 }">
 											<c:forEach var="reply" items="${oraclereplylist }">
@@ -132,10 +132,10 @@
 															<div class="row mt-5" style="padding-left:10px;">
 																<c:if test="${member.user_nickname eq reply.user_nickname}">
 																		<!-- 경로잘못잡음!! -->
-																<a href="/board/oracleview?post_id=${reply.post_id }" class="btn btn-primary mt-4" id="editfail" type="submit">수정</a>
-<%-- 																<a href="/reply/oracle_reply_modify?reply_id=${reply.reply_id }&post_id=${reply.post_id}" class="btn btn-primary mt-4" id="editfail" type="submit">수정</a> --%>
-<%-- 																<a class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})" id="editfail">수정</a> --%>
-<%-- 																<a class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a> --%>
+<%-- 																<a class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})" id="editfail">등록</a> --%>
+<%-- 																<a href="/reply/oracle_reply_modify?reply_id=${reply.reply_id }&post_id=${reply.post_id}" class="btn btn-danger mt-4" id="list" type="submit">등록</a> --%>
+																<input  class="btn btn-danger mt-4" id="list" onclick="updateReply()" type="submit">등록</a>
+																<a class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a>
 																<a href="/reply/oracle_reply_delete?reply_id=${reply.reply_id }&post_id=${reply.post_id}" class="btn btn-danger mt-4" id="list" type="submit">삭제</a>
 <%-- 																<a class="btn btn-danger" href="javascript:deleteReply( ${reply.reply_id})" id="deletefail">삭제</a> --%>
 															</c:if>
@@ -273,13 +273,26 @@
 		// 수정하기 버튼 none, 수정완료(펑션) block
 	}
 	
+// 	// [댓글 수정] function
+// 	function updateReply( reply_id ){
+// 		if (true){
+// // 			document.replyForm.action = "${pageContext.request.contextPath}/pages/oracleUpdateReply.do?reply_id="+reply_id;
+// 			document.replyForm.action = "/reply/oracle_reply_modify?reply_id="+reply_id+"&reply_contents="+reply_contents+"&post_id="+post_id;
+// 			document.replyForm.submit();
+// 			// 수정하기 버튼 block, 수정완료(펑션) none
+// 		}
+// 	}
 	// [댓글 수정] function
-	function updateReply( reply_id ){
-		if (true){
-			document.replyForm.action = "${pageContext.request.contextPath}/pages/oracleUpdateReply.do?reply_id="+reply_id;
+	function updateReply( ){
+		
+		let reply_id = $("#reply_id").val();
+		let reply_contents = $("#reply_contents").text();
+		let post_id = $("post_id").val();
+		
+// 			document.replyForm.action = "${pageContext.request.contextPath}/pages/oracleUpdateReply.do?reply_id="+reply_id;
+			document.replyForm.action = "/reply/oracle_reply_modify?reply_id="+reply_id+"&reply_contents="+reply_contents+"&post_id="+post_id;
 			document.replyForm.submit();
 			// 수정하기 버튼 block, 수정완료(펑션) none
-		}
 	}
 	
 	// [댓글삭제] function

@@ -33,7 +33,7 @@ public class OracleReplyDAOImpl implements OracleReplyDAO {
 	// 댓글 수정
 	@Override
 	public void oracleReplyModify(OracleReplyVO vo) throws Exception {
-		sql.insert(namespace + ".oracle_reply_modify", vo);
+		sql.update(namespace + ".oracle_reply_modify", vo);
 
 	}
 

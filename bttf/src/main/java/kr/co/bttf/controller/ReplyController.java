@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.OracleBoardVO;
@@ -68,41 +69,18 @@ public class ReplyController {
 	
 	
 	// 6-3. 댓글 수정
-	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.GET)
-	public void oracleReplyModify(OracleReplyVO vo , HttpServletRequest request, Model model) throws Exception {
-		
-		OracleBoardVO bvo = OracleBoardService.oracleView(vo.getPost_id());
-		model.addAttribute("oracleview", bvo);
-		
-	}
 	
-	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.POST)
+	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.GET)
 	public String oracleReplyModify(@RequestParam("post_id") int post_id, OracleReplyVO vo, Model model) throws Exception {
-		
+
 		oracleService.oracleReplyModify(vo);
 		
 		List<OracleReplyVO> oraclereplylist = oracleService.oracleReplyList(post_id);
 		model.addAttribute("oraclereplylist", oraclereplylist);
 		
-	  return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
+		return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
 	}
 	
-	
-	
-	// 6-3. 댓글 수정(GET)
-//	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.GET)
-//	public String oracleReplyModify(OracleReplyVO vo, HttpServletRequest request, Model model) throws Exception {
-//		
-//		model.addAttribute("oracleReplyModify", oracleService.oracleReplyList(vo.getReply_id()));
-//		
-//		return null;
-//	}
-	
-	// 6-3-1. 댓글 수정(POST)
-//	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.POST)
-//	public String oracleReplyModifyOK(OracleReplyVO vo, HttpServletRequest request) throws Exception {
-//		return null;
-//	}
 	
 	// 6-4. 댓글 삭제
 	@RequestMapping(value = "/oracle_reply_delete", method = RequestMethod.GET)

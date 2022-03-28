@@ -13,7 +13,7 @@ public class AnnVO {
 	private String post_contents;
 	private String user_nickname;
 	private int post_vcount;
-	private String post_regdate;
+	private Date post_regdate;
 	private String post_available;
 
 }
