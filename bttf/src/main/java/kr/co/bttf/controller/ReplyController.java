@@ -72,6 +72,7 @@ public class ReplyController {
 	// 6-3. 댓글 수정
 	
 	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.POST)
+<<<<<<< HEAD
 	public String oracleReplyModify(@RequestParam("post_id") int post_id, OracleReplyVO vo, Model model) throws Exception {
 		
 		oracleService.oracleReplyModify(vo);
@@ -79,6 +80,7 @@ public class ReplyController {
 		List<OracleReplyVO> oraclereplylist = oracleService.oracleReplyList(post_id);
 		model.addAttribute("oraclereplylist", oraclereplylist);
 		
+
 		return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
 	}
 	
