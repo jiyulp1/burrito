@@ -50,7 +50,7 @@
 	<update id="oracle_reply_modify" parameterType="kr.co.bttf.domain.OracleReplyVO">
 		update reply_oracle set
 		reply_contents = #{reply_contents}
-		where post_id = #{post_id} and reply_id = #{reply_id}
+		where reply_id = #{reply_id}
 	</update>
 
 	<!-- 4. 댓글 삭제 --> 
