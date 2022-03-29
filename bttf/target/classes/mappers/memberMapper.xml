@@ -45,7 +45,7 @@
 		update user_all set user_pw = #{user_pw} where user_email= #{user_email}
 	</update>
 	
-	<insert id="insert_report_user">
+	<insert id="memberreport">
 		INSERT INTO report_user
 		(user_index, report_category_id )
 		VALUES ( #{user_index }, #{report_category_id } )

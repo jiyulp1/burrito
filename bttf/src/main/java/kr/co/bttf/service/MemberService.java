@@ -48,7 +48,7 @@ public interface MemberService {
 	public void memcategory3(int user_index) throws Exception;
 	
 	// 최초 신고된 유저
-	public void insert_report_user(String[] urlparam) throws Exception;
+	public void memberreport(Integer c) throws Exception;
 
 	
 }

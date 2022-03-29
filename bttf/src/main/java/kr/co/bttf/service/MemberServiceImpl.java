@@ -202,9 +202,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void insert_report_user(String[] urlparam) throws Exception {
+	public void memberreport(Integer c) throws Exception {
 		
-		dao.insert_report_user(urlparam);
+		
+		
+		dao.memberreport(c);
 		
 	}
 
