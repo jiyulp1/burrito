@@ -1,5 +1,12 @@
 package kr.co.bttf.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,7 +16,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -102,47 +112,92 @@ public class MemberController {
 	}
 	
 	
+	
+	
+	
 	// 작성자 신고 [update]
-	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
+	@RequestMapping(value = "/memberReportUpdate", method = RequestMethod.GET)
 	public String memreportcard(int user_index) throws Exception {
 		return "redirect:/member/memberreport";
 	}
 	
 	
-	@RequestMapping(value = "/memberreport", method = RequestMethod.POST)
-	public String memreportcard(@RequestParam("user_index") int user_index, int report_category_id) throws Exception {
-		
-		report_category_id = 0;		
-		
-		ReportVO memcategoryupdate = service.memcategoryselect(user_index);
-		
-		if(memcategoryupdate == null) {
-			service.insert_report_user(report_category_id, user_index);
-		}else if(memcategoryupdate.getUser_reportcnt() == 1) {
-			service.memcategory2(user_index);
-			service.memreportcnt(user_index);
+//	@RequestMapping(value = "/memberreport", method = RequestMethod.POST)
+//	public String memreportcard(@RequestParam("user_index") int user_index, int report_category_id) throws Exception {
+//		
+//		report_category_id = 0;		
+//		
+//		ReportVO memcategoryupdate = service.memcategoryselect(user_index);
+//		
+//		if(memcategoryupdate == null) {
+//			service.insert_report_user(report_category_id, user_index);
+//		}else if(memcategoryupdate.getUser_reportcnt() == 1) {
+//			service.memcategory2(user_index);
+//			service.memreportcnt(user_index);
+//
+//		}else{
+//			service.memcategory3(user_index);
+//			service.memreportcnt(user_index);
+//
+//		}
+//		return "redirect:/";
+//	}
 
-		}else{
-			service.memcategory3(user_index);
-			service.memreportcnt(user_index);
-
+//	
+//	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
+//	public void memreportcard() throws Exception {
+//		
+//		
+//	}
+//	
+//	
+	//작성자 신고[insert]Post
+//	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
+//	@ResponseBody
+//	public void memreportcard(@RequestParam(value="user_index", defaultValue="0") int user_index , 
+//							@RequestParam(value="report_category_id[]") List<String> report_category_id, 
+//							HttpServletResponse response) throws Exception {
+//		logger.info("post memberreport 메서드 들어옴");
+//		
+//		service.insert_report_user(user_index, report_category_id);
+//		
+//		System.out.println("user_index : " + user_index);
+//		System.out.println("report_category_id :" + report_category_id);
+//		
+//		ScriptUtils.alertAndBackPage(response, "신고가 완료되었습니다.");
+//
+//	}
+//	
+//	작성자 신고[insert] GET	
+//	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
+//	public String memberreport( ) throws Exception {
+//		
+//		return "redirect:/member/postmemberreport";
+//	}
+	
+//	//작성자 신고[insert]Post
+//	@RequestMapping(value = "/memberreport", method = RequestMethod.POST)
+//	@ResponseBody
+//	public String memberreport(@RequestParam(value="allData[]", required = true) List<Object> arrayParams ) throws Exception {
+//		service.memberreport(arrayParams);
+//		return "redirect:/member/";
+//	}
+	
+	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
+	public void memberreport(@RequestParam List<Integer> checkbox, HttpServletResponse response) throws Exception
+	{
+		for (Integer c : checkbox) {
+			service.memberreport(c);
 		}
-		return "redirect:/";
+			ScriptUtils.alertAndBackPage(response, "신고가 접수되었습니다");
 	}
-
-		
-		
 	
 	
-	
-	private int Integer(int report_category_id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	// 비밀번호 찾기
 	@RequestMapping(value = "/findpw", method = RequestMethod.GET)
 	public void findpw() throws Exception{
+		
 	}
 
 	@RequestMapping(value = "/findpw", method = RequestMethod.POST)
@@ -160,7 +215,7 @@ public class MemberController {
 		logger.info("get logout");
 		
 		service.signout(session);
-				
+		
 		return "redirect:/";
 	}
 	

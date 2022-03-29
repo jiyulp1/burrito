@@ -218,7 +218,7 @@
 	<!--========== END FOOTER ==========-->
 
 	<!-- Back To Top -->
-	<a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>../../resource/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js
+	<a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
 
 	<!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!-- CORE PLUGINS -->

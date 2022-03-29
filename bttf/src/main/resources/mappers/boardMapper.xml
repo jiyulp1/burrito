@@ -122,8 +122,8 @@
 		select * from oracle
 		where post_id = #{post_id}
 	</select>
-	
-	
+
+
 	<!-- 6-3-1. 조회수 갱신 -->
 	<update id="oraclevcnt">
 			update oracle set post_vcount = post_vcount + 1 where post_id = #{post_id}

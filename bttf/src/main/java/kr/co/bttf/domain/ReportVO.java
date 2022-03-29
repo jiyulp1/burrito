@@ -1,5 +1,7 @@
 package kr.co.bttf.domain;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 @Getter @Setter
@@ -29,4 +31,5 @@ public class ReportVO {
 
  	private int report_category_id3;
 	
+// 	private List<Integer> arrayParams;
 }

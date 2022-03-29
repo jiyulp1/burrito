@@ -1,6 +1,8 @@
 package kr.co.bttf.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
@@ -44,7 +46,7 @@ public interface MemberDAO {
 	public void memcategory3(int user_index) throws Exception;
 	
 	// 최초 신고된 유저
-	public void insert_report_user(HashMap<String, Integer> map) throws Exception;
+	public void memberreport(Integer c) throws Exception;
 
 
 

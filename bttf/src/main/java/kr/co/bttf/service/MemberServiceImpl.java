@@ -1,7 +1,11 @@
 package kr.co.bttf.service;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -182,7 +186,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public ReportVO memcategoryselect(int user_index) throws Exception {
-		
 		return dao.memcategoryselect(user_index);
 	}
 
@@ -199,11 +202,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void insert_report_user( int report_category_id, int user_index) throws Exception {
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("report_category_id",report_category_id);
-		map.put("user_index",user_index);
-		dao.insert_report_user(map);
+	public void memberreport(Integer c) throws Exception {
+		
+		
+		
+		dao.memberreport(c);
 		
 	}
 

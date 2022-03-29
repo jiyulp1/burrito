@@ -11,7 +11,15 @@
 		VALUES (#{user_email}, #{user_pw }, #{user_name }, #{user_nickname }, #{user_phone },
 		#{main_language } )
 	</insert>
-
+	
+	<select id="emailcheck" resultType="_int">
+		SELECT COUNT(*) FROM USER_ALL WHERE user_email = #{user_email}
+	</select>
+	
+	<select id="nickcheck" resultType="_int">
+		SELECT COUNT(*) FROM USER_ALL WHERE user_nickname = #{user_nickname}
+	</select>
+	
 	<select id="signin" resultType="kr.co.bttf.domain.MemberVO">
 		SELECT * FROM USER_ALL
 		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND
@@ -30,14 +38,14 @@
 	</select>
 	
 	<select id="idCheck" resultType="_int">
-		SELECT COUNT(*) FROM USER_ALL WHERE where user_email= #{user_email} 	 
+		SELECT COUNT(*) FROM USER_ALL WHERE user_email= #{user_email} 	 
 	</select>
 	
 	<update id="updatePw" parameterType="kr.co.bttf.domain.MemberVO">
 		update user_all set user_pw = #{user_pw} where user_email= #{user_email}
 	</update>
 	
-	<insert id="insert_report_user">
+	<insert id="memberreport">
 		INSERT INTO report_user
 		(user_index, report_category_id )
 		VALUES ( #{user_index }, #{report_category_id } )
