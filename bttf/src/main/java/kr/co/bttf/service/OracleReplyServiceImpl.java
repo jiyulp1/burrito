@@ -44,13 +44,6 @@ public class OracleReplyServiceImpl implements OracleReplyService {
 		
 	}
 	
-//	@Override
-//	public void oracleReplyDelete(OracleReplyVO vo) throws Exception {
-//		HashMap<String, String> map = new HashMap<String, String>();
-//		int reply_id = vo.getReply_id();
-//		int post_id = vo.getPost_id();
-//		map.
-//	}
 
 
 }

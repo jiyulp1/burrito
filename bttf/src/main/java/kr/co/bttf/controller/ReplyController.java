@@ -74,9 +74,9 @@ public class ReplyController {
 	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.POST)
 	public String oracleReplyModify(OracleReplyVO vo) throws Exception {
 		System.out.println("post reply modify controller");
-		System.out.println(vo.getReply_contents());
-		oracleService.oracleReplyModify(vo);
+		OracleReplyVO contents = vo.setReply_contents(vo.getReply_contents());
 		
+		oracleService.oracleReplyModify(vo);
 		return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
 	}
 	
