@@ -124,7 +124,7 @@
 												<div class="reply_box mt-5 col-md-12 col-sm-12">
 													<!-- 정상적인 접근 경로 -->
 														<div align="center" width="200px" >
-															<p id="re_author" name="user_nickname" class="text-left reply_subject" style="display:hidden;">${reply.user_nickname } | <fmt:formatDate value="${oracleview.post_regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
+															<p id="re_author" name="user_nickname" class="text-left reply_subject" style="display:hidden;">${reply.user_nickname } | <fmt:formatDate value="${reply.reply_regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 														</div>
 														<c:if test="${member != null }" >
 														<div class="col-md-12 col-sm-12 row">
