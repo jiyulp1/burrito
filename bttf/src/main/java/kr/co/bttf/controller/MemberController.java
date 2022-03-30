@@ -3,6 +3,7 @@ package kr.co.bttf.controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
+import kr.co.bttf.domain.OracleBoardVO;
 import kr.co.bttf.domain.ReportVO;
 import kr.co.bttf.service.MemberService;
 
@@ -64,7 +66,7 @@ public class MemberController {
 	
 	// 회원 가입 post
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String postSignup(HttpServletResponse response, HttpServletRequest request,MemberVO vo) throws Exception {
+	public String postSignup(HttpServletResponse response, HttpServletRequest request, MemberVO vo) throws Exception {
 		logger.info("post signup");
 		int result = service.emailcheck(vo);
 		int result2 = service.nickcheck(vo);
@@ -81,8 +83,6 @@ public class MemberController {
 		
 		return "redirect:/";
 	}		
-	
-	
 	
 	
 	// 로그인  get
@@ -112,85 +112,28 @@ public class MemberController {
 	}
 	
 	
-	
-	
-	
-	// 작성자 신고 [update]
-	@RequestMapping(value = "/memberReportUpdate", method = RequestMethod.GET)
-	public String memreportcard(int user_index) throws Exception {
-		return "redirect:/member/memberreport";
-	}
-	
-	
-//	@RequestMapping(value = "/memberreport", method = RequestMethod.POST)
-//	public String memreportcard(@RequestParam("user_index") int user_index, int report_category_id) throws Exception {
-//		
-//		report_category_id = 0;		
-//		
-//		ReportVO memcategoryupdate = service.memcategoryselect(user_index);
-//		
-//		if(memcategoryupdate == null) {
-//			service.insert_report_user(report_category_id, user_index);
-//		}else if(memcategoryupdate.getUser_reportcnt() == 1) {
-//			service.memcategory2(user_index);
-//			service.memreportcnt(user_index);
-//
-//		}else{
-//			service.memcategory3(user_index);
-//			service.memreportcnt(user_index);
-//
-//		}
-//		return "redirect:/";
-//	}
-
-//	
-//	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
-//	public void memreportcard() throws Exception {
-//		
-//		
-//	}
-//	
-//	
-	//작성자 신고[insert]Post
-//	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
-//	@ResponseBody
-//	public void memreportcard(@RequestParam(value="user_index", defaultValue="0") int user_index , 
-//							@RequestParam(value="report_category_id[]") List<String> report_category_id, 
-//							HttpServletResponse response) throws Exception {
-//		logger.info("post memberreport 메서드 들어옴");
-//		
-//		service.insert_report_user(user_index, report_category_id);
-//		
-//		System.out.println("user_index : " + user_index);
-//		System.out.println("report_category_id :" + report_category_id);
-//		
-//		ScriptUtils.alertAndBackPage(response, "신고가 완료되었습니다.");
-//
-//	}
-//	
-//	작성자 신고[insert] GET	
-//	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
-//	public String memberreport( ) throws Exception {
-//		
-//		return "redirect:/member/postmemberreport";
-//	}
-	
-//	//작성자 신고[insert]Post
-//	@RequestMapping(value = "/memberreport", method = RequestMethod.POST)
-//	@ResponseBody
-//	public String memberreport(@RequestParam(value="allData[]", required = true) List<Object> arrayParams ) throws Exception {
-//		service.memberreport(arrayParams);
-//		return "redirect:/member/";
-//	}
-	
 	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
-	public void memberreport(@RequestParam List<Integer> checkbox, HttpServletResponse response) throws Exception
+	public void memberreport(@RequestParam List<Integer> checkbox, 
+			@RequestParam("reportee_index") int reportee_index, 
+			@RequestParam("reportee_index") int user_index, 
+			@RequestParam("reporter_index") int reporter_index,
+			@RequestParam("board_category_id") int board_category_id,
+			@RequestParam("post_id") int post_id,
+			HttpServletResponse response) throws Exception
 	{
 		for (Integer c : checkbox) {
-			service.memberreport(c);
+			HashMap<String, Integer> map = new HashMap<String, Integer>();
+			map.put("report_category_id", c);
+			map.put("reportee_index", reportee_index);
+			map.put("reporter_index", reporter_index);
+			map.put("board_category_id", board_category_id);
+			map.put("post_id", post_id);
+			service.memberreport(map);
 		}
-			ScriptUtils.alertAndBackPage(response, "신고가 접수되었습니다");
+		service.memcategory2(user_index);
+		ScriptUtils.alertAndMovePage(response, "신고가 접수되었습니다. 메인화면으로 이동합니다.","http://localhost:9090/");
 	}
+	
 	
 	
 

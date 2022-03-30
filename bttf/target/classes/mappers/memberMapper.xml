@@ -46,25 +46,13 @@
 	</update>
 	
 	<insert id="memberreport">
-		INSERT INTO report_user
-		(user_index, report_category_id )
-		VALUES ( #{user_index }, #{report_category_id } )
+		INSERT INTO report_user (reportee_index, report_category_id, reporter_index, board_category_id, post_id ) 
+					VALUES ( #{reportee_index }, #{report_category_id }, #{reporter_index}, #{board_category_id}, #{post_id} )
 	</insert>
-	
-	<update id="memreportcnt" parameterType="_int">
-		update report_user set user_reportcnt = user_reportcnt + 1 where user_index= #{user_index}
-	</update>
-	
-	<select id="memcategoryselect" resultType="kr.co.bttf.domain.ReportVO">
-		SELECT * FROM report_user
-		WHERE user_index = #{user_index}
-	</select>
 	
 	<update id="memcategory2" parameterType="_int">
 		update user_all set avaliability_category_id = 2  where user_index= #{user_index}
 	</update>
 	
-	<update id="memcategory3" parameterType="_int">
-		update user_all set avaliability_category_id = 3 where user_index= #{user_index}
-	</update>
+
 </mapper>

@@ -177,17 +177,6 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
-	@Override
-	public void  memreportcnt( int user_index) throws Exception {
-			dao.memreportcnt(user_index);
-		
-		
-	}
-
-	@Override
-	public ReportVO memcategoryselect(int user_index) throws Exception {
-		return dao.memcategoryselect(user_index);
-	}
 
 	@Override
 	public void memcategory2(int user_index) throws Exception {
@@ -195,18 +184,10 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
-	@Override
-	public void memcategory3(int user_index) throws Exception {
-		dao.memcategory3(user_index);
-		
-	}
 
 	@Override
-	public void memberreport(Integer c) throws Exception {
-		
-		
-		
-		dao.memberreport(c);
+	public void memberreport(HashMap<String, Integer> map) throws Exception {
+		dao.memberreport (map);
 		
 	}
 

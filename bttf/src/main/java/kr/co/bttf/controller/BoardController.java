@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -186,20 +187,30 @@ public class BoardController {
 
 	}
 	
-	// 게시글 신고
-	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
-	public void memreportcard(@RequestParam("user_index") int user_index, Model model) throws Exception {
-		
-		MemberVO vo = cssService.memreportcard(user_index);
-		model.addAttribute("memreportcard", vo);
-		
-		//참고로 게시글도 신고사유 접수받을 boardreport.jsp필요, 
-		//button에서 파라미터로 post_category(게시판카테고리) get방식으로 넘기면 될듯하니
-		//신고접수폼은 회원신고용과 게시글신고용 2개로 가져가면 될듯
-		//<a href="/member/cssboardreported?post_id=${cssview.post_id }&category_id=0" ...>게시글 신고</a>
-
-	}
+//	// 게시글 신고
+//	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
+//	public void memreportcard(@RequestParam("user_index") int user_index, Model model) throws Exception {
+//		
+//		MemberVO vo = cssService.memreportcard(user_index);
+//		model.addAttribute("memreportcard", vo);
+//		
+//		//참고로 게시글도 신고사유 접수받을 boardreport.jsp필요, 
+//		//button에서 파라미터로 post_category(게시판카테고리) get방식으로 넘기면 될듯하니
+//		//신고접수폼은 회원신고용과 게시글신고용 2개로 가져가면 될듯
+//		//<a href="/member/cssboardreported?post_id=${cssview.post_id }&category_id=0" ...>게시글 신고</a>
+//
+//	}
 	
+	
+	@RequestMapping(value = "/cssreport", method = RequestMethod.POST)
+	public void memberreport(CssBoardVO vo, HttpServletResponse response) throws Exception
+	{
+		//게시글의 작성자 신고와 작성자의 게시글 신고를 구분할 필요가 있을까?
+		//최소 게시판만큼만 구분한다면 user_index는 /board/memberreport로 처리하는건 어떨지?
+			cssService.memcategory2(vo.getUser_index());
+			System.out.println("user_index : " + vo.getUser_index());
+			ScriptUtils.alertAndMovePage(response, "신고가 접수되었습니다. 메인화면으로 이동합니다.","http://localhost:9090/");
+	}
 	
 	/* --------------------------------
 			03. JAVASCRIPT
@@ -346,6 +357,8 @@ public class BoardController {
 			return "redirect:/board/oraclelist";
 
 		}
+		
+		
 	
 	
 	/* --------------------------------
