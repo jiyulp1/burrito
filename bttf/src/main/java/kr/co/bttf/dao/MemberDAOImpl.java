@@ -73,17 +73,6 @@ public class MemberDAOImpl implements MemberDAO {
 		sql.update(namespace + ".updatePw", vo);
 	}
 
-	@Override
-	public void memreportcnt( int user_index) throws Exception {
-		sql.update(namespace + ".memreportcnt", user_index);
-
-	}
-
-	@Override
-	public ReportVO memcategoryselect(int user_index) throws Exception {
-
-		return sql.selectOne(namespace + ".memcategoryselect", user_index);
-	}
 
 	@Override
 	public void memcategory2(int user_index) throws Exception {
@@ -91,16 +80,11 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	}
 
-	@Override
-	public void memcategory3(int user_index) throws Exception {
-		sql.update(namespace + ".memcategory3", user_index);
-		
-	}
 	
 	@Override
-	public void memberreport(Integer c) throws Exception {
+	public void memberreport(HashMap<String, Integer> map) throws Exception {
 		
-		sql.insert(namespace + ".memberreport", c);
+		sql.insert(namespace + ".memberreport", map);
 		
 	}
 

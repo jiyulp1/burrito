@@ -15,6 +15,6 @@ public class JsBoardVO {
 	private String post_rec;
 	private int post_vcount;
 	private String post_regdate;
-	private int category_id;
+	private int board_category_id;
   
 }

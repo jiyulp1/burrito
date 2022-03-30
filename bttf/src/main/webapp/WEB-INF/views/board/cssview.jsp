@@ -94,12 +94,9 @@
 				                		<a href="/board/cssdelete?post_id=${cssview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
 									</c:if> 
 	                        		<a href="/board/csslist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
-									<c:if test="${not empty member}">
+									<c:if test="${member.user_nickname != cssview.user_nickname && member != null && cssview.user_nickname != 'admin'}">
 										<a href="#" class="btn btn-default mt-4">북마크</a>
-										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#boardreport" data-whatever="@getbootstrap" style="float: right;">게시글 신고</button>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberreport" data-whatever="@getbootstrap" style="float: right;" >작성자 신고</button>
-<%-- 					               		<a href="/member/cssboardreported?post_id=${cssview.post_id }&category_id=0" class="btn btn-warning mt-4" id="boardreport" type="submit" style="float: right;">게시글 신고</a> --%>
-<%-- 					               		<a href="/member/memberreport?user_nickname=${cssview.user_nickname }" class="btn btn-warning mt-4" id="memberreport" type="submit" style="float: right;">작성자 신고</a> --%>
 									</c:if>
                               	 </div>
                             </form>
@@ -188,81 +185,14 @@
             <!--// end row -->
         </div>
     </div>				
-	<div class="modal fade" id="boardreport" tabindex="-1" role="dialog" aria-labelledby="boardreport" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="reportModalLabel">게시글 신고</h4>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="report1" value="욕설 등 부적절한 게시글, 댓글 또는 채팅">
-							  <label class="form-check-label" for="report1">욕설 등 부적절한 게시글, 댓글 또는 채팅</label>
-							</div>
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="report2" value="갈등 조장, 불쾌감 조성 및 허위사실 유포성 게시글 , 댓글 또는 채팅">
-							  <label class="form-check-label" for="report2">갈등 조장, 불쾌감 조성 및 허위사실 유포성 게시글 , 댓글 또는 채팅</label>
-							</div>
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="report3" value="악성코드/스파이웨어 유포성 게시글 , 댓글 또는 채팅" >
-							  <label class="form-check-label" for="report3">악성코드/스파이웨어 유포성 게시글 , 댓글 또는 채팅</label>
-							</div>
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="report4" value="도배성 게시글, 댓글 또는 채팅" >
-							  <label class="form-check-label" for="report4">도배성 게시글, 댓글 또는 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="report5" value="부적절한 홍보 게시글, 댓글 또는 채팅" >
-							  <label class="form-check-label" for="report5">부적절한 홍보 게시글, 댓글 또는 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="report6" value="명예훼손/사생활 침해 및 저작권 침해 게시글, 댓글 또는 채팅" >
-							  <label class="form-check-label" for="report6">명예훼손/사생활 침해 및 저작권 침해 게시글, 댓글 또는 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="report7" value="음란성 또는 청소년에게 부적합한 게시글, 댓글 또는 채팅" >
-							  <label class="form-check-label" for="report7">음란성 또는 청소년에게 부적합한 게시글, 댓글 또는 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="report8" value="운영자 사칭 게시글, 댓글 또는 채팅" >
-							  <label class="form-check-label" for="report8">운영자 사칭 게시글, 댓글 또는 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="report9" value="개인정보 유포 게시글, 댓글 또는 채팅" >
-							  <label class="form-check-label" for="report9">개인정보 유포 게시글, 댓글 또는 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="report10" value="금전거래 유도 및 도박 조장 게시글, 댓글 또는 채팅" >
-							  <label class="form-check-label" for="report10">금전거래 유도 및 도박 조장 게시글, 댓글 또는 채팅</label>
-							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="checkbox" id="report11" value="기타(하단 신고 사유 작성)" >
-							  <label class="form-check-label" for="report11">기타(하단 신고 사유 작성)</label>
-							</div>	
-						</div>
-						<div class="form-group">
-							<label for="message-text" class="control-label">기타 신고 사유</label>
-							<textarea class="form-control" id="message-text"></textarea>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">신고 취소</button>
-						<button type="submit" class="btn btn-danger" onclick="">신고하기</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
 	<div class="modal fade" id="memberreport" tabindex="-1" role="dialog" aria-labelledby="memberreport" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-<!-- 				<form action="/member/memberreport" name="user_reportForm" method="post"> -->
-				<form name="Check" action="/member/memberreport?user_index=${ cssview.user_index}" id="reportForm" method="get">
-<%-- 					<input type="text" name="user_index" id="user_index" value="${cssview.user_index }"> --%>
-	
+				<form name="Check" action="/member/memberreport" id="reportForm" method ="get" >
+					<input type="text" style="display:none;" name="reportee_index" id="reportee_index" value="${cssview.user_index }">
+					<input type="text" style="display:none;" name="reporter_index" id="reporter_index" value="${member.user_index }">
+					<input type="text" style="display:none;" name="board_category_id" id="board_category_id" value="${cssview.board_category_id }">
+					<input type="text" style="display:none;" name="post_id" id="post_id" value="${cssview.post_id }">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<h4 class="modal-title" id="reportModalLabel">회원 신고</h4>
@@ -286,7 +216,7 @@
 							  <label class="form-check-label" for="report4">도배성 게시글, 댓글 또는 채팅</label>
 							</div>	
 							<div class="form-check form-check-inline">
-							  <input class="form-check-input reportVal" name="@" type="checkbox" data-report="5" id="report5" onclick=CountChecked(this) value="5" >
+							  <input class="form-check-input reportVal" name="checkbox" type="checkbox" data-report="5" id="report5" onclick=CountChecked(this) value="5" >
 							  <label class="form-check-label" for="report5">부적절한 홍보 게시글, 댓글 또는 채팅</label>
 							</div>	
 							<div class="form-check form-check-inline">
@@ -321,8 +251,8 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">신고 취소</button>
-<!-- 						<input type="submit" class="btn btn-danger" value="신고하기" id="report" onclick="/member/memberreport"> -->
 						<input type="submit" class="btn btn-danger" id="report" value="신고하기">
+<!-- 						<a href="/member/memberreport" type="submit" class="btn btn-danger" id="report" >신고하기</a> -->
 					</div>
 				</form>
 			</div>
