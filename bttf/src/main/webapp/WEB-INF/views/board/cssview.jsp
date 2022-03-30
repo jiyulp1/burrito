@@ -188,7 +188,7 @@
 	<div class="modal fade" id="memberreport" tabindex="-1" role="dialog" aria-labelledby="memberreport" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form name="Check" action="/member/memberreport" id="reportForm" method ="get" >
+				<form name="Check" action="/board/cssreport" id="reportForm" method ="get" >
 					<input type="text" style="display:none;" name="reportee_index" id="reportee_index" value="${cssview.user_index }">
 					<input type="text" style="display:none;" name="reporter_index" id="reporter_index" value="${member.user_index }">
 					<input type="text" style="display:none;" name="board_category_id" id="board_category_id" value="${cssview.board_category_id }">

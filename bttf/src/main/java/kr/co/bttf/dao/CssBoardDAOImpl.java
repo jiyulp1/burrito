@@ -46,4 +46,10 @@ public class CssBoardDAOImpl implements CssBoardDAO {
 	public void cssDelete(int post_id) throws Exception {
 		sql.delete(namespace + ".cssdelete", post_id);
 	}
+
+	@Override
+	public void category2(int post_id) throws Exception {
+		sql.update(namespace + ".category2", post_id);
+		
+	}
 }

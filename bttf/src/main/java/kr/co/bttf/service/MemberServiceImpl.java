@@ -187,7 +187,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void memberreport(HashMap<String, Integer> map) throws Exception {
-		dao.memberreport (map);
+		dao.memberreport(map);
 		
 	}
 

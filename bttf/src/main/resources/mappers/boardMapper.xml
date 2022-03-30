@@ -37,7 +37,7 @@
 	</select>
 
 	<!-- 2-3-1. 조회수 갱신 -->
-	<update id="cssvcnt">
+	<update id="cssvcnt" parameterType="_int">
 			update css set post_vcount = post_vcount + 1 where post_id = #{post_id}
 	</update>		
 	
@@ -48,13 +48,18 @@
 		where post_id = #{post_id}
 	</update>
 	
-	
 	<!-- 2-5. 게시물 삭제 -->
 	<delete id="cssdelete" parameterType="int">
 		delete from css
 		where post_id = #{post_id}
 	</delete>
 
+	<!-- 2-6. 가용성 카테고리 수정 -->
+	
+	<update id="category2" parameterType="_int">
+		update css set avaliability_category_id = 2 where post_id = #{post_id}
+	</update>
+	
 <!-- 
 ========================================
 			03. JAVASCRIPT

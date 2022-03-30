@@ -87,7 +87,6 @@
 									<textarea id="editor" name="post_contents" class="form-control" placeholder="내용을 입력해 주세요." style="height: 650px; resize: none;"></textarea>
 								</div>
 									<button type="submit" class="btn btn-info mt-4" id="writesuccess">작성완료</button>
-<!-- 									<a href="/admin/announcements" class="btn btn-info mt-4" id="writesuccess">작성완료</a> -->
 									<a class="btn btn-primary mt-4" id="list" href="/admin/announcements">목록</a>
 							</form>
 							<!-- End write Form -->
