@@ -176,7 +176,9 @@
 									</ul>
 								</nav>
 								<!-- end of reply pagination -->	
-							</form>                                
+							</form> 
+							
+							                               
                         </div>
                     </div>
                 </div>
@@ -239,14 +241,6 @@
 							  <input class="form-check-input reportVal" name="checkbox" type="checkbox" data-report="10" id="report10" onclick=CountChecked(this) value="10" >
 							  <label class="form-check-label" for="report10">금전거래 유도 및 도박 조장 게시글, 댓글 또는 채팅</label>
 							</div>	
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input reportVal" name="checkbox" type="checkbox" data-report="11" id="report11" onclick=CountChecked(this) value="11" >
-							  <label class="form-check-label" for="report11">기타(하단 신고 사유 작성)</label>
-							</div>	
-						</div>
-						<div class="form-group">
-							<label for="message-text" class="control-label">기타 신고 사유</label>
-							<textarea class="form-control" id="message-text"></textarea>
 						</div>
 					</div>
 					<div class="modal-footer">

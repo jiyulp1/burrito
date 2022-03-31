@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -55,19 +56,19 @@ public class AdminController {
 
 	// 신고 회원 해제
 	@RequestMapping(value = "/memberundo", method = RequestMethod.GET)
-	public String memberundo(@RequestParam("user_index") int user_index, Model model) throws Exception {
-
+	public void memberundo(@RequestParam("user_index") int user_index, Model model, HttpServletResponse response) throws Exception {
 		adminService.memberundo(user_index);
-		return "redirect:/admin/memberall";
+		ScriptUtils.alertAndMovePage(response, "정상회원으로 변경되었습니다.","http://localhost:9090/admin/memberall");
+		//return "redirect:/admin/memberall";
 	}
 
 
 	// 신고가 들어온 회원 퇴출
 	@RequestMapping(value = "/memberexpell", method = RequestMethod.GET)
-	public String memberexpell(@RequestParam("user_index") int user_index, Model model) throws Exception {
-
+	public void memberexpell(@RequestParam("user_index") int user_index, Model model,HttpServletResponse response) throws Exception {
 		adminService.memberexpell(user_index);
-		return "redirect:/admin/memberall";
+		ScriptUtils.alertAndMovePage(response, "회원 퇴출이 완료되었습니다.","http://localhost:9090/admin/memberall");
+		//return "redirect:/admin/memberall";
 	}
 	
 	

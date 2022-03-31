@@ -98,13 +98,19 @@ public class MemberController {
 	
 	
 	
+	// 비밀번호 찾기
+	@RequestMapping(value = "/termsOfUse", method = RequestMethod.GET)
+	public void termsOfUse() throws Exception{
+		
+	}
 	
 	// 비밀번호 찾기
 	@RequestMapping(value = "/findpw", method = RequestMethod.GET)
 	public void findpw() throws Exception{
 		
 	}
-
+	
+	
 	@RequestMapping(value = "/findpw", method = RequestMethod.POST)
 	public void findpw(@ModelAttribute MemberVO member, HttpServletResponse response) throws Exception{
 		service.findpw(response, member);

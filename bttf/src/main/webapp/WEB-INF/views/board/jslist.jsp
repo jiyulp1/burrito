@@ -45,7 +45,7 @@
 
 <!-- BODY -->
 
-<body class="page-on-scroll fixed_container">
+<body class="page-on-scroll fixed_container" style="min-height: 100vh;">
 	<c:set var="boardList" value = "${requestScope.boardList }"/>
 	<c:set var="totalCnt" value = "${requestScope.totalCnt }"/>
 	<c:set var="boardJSON" value="${requestScope.boardJSON }"/>

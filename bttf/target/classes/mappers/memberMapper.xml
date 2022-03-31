@@ -32,6 +32,14 @@
 		avaliability_category_id != 4
 	</select>
 
+	<select id="reportSuccess" resultType="_int">
+		SELECT COUNT(*) FROM report_user 
+		WHERE report_category_id = #{report_category_id} 
+		AND reportee_index = #{reportee_index}
+		AND reporter_index = #{reporter_index} 
+		AND  board_category_id = #{board_category_id}
+		AND  post_id = #{post_id}
+	</select>
 
 	<select id="readMember" resultType="kr.co.bttf.domain.MemberVO">
 		select * from user_all where user_email= #{user_email}

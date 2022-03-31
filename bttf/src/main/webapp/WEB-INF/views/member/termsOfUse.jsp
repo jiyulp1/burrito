@@ -35,7 +35,8 @@
 
 	<!-- c3 chart -->
 	<link href="../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
-</head>
+</head> 
+
 <!-- END HEAD -->
 
 <!-- BODY -->
@@ -49,27 +50,8 @@
         <!-- Navbar -->
     </header>
     <!--========== END HEADER ==========-->
-
-    <!--========== SLIDER ==========-->
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner main_visual" role="listbox">
-            <div class="item active">
-                <img class="img-responsive " src="/resource/img/1920x1080/main_visual_ju.png" alt="Slider Image">
-                <div class="container">
-                    <div class="carousel-centered">
-                        <div class="margin-b-40">
-                            <h1 class="carousel-title"></h1>
-                            <p class="carousel-title"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Tab Contents -->
-    <div class="container tab_mar">
+    <div class="container tab_mar" style="margin-top : 180px;">
         <div class="row">
 
             <div role="tabpanel">

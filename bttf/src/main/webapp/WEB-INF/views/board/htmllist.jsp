@@ -51,7 +51,7 @@
     <!--========== END HEADER ==========-->
 
     <!-- notice -->
-    <div class="bg-color-sky-light fixed_container">
+    <div class="bg-color-sky-light fixed_container" style="min-height: 100vh;">
         <div class="content-lg container" style="margin-top : 50px;">
             <!-- notice -->
             <h2>HTML5 QnA</h2>

@@ -195,28 +195,36 @@ public class BoardController {
 	
 	@RequestMapping(value = "/cssreport", method = RequestMethod.GET)
 	public void memberreport(@RequestParam List<Integer> checkbox, 
+			
 			@RequestParam("reportee_index") int reportee_index, 
 			@RequestParam("reportee_index") int user_index, 
 			@RequestParam("reporter_index") int reporter_index,
 			@RequestParam("board_category_id") int board_category_id,
 			@RequestParam("post_id") int post_id,
-			HttpServletResponse response) throws Exception
-	{
-		for (Integer c : checkbox) {
-			HashMap<String, Integer> map = new HashMap<String, Integer>();
-			map.put("report_category_id", c);
-			map.put("reportee_index", reportee_index);
-			map.put("reporter_index", reporter_index);
-			map.put("board_category_id", board_category_id);
-			map.put("post_id", post_id);
-			memberService.memberreport(map);
-		}
-		cssService.category2(post_id);
-		//개별 언어별 테이블 상 가용성 또한 카테고리를 2로 업데이트를 해야 신고된 게시글을 list로 불러올 수 있다
-		//service.borcategory2(board_category_id);
+			
+			HttpServletResponse response) throws Exception{
+				for (Integer c : checkbox) {
+					HashMap<String, Integer> map = new HashMap<String, Integer>();
+					map.put("report_category_id", c);
+					map.put("reportee_index", reportee_index);
+					map.put("reporter_index", reporter_index);
+					map.put("board_category_id", board_category_id);
+					map.put("post_id", post_id);
+					
+					boolean reportSuccess = memberService.reportSuccess(map);	
+					
+					if(reportSuccess ) {
+						memberService.memberreport(map);						
+						cssService.category2(post_id);
+						memberService.memcategory2(user_index);
+						ScriptUtils.alertAndMovePage(response, "신고가 접수되었습니다. 메인화면으로 이동합니다.","http://localhost:9090/");
+					}else {
+						ScriptUtils.alertAndMovePage(response, "이미 신고된 회원입니다.","http://localhost:9090/");
+						
+					}
+				}
 		
-		ScriptUtils.alertAndMovePage(response, "신고가 접수되었습니다. 메인화면으로 이동합니다.","http://localhost:9090/");
-	}
+			}
 	
 	
 	/* --------------------------------
