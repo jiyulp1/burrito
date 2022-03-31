@@ -88,4 +88,11 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	}
 
+	@Override
+	public int reportSuccess(HashMap<String, Integer> map) {
+		int result = sql.selectOne(namespace + ".reportSuccess",map);
+		
+		return result;
+	}
+
 }

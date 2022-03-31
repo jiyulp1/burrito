@@ -67,6 +67,21 @@ public class MemberServiceImpl implements MemberService {
 		return loginSuccess;
 	}
 	
+	
+	@Override
+	public boolean reportSuccess(HashMap<String, Integer> map) {
+		boolean reportSuccess = false;
+		
+		 int Report = dao.reportSuccess(map);
+		
+		if(Report == 0) {
+			reportSuccess = true;
+		}
+		return reportSuccess;
+	}
+	
+	
+	
 	// 로그아웃
 	@Override
 	public void signout(HttpSession session) throws Exception {
@@ -187,9 +202,11 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void memberreport(HashMap<String, Integer> map) throws Exception {
+		
 		dao.memberreport(map);
 		
 	}
+
 
 	
 } 

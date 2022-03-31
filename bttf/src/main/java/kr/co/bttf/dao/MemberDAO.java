@@ -38,6 +38,9 @@ public interface MemberDAO {
 	
 	// 최초 신고된 유저
 	public void memberreport(HashMap<String, Integer> map) throws Exception;
+	
+	//중복신고
+	public int reportSuccess(HashMap<String, Integer> map);
 
 
 

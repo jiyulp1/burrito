@@ -39,7 +39,7 @@
 
 <!-- BODY -->
 
-<body class="page-on-scroll fixed_container">
+<body class="page-on-scroll fixed_container" style="min-height: 100vh;">
 
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">

@@ -42,5 +42,9 @@ public interface MemberService {
 	// 최초 신고된 유저
 	public void memberreport(HashMap<String, Integer> map) throws Exception;
 	
+	// 신고 중복확인
+	public boolean reportSuccess(HashMap<String, Integer> map);
+	
+	
 	
 }
