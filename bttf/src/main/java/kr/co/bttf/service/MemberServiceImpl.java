@@ -124,10 +124,10 @@ public class MemberServiceImpl implements MemberService {
 			msg += vo.getUser_email() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
 			msg += "<p>임시 비밀번호 : ";
 			msg += vo.getUser_pw() + "</p></div>";
-			msg +="<p>하단 비밀번호 번경 버튼을 클릭하여 비밀번호 변경을 진행해주세요.</p>";
+			msg +="<p>하단 링크를 클릭하여 로그인 후 마이페이지에서 비밀번호 변경을 진행해주세요.</p>";
 			msg +="</div>";
 			msg +="<div>";
-			msg +="<a class='btn btn-primary' href='http://localhost:9090/member/updatepw'> 비밀번호 변경 </a>";
+			msg +="<a class='btn btn-primary' href='http://localhost:9090/member/signin'> 비밀번호 변경 </a>";
 			msg +="</div>";
 			msg +="</div>";
 			msg +="</div>";
