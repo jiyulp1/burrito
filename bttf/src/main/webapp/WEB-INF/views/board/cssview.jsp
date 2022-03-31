@@ -362,7 +362,7 @@ totalChecked += 1;
 else
 totalChecked -= 1; 
 if (totalChecked > maxChecked) {
-alert ("신고사유를 최대 3가지 선택하세요.");
+alert ("신고사유를 1가지만 선택하세요.");
 field.checked = false;
 totalChecked -= 1;
 } 
