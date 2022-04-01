@@ -268,6 +268,7 @@
                     consequat siad esqudiat dolor</p>
             </div>
             <!-- End Latest Products -->
+            <!-- Latest Products -->
             <div class="col-sm-4 sm-margin-b-50 mt-4">
                 <div class="margin-b-20">
                     <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
@@ -275,6 +276,17 @@
                     </div>
                 </div>
                 <h4><a href="#">김선경</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
+                    consequat siad esqudiat dolor</p>
+            </div>
+            <!-- End Latest Products -->
+            <div class="col-sm-4 sm-margin-b-50 mt-4">
+                <div class="margin-b-20">
+                    <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+                        <img class="img-responsive" src="../../resources/img/970x647/03.jpg" alt="Latest Products Image">
+                    </div>
+                </div>
+                <h4><a href="#">이다인</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
                     consequat siad esqudiat dolor</p>
             </div>

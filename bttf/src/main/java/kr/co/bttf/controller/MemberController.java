@@ -96,6 +96,7 @@ public class MemberController {
 	        rttr.addFlashAttribute("msg", false);
 	        ScriptUtils.alertAndMovePage(res, "입력하신 회원정보가 틀립니다. 다시 로그인 해주세요.", "http://localhost:9090/member/signin");
 		}
+		return "redirect:/";
 	}
 	
 	
@@ -116,6 +117,7 @@ public class MemberController {
 	@RequestMapping(value = "/findpw", method = RequestMethod.POST)
 	public void findpw(@ModelAttribute MemberVO member, HttpServletResponse response) throws Exception{
 		service.findpw(response, member);
+		ScriptUtils.alertAndMovePage(response, "입력하신 이메일로 임시 비밀번호를 발송했습니다", "/");
 	}
 	
 	@RequestMapping(value = "/updatepw", method = RequestMethod.GET)

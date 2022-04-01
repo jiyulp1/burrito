@@ -136,7 +136,7 @@
 													<!-- 비정상적인 접근 경로 -->
 													<c:if test="${sessionScope.session_id == null }" >
 														<div >
-															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" class="reply_con_box" style="text-align:left; border:0px; height:fit-content; resize:none;">${reply.reply_contents }</textarea>
+															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" class="reply_con_box" style="text-align:left; border:0px; height:fit-content; resize:none;" readonly>${reply.reply_contents }</textarea>
 <!-- 															<div class="row mt-5"> -->
 <%-- 																<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-info mt-4" id="editfail">수정 하기</a> --%>
 <%-- 																<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-primary mt-4" id="editsubmitfail">수정 완료</a> --%>

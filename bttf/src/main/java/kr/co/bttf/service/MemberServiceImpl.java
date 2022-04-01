@@ -188,7 +188,6 @@ public class MemberServiceImpl implements MemberService {
 			// 비밀번호 변경 메일 발송
 			sendemail(vo, "findpw");
 
-			ScriptUtils.alertAndMovePage(response, "입력하신 이메일로 임시 비밀번호를 발송했습니다", "/");
 		}
 	}
 

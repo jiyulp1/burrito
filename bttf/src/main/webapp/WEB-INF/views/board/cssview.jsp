@@ -131,7 +131,7 @@
 													<!-- 비정상적인 접근 경로 -->
 													<c:if test="${member == null }" >
 														<div >
-															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" class="reply_con_box" style="text-align:left; border:0px; height:fit-content; resize:none;">${reply.reply_contents }</textarea>
+															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" class="reply_con_box" style="text-align:left; border:0px; height:fit-content; resize:none;" readonly>${reply.reply_contents }</textarea>
 														</div>
 													</c:if>
 												</div>
@@ -301,7 +301,7 @@
 </body>
 <!-- END BODY -->
 <script>
-// 	//[글 수정하기] function
+// 	[글 수정하기] function
 // 	function updateReadonlyBoard( post_id ){
 // 	   document.getElementById( post_id ).readOnly = false;
 // 	}

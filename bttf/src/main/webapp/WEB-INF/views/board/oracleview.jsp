@@ -54,6 +54,7 @@
     </style>
 </head>
 <!-- END HEAD -->
+
 <!-- BODY -->
 <body class="page-on-scroll ">
     <!--========== HEADER ==========-->
@@ -132,11 +133,11 @@
 														</div>
 														<c:if test="${member != null }" >
 														<div class="col-md-12 col-sm-12 row">
-															<textarea id="reply${reply.reply_id }" class="reply_con_box" name="reply${reply.reply_id }" readonly>${reply.reply_contents }</textarea>
+															<textarea id="${reply.reply_id }" class="reply_con_box" name="${reply.reply_id }" readonly>${reply.reply_contents }</textarea>
 															<div class="row mt-5" style="padding-left:10px;">
 																<c:if test="${member.user_nickname eq reply.user_nickname}">
 																<a class="btn btn-danger mt-4" href="javascript:updateReply( ${reply.reply_id} );">등록하기</a>
-																<a class="btn btn-info  mt-4" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a>
+																<a class="btn btn-info  mt-4" href="javascript:ReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a>
 																<a class="btn btn-danger mt-4" href="/reply/oracle_reply_delete?reply_id=${reply.reply_id }&post_id=${reply.post_id}" id="list" type="submit">삭제</a>
 															</c:if>
 															</div>
@@ -145,7 +146,7 @@
 													<!-- 비정상적인 접근 경로 -->
 													<c:if test="${member == null }" >
 														<div >
-															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" class="reply_con_box" style="text-align:left; border:0px; height:fit-content; resize:none;">${reply.reply_contents }</textarea>
+															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" class="reply_con_box" style="text-align:left; border:0px; height:fit-content; resize:none;" readonly>${reply.reply_contents }</textarea>
 														</div>
 													</c:if>
 												</div>
@@ -213,25 +214,18 @@
             .catch( error => {
                 console.error( error );
             } );
-    </script>
-    <script src="../../../resources/js/confirm.js"></script>
-</body>
-<!-- END BODY -->
-<script>	
-	// [댓글 수정하기] function
-	function updateReadonlyReply( reply_id ){
-		document.getElementById( 'reply' + reply_id ).readOnly = false;
-
-	}
-	
-	// [댓글 수정] function
-	function updateReply( reply_id ){
-			document.replyForm.action = "/reply/oracle_reply_modify?reply_id="+reply_id;
-			document.replyForm.submit();
-			// 수정하기 버튼 block, 수정완료(펑션) none
+	</script>
+	<script>	
+		
+		// [댓글 수정] function
+		function updateReply( reply_id ){
+				document.replyForm.action = "/reply/oracle_reply_modify?reply_id="+reply_id;
+				document.replyForm.submit();
+				// 수정하기 버튼 block, 수정완료(펑션) none
+			}
 		}
-	}
-
-	
-</script>
+	</script>
+</body>
+	<script src="../../../resources/js/confirm.js"></script>
+<!-- END BODY -->
 </html>

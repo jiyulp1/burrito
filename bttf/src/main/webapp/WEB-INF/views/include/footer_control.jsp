@@ -8,6 +8,9 @@
         <div class="col-xs-6 text-right" style="padding-top: 24px;">
             <p class="margin-b-0">Copyright 2021. <a class="color-base fweight-700"
                     href="http://keenthemes.com/preview/asentus/">Homebrew</a> All rights reserved.</p>
+                    
+            <p class="margin-b-0">TEL : <a class="color-base fweight-700"
+                    href="tel:010-2874-0544">BTTF담당자</a> </p>
         </div>
     </div>
     <!--// end row -->
