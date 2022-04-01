@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.bttf.controller.ScriptUtils;
 import kr.co.bttf.dao.MemberDAO;
+import kr.co.bttf.domain.BoardVO;
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.ReportVO;

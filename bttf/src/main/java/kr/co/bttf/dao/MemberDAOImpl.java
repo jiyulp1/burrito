@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import kr.co.bttf.domain.BoardVO;
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.ReportVO;

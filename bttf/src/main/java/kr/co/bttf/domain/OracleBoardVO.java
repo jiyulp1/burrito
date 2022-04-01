@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class OracleBoardVO {
+public class OracleBoardVO extends BoardVO {
   
 	private int post_id;
 	private String post_subject;

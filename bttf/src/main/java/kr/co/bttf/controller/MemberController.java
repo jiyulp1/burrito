@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.bttf.domain.BoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.service.MemberService;
 
@@ -96,6 +98,8 @@ public class MemberController {
 	        rttr.addFlashAttribute("msg", false);
 	        ScriptUtils.alertAndMovePage(res, "입력하신 회원정보가 틀립니다. 다시 로그인 해주세요.", "http://localhost:9090/member/signin");
 		}
+		
+		return "redirect:/";
 	}
 	
 	

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 
 <html lang="ko" class="no-js">
@@ -185,7 +186,7 @@
 		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${bookmark.post_id}">${bookmark.post_subject}</a></td>
 		                    		<td>${bookmark.post_rec}</td>
 		                    		<td>${bookmark.writer}</td>
-		                    		<td>${bookmark.post_regdate}</td>
+		                    		<td>${bookmark.post_regdate} </td>
 		                    		<td><a class="btn btn-danger" href="/pages/BookmarkDelete.us?post_id=${bookmark.post_id }">삭제</a></td>
 		                    	</tr>
 		                    </c:forEach>
@@ -229,7 +230,7 @@
 		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=">${mypostlist.post_subject}</a></td>
 		                    		<td>${mypostlist.post_rec}</td>
 		                    		<td>${mypostlist.user_nickname}</td>
-		                    		<td>${mypostlist.post_regdate}</td>
+		                    		<td><fmt:formatDate value="${mypostlist.post_regdate}" pattern="yyyy-MM-dd" /></td>
 		                    		<td><a class="btn btn-danger" href="/pages/BookmarkDelete.us?post_id=${bookmark.post_id }">삭제</a></td>
 		                    	</tr>
 		                    </c:forEach>
