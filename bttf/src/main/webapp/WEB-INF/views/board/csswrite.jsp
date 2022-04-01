@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
-<html lang="ko" class="no-js" style="height : 100vh;">
+<html lang="ko" class="no-js bg_color" style="height : 100vh;">
 <!-- BEGIN HEAD -->
 
 <head>
@@ -90,7 +90,7 @@
 								<input type="hidden" name="user_index" value="${member.user_index }">
 								<div class="col-auto">
 									<label for="subject">제목</label>
-									<input id="subject" name="post_subject" class="form-control margin-b-50" type="text" placeholder="제목">
+									<input id="subject" name="post_subject" class="form-control margin-b-50" type="text" placeholder="제목" required>
 									<textarea id="editor" name="post_contents" class="form-control" placeholder="내용을 입력해 주세요." style=" resize: none;"></textarea>
 								</div>
 									<%-- 로그인X--%>
@@ -101,7 +101,7 @@
 									<%-- 로그인O--%>
 									<c:if test="${member != null }">
 <!-- 										<a href="javascript:document.csswrite.submit()" class="btn btn-info mt-4" id="writesuccess">작성완료</a> -->
-										<button type="submit" class="btn btn-info mt-4" id="writesuccess">작성완료</button>
+										<button type="submit" class="btn btn-info mt-4" id="writesuccess"">작성완료</button>
 <%-- 										<a href="${pageContext.request.contextPath }/pages/cssBoardUpdate.do" class="btn btn-default mt-4" id="editBoard">수정 하기</a> --%>
 									</c:if>
 										<a class="btn btn-primary mt-4" id="list" onclick="confirm_backlist()">목록</a>
