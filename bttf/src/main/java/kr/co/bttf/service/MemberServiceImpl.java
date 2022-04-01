@@ -126,10 +126,10 @@ public class MemberServiceImpl implements MemberService {
 			msg += vo.getUser_email() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
 			msg += "<p>임시 비밀번호 : ";
 			msg += vo.getUser_pw() + "</p></div>";
-			msg +="<p>하단 비밀번호 번경 버튼을 클릭하여 비밀번호 변경을 진행해주세요.</p>";
+			msg +="<p>하단 링크를 클릭하여 로그인 후 마이페이지에서 비밀번호 변경을 진행해주세요.</p>";
 			msg +="</div>";
 			msg +="<div>";
-			msg +="<a class='btn btn-primary' href='http://localhost:9090/member/updatepw'> 비밀번호 변경 </a>";
+			msg +="<a class='btn btn-primary' href='http://localhost:9090/member/signin'> 비밀번호 변경 </a>";
 			msg +="</div>";
 			msg +="</div>";
 			msg +="</div>";
@@ -161,7 +161,7 @@ public class MemberServiceImpl implements MemberService {
 			System.out.println("메일발송 실패 : " + e);
 		}
 	}
-
+	
 	//비밀번호찾기
 	@Override
 	public void findpw(HttpServletResponse response, MemberVO vo) throws Exception {
@@ -184,7 +184,7 @@ public class MemberServiceImpl implements MemberService {
 			}
 			vo.setUser_pw(pw);
 			// 비밀번호 변경
-			dao.updatePw(vo);
+			dao.temporaryPw(vo);
 			// 비밀번호 변경 메일 발송
 			sendemail(vo, "findpw");
 
@@ -208,5 +208,21 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
+	
+	
+	@Override
+	public void updatePw(HttpServletResponse response, MemberVO vo) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		String pw = dao.pwCheck(vo.getUser_pw());
+		PrintWriter out = response.getWriter();
+		System.out.println(pw);
+		if(!vo.getUser_pw().equals(pw)) {
+			ScriptUtils.alertAndBackPage(response, "임시비밀번호가 틀립니다.");
+			out.close();
+		}else {
+			dao.updatePw(response, vo);
+			ScriptUtils.alertAndMovePage(response, "비밀번호가 성공적으로 변경되었습니다.", "/");
+		}
+	} 
 	
 } 

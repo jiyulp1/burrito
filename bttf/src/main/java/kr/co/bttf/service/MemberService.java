@@ -32,9 +32,12 @@ public interface MemberService {
 	
 	//비밀번호 찾기
 	public void findpw(HttpServletResponse response, MemberVO member) throws Exception;
-
+	
 	//이메일발송
 	public void sendemail(MemberVO vo, String div) throws Exception;
+	
+	//비밀번호 변경
+	public void updatePw(HttpServletResponse response, MemberVO vo) throws Exception;
 
 	// 신고된 유저의 report category를 2번으로 업데이트
 	public void memcategory2(int user_index) throws Exception;

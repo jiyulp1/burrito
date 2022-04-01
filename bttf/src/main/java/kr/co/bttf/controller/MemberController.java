@@ -80,19 +80,21 @@ public class MemberController {
 	
 	// 로그인 post
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public void postSignin(MemberVO vo, HttpServletRequest req, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
-		
+
+	public String postSignin(MemberVO vo, HttpServletResponse res, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+		logger.info("post signin");
 		HttpSession session = req.getSession();  // 현재 세션 정보를 가져옴
 		boolean loginSuccess = service.signin(req);
 		MemberVO loginInfo = service.signin(vo);  // MemverVO형 변수 login에 로그인 정보를 저장
 		
 		if(loginSuccess) {
 			session.setAttribute("member", loginInfo);  // member 세션에 로그인 정보를 부여
-			ScriptUtils.justMovePage(response, "http://localhost:9090/");
+
+			ScriptUtils.alertAndMovePage(res, loginInfo.getUser_nickname()+"님 환영합니다.", "http://localhost:9090");
 		}else {
 			session.setAttribute("member", null);
 	        rttr.addFlashAttribute("msg", false);
-	        ScriptUtils.alertAndBackPage(response, "아이디나 패스워드가 일치하지 않습니다.");
+	        ScriptUtils.alertAndMovePage(res, "입력하신 회원정보가 틀립니다. 다시 로그인 해주세요.", "http://localhost:9090/member/signin");
 		}
 	}
 	
@@ -118,6 +120,15 @@ public class MemberController {
 	
 	@RequestMapping(value = "/updatepw", method = RequestMethod.GET)
 	public void updatepw() throws Exception{
+		logger.info("GET updatepw");
+	}
+	
+	@RequestMapping(value = "/updatepw", method = RequestMethod.POST)
+	public void updatepw(HttpServletResponse response, MemberVO vo) throws Exception{
+		logger.info("post updatepw");
+		service.updatePw(response, vo);
+		System.out.println(vo.getUser_pw());
+		
 	}
 	
 	// 로그아웃
