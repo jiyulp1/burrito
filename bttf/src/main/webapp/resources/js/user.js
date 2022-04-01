@@ -135,5 +135,3 @@
    
    document.joinForm.submit();
 }	
-
-
