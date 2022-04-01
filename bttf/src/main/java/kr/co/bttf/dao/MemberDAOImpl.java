@@ -105,5 +105,49 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		return result;
 	}
+	
+		@Override
+	public int mypostcnt(int user_index) throws Exception {
+
+		return sql.selectOne(namespace + ".mypostcnt", user_index);
+		
+	}
+
+	@Override
+	public int myreplycnt(String user_nickname) throws Exception {
+		
+		return sql.selectOne(namespace + ".myreplycnt", user_nickname);
+		
+	}
+
+	@Override
+	public List<BoardVO> mypostlist(int user_index) throws Exception{
+		
+		// 전체 게시글 목록
+		List<BoardVO> mypostlist = new ArrayList<BoardVO>();
+
+		// 각각의 게시글 목록
+		List<BoardVO> eachlist = new ArrayList<BoardVO>();			
+		
+		
+		for (int i = 0; i < 7; i++) {
+			eachlist = sql.selectList(namespace + ".mypostlist"+i, user_index );
+			
+			if(eachlist==null) {
+				continue;				
+			}
+			
+			for(int j = 0; j<eachlist.size(); j++) {
+				
+				BoardVO board = eachlist.get(j);
+								
+				mypostlist.add(board);
+			}
+		}
+		
+
+		
+		return mypostlist;
+	}
 
 }
