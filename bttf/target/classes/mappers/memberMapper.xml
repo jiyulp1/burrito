@@ -42,16 +42,26 @@
 	</select>
 
 	<select id="readMember" resultType="kr.co.bttf.domain.MemberVO">
-		select * from user_all where user_email= #{user_email}
+		select * from user_all where user_email = #{user_email}
 	</select>
 	
 	<select id="idCheck" resultType="_int">
 		SELECT COUNT(*) FROM USER_ALL WHERE user_email= #{user_email} 	 
 	</select>
 	
-	<update id="updatePw" parameterType="kr.co.bttf.domain.MemberVO">
+	<update id="temporaryPw" parameterType="kr.co.bttf.domain.MemberVO">
 		update user_all set user_pw = #{user_pw} where user_email= #{user_email}
 	</update>
+	
+
+	<select id="pwCheck" resultType="kr.co.bttf.domain.MemberVO">
+		select * from user_all where user_pw = #{user_pw}
+	</select>
+	
+	<update id="updatePw" parameterType="kr.co.bttf.domain.MemberVO">
+		update user_all set user_pw = #{user_pw} where user_pw = #{user_pw}
+	</update>
+
 	
 	<insert id="memberreport">
 		INSERT INTO report_user (reportee_index, report_category_id, reporter_index, board_category_id, post_id ) 
