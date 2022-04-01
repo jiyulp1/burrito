@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.bttf.controller.ScriptUtils;
 import kr.co.bttf.dao.MemberDAO;
+import kr.co.bttf.domain.BoardVO;
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.ReportVO;
@@ -224,5 +225,23 @@ public class MemberServiceImpl implements MemberService {
 			ScriptUtils.alertAndMovePage(response, "비밀번호가 성공적으로 변경되었습니다.", "/");
 		}
 	} 
+	
+	@Override
+	public int mypostcnt(int user_index) throws Exception {
+		
+		return dao.mypostcnt(user_index);
+	}
+	
+	@Override
+	public int myreplycnt(String user_nickname) throws Exception {
+		
+		return dao.myreplycnt(user_nickname);
+	}
+	
+	@Override
+	public List<BoardVO> mypostlist(int user_index) throws Exception {
+		
+		return dao.mypostlist(user_index) ;
+	}
 	
 } 
