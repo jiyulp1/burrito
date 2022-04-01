@@ -196,8 +196,6 @@
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
    
    
-</body>
-<!-- END BODY -->
 	<script type="text/javascript">
 		function fn_emailcheck(){
 			$.ajax({
@@ -234,4 +232,6 @@
 		}
 		
 	</script>
+</body>
+<!-- END BODY -->
 </html>
