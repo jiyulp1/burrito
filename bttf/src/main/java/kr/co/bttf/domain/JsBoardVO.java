@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class JsBoardVO {
+public class JsBoardVO extends BoardVO {
 	
 	private int post_id;
 	private String post_subject;

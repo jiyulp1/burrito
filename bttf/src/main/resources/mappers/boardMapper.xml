@@ -117,8 +117,8 @@
 	
 	<!-- 6-2. 게시물 작성 -->
 	<insert id="oraclewrite" parameterType="kr.co.bttf.domain.OracleBoardVO">
-		insert into oracle (post_subject, post_contents, user_nickname)
-		values(#{post_subject}, #{post_contents}, #{user_nickname})
+		insert into oracle (post_subject, post_contents, user_nickname, user_index)
+		values(#{post_subject}, #{post_contents}, #{user_nickname},#{user_index})
 	</insert>
 	
 	

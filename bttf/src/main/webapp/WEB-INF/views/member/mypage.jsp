@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 
 <html lang="ko" class="no-js">
@@ -52,9 +53,6 @@
 
 <body class="page-on-scroll fixed_container">
     <c:set var="bookmarkList" value="${requestScope.bookmarkList}"/>
-    <c:set var="mypostList" value="${requestScope.mypostList}"/>
-    <c:set var="mypostcount" value="${requestScope.getMyPostCount}"/>
-    <c:set var="myreplycount" value="${requestScope.getMyReplyCount}"/>
     <c:set var="myrecomendcount" value="${requestScope.getMyRecomendCount}"/>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
@@ -99,7 +97,7 @@
                             </div>
                             <div class="my_box_my_page_info">
                                 <h3>작성한 글 수</h3>
-                                <p class="margin-b-5">${mypostcount}</p>
+                                <p class="margin-b-5">${mypostcnt} 개</p>
                                 <!-- <a class="link" href="html5.html">Read More</a> -->
                             </div>
                             <!-- <a href="html5.html" class="content-wrapper-link"></a> -->
@@ -114,7 +112,7 @@
                             </div>
                             <div class="my_box_my_page_info">
                                 <h3>작성한 댓글 수</h3>
-                                <p class="margin-b-5">${myreplycount}</p>
+                                <p class="margin-b-5">${myreplycnt} 개</p>
                                 <!-- <a class="link" href="html5.html">Read More</a> -->
                             </div>
                             <!-- <a href="html5.html" class="content-wrapper-link"></a> -->
@@ -167,6 +165,7 @@
             <div class="table-responsive">
                 <table id="foo-table" class="table table-striped" data-page-length='5' data-order='[[ 1, "desc" ]]'>
                     <thead>
+			<th>게시판</th>
                         <th>제목</th>
                         <th>추천수</th>
                         <th>작성자</th>
@@ -175,19 +174,20 @@
                     </thead>
                     <tbody>
 		    	<c:choose>
-                    	<c:when test="${empty mypostList }">
+                    	<c:when test="${empty bookmark }">
                     		<tr>
                     		<td colspan="5">등록된 북마크가 없습니다.</td>
                     		</tr>
                     	</c:when>
-                    	<c:when test="${mypostList != null and fn:length(mypostList) > 0 }">
-		                    <c:forEach var="mypostList" items="${mypostList}">
+                    	<c:when test="${mypostList != null and fn:length(bookmark) > 0 }">
+		                    <c:forEach var="mypostList" items="${bookmark}">
 		                    	<tr>
-		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${mypostList.post_id}">${mypostList.post_subject}</a></td>
-		                    		<td>${mypostList.post_rec}</td>
-		                    		<td>${mypostList.writer}</td>
-		                    		<td>${mypostList.post_regdate}</td>
-		                    		<td><a class="btn btn-danger" href="/pages/BookmarkDelete.us?post_id=${mypostList.post_id }">삭제</a></td>
+						<td>해당게시판</td>
+		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${bookmark.post_id}">${bookmark.post_subject}</a></td>
+		                    		<td>${bookmark.post_rec}</td>
+		                    		<td>${bookmark.writer}</td>
+		                    		<td>${bookmark.post_regdate} </td>
+		                    		<td><a class="btn btn-danger" href="/pages/BookmarkDelete.us?post_id=${bookmark.post_id }">삭제</a></td>
 		                    	</tr>
 		                    </c:forEach>
                     	</c:when>
@@ -209,6 +209,7 @@
             <div class="table-responsive">
                 <table id="foo-table" class="table table-striped" data-page-length='5' data-order='[[ 1, "desc" ]]'>
                     <thead>
+			<th>게시판</th>
                         <th>제목</th>
                         <th>추천수</th>
                         <th>작성자</th>
@@ -217,18 +218,19 @@
                     </thead>
                     <tbody>
 		    	<c:choose>
-                    	<c:when test="${empty bookmarkList }">
+                    	<c:when test="${empty mypostlist }">
                     		<tr>
                     		<td colspan="5">등록된 내 글이 없습니다.</td>
                     		</tr>
                     	</c:when>
-                    	<c:when test="${bookmarkList != null and fn:length(bookmarkList) > 0 }">
-		                    <c:forEach var="bookmark" items="${bookmarkList}">
+                    	<c:when test="${mypostlist != null and fn:length(mypostlist) > 0 }">
+		                    <c:forEach var="mypostlist" items="${mypostlist}">
 		                    	<tr>
-		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${bookmark.post_id}">${bookmark.post_subject}</a></td>
-		                    		<td>${bookmark.post_rec}</td>
-		                    		<td>${bookmark.writer}</td>
-		                    		<td>${bookmark.post_regdate}</td>
+		                    		<td>${mypostlist.board_category_name }</td>
+		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=">${mypostlist.post_subject}</a></td>
+		                    		<td>${mypostlist.post_rec}</td>
+		                    		<td>${mypostlist.user_nickname}</td>
+		                    		<td><fmt:formatDate value="${mypostlist.post_regdate}" pattern="yyyy-MM-dd" /></td>
 		                    		<td><a class="btn btn-danger" href="/pages/BookmarkDelete.us?post_id=${bookmark.post_id }">삭제</a></td>
 		                    	</tr>
 		                    </c:forEach>
