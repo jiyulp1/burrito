@@ -48,6 +48,15 @@ public interface MemberService {
 	// 신고 중복확인
 	public boolean reportSuccess(HashMap<String, Integer> map);
 	
+	// 마이페이지 작성한 글 수
+	public int mypostcnt(int user_index) throws Exception;
+
+	// 마이페이지 작성한 댓글 수
+	public int myreplycnt(String user_nickname) throws Exception;
+		
+	// 마이페이지 작성한 글 목록 조회
+	public List<BoardVO> mypostlist(int user_index) throws Exception;
+	
 	
 	
 }
