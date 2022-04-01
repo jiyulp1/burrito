@@ -97,10 +97,10 @@
                                 </div> 
 	                        	<div class="mb-5">
 									<c:if test="${member.user_nickname eq oracleview.user_nickname}">
-		 		                    	<a href="/board/cssedit?post_id=${oracleview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
-				                		<a href="/board/cssdelete?post_id=${oracleview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
+		 		                    	<a href="/board/oracleedit?post_id=${oracleview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
+				                		<a href="/board/oracledelete?post_id=${oracleview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
 									</c:if> 
-	                        		<a href="/board/csslist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
+	                        		<a href="/board/oraclelist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
 									<c:if test="${member.user_nickname != oracleview.user_nickname && member != null && oracleview.user_nickname != 'admin'}">
 										<a href="#" class="btn btn-default mt-4">북마크</a>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberreport" data-whatever="@getbootstrap" style="float: right;" >작성자 신고</button>

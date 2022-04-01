@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
-<html lang="ko" class="no-js" style="height : 100vh;">
+<html lang="ko" class="no-js bg_color" style="height : 100vh;">
 <!-- BEGIN HEAD -->
 
 <head>

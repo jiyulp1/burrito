@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
-<html lang="ko" class="no-js" style="height : 100vh;">
+<html lang="ko" class="no-js bg_color" style="height : 100vh;">
 <!-- BEGIN HEAD -->
 
 <head>
@@ -77,10 +77,10 @@
 						
 							<!-- Start write Form -->
 							<form name = "oraclewrite" method="post">
-<%-- 								<input type="hidden" name="post_id" value="${board.post_id }"> --%>
+								<input type="hidden" name="user_index" value="${member.user_index }">
 								<div class="col-auto">
 									<label for="subject">제목</label>
-									<input id="subject" name="post_subject" class="form-control margin-b-50" type="text" placeholder="제목">
+									<input id="subject" name="post_subject" class="form-control margin-b-50" type="text" placeholder="제목" required>
 									<textarea id="editor" name="post_contents" class="form-control" placeholder="내용을 입력해 주세요." style=" resize: none;"></textarea>
 								</div>
 									<%-- 로그인X--%>
