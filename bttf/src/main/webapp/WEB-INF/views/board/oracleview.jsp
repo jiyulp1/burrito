@@ -136,6 +136,7 @@
 															<div class="row mt-5" style="padding-left:10px;">
 																<c:if test="${member.user_nickname eq reply.user_nickname}">
 																<a class="btn btn-danger mt-4" href="javascript:updateReply( ${reply.reply_id} );">등록하기</a>
+<%-- 																<a class="btn btn-info  mt-4" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail" onchange="">수정하기</a> --%>
 																<a class="btn btn-info  mt-4" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a>
 																<a class="btn btn-danger mt-4" href="/reply/oracle_reply_delete?reply_id=${reply.reply_id }&post_id=${reply.post_id}" id="list" type="submit">삭제</a>
 															</c:if>
@@ -215,23 +216,26 @@
             } );
     </script>
     <script src="../../../resources/js/confirm.js"></script>
-</body>
-<!-- END BODY -->
 <script>	
 	// [댓글 수정하기] function
-	function updateReadonlyReply( reply_id ){
-		document.getElementById( 'reply' + reply_id ).readOnly = false;
+	cnost updateFn = function(){
+		function updateReadonlyReply( reply_id ){
+			document.getElementById( 'reply' + reply_id ).readOnly = false;
 
-	}
-	
-	// [댓글 수정] function
-	function updateReply( reply_id ){
-			document.replyForm.action = "/reply/oracle_reply_modify?reply_id="+reply_id;
-			document.replyForm.submit();
-			// 수정하기 버튼 block, 수정완료(펑션) none
 		}
+		
 	}
+ 	
+// 	// [댓글 수정] function
+// 	function updateReply( reply_id ){
+// 			document.replyForm.action = "/reply/oracle_reply_modify?reply_id="+reply_id;
+// 			document.replyForm.submit();
+// 			// 수정하기 버튼 block, 수정완료(펑션) none
+// 		}
+// 	}
 
 	
 </script>
+</body>
+<!-- END BODY -->
 </html>
