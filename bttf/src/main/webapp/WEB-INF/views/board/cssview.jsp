@@ -45,7 +45,6 @@
           display : none;
        }
     </style>
-   
 </head>
 <!-- END HEAD -->
 <!-- BODY -->
@@ -246,7 +245,6 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">신고 취소</button>
 						<input type="submit" class="btn btn-danger" id="report" value="신고하기">
-<!-- 						<a href="/member/memberreport" type="submit" class="btn btn-danger" id="report" >신고하기</a> -->
 					</div>
 				</form>
 			</div>
@@ -364,33 +362,5 @@ totalChecked -= 1;
 function ResetCount(){
 totalChecked = 0;
 }
-</script>
-<script type="text/javascript">
-	function reportAjax(){
-		var user_index = $("#user_index").val();
-		
-		var checkboxValue = [];
-		$(".reportVal").each(function(i){
-			checkboxValue.push($(this)val());
-		});
-		
-		var allData = {"user_index" : user_index , "checkArray" : checkboxValue };
-		
-		$.ajax({
-			url  	: "memberreport",
-			type 	: "POST",
-			data 	: $.param("allData",allData),
-			
-			success : function(data){
-				
-			},
-			
-			error	: function(jqXHR, textStatus, errorThrown){
-	            alert("rotmtrldi dpfj rmaksso wnrdjqjflfRJdi" + textStatus + " : " + errorThrown);
-	            self.close();
-		});
-		
-	}
- 
 </script>
 </html>
