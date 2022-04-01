@@ -139,6 +139,26 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	
+	//마이페이지 이동
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public void mypageModify(@RequestParam("user_index") int user_index, @RequestParam("user_nickname") String user_nickname, Model model) throws Exception {
+		
+		//작성한 글 수
+		int mypostcnt = service.mypostcnt(user_index);
+		model.addAttribute("mypostcnt", mypostcnt);
+		
+		//작성한 댓글 수
+		int myreplycnt = service.myreplycnt(user_nickname);
+		model.addAttribute("myreplycnt", myreplycnt);
+		
+		//받은 추천 수
+		
+		//북마크한 글 list
+		
+		//내가 작성한 글 list
+		List<BoardVO> mypostlist = service.mypostlist(user_index);
+		model.addAttribute("mypostlist", mypostlist);
+		
+	}
 		
 }
