@@ -48,7 +48,7 @@ public interface MemberDAO {
 	//중복신고
 	public int reportSuccess(HashMap<String, Integer> map);
 
-		// 마이페이지 작성한 글 수
+	// 마이페이지 작성한 글 수
 	public int mypostcnt(int user_index) throws Exception;
 	
 	// 마이페이지 작성한 댓글 수
