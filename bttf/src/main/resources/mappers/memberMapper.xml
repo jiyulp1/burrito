@@ -72,5 +72,84 @@
 		update user_all set avaliability_category_id = 2  where user_index= #{user_index}
 	</update>
 	
+		<select id ="mypostcnt" parameterType="_int" resultType="_int">
+		select (select count(*) from html where user_index = #{user_index}) 
+			+ (select count(*) from css where user_index = #{user_index}) 
+			+ (select count(*) from javascript where user_index = #{user_index}) 
+			+ (select count(*) from jsp where user_index = #{user_index}) 
+			+ (select count(*) from java where user_index = #{user_index}) 
+			+ (select count(*) from oracle where user_index = #{user_index}) 
+			+ (select count(*) from spring where user_index = #{user_index})
+	</select>
+	
+	<select id ="myreplycnt" parameterType="String" resultType="_int">
+		select (select count(*) from reply_html where user_nickname = #{user_nickname}) 
+			+ (select count(*) from reply_css where user_nickname = #{user_nickname}) 
+			+ (select count(*) from reply_javascript where user_nickname = #{user_nickname}) 
+			+ (select count(*) from reply_jsp where user_nickname = #{user_nickname}) 
+			+ (select count(*) from reply_java where user_nickname = #{user_nickname}) 
+			+ (select count(*) from reply_oracle where user_nickname = #{user_nickname}) 
+			+ (select count(*) from reply_spring where user_nickname = #{user_nickname})
+	</select>
+	
+	<select id="mypostlist0" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+			from html h
+			left join board_category bc 
+			on h.category_id = bc.board_category_id  
+		where user_index = #{user_index}
+	</select>
+	
+	<select id="mypostlist1" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+			from css h
+			left join board_category bc 
+			on h.category_id = bc.board_category_id  
+		where user_index = #{user_index}
+	</select>
+	
+	
+	<select id="mypostlist2" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+			from javascript h
+			left join board_category bc 
+			on h.category_id = bc.board_category_id  
+		where user_index = #{user_index}
+	</select>
+	
+	
+	<select id="mypostlist3" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+			from jsp h
+			left join board_category bc 
+			on h.category_id = bc.board_category_id  
+		where user_index = #{user_index}
+	</select>
+	
+	
+	<select id="mypostlist4" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+			from java h
+			left join board_category bc 
+			on h.category_id = bc.board_category_id  
+		where user_index = #{user_index}
+	</select>
+	
+	
+	<select id="mypostlist5" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+			from oracle h
+			left join board_category bc 
+			on h.category_id = bc.board_category_id  
+		where user_index = #{user_index}
+	</select>
+	
+	<select id="mypostlist6" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+			from spring h
+			left join board_category bc 
+			on h.category_id = bc.board_category_id  
+		where user_index = #{user_index}
+	</select>
 
 </mapper>
