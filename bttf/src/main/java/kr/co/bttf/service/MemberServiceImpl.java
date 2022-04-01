@@ -225,4 +225,22 @@ public class MemberServiceImpl implements MemberService {
 		}
 	} 
 	
+	@Override
+	public int mypostcnt(int user_index) throws Exception {
+		
+		return dao.mypostcnt(user_index);
+	}
+	
+	@Override
+	public int myreplycnt(String user_nickname) throws Exception {
+		
+		return dao.myreplycnt(user_nickname);
+	}
+	
+	@Override
+	public List<BoardVO> mypostlist(int user_index) throws Exception {
+		
+		return dao.mypostlist(user_index) ;
+	}
+	
 } 
