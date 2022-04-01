@@ -1,7 +1,11 @@
 package kr.co.bttf.service;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +19,7 @@ import kr.co.bttf.controller.ScriptUtils;
 import kr.co.bttf.dao.MemberDAO;
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
+import kr.co.bttf.domain.ReportVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -62,30 +67,27 @@ public class MemberServiceImpl implements MemberService {
 		return loginSuccess;
 	}
 	
+	
+	@Override
+	public boolean reportSuccess(HashMap<String, Integer> map) {
+		boolean reportSuccess = false;
+		
+		 int Report = dao.reportSuccess(map);
+		
+		if(Report == 0) {
+			reportSuccess = true;
+		}
+		return reportSuccess;
+	}
+	
+	
+	
 	// 로그아웃
 	@Override
 	public void signout(HttpSession session) throws Exception {
 		session.invalidate();  // 세션 정보를 제거
 	}
 	
-	//신고접수(글)
-	@Override
-	public void cssboardreported(CssBoardVO vo) throws Exception{
-		dao.cssboardreported(vo);
-		
-	}
-
-	//신고접수(유저)
-	@Override
-	public MemberVO memreportcard(String user_nickname) throws Exception {
-		return dao.memreportcard(user_nickname);
-	}
-
-	@Override
-	public void memreportupdate(MemberVO vo) throws Exception {
-		dao.memreportupdate(vo);
-	}
-
 	//비밀번호 찾기 이메일발송
 	@Override
 	public void sendemail(MemberVO vo, String div) throws Exception {
@@ -189,6 +191,23 @@ public class MemberServiceImpl implements MemberService {
 			ScriptUtils.alertAndMovePage(response, "입력하신 이메일로 임시 비밀번호를 발송했습니다", "/");
 		}
 	}
+
+
+	@Override
+	public void memcategory2(int user_index) throws Exception {
+		dao.memcategory2(user_index);
+		
+	}
+
+
+	@Override
+	public void memberreport(HashMap<String, Integer> map) throws Exception {
+		
+		dao.memberreport(map);
+		
+	}
+
+
 	
 	
 	@Override

@@ -10,10 +10,10 @@ function confirm_joinout() {
 	}
 }
 
-function confirm_backlist(post_id) {
+function confirm_backlist() {
 	if (confirm('작성 중인 게시글이 삭제됩니다')) {
-		alert(post_id)
-		location.href="/pages/cssDelete.do?post_id="+post_id;
+
+		location.href="/board/csslist";
 		
 	} else {
 		

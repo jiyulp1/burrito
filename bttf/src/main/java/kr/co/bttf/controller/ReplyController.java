@@ -1,21 +1,32 @@
 package kr.co.bttf.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.bttf.domain.MemberVO;
+import kr.co.bttf.domain.OracleBoardVO;
 import kr.co.bttf.domain.OracleReplyVO;
+import kr.co.bttf.service.MemberService;
+import kr.co.bttf.service.OracleBoardService;
 import kr.co.bttf.service.OracleReplyService;
 
 @Controller
 @RequestMapping("/reply/*")
 public class ReplyController {
 
+	@Inject
+	private MemberService memberService;
+	
 //	@Inject
 //	private HtmlReplyService htmlService;
 	
@@ -33,6 +44,9 @@ public class ReplyController {
 	
 	@Inject
 	private OracleReplyService oracleService;
+	
+	@Inject
+	private OracleBoardService OracleBoardService;
 	
 //	@Inject
 //	private SpringReplyService springService;
@@ -52,10 +66,45 @@ public class ReplyController {
 	  return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
 	}
 	
+	
 	// 6-3. 댓글 수정
+	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.POST)
+	public String oracleReplyModify(OracleReplyVO vo) throws Exception {
+		System.out.println("post reply modify controller");
+		System.out.println(vo.getReply_contents());
+		
+		oracleService.oracleReplyModify(vo);
+		
+		return "redirect:/board/oracleview?post_id=" + vo.getPost_id();	
+		
+	}
+	
+	
+	
+	// 6-3. 댓글 수정(GET)
+//	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.GET)
+//	public String oracleReplyModify(OracleReplyVO vo, HttpServletRequest request, Model model) throws Exception {
+//		
+//		model.addAttribute("oracleReplyModify", oracleService.oracleReplyList(vo.getReply_id()));
+//		
+//		return null;
+//	}
+	
+	// 6-3-1. 댓글 수정(POST)
+//	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.POST)
+//	public String oracleReplyModifyOK(OracleReplyVO vo, HttpServletRequest request) throws Exception {
+//		return null;
+//	}
 	
 	// 6-4. 댓글 삭제
-	
-	
+	@RequestMapping(value = "/oracle_reply_delete", method = RequestMethod.GET)
+	public String oracleReplyDelete(@RequestParam("post_id") int post_id, OracleReplyVO vo, Model model) throws Exception {
+		oracleService.oracleReplyDelete(vo);
+		
+		List<OracleReplyVO> oraclereplylist = oracleService.oracleReplyList(post_id);
+		model.addAttribute("oraclereplylist", oraclereplylist);
+		
+	  return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
+	}
 	
 }

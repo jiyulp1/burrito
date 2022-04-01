@@ -17,5 +17,7 @@ public interface OracleReplyService {
 	
 	// 댓글 삭제 
 	public void oracleReplyDelete(OracleReplyVO vo) throws Exception;
+
+//	public void oracleReplyDelete(int reply_id, int post_id);
 	
 }

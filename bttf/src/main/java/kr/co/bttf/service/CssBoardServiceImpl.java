@@ -55,4 +55,10 @@ public class CssBoardServiceImpl implements CssBoardService {
 		dao.cssDelete(post_id);
 	}
 
+	@Override
+	public void category2(int post_id) throws Exception {
+		dao.category2(post_id);
+		
+	}
+
 }

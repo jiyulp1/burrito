@@ -1,2 +1,4 @@
 /.metadata/
 bttf/src/main/webapp/WEB-INF/lib/mail.jar
+bttf/target/classes/kr/co/bttf/controller/ReplyController.class
+bttf/target/classes/mappers/replyMapper.xml

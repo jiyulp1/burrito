@@ -41,6 +41,8 @@
 
 	<!-- c3 chart -->
 	<link href="../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
+	
+	
 	<!-- datatable  -->
 	<link href="../../../resources/vendor/DataTables/datatables.css" >
 	
@@ -60,7 +62,7 @@
     <!--========== END HEADER ==========-->
 
     <!-- notice -->
-    <div class="bg-color-sky-light fixed_container">
+    <div class="bg-color-sky-light fixed_container" style="min-height: 100vh;">
         <div class="content-lg container" style="margin-top : 50px;">
             <!-- notice -->
             <h2>공지사항</h2>
@@ -156,15 +158,15 @@
 	<script type="text/javascript" src="../../../resources/vendor/DataTables/datatables.js"></script>
 	<script type="text/javascript" src="../../../resources/vendor/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.js"></script>
  	<script type="text/javascript"> 
- 	$(document).ready(function() {
- 	    $('#foo-table').DataTable( {
- 	    	bInfo : false,
- 	       	bSortable : false,
- 	       	bPaginate : true,
- 	        displayLength : 10
- 	    } );
- 	} );	
- </script>  
+	 	$(document).ready(function() {
+	 	    $('#foo-table').DataTable( {
+	 	    	bInfo : false,
+	 	       	bSortable : false,
+	 	       	bPaginate : true,
+	 	        displayLength : 10
+	 	    } );
+	 	} );	
+ 	</script>  
 
     
 </body>

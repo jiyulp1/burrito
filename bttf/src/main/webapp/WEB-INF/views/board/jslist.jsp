@@ -17,36 +17,35 @@
 
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-    <link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
     <!-- font-Glyphicon -->
     <!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
     <!-- PAGE LEVEL PLUGIN STYLES -->
-    <link href="../../resource/css/animate.css" rel="stylesheet">
-    <link href="../../resource/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../resources/css/animate.css" rel="stylesheet">
+    <link href="../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
 
     <!-- THEME STYLES -->
-    <link href="../../resource/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/resource/img/favicon/favicon-32x32.png" />
+    <link rel="shortcut icon" href="/resources/img/favicon/favicon-32x32.png" />
 
     <!-- custom -->
-    <link rel="stylesheet" href="${path}../../resource/css/custom.css ">
+    <link rel="stylesheet" href="../../../../resources/css/custom.css ">
     
-    <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
-    <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.js"></script>
-	<script type="text/javascript" src="../../resource/js/board.js"></script>
+   	<!-- datatable  -->
+	<link href="../../../../resources/vendor/DataTables/datatables.css" >
 
 </head>
 <!-- END HEAD -->
 
 <!-- BODY -->
 
-<body class="page-on-scroll fixed_container">
+<body class="page-on-scroll fixed_container" style="min-height: 100vh;">
 	<c:set var="boardList" value = "${requestScope.boardList }"/>
 	<c:set var="totalCnt" value = "${requestScope.totalCnt }"/>
 	<c:set var="boardJSON" value="${requestScope.boardJSON }"/>
@@ -70,11 +69,13 @@
 	            <div class="table-responsive">
 	                <table id="foo-table" class="table table-striped" data-page-length='40' data-order='[[ 1, "desc" ]]'>
 	                    <thead>
-	                        <th>번호</th>
-	                        <th>제목</th>
-	                        <th>작성자</th>
-	                        <th>조회수</th>
-	                        <th>날짜</th>
+							<tr>
+								<th style="width: 10%;">번호</th>
+		                        <th style="width: 50%;">제목</th>
+		                        <th style="width: 10%;">작성자</th>
+		                        <th style="width: 10%;">조회수</th>
+		                        <th style="width: 20%;">날짜</th>
+	                    	</tr>
 	                    </thead>
 	                    <tbody>
 		                    <c:choose>
@@ -140,41 +141,57 @@
             <!-- end board pagination -->
             
     
-    <!--========== END PAGE LAYOUT ==========-->
+    	<!--========== END PAGE LAYOUT ==========-->
 
-    <!--========== FOOTER ==========-->
-    <footer class="footer fixed_footer">
-
-        <!-- Copyright -->
-		<%@ include file="../include/footer_control.jsp" %>
-        <!-- End Copyright -->
-    </footer>
-    <!--========== END FOOTER ==========-->
-
+    	<!--========== FOOTER ==========-->
+	    <footer class="footer fixed_footer">
+	
+	        <!-- Copyright -->
+			<%@ include file="../include/footer_control.jsp" %>
+	        <!-- End Copyright -->
+	    </footer>
+	    <!--========== END FOOTER ==========-->
+		</div>
+	</div>
     <!-- Back To Top -->
     <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
 
     <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- CORE PLUGINS -->
-    <script src="../../resource/vendor/jquery.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL PLUGINS -->
-    <script src="../../resource/vendor/jquery.easing.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery.easing.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery.back-to-top.js" type="text/javascript"></script>
     <!--  <script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script> -->
-    <script src="../../resource/vendor/jquery.wow.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
-    <script src="../../resource/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="../../../resources/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL SCRIPTS -->
-    <script src="../../resource/js/layout.min.js" type="text/javascript"></script>
-    <script src="../../resource/js/components/wow.min.js" type="text/javascript"></script>
-    <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
-    <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
-    <script src="../../resource/js/action.js"></script>
+    <script src="../../../resources/js/layout.min.js" type="text/javascript"></script>
+    <script src="../../../resources/js/components/wow.min.js" type="text/javascript"></script>
+    <script src="../../../resources/js/components/swiper.min.js" type="text/javascript"></script>
+    <script src="../../../resources/js/components/masonry.min.js" type="text/javascript"></script>
+    <script src="../../../resources/js/action.js"></script>
+    
+    <!-- datatables -->
+	<script type="text/javascript" src="../../../../resources/vendor/DataTables/datatables.js"></script>
+	<script type="text/javascript" src="../../../../resources/vendor/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.js"></script>
+	
+ 	<script type="text/javascript"> 
+ 	$(document).ready(function() {
+ 	    $('#foo-table').DataTable( {
+ 	    	bInfo : false,
+ 	       	bSortable : false,
+ 	       	bPaginate : true,
+ 	        displayLength : 10
+ 	    } );
+ 	} );	
+ </script> 
 </body>
 <!-- END BODY -->
 

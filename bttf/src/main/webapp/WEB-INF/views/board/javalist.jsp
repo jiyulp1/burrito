@@ -39,7 +39,7 @@
 
 <!-- BODY -->
 
-<body class="page-on-scroll fixed_container">
+<body class="page-on-scroll fixed_container" style="min-height: 100vh;">
 
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
@@ -66,72 +66,21 @@
                 </form>
             </div>
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table id="foo-table" class="table table-striped" data-order='[[ 1, "desc" ]]'>
                     <thead>
-                        <th>제목</th>
-                        <th>추천수</th>
-                        <th>작성자</th>
-                        <th>작성일자</th>
-                    </thead>
+						<tr>
+							<th style="width: 10%;">번호</th>
+		                    <th style="width: 50%;">제목</th>
+		                    <th style="width: 10%;">작성자</th>
+		                    <th style="width: 10%;">조회수</th>
+		                    <th style="width: 20%;">날짜</th>
+	                    </tr>
+					</thead>
                     <tbody>
                         <tr>
                             <td>asdasd</td>
                             <td>11</td>
                             <td>view1</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>asddfgdgf</td>
-                            <td>222</td>
-                            <td>view2</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
                             <td>2021-12-08</td>
                         </tr>
                     </tbody>
@@ -178,6 +127,20 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
+    
+    <!-- datatables -->
+	<script type="text/javascript" src="../../../resources/vendor/DataTables/datatables.js"></script>
+	<script type="text/javascript" src="../../../resources/vendor/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.js"></script>
+ 	<script type="text/javascript"> 
+ 	$(document).ready(function() {
+ 	    $('#foo-table').DataTable( {
+ 	    	bInfo : false,
+ 	       	bSortable : false,
+ 	       	bPaginate : true,
+ 	        displayLength : 10
+ 	    } );
+ 	} );	
+ 	</script>  
 </body>
 <!-- END BODY -->
 

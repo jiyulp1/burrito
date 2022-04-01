@@ -76,7 +76,7 @@
                                 <div class="col-auto">
                                     <label for="id">아이디</label>
                                     <div style="display: flex;">
-                                        <input  id="id" class="form-control margin-b-50" type="text" placeholder="아이디" readonly value="${Member.user_id }">
+                                        <input id="id" class="form-control margin-b-50" type="text" placeholder="아이디" readonly value="${Member.user_id }">
                                     </div>
                                 </div>
                                 <div class="col-auto">

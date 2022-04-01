@@ -15,7 +15,9 @@
     <meta content="" name="author" />
     
     <!-- GLOBAL MANDATORY STYLES -->
-    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+   	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="../../resources/vendor/simple-line-icons/simple-line-icons.min.css" type="text/css" />
     <link href="../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <!--     <link href="../WebContent/resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /> -->
@@ -293,7 +295,7 @@
 	                        <th>번호</th>
 	                        <th>제목</th>
 	                        <th>작성자</th>
-	                        <th>추천수</th>
+	                        <th>조회수</th>
 	                        <th>작성일자</th>
 	                    </tr>
                     </thead>

@@ -25,8 +25,8 @@
 	
 	<!-- 2-2. 게시물 작성 -->
 	<insert id="csswrite" parameterType="kr.co.bttf.domain.CssBoardVO">
-		insert into css (post_subject, post_contents, user_nickname)
-		values(#{post_subject}, #{post_contents}, #{user_nickname})
+		insert into css (post_subject, post_contents, user_nickname, user_index)
+		values(#{post_subject}, #{post_contents}, #{user_nickname},#{user_index})
 	</insert>
 	
 	
@@ -37,7 +37,7 @@
 	</select>
 
 	<!-- 2-3-1. 조회수 갱신 -->
-	<update id="cssvcnt">
+	<update id="cssvcnt" parameterType="_int">
 			update css set post_vcount = post_vcount + 1 where post_id = #{post_id}
 	</update>		
 	
@@ -48,13 +48,18 @@
 		where post_id = #{post_id}
 	</update>
 	
-	
 	<!-- 2-5. 게시물 삭제 -->
 	<delete id="cssdelete" parameterType="int">
 		delete from css
 		where post_id = #{post_id}
 	</delete>
 
+	<!-- 2-6. 가용성 카테고리 수정 -->
+	
+	<update id="category2" parameterType="_int">
+		update css set avaliability_category_id = 2 where post_id = #{post_id}
+	</update>
+	
 <!-- 
 ========================================
 			03. JAVASCRIPT
@@ -122,8 +127,8 @@
 		select * from oracle
 		where post_id = #{post_id}
 	</select>
-	
-	
+
+
 	<!-- 6-3-1. 조회수 갱신 -->
 	<update id="oraclevcnt">
 			update oracle set post_vcount = post_vcount + 1 where post_id = #{post_id}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -55,20 +56,23 @@ public class AdminController {
 
 	// 신고 회원 해제
 	@RequestMapping(value = "/memberundo", method = RequestMethod.GET)
-	public String memberundo(@RequestParam("user_index") int user_index, Model model) throws Exception {
-
+	public void memberundo(@RequestParam("user_index") int user_index, Model model, HttpServletResponse response) throws Exception {
 		adminService.memberundo(user_index);
-		return "redirect:/admin/memberall";
+		ScriptUtils.alertAndMovePage(response, "정상회원으로 변경되었습니다.","http://localhost:9090/admin/memberall");
+		//return "redirect:/admin/memberall";
 	}
 
 
 	// 신고가 들어온 회원 퇴출
 	@RequestMapping(value = "/memberexpell", method = RequestMethod.GET)
-	public String memberexpell(@RequestParam("user_index") int user_index, Model model) throws Exception {
-
+	public void memberexpell(@RequestParam("user_index") int user_index, Model model,HttpServletResponse response) throws Exception {
 		adminService.memberexpell(user_index);
-		return "redirect:/admin/memberall";
+		ScriptUtils.alertAndMovePage(response, "회원 퇴출이 완료되었습니다.","http://localhost:9090/admin/memberall");
+		//return "redirect:/admin/memberall";
 	}
+	
+	
+	
 	
 	
 	/*******************
@@ -222,31 +226,6 @@ public class AdminController {
 		}
 		
 		
-		
-		// 4. 신고된 회원을 해제하는 버튼 기능은 admin에서 구현(set만 뒤집어서)
-		// CSS 신고 게시글 해제
-//		@RequestMapping(value = "/cssundo", method = RequestMethod.GET)
-//		public String cssundo(@RequestParam("post_id") int post_id, Model model) throws Exception {
-//
-//			adminService.cssundo(post_id);
-//			return "redirect:/admin/memberblock";
-//		}
-		
-		
-		
-		
-		
-		
-		
-		
-		// 5. 퇴출
-		// CSS 신고 들어온 게시글 안보이게
-//		@RequestMapping(value = "/cssexpell", method = RequestMethod.GET)
-//		public String cssexpell(@RequestParam("post_id") int post_id, Model model) throws Exception {
-//
-//			adminService.cssexpell(post_id);
-//			return "redirect:/admin/memberblock";
-//		}
 	
 	/*******************
 	 * 공지사항
@@ -285,11 +264,11 @@ public class AdminController {
 
 		// 상세보기 시 조회수 갱신
 		int annvcnt = 0;
-		adminService.annvcnt(post_id);
-		model.addAttribute("annvcnt", annvcnt);
 
 		AnnVO vo = adminService.annview(post_id);
 		model.addAttribute("annview", vo);
+		adminService.annvcnt(post_id);
+		model.addAttribute("annvcnt", annvcnt);
 	}
 
 	// 공지사항 수정 화면이동 [selectOne]

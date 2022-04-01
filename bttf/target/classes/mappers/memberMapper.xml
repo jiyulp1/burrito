@@ -11,7 +11,15 @@
 		VALUES (#{user_email}, #{user_pw }, #{user_name }, #{user_nickname }, #{user_phone },
 		#{main_language } )
 	</insert>
-
+	
+	<select id="emailcheck" resultType="_int">
+		SELECT COUNT(*) FROM USER_ALL WHERE user_email = #{user_email}
+	</select>
+	
+	<select id="nickcheck" resultType="_int">
+		SELECT COUNT(*) FROM USER_ALL WHERE user_nickname = #{user_nickname}
+	</select>
+	
 	<select id="signin" resultType="kr.co.bttf.domain.MemberVO">
 		SELECT * FROM USER_ALL
 		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND
@@ -24,29 +32,35 @@
 		avaliability_category_id != 4
 	</select>
 
-	<update id="cssboardreported" parameterType="_int">
-		update css set
-		post_reported = 0 where post_id = #{post_id }
-	</update>
-
-	<select id="memreportcard" parameterType="string" resultType="kr.co.bttf.domain.MemberVO">
-		select * from user_all where user_nickname = #{user_nickname}
+	<select id="reportSuccess" resultType="_int">
+		SELECT COUNT(*) FROM report_user 
+		WHERE report_category_id = #{report_category_id} 
+		AND reportee_index = #{reportee_index}
+		AND reporter_index = #{reporter_index} 
+		AND  board_category_id = #{board_category_id}
+		AND  post_id = #{post_id}
 	</select>
 
-	<update id="memreportupdate" parameterType="kr.co.bttf.domain.MemberVO">
-		update user_all set user_reported = 0 where user_nickname = #{user_nickname }
-	</update>
-	
 	<select id="readMember" resultType="kr.co.bttf.domain.MemberVO">
 		select * from user_all where user_email= #{user_email}
 	</select>
 	
 	<select id="idCheck" resultType="_int">
-		SELECT COUNT(*) FROM USER_ALL WHERE where user_email= #{user_email} 	 
+		SELECT COUNT(*) FROM USER_ALL WHERE user_email= #{user_email} 	 
 	</select>
 	
 	<update id="updatePw" parameterType="kr.co.bttf.domain.MemberVO">
 		update user_all set user_pw = #{user_pw} where user_email= #{user_email}
 	</update>
 	
+	<insert id="memberreport">
+		INSERT INTO report_user (reportee_index, report_category_id, reporter_index, board_category_id, post_id ) 
+					VALUES ( #{reportee_index }, #{report_category_id }, #{reporter_index}, #{board_category_id}, #{post_id} )
+	</insert>
+	
+	<update id="memcategory2" parameterType="_int">
+		update user_all set avaliability_category_id = 2  where user_index= #{user_index}
+	</update>
+	
+
 </mapper>

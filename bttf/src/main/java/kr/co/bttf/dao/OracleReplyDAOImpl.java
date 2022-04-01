@@ -39,9 +39,8 @@ public class OracleReplyDAOImpl implements OracleReplyDAO {
 
 	// 댓글 삭제
 	@Override
-	public void oracleReplyDelete(OracleReplyVO vo) throws Exception {
+	public void oracleReplyDelete(OracleReplyVO vo) {
 		sql.insert(namespace + ".oracle_reply_delete", vo);
-
 	}
 
 }

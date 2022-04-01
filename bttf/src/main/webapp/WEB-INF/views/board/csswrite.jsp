@@ -87,7 +87,7 @@
 						
 							<!-- Start write Form -->
 							<form name = "csswrite" method="post">
-<%-- 								<input type="hidden" name="post_id" value="${board.post_id }"> --%>
+								<input type="hidden" name="user_index" value="${member.user_index }">
 								<div class="col-auto">
 									<label for="subject">제목</label>
 									<input id="subject" name="post_subject" class="form-control margin-b-50" type="text" placeholder="제목">

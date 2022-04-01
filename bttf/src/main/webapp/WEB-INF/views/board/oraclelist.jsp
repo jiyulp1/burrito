@@ -38,10 +38,9 @@
     <!-- custom -->
     <link rel="stylesheet" href="/board../../../resources/css/custom.css">
     
-    <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
-    <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.js"></script>
-	<script type="text/javascript" src="../../../resources/js/board.js"></script>
-
+    <!-- datatable  -->
+	<link href="../../../resources/vendor/DataTables/datatables.css" >
+  
 </head>
 <!-- END HEAD -->
 
@@ -59,7 +58,7 @@
     <!--========== END HEADER ==========-->
     
     <!-- notice -->
-    <div class="bg-color-sky-light">
+    <div class="bg-color-sky-light fixed_container" style="min-height: 100vh;">
         <div class="content-lg container" style="margin-top : 50px;">
             <h2>ORACLE QnA</h2>
             <form>
@@ -67,28 +66,28 @@
 	                <table id="foo-table" class="table table-striped" data-page-length='40' data-order='[[ 1, "desc" ]]'>
 	                    <thead>
 	                    	<tr>
-		                        <th>번호</th>
-		                        <th>제목</th>
-		                        <th>작성자</th>
-		                        <th>조회수</th>
-		                        <th>날짜</th>
+		                        <th style="width: 10%;">번호</th>
+		                        <th style="width: 50%;">제목</th>
+		                        <th style="width: 10%;">작성자</th>
+		                        <th style="width: 10%;">조회수</th>
+		                        <th style="width: 20%;">날짜</th>
 	                    	</tr>
 	                    </thead>
 	                    <tbody>
 	                    	<c:choose>
-		                    <c:when test = "${oraclelist != null and fn:length(oraclelist) > 0 }">
-		                    		<c:forEach var="board" items="${oraclelist}">
-				                        <tr>
-				                            <td>${board.post_id }</td>
-				                            <td>
-				                            <a href="/board/oracleview?post_id=${board.post_id }">${board.post_subject }</a>
-				                            </td>
-				                            <td>${board.user_nickname }</td>
-				                            <td>${board.post_vcount }</td>
-				                            <td><fmt:formatDate value="${board.post_regdate}" pattern="yyyy-MM-dd" /></td>
-				                        </tr>
-		                        	</c:forEach>
-		                        </c:when>
+			                    <c:when test = "${oraclelist != null and fn:length(oraclelist) > 0 }">
+			                    		<c:forEach var="board" items="${oraclelist}">
+					                        <tr>
+					                            <td>${board.post_id }</td>
+					                            <td>
+					                            <a href="/board/oracleview?post_id=${board.post_id }">${board.post_subject }</a>
+					                            </td>
+					                            <td>${board.user_nickname }</td>
+					                            <td>${board.post_vcount }</td>
+					                            <td><fmt:formatDate value="${board.post_regdate}" pattern="yyyy-MM-dd" /></td>
+					                        </tr>
+			                        	</c:forEach>
+			                        </c:when>
 		                        <c:otherwise>
 		                        	<tr>
 		                        		<td colspan="5" class="text-center">등록된 게시물이 없습니다. </td>
@@ -100,7 +99,6 @@
 	            </div>
 			</form>
             <!-- End notice -->
-            
 			<c:if test="${member != null }">
            		<a href="/board/oraclewrite"class="btn btn-primary" type="submit">글쓰기</a>
             </c:if>
@@ -144,6 +142,21 @@
     <script src="/board../../../resources/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="/board../../../resources/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="/board../../../resources/js/action.js"></script>
+    
+    <!-- datatables -->
+	<script type="text/javascript" src="../../../../resources/vendor/DataTables/datatables.js"></script>
+	<script type="text/javascript" src="../../../../resources/vendor/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.js"></script>
+	
+ 	<script type="text/javascript"> 
+	 	$(document).ready(function() {
+	 	    $('#foo-table').DataTable( {
+	 	    	bInfo : false,
+	 	       	bSortable : false,
+	 	       	bPaginate : true,
+	 	        displayLength : 10
+	 	    } );
+	 	} );	
+ 	</script> 
 </body>
 <!-- END BODY -->
 

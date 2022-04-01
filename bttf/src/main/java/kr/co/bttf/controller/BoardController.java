@@ -1,9 +1,11 @@
 package kr.co.bttf.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,7 @@ import kr.co.bttf.domain.OracleReplyVO;
 import kr.co.bttf.service.CssBoardService;
 import kr.co.bttf.service.HtmlBoardService;
 import kr.co.bttf.service.JsBoardService;
+import kr.co.bttf.service.MemberService;
 import kr.co.bttf.service.OracleBoardService;
 import kr.co.bttf.service.OracleReplyService;
 
@@ -28,6 +31,9 @@ import kr.co.bttf.service.OracleReplyService;
 @RequestMapping("/board/*")
 public class BoardController {
 
+	@Inject
+	MemberService memberService;
+	
 	@Inject
 	private HtmlBoardService htmlService;
 	
@@ -153,6 +159,7 @@ public class BoardController {
 	}
 	
 	
+	
 	/* getModify
 	  게시글 수정 */
 	
@@ -186,6 +193,38 @@ public class BoardController {
 
 	}
 	
+	@RequestMapping(value = "/cssreport", method = RequestMethod.GET)
+	public void memberreport(@RequestParam List<Integer> checkbox, 
+			
+			@RequestParam("reportee_index") int reportee_index, 
+			@RequestParam("reportee_index") int user_index, 
+			@RequestParam("reporter_index") int reporter_index,
+			@RequestParam("board_category_id") int board_category_id,
+			@RequestParam("post_id") int post_id,
+			
+			HttpServletResponse response) throws Exception{
+				for (Integer c : checkbox) {
+					HashMap<String, Integer> map = new HashMap<String, Integer>();
+					map.put("report_category_id", c);
+					map.put("reportee_index", reportee_index);
+					map.put("reporter_index", reporter_index);
+					map.put("board_category_id", board_category_id);
+					map.put("post_id", post_id);
+					
+					boolean reportSuccess = memberService.reportSuccess(map);	
+					
+					if(reportSuccess ) {
+						memberService.memberreport(map);						
+						cssService.category2(post_id);
+						memberService.memcategory2(user_index);
+						ScriptUtils.alertAndMovePage(response, "신고가 접수되었습니다. 메인화면으로 이동합니다.","http://localhost:9090/");
+					}else {
+						ScriptUtils.alertAndMovePage(response, "이미 신고된 회원입니다.","http://localhost:9090/");
+						
+					}
+				}
+		
+			}
 	
 	
 	/* --------------------------------
@@ -333,14 +372,12 @@ public class BoardController {
 			return "redirect:/board/oraclelist";
 
 		}
+		
+		
 	
 	
 	/* --------------------------------
 				07. SPRING
-	-------------------------------- */
-	
-	/* --------------------------------
-			03. JAVASCRIPT
 	-------------------------------- */
 	
 

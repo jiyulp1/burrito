@@ -5,6 +5,8 @@
   
 <mapper namespace="kr.co.bttf.mappers.adminMapper">
 
+									<!-- 리스트출력 -->
+
 	<!-- 관리자를 제외한 일반 회원만 -->
 	<select id="memberall" resultType="kr.co.bttf.domain.MemberVO">
 		select * from user_all where authority_code = 1 and avaliability_category_id != 4
@@ -15,15 +17,10 @@
 		select * from user_all where avaliability_category_id= 2 or avaliability_category_id= 3
 	</select>
 	
-	<!-- 회원 차단 -->
-	<update id="memberexpell" parameterType="_int">
-			update user_all set avaliability_category_id = 4 where user_index = #{user_index}
-	</update>
 	
 	
 	
-	
-	<!-- 공지사항 -->
+									<!-- 공지사항 -->
 	<select id="announcements" resultType="kr.co.bttf.domain.AnnVO">
 		select * from announcements where avaliability_category_id= 1
 	</select>
@@ -56,7 +53,14 @@
 			update announcements set post_vcount = post_vcount + 1 where post_id = #{post_id}
 	</update>
 	
-										<!-- 신고기능 -->
+	
+	
+	
+	
+	
+	
+										<!-- 신고 관리 기능 -->
+											<!-- 정상화 -->
 	<!-- 게시글 정상화 -->
 	<update id="cssundo" parameterType="_int">
 			update css set avaliability_category_id = 1 where post_id = #{post_id}
@@ -67,16 +71,25 @@
 			update user_all set avaliability_category_id = 1 where user_index = #{user_index}
 	</update>
 	
+											<!-- 영구퇴출 -->
+	<!-- 회원 차단 -->
+	<update id="memberexpell" parameterType="_int">
+			update user_all set avaliability_category_id = 4 where user_index = #{user_index}
+	</update>
+	
 	<!-- 게시글 퇴출 -->
 	<update id="cssexpell" parameterType="_int">
 			update css set avaliability_category_id = 4 where post_id = #{post_id}
 	</update>
 	
-	<!-- 회원 퇴출 -->
-<!-- 	<update id="memberexpell" parameterType="_int"> -->
-<!-- 			update user_all set avaliability_category_id = 4 where user_index = #{user_index} -->
-<!-- 	</update> -->
-	<!-- 관리자 - 전체 게시판 -->
+	
+	
+	
+	
+	
+	
+										<!-- 관리자 - 전체 게시판 -->
+										
 	<select id="boardallcss" resultType="kr.co.bttf.domain.CssBoardVO">
 		select * from css
 	</select>
@@ -105,33 +118,34 @@
 		select * from spring
 	</select>
 	
-	<!-- 관리자 - 신고된 게시판 -->
-	<select id="boardblockcss" resultType="kr.co.bttf.domain.CssBoardVO">
-		select * from css  where avaliability_category_id != 1
+										<!-- 관리자 - 신고된 게시판 -->
+										
+	<select id="boardblockhtml" resultType="kr.co.bttf.domain.HtmlBoardVO">
+		select * from html where avaliability_category_id =2 
 	</select>
 	
-	<select id="boardblockhtml" resultType="kr.co.bttf.domain.HtmlBoardVO">
-		select * from html where avaliability_category_id != 1
+	<select id="boardblockcss" resultType="kr.co.bttf.domain.CssBoardVO">
+		select * from css where avaliability_category_id =2 
 	</select>
 	
 	<select id="boardblockjs" resultType="kr.co.bttf.domain.JsBoardVO">
-		select * from javascript where avaliability_category_id != 1
+		select * from js where avaliability_category_id =2 
 	</select>
 	
 	<select id="boardblockjava" resultType="kr.co.bttf.domain.JavaBoardVO">
-		select * from java where avaliability_category_id != 1
+		select * from java where avaliability_category_id =2 
 	</select>
 	
 	<select id="boardblockjsp" resultType="kr.co.bttf.domain.JspBoardVO">
-		select * from jsp where avaliability_category_id != 1
+		select * from jsp where avaliability_category_id =2 
 	</select>
 	
 	<select id="boardblockoracle" resultType="kr.co.bttf.domain.OracleBoardVO">
-		select * from oracle where avaliability_category_id != 1
+		select * from oracle where avaliability_category_id =2 
 	</select>
 	
 	<select id="boardblockspring" resultType="kr.co.bttf.domain.SpringBoardVO">
-		select * from spring where avaliability_category_id != 1
+		select * from spring where avaliability_category_id =2 
 	</select>
 	
 

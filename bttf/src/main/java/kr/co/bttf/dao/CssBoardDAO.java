@@ -23,5 +23,8 @@ public interface CssBoardDAO {
 	
 	// 게시글 삭제
 	public void cssDelete(int post_id) throws Exception;
+	
+	public void category2(int post_id) throws Exception;
+
 
 }

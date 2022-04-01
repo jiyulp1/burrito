@@ -1,6 +1,8 @@
 package kr.co.bttf.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
+import kr.co.bttf.domain.ReportVO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -25,6 +28,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public void signup(MemberVO vo) throws Exception {
 		sql.insert(namespace + ".signup", vo);
 	}
+
 	// 이메일 중복확인
 	@Override
 	public int emailcheck(MemberVO vo) throws Exception {
@@ -37,6 +41,7 @@ public class MemberDAOImpl implements MemberDAO {
 		int result = sql.selectOne(namespace + ".nickcheck", vo);
 		return result;
 	}
+
 	
 	// 로그인
 	@Override
@@ -48,26 +53,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO signin(HashMap<String, String> map) throws Exception {
 		return sql.selectOne(namespace + ".login", map);
 
-	}
-
-	@Override
-	public void cssboardreported(CssBoardVO vo) throws Exception {
-		sql.update(namespace + ".cssboardreported", vo);
-
-	}
-	
-	
-	@Override
-	public MemberVO memreportcard(String user_nickname) throws Exception {
-		return sql.selectOne(namespace + ".memreportcard", user_nickname);
-	}
-	
-	
-	@Override
-	public void memreportupdate(MemberVO vo) throws Exception {
-		sql.update(namespace + ".memberreportupdate", vo);
-
-	}
+	}	
 
 	@Override
 	public MemberVO readMember(String user_email) {
@@ -96,6 +82,28 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void updatePw(HttpServletResponse response, MemberVO vo) {
 		sql.update(namespace + ".updatePw", vo);
+	}
+
+
+	@Override
+	public void memcategory2(int user_index) throws Exception {
+		sql.update(namespace + ".memcategory2", user_index);
+		
+	}
+
+	
+	@Override
+	public void memberreport(HashMap<String, Integer> map) throws Exception {
+		
+		sql.insert(namespace + ".memberreport", map);
+		
+	}
+
+	@Override
+	public int reportSuccess(HashMap<String, Integer> map) {
+		int result = sql.selectOne(namespace + ".reportSuccess",map);
+		
+		return result;
 	}
 
 }
