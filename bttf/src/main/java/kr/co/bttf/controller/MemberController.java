@@ -96,6 +96,7 @@ public class MemberController {
 	        rttr.addFlashAttribute("msg", false);
 	        ScriptUtils.alertAndMovePage(res, "입력하신 회원정보가 틀립니다. 다시 로그인 해주세요.", "http://localhost:9090/member/signin");
 		}
+		return "redirect:/";
 	}
 	
 	
