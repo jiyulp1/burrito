@@ -57,8 +57,8 @@ public class MemberDAOImpl implements MemberDAO {
 	}	
 
 	@Override
-	public MemberVO readMember(String user_email) {
-		return sql.selectOne(namespace + ".readMember", user_email);
+	public MemberVO readMember(HashMap<String, String> map) {
+		return sql.selectOne(namespace + ".readMember", map);
 	}
 
 	@Override

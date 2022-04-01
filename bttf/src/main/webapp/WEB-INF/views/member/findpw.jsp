@@ -90,57 +90,6 @@
             color : blue;
          }
     </style>
-<!-- 	<script>
- 		$(function(){
-			$("#findBtn").click(function(){
- 				$.ajax({
- 					url : "/member/findpw",
- 					type : "POST",
- 					data : {
- 						email : $("#user_email").val()
- 					},
- 					success : function(result) {
- 						alert(result);
- 					},
- 				})
- 			});
- 		})
-	 	</script> -->
-    <!-- <script type="text/javascript">
-		function sendEMail() {
-		     
-		    var form = document.formEMail;
-		 
-		    //
-		    try {
-		        $.ajax({
-		            type: 'GET',
-		            url: 'mail',
-		            dataType: 'html',
-		            data: {
-		                from_email : form.from_email.value,
-		                to_email : form.to_email.value,
-		                subtitle : form.subtitle.value,
-		                content : form.content.value
-		            },
-		            success: function(data)
-		            {
-		                //alert(data);
-		                $('.clsResult').html(data.result);
-		            },
-		            error : function(XMLHttpRequest, textStatus, errorThrown) {
-		                alert('There was an error.');
-		            }
-		        });
-		         
-		    } catch(e) {
-		        alert(e);
-		    }
-		     
-		    return false;
-		}
-
-	</script>-->
 </head>
 <!-- END HEAD -->
 
@@ -163,11 +112,12 @@
                 <div class="card-body">
                     <form class="form-signin" method="POST">
                         <input type="email" name="user_email" id="user_email" class="form-control" placeholder="이메일" required><br>
-                        <input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" value="비밀번호찾기" onclick="send()">
+                        <input type="tel" name="user_phone" id="user_phone" class="form-control" oninput="autoHyphen(this)" maxlength="13" placeholder="핸드폰번호" required><br>
+                        <input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" value="비밀번호찾기" >
                     </form>
                 </div>
                 <div class="links" style="padding: 10px 20px;">
-                    <a href="/member/findId">아이디 찾기</a> | <a onclick="history.go(-1);">로그인</a> | <a href="/member/signup">회원가입</a>
+                    <a href="/member/findid">이메일 찾기</a> | <a onclick="history.go(-1);">로그인</a> | <a href="/member/signup">회원가입</a>
                 </div>
             </div>
         </div>
@@ -210,6 +160,15 @@
 	<!-- Load d3.js and c3.js -->
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
+	<script type="text/javascript">
+	
+	const autoHyphen = (user_phone) => {
+		user_phone.value = user_phone.value
+		.replace(/[^0-9]/g, '')
+		.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+	}
+	
+	</script>
 </body>
 <!-- END BODY -->
 

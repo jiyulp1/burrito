@@ -94,12 +94,6 @@
 <!-- BODY -->
 
 <body class="page-on-scroll fixed_container">
-	<c:set var="idresult" value="${requestScope.member }"/>
-	<c:if test = "${not empty param.findId }">
-		<c:if test = "${not param.findId }">
-			<script> alert("일치하는 회원 정보가 없습니다.")</script>
-		</c:if>
-	</c:if>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -111,21 +105,17 @@
         <div class="row">
             <div class="card align-middle col-md-3 login_card" >
                 <div class="card-title" style="margin-top:30px;">         
-                    <h2 class="card-title" style="color:#f58b34;"><img src="/resource/img/home_logo.png"/></h2>
+                    <h2 class="card-title" style="color:#f58b34;"><img src="../../../resources/img/home_logo.png"/></h2>
                 </div>     
                 <div class="card-body">
-                    <form action="${pageContext.request.contextPath }/pages/findId.us" class="form-signin" method="POST">
-                        <p class="text2" style="padding-top: 25px;"> ${findid2}</p>
-                        <input type="text" name="user_name" id="user_name" class="form-control" placeholder="이름" required autofocus><br>
-                        <input type="email" name="user_email" id="user_email" class="form-control" placeholder="이메일" required><br>
-						   <c:if test="${ param.findId }">
-						      <p class="check" id="check">회원님의 아이디는 ${idresult} 입니다.</p><br/>
-						   </c:if>
-					    <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">아이디 찾기</button>
+                    <form class="form-signin" method="POST">
+                        <input type="text" name="user_name" id="user_name" class="form-control" placeholder="이름" required><br>
+                        <input type="tel" name="user_phone" id="user_phone" class="form-control" oninput="autoHyphen(this)" maxlength="13" placeholder="핸드폰번호" required><br>
+                        <input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" value="이메일찾기" >
                     </form>
                 </div>
                 <div class="links" style="padding: 10px 20px;">
-                    <a href="${pageContext.request.contextPath }/app/pages/findPw.jsp">비밀번호 찾기</a> | <a href="${pageContext.request.contextPath }/app/pages/login.jsp">로그인</a> | <a href="${pageContext.request.contextPath }/app/pages/join.jsp">회원가입</a>
+                    <a href="/member/findpw">비밀번호 찾기</a> | <a onclick="history.go(-1);">로그인</a> | <a href="/member/signup">회원가입</a>
                 </div>
             </div>
         </div>
@@ -171,10 +161,15 @@
 
     <!-- sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <!-- <script>
-        swal("제목","내용","아이콘(success,warning,error,info))");
-
-    </script> -->
+    <script type="text/javascript">
+	
+	const autoHyphen = (user_phone) => {
+		user_phone.value = user_phone.value
+		.replace(/[^0-9]/g, '')
+		.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+	}
+	
+	</script>
 </body>
 <!-- END BODY -->
 
