@@ -244,4 +244,12 @@ public class MemberServiceImpl implements MemberService {
 		return dao.mypostlist(user_index) ;
 	}
 	
+	@Override
+	public MemberVO mypage_view(int user_index) {
+
+		return dao.mypage_view(user_index);
+	}
+	
+
+	
 } 

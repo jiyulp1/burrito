@@ -57,6 +57,10 @@ public interface MemberDAO {
 	
 	// 마이페이지 작성한 글 목록 조회
 	public List<BoardVO> mypostlist(int user_index) throws Exception;
+	
+	// 마이페이지-수정하기 조회
+	public MemberVO mypage_view(int user_index);
 
 
+	
 }

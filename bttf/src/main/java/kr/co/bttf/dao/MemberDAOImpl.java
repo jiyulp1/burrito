@@ -151,4 +151,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return mypostlist;
 	}
 
+	@Override
+	public MemberVO mypage_view(int user_index) {
+		
+		return sql.selectOne(namespace + ".mypage_view", user_index);
+	}
+	
+
 }

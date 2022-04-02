@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.bttf.domain.BoardVO;
+import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.service.MemberService;
 
@@ -164,7 +165,17 @@ public class MemberController {
 		//내가 작성한 글 list
 		List<BoardVO> mypostlist = service.mypostlist(user_index);
 		model.addAttribute("mypostlist", mypostlist);
+	}
+	
+	
+	// 마이페이지 - 수정하기
+	@RequestMapping(value = "/mypage_edit", method = RequestMethod.GET)
+	public void mypage_view(@RequestParam("user_index") int user_index, Model model) throws Exception{
+		
+		MemberVO member = service.mypage_view(user_index);
+		model.addAttribute("member", member);
 		
 	}
+	
 		
 }
