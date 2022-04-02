@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 
-<html lang="ko" class="no-js">
+<html lang="ko" class="no-js bg_color">
 <!-- BEGIN HEAD -->
 
 <head>
@@ -17,6 +17,7 @@
 
     <!-- GLOBAL MANDATORY STYLES -->
 	<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+
 	<link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
 	<link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
@@ -36,24 +37,16 @@
 
 	<!-- custom -->
 	<link rel="stylesheet" href="../../../resources/css/custom.css">
-
-	<!-- c3 chart -->
-	<link href="../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
-    <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.js"></script>
-    <script type="text/javascript" src="../../resource/js/board.js"></script>
-
-    <!-- c3 chart -->
-    <link href="../../resource/vendor/c3-0.7.20/c3.css" rel="stylesheet">
+  	<!-- datatable  -->
+	<link href="../../../resources/vendor/DataTables/datatables.css" >
+	
 </head>
 <!-- END HEAD -->
 
 <!-- BODY -->
 
 <body class="page-on-scroll fixed_container">
-    <c:set var="bookmarkList" value="${requestScope.bookmarkList}"/>
-    <c:set var="myrecomendcount" value="${requestScope.getMyRecomendCount}"/>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -68,7 +61,7 @@
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- Service -->
-    <div class="bg-color-sky-light fixed_container" data-auto-height="true">
+    <div class="bg-color-sky-light" data-auto-height="true">
         <div class="content-lg container" style="margin-top : 50px;">
             <h1 class="pt-4">
                 <i class="fas fa-user-circle title_subject_icon"></i>
@@ -139,14 +132,7 @@
             <!--// end row -->
         </div>
     </div>
-<!--     <div class="bg-color-sky-light" data-auto-height="true"> -->
-<!--         <div class="content-lg container"> -->
-<!--             <h2>게시글 차트</h2> -->
-<!--             <div class="row row-space-1 margin-b-2"> -->
-<!--                 <div id="chart" class="wow fadeInLeft"></div> -->
-<!--             </div> -->
-<!--         </div> -->
-<!--     </div>             -->
+
     
     <!-- End Service -->
 
@@ -163,35 +149,37 @@
                 	북마크
             </h2>
             <div class="table-responsive">
-                <table id="foo-table" class="table table-striped" data-page-length='5' data-order='[[ 1, "desc" ]]'>
+                <table id="foo-table" class="table table-striped" data-order='[[ 1, "desc" ]]'>
                     <thead>
-			<th>게시판</th>
-                        <th>제목</th>
-                        <th>추천수</th>
-                        <th>작성자</th>
-                        <th>작성일자</th>
-			<th></th>
+	                    <tr>
+							<th>게시판</th>
+	                        <th>제목</th>
+	                        <th>추천수</th>
+	                        <th>작성자</th>
+	                        <th>작성일자</th>
+							<th>내 게시물관리</th>
+	                    </tr>
                     </thead>
                     <tbody>
-		    	<c:choose>
-                    	<c:when test="${empty bookmark }">
-                    		<tr>
-                    		<td colspan="5">등록된 북마크가 없습니다.</td>
-                    		</tr>
-                    	</c:when>
-                    	<c:when test="${mypostList != null and fn:length(bookmark) > 0 }">
-		                    <c:forEach var="mypostList" items="${bookmark}">
-		                    	<tr>
-						<td>해당게시판</td>
-		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${bookmark.post_id}">${bookmark.post_subject}</a></td>
-		                    		<td>${bookmark.post_rec}</td>
-		                    		<td>${bookmark.writer}</td>
-		                    		<td>${bookmark.post_regdate} </td>
-		                    		<td><a class="btn btn-danger" href="/pages/BookmarkDelete.us?post_id=${bookmark.post_id }">삭제</a></td>
-		                    	</tr>
-		                    </c:forEach>
-                    	</c:when>
-                    </c:choose>
+		    			<c:choose>
+	                    	<c:when test="${empty bookmark }">
+	                    		<tr>
+	                    		<td colspan="6" class="text-center">등록된 북마크가 없습니다.</td>
+	                    		</tr>
+	                    	</c:when>
+	                    	<c:when test="${bookmark != null and fn:length(bookmark) > 0 }">
+			                    <c:forEach var="bookmark" items="${bookmark}">
+			                    	<tr>
+										<td>해당게시판</td>
+			                    		<td><a href="/board/cssview?post_id=${bookmark.post_id}">${bookmark.post_subject}</a></td>
+			                    		<td>${bookmark.post_rec}</td>
+			                    		<td>${bookmark.writer}</td>
+			                    		<td>${bookmark.post_regdate} </td>
+			                    		<td><a class="btn btn-danger" href="#">삭제</a></td>
+			                    	</tr>
+			                    </c:forEach>
+	                    	</c:when>
+                   		</c:choose>
                     </tbody>
                 </table>
             </div>
@@ -207,35 +195,37 @@
                 	내가 작성한 글
             </h2>
             <div class="table-responsive">
-                <table id="foo-table" class="table table-striped" data-page-length='5' data-order='[[ 1, "desc" ]]'>
+                <table id="foo-table1" class="table table-striped" >
                     <thead>
-			<th>게시판</th>
-                        <th>제목</th>
-                        <th>추천수</th>
-                        <th>작성자</th>
-                        <th>작성일자</th>
-			<th></th>
+	                    <tr>
+							<th>게시판</th>
+	                        <th>제목</th>
+	                        <th>추천수</th>
+	                        <th>작성자</th>
+	                        <th>작성일자</th>
+							<th>내 게시물관리</th>
+	                    </tr>
                     </thead>
                     <tbody>
-		    	<c:choose>
-                    	<c:when test="${empty mypostlist }">
-                    		<tr>
-                    		<td colspan="5">등록된 내 글이 없습니다.</td>
-                    		</tr>
-                    	</c:when>
-                    	<c:when test="${mypostlist != null and fn:length(mypostlist) > 0 }">
-		                    <c:forEach var="mypostlist" items="${mypostlist}">
-		                    	<tr>
-		                    		<td>${mypostlist.board_category_name }</td>
-		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=">${mypostlist.post_subject}</a></td>
-		                    		<td>${mypostlist.post_rec}</td>
-		                    		<td>${mypostlist.user_nickname}</td>
-		                    		<td><fmt:formatDate value="${mypostlist.post_regdate}" pattern="yyyy-MM-dd" /></td>
-		                    		<td><a class="btn btn-danger" href="/pages/BookmarkDelete.us?post_id=${bookmark.post_id }">삭제</a></td>
-		                    	</tr>
-		                    </c:forEach>
-                    	</c:when>
-                    </c:choose>
+		    			<c:choose>
+	                    	<c:when test="${empty mypostlist }">
+	                    		<tr>
+	                    			<td colspan="6" class="text-center">등록된 북마크가 없습니다.</td>
+	                    		</tr>
+	                    	</c:when>
+	                    	<c:when test="${mypostlist != null and fn:length(mypostlist) > 0 }">
+			                    <c:forEach var="mypostlist" items="${mypostlist}">
+			                    	<tr>
+			                    		<td>${mypostlist.board_category_name }</td>
+			                    		<td><a href="/board/${mypostlist.board_category_name }view?post_id=${mypostlist.post_id}">${mypostlist.post_subject}</a></td>
+			                    		<td>${mypostlist.post_rec}</td>
+			                    		<td>${mypostlist.user_nickname}</td>
+			                    		<td><fmt:formatDate value="${mypostlist.post_regdate}" pattern="yyyy-MM-dd" /></td>
+			                    		<td><a class="btn btn-danger" href="#">삭제</a></td>
+			                    	</tr>
+			                    </c:forEach>
+	                    	</c:when>
+                    	</c:choose>
                     </tbody>
                 </table>
             </div>
@@ -281,15 +271,13 @@
 	<script src="../../../resources/js/components/swiper.min.js" type="text/javascript"></script>
 	<script src="../../../resources/js/components/masonry.min.js" type="text/javascript"></script>
 	<script src="../../../resources/js/action.js"></script>
+	<script src="../../../resources/js/foo1.js"></script>
+	<script src="../../../resources/js/foo.js"></script>
 	<!-- F12 ,right click block-->
 	<!-- <script src="js/Prevention.js"></script> -->
-
-	<!-- Load d3.js and c3.js -->
-	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
-	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
-
-	
-	
+     <!-- datatables -->
+    <script type="text/javascript" src="../../../resources/vendor/DataTables/datatables.js"></script>
+	<script type="text/javascript" src="../../../resources/vendor/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.js"></script>
 </body>
 <!-- END BODY -->
 

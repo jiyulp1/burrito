@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 
-<html lang="ko" class="no-js">
+<html lang="ko" class="no-js bg_color">
 <!-- BEGIN HEAD -->
 
 <head>

@@ -93,63 +93,70 @@
 	</select>
 	
 	<select id="mypostlist0" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
-		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate ,post_id
 			from html h
 			left join board_category bc 
 			on h.category_id = bc.board_category_id  
 		where user_index = #{user_index}
+		order by post_regdate desc
 	</select>
 	
 	<select id="mypostlist1" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
-		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate ,post_id
 			from css h
 			left join board_category bc 
 			on h.category_id = bc.board_category_id  
 		where user_index = #{user_index}
+		order by post_regdate desc
 	</select>
 	
 	
 	<select id="mypostlist2" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
-		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate ,post_id
 			from javascript h
 			left join board_category bc 
 			on h.category_id = bc.board_category_id  
 		where user_index = #{user_index}
+		order by post_regdate desc
 	</select>
 	
 	
 	<select id="mypostlist3" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
-		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate ,post_id
 			from jsp h
 			left join board_category bc 
 			on h.category_id = bc.board_category_id  
 		where user_index = #{user_index}
+		order by post_regdate desc
 	</select>
 	
 	
 	<select id="mypostlist4" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
-		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate ,post_id
 			from java h
 			left join board_category bc 
 			on h.category_id = bc.board_category_id  
 		where user_index = #{user_index}
+		order by post_regdate desc
 	</select>
 	
 	
 	<select id="mypostlist5" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
-		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate ,post_id
 			from oracle h
 			left join board_category bc 
 			on h.category_id = bc.board_category_id  
 		where user_index = #{user_index}
+		order by post_regdate desc
 	</select>
 	
 	<select id="mypostlist6" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
-		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate 
+		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate,post_id
 			from spring h
 			left join board_category bc 
 			on h.category_id = bc.board_category_id  
 		where user_index = #{user_index}
+		order by post_regdate desc
 	</select>
 
 </mapper>
