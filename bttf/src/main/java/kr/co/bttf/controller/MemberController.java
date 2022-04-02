@@ -1,6 +1,5 @@
 package kr.co.bttf.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -106,9 +105,14 @@ public class MemberController {
 	
 	
 	
-	// 비밀번호 찾기
+	// 이용약관
 	@RequestMapping(value = "/termsOfUse", method = RequestMethod.GET)
 	public void termsOfUse() throws Exception{
+		
+	}
+	// 아이디 찾기
+	@RequestMapping(value = "/findid", method = RequestMethod.GET)
+	public void findid() throws Exception{
 		
 	}
 	

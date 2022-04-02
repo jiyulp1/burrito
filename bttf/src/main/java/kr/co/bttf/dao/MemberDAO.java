@@ -28,7 +28,7 @@ public interface MemberDAO {
 	
 	//비밀번호 찾기
 	// 등록된 회원이면 회원 정보 가져오기
-	public MemberVO readMember(String user_email) throws Exception;
+	public MemberVO readMember(HashMap<String, String> map) throws Exception;
 	
 	// 등록된 회원인지 검사하기
 	public boolean idCheck(String user_email) throws Exception;

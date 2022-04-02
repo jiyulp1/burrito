@@ -1,6 +1,5 @@
 package kr.co.bttf.service;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.co.bttf.domain.BoardVO;
-import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.ReportVO;
 
