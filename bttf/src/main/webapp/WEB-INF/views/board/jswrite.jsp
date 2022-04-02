@@ -118,6 +118,7 @@
 		</div>
 	</div>
 	<!--========== END PAGE LAYOUT ==========-->
+	
 
 	<!--========== FOOTER ==========-->
 	<footer class="footer fixed_footer">

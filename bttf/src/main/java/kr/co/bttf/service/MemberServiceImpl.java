@@ -130,7 +130,7 @@ public class MemberServiceImpl implements MemberService {
 			msg +="<p>하단 링크를 클릭하여 로그인 후 마이페이지에서 비밀번호 변경을 진행해주세요.</p>";
 			msg +="</div>";
 			msg +="<div>";
-			msg +="<a class='btn btn-primary' href='http://localhost:9090/member/signin'> 비밀번호 변경 </a>";
+			msg +="<a class='btn btn-primary' href='http://localhost:9090/member/signin'> 로그인 페이지로 이동 </a>";
 			msg +="</div>";
 			msg +="</div>";
 			msg +="</div>";
@@ -167,30 +167,39 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void findpw(HttpServletResponse response, MemberVO vo) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
-		MemberVO ck = dao.readMember(vo.getUser_email());
+		HashMap<String, String>map = new HashMap<String, String>();
+		map.put("user_email", vo.getUser_email());
+		map.put("user_phone", vo.getUser_phone());
+		
+		MemberVO ck = dao.readMember(map);
 		PrintWriter out = response.getWriter();
-		// 가입된 이메일이 아니면
-		if(ck.getUser_email() == null) {
-			ScriptUtils.alertAndBackPage(response, "등록되지 않은 이메일입니다");
-			
-			out.close();
-		}else if(!vo.getUser_email().equals(ck.getUser_email())) {
-			ScriptUtils.alertAndBackPage(response, "등록되지 않은 이메일입니다");
-			out.close();
-		}else {
-			// 임시 비밀번호 생성
-			String pw = "";
-			for (int i = 0; i < 15; i++) {
-				pw += (char) ((Math.random() * 26) + 97);
+		// ck.getUser_email이 null이 찍혀서 NullPointerException이 떴다. 그래서 일단 try~catch로 임시방편으로 해결해논 상황이다.
+		try {
+			// 가입된 이메일이 아니면
+//			if(ck.getUser_email() == null) {
+//				ScriptUtils.alertAndBackPage(response, "등록되지 않은 이메일입니다");
+//				
+//				out.close();
+			if(!vo.getUser_email().equals(ck.getUser_email())) {
+				ScriptUtils.alertAndBackPage(response, "등록되지 않은 이메일입니다");
+				out.close();
+			}else {
+				// 임시 비밀번호 생성
+				String pw = "";
+				for (int i = 0; i < 15; i++) {
+					pw += (char) ((Math.random() * 26) + 97);
+				}
+				vo.setUser_pw(pw);
+				// 비밀번호 변경
+				dao.temporaryPw(vo);
+				// 비밀번호 변경 메일 발송
+				sendemail(vo, "findpw");
+				ScriptUtils.alertAndMovePage(response, "입력하신 이메일로 임시 비밀번호를 발송했습니다", "/");
 			}
-			vo.setUser_pw(pw);
-			// 비밀번호 변경
-			dao.temporaryPw(vo);
-			// 비밀번호 변경 메일 발송
-			sendemail(vo, "findpw");
-
-			ScriptUtils.alertAndMovePage(response, "입력하신 이메일로 임시 비밀번호를 발송했습니다", "/");
-		}
+			
+		} catch (NullPointerException e) {
+			ScriptUtils.alertAndBackPage(response, "입력하신 회원정보로 가입된 계정이 없습니다.");
+		} 
 	}
 
 
