@@ -45,6 +45,7 @@
 <!-- BODY -->
 
 <body class="page-on-scroll fixed_container">
+   <c:set var="Member" value="${requestScope.Member }"/>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -73,27 +74,31 @@
                             </div>
                             <form action="${PageContext.request.contextPath}/pages/MemberJoinUpdate.us" method="post" name="joinFormEdit">
                                 <div class="col-auto">
-                                    <label for="user_email">아이디</label>
+                                    <label for="id">아이디</label>
                                     <div style="display: flex;">
-                                        <input id="user_email" class="form-control margin-b-50" type="text" placeholder="이메일" readonly value="${member.user_email }">
+                                        <input id="id" class="form-control margin-b-50" type="text" placeholder="아이디" readonly value="${Member.user_id }">
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <label for="user_pw">비밀번호</label>
-                                    <input  id="user_pw" class="form-control margin-b-50" type="password" placeholder="8자이상 영문+숫자모두 포함">
+                                    <label for="pw">비밀번호</label>
+                                    <input  id="pw" class="form-control margin-b-50" type="password" placeholder="8자이상 영문+숫자모두 포함">
                                 </div>
                                 <div class="col-auto">
-                                    <label for="user_name">이름</label>
-                                    <input  id="user_name" class="form-control margin-b-50" type="text" placeholder="이름" readonly value="${member.user_name}">
+                                    <label for="name">이름</label>
+                                    <input  id="name" class="form-control margin-b-50" type="text" placeholder="이름" readonly value="${Member.user_name }">
                                 </div>
                                 <div class="col-auto">
-                                    <label for="user_phone">전화번호</label>
-                                    <input  id="user_phone" class="form-control margin-b-50" type="text" placeholder="전화번호" value="${member.user_phone }">
+                                    <label for="phone">전화번호</label>
+                                    <input  id="phone" class="form-control margin-b-50" type="text" placeholder="전화번호" value="${Member.user_phone }">
                                 </div>
                                 <div class="col-auto">
-                                    <label class="form-label" for="main_language">관심언어</label>
-                                    <select class="form-control" name="main_language" id="main_language">
-                                        <option value="default">관심언어를 선택해주세요.</option>
+                                    <label for="email">이메일</label>
+                                    <input id="email" class="form-control margin-b-50" type="text" placeholder="이메일" value="${Member.user_email }">
+                                </div>
+                                <div class="col-auto">
+                                    <label class="form-label" for="pref">${Member.main_language }</label>
+                                    <select class="form-control" name="pref" id="pref">
+                                        <option value="JAVA">관심언어를 선택해주세요.</option>
                                         <option value="JAVA">JAVA</option>
                                         <option value="JSP">JSP</option>
                                         <option value="SPRING">SPRING</option>

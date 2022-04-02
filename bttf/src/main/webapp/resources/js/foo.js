@@ -1,7 +1,4 @@
 /**
- * 
- */
-
  	$(document).ready(function() {
  	    $('#foo-table').DataTable( {
  	    	bInfo : false,
@@ -9,3 +6,12 @@
  	        displayLength : 10
  	    } );
  	} );	
+ */
+
+
+
+   $("#foo-table").DataTable({
+		bInfo : false,
+	   	bPaginate : true,
+	    displayLength : 10
+   });
