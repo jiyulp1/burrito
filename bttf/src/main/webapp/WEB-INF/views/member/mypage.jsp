@@ -76,9 +76,9 @@
                             </div>
                             <div class="my_box_my_page_info">
                                 <h3>내 정보 수정</h3>
-                                <a class="link" href="${pageContext.request.contextPath }/pages/MemberView.us">수정하기</a>
+                                <a class="link" href="/member/mypage_edit?user_index=${member.user_index }">수정하기</a>
                             </div>
-                            <a href="${pageContext.request.contextPath }/pages/MemberView.us" class="content-wrapper-link" ></a>
+                            <a href="/member/mypage_edit?user_index=${member.user_index }" class="content-wrapper-link" ></a>
                         </div>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
                     </thead>
                     <tbody>
 		    			<c:choose>
-	                    	<c:when test="${empty bookmark }">
+	                    	<c:when test="${empty csslist }">
 	                    		<tr>
 	                    		<td colspan="6" class="text-center">등록된 북마크가 없습니다.</td>
 	                    		</tr>
@@ -170,11 +170,11 @@
 	                    	<c:when test="${bookmark != null and fn:length(bookmark) > 0 }">
 			                    <c:forEach var="bookmark" items="${bookmark}">
 			                    	<tr>
-										<td>해당게시판</td>
+										<td>css 테스트</td>
 			                    		<td><a href="/board/cssview?post_id=${bookmark.post_id}">${bookmark.post_subject}</a></td>
 			                    		<td>${bookmark.post_rec}</td>
-			                    		<td>${bookmark.writer}</td>
-			                    		<td>${bookmark.post_regdate} </td>
+			                    		<td>${bookmark.user_nickname}</td>
+			                    		<td><fmt:formatDate value="${bookmark.post_regdate}" pattern="yyyy-MM-dd" /></td>
 			                    		<td><a class="btn btn-danger" href="#">삭제</a></td>
 			                    	</tr>
 			                    </c:forEach>
@@ -210,7 +210,7 @@
 		    			<c:choose>
 	                    	<c:when test="${empty mypostlist }">
 	                    		<tr>
-	                    			<td colspan="6" class="text-center">등록된 북마크가 없습니다.</td>
+	                    			<td colspan="6" class="text-center">작성한 글이 없습니다.</td>
 	                    		</tr>
 	                    	</c:when>
 	                    	<c:when test="${mypostlist != null and fn:length(mypostlist) > 0 }">
@@ -221,7 +221,7 @@
 			                    		<td>${mypostlist.post_rec}</td>
 			                    		<td>${mypostlist.user_nickname}</td>
 			                    		<td><fmt:formatDate value="${mypostlist.post_regdate}" pattern="yyyy-MM-dd" /></td>
-			                    		<td><a class="btn btn-danger" href="#">삭제</a></td>
+			                    		<td><a href="/board/${mypostlist.board_category_name }delete?post_id=${mypostlist.post_id }&mypage=right" class="btn btn-danger" type="submit">삭제</a></td>
 			                    	</tr>
 			                    </c:forEach>
 	                    	</c:when>

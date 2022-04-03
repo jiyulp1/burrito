@@ -186,10 +186,34 @@ public class BoardController {
 	
 	// 2-5. vo가 없으니 get방식 삭제
 	@RequestMapping(value = "/cssdelete", method = RequestMethod.GET)
-	public String cssDelete(@RequestParam("post_id") int post_id, Model model) throws Exception {
+	public String cssDelete(HttpServletRequest req, @RequestParam("post_id") int post_id, @RequestParam("mypage") String mypage) throws Exception {
 
+		String result = "";
+		
 		cssService.cssDelete(post_id);
-		return "redirect:/board/csslist";
+		
+		HttpSession session = req.getSession();
+		
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		
+		
+		int user_index = member.getUser_index();
+		String user_nickname = member.getUser_nickname();
+		
+		
+		// mypage에서 글을 삭제하는 경우
+		if( mypage.equals("right")) {
+			
+			result = "forward:/member/mypage?user_index=" + user_index + "&user_nickname=" +user_nickname;			
+		
+		// mypage에서 글을 삭제하는 경우
+		} else {
+			
+			result = "redirect:/board/csslist";
+			
+		}
+		
+		return result;
 
 	}
 	
@@ -366,12 +390,39 @@ public class BoardController {
 		
 		// 6-5. vo가 없으니 get방식으로 삭제
 		@RequestMapping(value = "/oracledelete", method = RequestMethod.GET)
-		public String oracleDelete(@RequestParam("post_id") int post_id, Model model) throws Exception {
+		public String oracleDelete(HttpServletRequest req, @RequestParam("post_id") int post_id, @RequestParam("mypage") String mypage) throws Exception {
 
+			String result = "";
+			
 			oracleService.oracleDelete(post_id);
-			return "redirect:/board/oraclelist";
+			
+			HttpSession session = req.getSession();
+			
+			MemberVO member = (MemberVO) session.getAttribute("member");
+			
+			
+			int user_index = member.getUser_index();
+			String user_nickname = member.getUser_nickname();
+			
+			
+			// mypage에서 글을 삭제하는 경우
+			if( mypage.equals("right")) {
+				
+				result = "forward:/member/mypage?user_index=" + user_index + "&user_nickname=" +user_nickname;			
+			
+			// 그 외 게시판에서 글을 삭제하는 경우
+			} else {
+				
+				result = "redirect:/board/oraclelist";
+				
+			}
+			
+			return result;
+			
 
 		}
+		
+		
 		
 		
 	

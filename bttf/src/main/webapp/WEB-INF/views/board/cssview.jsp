@@ -90,7 +90,7 @@
 	                        	<div class="mb-5">
 									<c:if test="${member.user_nickname eq cssview.user_nickname}">
 		 		                    	<a href="/board/cssedit?post_id=${cssview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
-				                		<a href="/board/cssdelete?post_id=${cssview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
+				                		<a href="/board/cssdelete?post_id=${cssview.post_id }&mypage=" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
 									</c:if> 
 	                        		<a href="/board/csslist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
 									<c:if test="${member.user_nickname != cssview.user_nickname && member != null && cssview.user_nickname != 'admin'}">
@@ -102,11 +102,21 @@
 							
            					<!-- 댓글 작성 -->
 							<form name="replyForm" method="post">
-								<input type="hidden" name="post_id" value="${cssview.post_id }">
-								<div class="col-auto" style="display: flex;">
-                           			<input id="reply_contents" name="reply_contents" class="form-control mt-5" style="width: 95%;" type="text" placeholder="댓글을 작성해보세요">
-                           			<a href="javascript:document.replyForm.submit()" class="btn btn-default mt-5" style="height: 50px; margin-left: 20px; line-height:36px; ">댓글등록</a>
-                         		</div>
+								<!-- 라이브리 시티 설치 코드 -->
+								<div id="lv-container" data-id="city" data-uid="MTAyMC81NTkzNi8zMjM5OQ==">
+									
+								<noscript> 라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요</noscript>
+								</div>
+								<!-- 시티 설치 코드 끝 -->
+<%-- 								<input type="hidden" name="post_id" value="${cssview.post_id }"> --%>
+<!-- 								<div class="col-auto" style="display: flex;"> -->
+<!--                            			<input id="reply_contents" name="reply_contents" class="form-control mt-5" style="width: 95%;" type="text" placeholder="댓글을 작성해보세요"> -->
+<!--                            			<a href="javascript:document.replyForm.submit()" class="btn btn-default mt-5" style="height: 50px; margin-left: 20px; line-height:36px; ">댓글등록</a> -->
+<!--                          		</div> -->
+<!--                          		<div class="col-auto ml-7" style="display: flex;"> -->
+<!--                            			<input id="reply_contents" name="reply_contents" class="form-control mt-5" style="width: 100%;" type="text" placeholder="댓글을 작성해보세요"> -->
+<!--                            			<a href="javascript:document.replyForm.submit()" class="btn btn-default mt-5" style="height: 50px; margin-left: 20px; line-height:36px; ">댓글등록</a> -->
+<!--                          		</div> -->
 								<!-- 댓글 리스트 -->
 								<div>
 									<c:choose>
@@ -119,7 +129,7 @@
 														</div>
 													<c:if test="${member != null }" >
 														<div class="col-md-12 col-sm-12 row">
-															<textarea id="reply${reply.reply_id }" class="reply_con_box" name="reply${reply.reply_id }" readonly>${reply.reply_contents }</textarea>
+<%-- 															<textarea id="reply${reply.reply_id }" class="reply_con_box" name="reply${reply.reply_id }" readonly>${reply.reply_contents }</textarea> --%>
 															<div class="row mt-5" style="padding-left:10px;">
 																<a class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})" id="editfail">수정완료</a>
 																<a class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a>
@@ -130,7 +140,7 @@
 													<!-- 비정상적인 접근 경로 -->
 													<c:if test="${member == null }" >
 														<div >
-															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" class="reply_con_box" style="text-align:left; border:0px; height:fit-content; resize:none;">${reply.reply_contents }</textarea>
+<%-- 															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" class="reply_con_box" style="text-align:left; border:0px; height:fit-content; resize:none;">${reply.reply_contents }</textarea> --%>
 														</div>
 													</c:if>
 												</div>
@@ -139,7 +149,7 @@
 										<c:otherwise>
 											<div>
 												<div align="center" style="board : none !important;">
-													<input  class="form-control mb-3 mt-4"type="text" placeholder="등록된 댓글이 없습니다." readonly>
+<!-- 													<input  class="form-control mb-3 mt-4"type="text" placeholder="등록된 댓글이 없습니다." readonly> -->
 												</div>
 											</div>
 										</c:otherwise>
@@ -363,4 +373,18 @@ function ResetCount(){
 totalChecked = 0;
 }
 </script>
+<script type="text/javascript">
+  (function(d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+
+      if (typeof LivereTower === 'function') { return; }
+
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+
+      e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
 </html>

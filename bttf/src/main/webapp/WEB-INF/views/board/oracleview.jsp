@@ -98,7 +98,7 @@
 	                        	<div class="mb-5">
 									<c:if test="${member.user_nickname eq oracleview.user_nickname}">
 		 		                    	<a href="/board/oracleedit?post_id=${oracleview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
-				                		<a href="/board/oracledelete?post_id=${oracleview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
+				                		<a href="/board/oracledelete?post_id=${oracleview.post_id }&mypage=" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
 									</c:if> 
 	                        		<a href="/board/oraclelist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
 									<c:if test="${member.user_nickname != oracleview.user_nickname && member != null && oracleview.user_nickname != 'admin'}">
