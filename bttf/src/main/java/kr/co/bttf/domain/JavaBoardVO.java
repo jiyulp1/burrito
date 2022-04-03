@@ -3,26 +3,19 @@ package kr.co.bttf.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-public class JavaBoardVO {
-	@Getter @Setter
-	private int post_id;
-	@Getter @Setter
-	private String post_subject;
-	@Getter @Setter
-	private String post_contents;
-	@Getter @Setter
-	private int user_index;
-	@Getter @Setter
-	private String user_nickname;
-	@Getter @Setter
-	private int avaliability_category_id;
-	@Getter @Setter
-	private String post_rec;
-	@Getter @Setter
-	private int post_vcount;
-	@Getter @Setter
-	private String post_regdate;
-	@Getter @Setter
-	private int category_id;
-	
-}
+@Getter @Setter
+public class JavaBoardVO extends BoardVO {
+		
+		private int post_id;
+		private String post_subject;
+		private String post_contents;
+		private int user_index;
+		private String user_nickname;
+		private int avaliability_category_id;
+		private String post_rec;
+		private int post_vcount;
+		private String post_regdate;
+		private int board_category_id;
+		
+	}
+

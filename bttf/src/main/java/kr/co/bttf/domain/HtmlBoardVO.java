@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class HtmlBoardVO {
+public class HtmlBoardVO extends BoardVO {
 	
 	private int post_id;
 	private String post_subject;
@@ -15,6 +15,6 @@ public class HtmlBoardVO {
 	private String post_rec;
 	private int post_vcount;
 	private String post_regdate;
-	private int category_id;
+	private int board_category_id;
 	
 }

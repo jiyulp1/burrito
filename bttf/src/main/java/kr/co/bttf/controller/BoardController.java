@@ -1,9 +1,11 @@
 package kr.co.bttf.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,7 @@ import kr.co.bttf.domain.OracleReplyVO;
 import kr.co.bttf.service.CssBoardService;
 import kr.co.bttf.service.HtmlBoardService;
 import kr.co.bttf.service.JsBoardService;
+import kr.co.bttf.service.MemberService;
 import kr.co.bttf.service.OracleBoardService;
 import kr.co.bttf.service.OracleReplyService;
 
@@ -28,6 +31,9 @@ import kr.co.bttf.service.OracleReplyService;
 @RequestMapping("/board/*")
 public class BoardController {
 
+	@Inject
+	MemberService memberService;
+	
 	@Inject
 	private HtmlBoardService htmlService;
 	
@@ -153,6 +159,7 @@ public class BoardController {
 	}
 	
 	
+	
 	/* getModify
 	  게시글 수정 */
 	
@@ -179,26 +186,69 @@ public class BoardController {
 	
 	// 2-5. vo가 없으니 get방식 삭제
 	@RequestMapping(value = "/cssdelete", method = RequestMethod.GET)
-	public String cssDelete(@RequestParam("post_id") int post_id, Model model) throws Exception {
+	public String cssDelete(HttpServletRequest req, @RequestParam("post_id") int post_id, @RequestParam("mypage") String mypage) throws Exception {
 
+		String result = "";
+		
 		cssService.cssDelete(post_id);
-		return "redirect:/board/csslist";
+		
+		HttpSession session = req.getSession();
+		
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		
+		
+		int user_index = member.getUser_index();
+		String user_nickname = member.getUser_nickname();
+		
+		
+		// mypage에서 글을 삭제하는 경우
+		if( mypage.equals("right")) {
+			
+			result = "forward:/member/mypage?user_index=" + user_index + "&user_nickname=" +user_nickname;			
+		
+		// mypage에서 글을 삭제하는 경우
+		} else {
+			
+			result = "redirect:/board/csslist";
+			
+		}
+		
+		return result;
 
 	}
 	
-	// 게시글 신고
-	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
-	public void memreportcard(@RequestParam("user_index") int user_index, Model model) throws Exception {
+	@RequestMapping(value = "/cssreport", method = RequestMethod.GET)
+	public void memberreport(@RequestParam List<Integer> checkbox, 
+			
+			@RequestParam("reportee_index") int reportee_index, 
+			@RequestParam("reportee_index") int user_index, 
+			@RequestParam("reporter_index") int reporter_index,
+			@RequestParam("board_category_id") int board_category_id,
+			@RequestParam("post_id") int post_id,
+			
+			HttpServletResponse response) throws Exception{
+				for (Integer c : checkbox) {
+					HashMap<String, Integer> map = new HashMap<String, Integer>();
+					map.put("report_category_id", c);
+					map.put("reportee_index", reportee_index);
+					map.put("reporter_index", reporter_index);
+					map.put("board_category_id", board_category_id);
+					map.put("post_id", post_id);
+					
+					boolean reportSuccess = memberService.reportSuccess(map);	
+					
+					if(reportSuccess ) {
+						memberService.memberreport(map);						
+						cssService.category2(post_id);
+						memberService.memcategory2(user_index);
+						ScriptUtils.alertAndMovePage(response, "신고가 접수되었습니다. 메인화면으로 이동합니다.","http://localhost:9090/");
+					}else {
+						ScriptUtils.alertAndMovePage(response, "이미 신고된 회원입니다.","http://localhost:9090/");
+						
+					}
+				}
 		
-		MemberVO vo = cssService.memreportcard(user_index);
-		model.addAttribute("memreportcard", vo);
-		
-		//참고로 게시글도 신고사유 접수받을 boardreport.jsp필요, 
-		//button에서 파라미터로 post_category(게시판카테고리) get방식으로 넘기면 될듯하니
-		//신고접수폼은 회원신고용과 게시글신고용 2개로 가져가면 될듯
-		//<a href="/member/cssboardreported?post_id=${cssview.post_id }&category_id=0" ...>게시글 신고</a>
-
-	}
+			}
 	
 	
 	/* --------------------------------
@@ -340,20 +390,45 @@ public class BoardController {
 		
 		// 6-5. vo가 없으니 get방식으로 삭제
 		@RequestMapping(value = "/oracledelete", method = RequestMethod.GET)
-		public String oracleDelete(@RequestParam("post_id") int post_id, Model model) throws Exception {
+		public String oracleDelete(HttpServletRequest req, @RequestParam("post_id") int post_id, @RequestParam("mypage") String mypage) throws Exception {
 
+			String result = "";
+			
 			oracleService.oracleDelete(post_id);
-			return "redirect:/board/oraclelist";
+			
+			HttpSession session = req.getSession();
+			
+			MemberVO member = (MemberVO) session.getAttribute("member");
+			
+			
+			int user_index = member.getUser_index();
+			String user_nickname = member.getUser_nickname();
+			
+			
+			// mypage에서 글을 삭제하는 경우
+			if( mypage.equals("right")) {
+				
+				result = "forward:/member/mypage?user_index=" + user_index + "&user_nickname=" +user_nickname;			
+			
+			// 그 외 게시판에서 글을 삭제하는 경우
+			} else {
+				
+				result = "redirect:/board/oraclelist";
+				
+			}
+			
+			return result;
+			
 
 		}
+		
+		
+		
+		
 	
 	
 	/* --------------------------------
 				07. SPRING
-	-------------------------------- */
-	
-	/* --------------------------------
-			03. JAVASCRIPT
 	-------------------------------- */
 	
 

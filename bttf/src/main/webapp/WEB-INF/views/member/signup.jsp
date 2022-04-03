@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 
-<html lang="ko" class="no-js">
+<html lang="ko" class="no-js bg_color">
 <!-- BEGIN HEAD -->
 
 <head>
@@ -112,8 +112,8 @@
                                 	</div>
                                 </div>
                                 <div class="col-auto">
-                                    <label for="user_phone">전화번호</label>
-                                    <input  id="user_phone" name="user_phone" class="form-control margin-b-50" type="text" placeholder="전화번호">
+                                    <label for="user_phone">휴대폰번호</label>
+                                    <input  id="user_phone" name="user_phone" class="form-control margin-b-50" type="text" oninput="autoHyphen(this)" maxlength="13" placeholder="휴대폰번호">
                                 </div>
                                 <div class="col-auto">
                                     <label class="form-label" for="main_language">관심언어</label>
@@ -196,42 +196,55 @@
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
    
    
-</body>
-<!-- END BODY -->
 	<script type="text/javascript">
-		function fn_emailcheck(){
-			$.ajax({
-				url : "/member/emailcheck",
-				type : "post",
-				dataType : "json",
-				data : {"user_email" : $("#user_email").val()},
-				success : function(data){
-					if(data == 1){
-						alert("중복된 아이디입니다.");
-					}else if(data == 0){
-						$("#emailcheck").attr("value", "Y");
-						alert("사용가능한 아이디입니다.");
-					}
-				}
-			})
-		}
 		
-		function fn_nickcheck(){
-			$.ajax({
-				url : "/member/nickcheck",
-				type : "post",
-				dataType : "json",
-				data : {"user_nickname" : $("#user_nickname").val()},
-				success : function(data){
-					if(data == 1){
-						alert("중복된 닉네임입니다.");
-					}else if(data == 0){
-						$("#nickcheck").attr("value", "Y");
-						alert("사용가능한 닉네임입니다.");
-					}
-				}
-			})
+	const autoHyphen = (user_phone) => {
+			user_phone.value = user_phone.value
+			.replace(/[^0-9]/g, '')
+			.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
 		}
+	
+	function fn_emailcheck(){
+	var email = document.joinForm.user_email;
+		$.ajax({
+			url : "/member/emailcheck",
+			type : "post",
+			dataType : "json",
+			data : {"user_email" : $("#user_email").val()},
+			success : function(data){
+				if(data == 1){
+					alert("중복된 이메일입니다.");
+				}else if(data == 0 && email.value != ''){
+					$("#emailcheck").attr("value", "Y");
+					alert("사용가능한 이메일입니다.");
+				}else if(email.value == ''){
+					alert("이메일를 입력해주세요");
+				}
+			}
+		})
+	}
+		
+	function fn_nickcheck(){
+	var nickname = document.joinForm.user_nickname;
+		$.ajax({
+			url : "/member/nickcheck",
+			type : "post",
+			dataType : "json",
+			data : {"user_nickname" : $("#user_nickname").val()},
+			success : function(data){
+				if(data == 1){
+					alert("중복된 닉네임입니다.");
+				}else if(data == 0 && nickname.value != ''){
+					$("#nickcheck").attr("value", "Y");
+					alert("사용가능한 닉네임입니다.");
+				}else if(nickname.value == ''){
+					alert("닉네임을 입력해주세요");
+				}
+			}
+		})
+	}
 		
 	</script>
+</body>
+<!-- END BODY -->
 </html>

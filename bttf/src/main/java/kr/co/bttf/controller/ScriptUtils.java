@@ -33,4 +33,12 @@ public class ScriptUtils {
 		out.println("<script>alert('" + alertText + "'); history.go(-1);</script>");
 		out.flush();
 	}
+	
+	public static void justMovePage(HttpServletResponse response, String nextPage)
+			throws IOException {
+		init(response);
+		PrintWriter out = response.getWriter();
+		out.println("<script>location.href='" + nextPage + "';</script> ");
+		out.flush();
+	}
 }

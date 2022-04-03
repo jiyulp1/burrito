@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 
 <html lang="ko" class="no-js">
@@ -116,9 +118,7 @@
                                                                     </p>
                                                                 </td>
                                                                 <td>
-                                                                    <p>
-                                                                        ${UserAll.user_regdate }
-                                                                    </p>
+                                                                	<fmt:formatDate value="${UserAll.user_regdate }" pattern="yyyy-MM-dd" /> 
                                                                 </td>
                                                                 <td>
                                                                     <a href="/admin/memberexpell?user_index=${UserAll.user_index }" class="btn btn-danger">차단하기</a>

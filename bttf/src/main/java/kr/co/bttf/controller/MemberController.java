@@ -1,5 +1,7 @@
 package kr.co.bttf.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.bttf.domain.BoardVO;
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
-import kr.co.bttf.domain.ReportVO;
 import kr.co.bttf.service.MemberService;
 
 @Controller
@@ -54,8 +56,9 @@ public class MemberController {
 	
 	// 회원 가입 post
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String postSignup(HttpServletResponse response, HttpServletRequest request,MemberVO vo) throws Exception {
+	public String postSignup(HttpServletResponse response, HttpServletRequest request, MemberVO vo) throws Exception {
 		logger.info("post signup");
+		response.setContentType("text/html;charset=utf-8");
 		int result = service.emailcheck(vo);
 		int result2 = service.nickcheck(vo);
 		try {
@@ -72,9 +75,6 @@ public class MemberController {
 		return "redirect:/";
 	}		
 	
-	
-	
-	
 	// 로그인  get
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public void getSignin() throws Exception {
@@ -83,68 +83,47 @@ public class MemberController {
 	
 	// 로그인 post
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public String postSignin(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+
+	public String postSignin(MemberVO vo, HttpServletResponse res, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		logger.info("post signin");
+		res.setContentType("text/html;charset=utf-8");
 		HttpSession session = req.getSession();  // 현재 세션 정보를 가져옴
-		
 		boolean loginSuccess = service.signin(req);
 		MemberVO loginInfo = service.signin(vo);  // MemverVO형 변수 login에 로그인 정보를 저장
 		
 		if(loginSuccess) {
 			session.setAttribute("member", loginInfo);  // member 세션에 로그인 정보를 부여
 
+			ScriptUtils.alertAndMovePage(res, loginInfo.getUser_nickname()+"님 환영합니다.", "http://localhost:9090");
 		}else {
 			session.setAttribute("member", null);
 	        rttr.addFlashAttribute("msg", false);
-	        return "redirect:/member/signin";
+	        ScriptUtils.alertAndMovePage(res, "입력하신 회원정보가 틀립니다. 다시 로그인 해주세요.", "http://localhost:9090/member/signin");
 		}
+
 		return "redirect:/";
 	}
 	
 	
-	// 작성자 신고 [update]
-	@RequestMapping(value = "/memberreport", method = RequestMethod.GET)
-	public String memreportcard(int user_index) throws Exception {
-		return "redirect:/member/memberreport";
+	
+	// 이용약관
+	@RequestMapping(value = "/termsOfUse", method = RequestMethod.GET)
+	public void termsOfUse() throws Exception{
+		
+	}
+	// 아이디 찾기
+	@RequestMapping(value = "/findid", method = RequestMethod.GET)
+	public void findid() throws Exception{
+		
 	}
 	
-	
-	@RequestMapping(value = "/memberreport", method = RequestMethod.POST)
-	public String memreportcard(@RequestParam("user_index") int user_index, int report_category_id) throws Exception {
-		
-		report_category_id = 0;		
-		
-		ReportVO memcategoryupdate = service.memcategoryselect(user_index);
-		
-		if(memcategoryupdate == null) {
-			service.insert_report_user(report_category_id, user_index);
-		}else if(memcategoryupdate.getUser_reportcnt() == 1) {
-			service.memcategory2(user_index);
-			service.memreportcnt(user_index);
-
-		}else{
-			service.memcategory3(user_index);
-			service.memreportcnt(user_index);
-
-		}
-		return "redirect:/";
-	}
-
-		
-		
-	
-	
-	
-	private int Integer(int report_category_id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	// 비밀번호 찾기
 	@RequestMapping(value = "/findpw", method = RequestMethod.GET)
 	public void findpw() throws Exception{
+		
 	}
-
+	
+	
 	@RequestMapping(value = "/findpw", method = RequestMethod.POST)
 	public void findpw(@ModelAttribute MemberVO member, HttpServletResponse response) throws Exception{
 		service.findpw(response, member);
@@ -152,18 +131,55 @@ public class MemberController {
 	
 	@RequestMapping(value = "/updatepw", method = RequestMethod.GET)
 	public void updatepw() throws Exception{
+		logger.info("GET updatepw");
+	}
+	
+	@RequestMapping(value = "/updatepw", method = RequestMethod.POST)
+	public void updatepw(HttpServletResponse response, MemberVO vo) throws Exception{
+		logger.info("post updatepw");
+		service.updatePw(response, vo);
+		System.out.println(vo.getUser_pw());
+		
 	}
 	
 	// 로그아웃
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
 	public String signout(HttpSession session) throws Exception {
-		logger.info("get logout");
-		
 		service.signout(session);
-				
+		
 		return "redirect:/";
 	}
 	
+	//마이페이지 이동
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public void mypageModify(@RequestParam("user_index") int user_index, @RequestParam("user_nickname") String user_nickname, Model model) throws Exception {
+		
+		//작성한 글 수
+		int mypostcnt = service.mypostcnt(user_index);
+		model.addAttribute("mypostcnt", mypostcnt);
+		
+		//작성한 댓글 수
+		int myreplycnt = service.myreplycnt(user_nickname);
+		model.addAttribute("myreplycnt", myreplycnt);
+		
+		//받은 추천 수
+		
+		//북마크한 글 list
+		
+		//내가 작성한 글 list
+		List<BoardVO> mypostlist = service.mypostlist(user_index);
+		model.addAttribute("mypostlist", mypostlist);
+	}
+	
+	
+	// 마이페이지 - 수정하기
+	@RequestMapping(value = "/mypage_edit", method = RequestMethod.GET)
+	public void mypage_view(@RequestParam("user_index") int user_index, Model model) throws Exception{
+		
+		MemberVO member = service.mypage_view(user_index);
+		model.addAttribute("member", member);
+		
+	}
 	
 		
 }

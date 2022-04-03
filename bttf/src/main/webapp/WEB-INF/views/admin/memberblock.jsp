@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 
 <html lang="ko" class="no-js">
@@ -70,8 +72,8 @@
 
         <!--========== PAGE LAYOUT ==========-->
         <!-- Service -->
-        <div class="bg-color-sky-light" data-auto-height="true">
-            <div class="content-lg container" style="margin-top : 50px;">
+        <div class="bg-color-sky-light fixed_container" data-auto-height="true">
+            <div class="content-lg container" style="margin-top : 50px;" >
                 <h1 class="pt-4">
                     <i class="fas fa-user-circle title_subject_icon"></i>
                     	관리자 - 차단된 회원
@@ -85,10 +87,10 @@
                         <table id="foo-table" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>회원이름</th>
-                                    <th>휴대폰번호</th>
-                                    <th>가입일자</th>
-                                    <th>계정관리</th>
+                                    <th style="width: 30%;">회원이름</th>
+                                    <th style="width: 20%;">휴대폰번호</th>
+                                    <th style="width: 30%;">가입일자</th>
+                                    <th style="width: 20%;">계정관리</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -108,16 +110,12 @@
                                             </td>
                                             <td>
                                                 <p>
-                                                    ${userBlockedList.user_regdate }
+                                                	<fmt:formatDate value="${userBlockedList.user_regdate }" pattern="yyyy-MM-dd" />
                                                 </p>
                                             </td>
-                                            <td>
-                                            	<a href="/admin/memberundo?user_index=${userBlockedList.user_index }" class="btn btn-warning mt-4" id="boardreport" type="submit" style="float: right;">신고해제</a>
-<!--                                                 <input type="button" class="btn btn-info" value="신고해제" onclick="/admin/memberundo"> -->
-                                            </td>
-                                            <td>
-                                            	<a href="/admin/memberexpell?user_index=${userBlockedList.user_index }" class="btn btn-warning mt-4" id="boardreport" type="submit" style="float: right;">회원퇴출</a>
-<!--                                                 <input type="button" class="btn btn-danger" value="회원퇴출" onclick="/admin/memberexpell"> -->
+                                            <td class="text-left">
+                                            	<a href="/admin/memberundo?user_index=${userBlockedList.user_index }" class="btn btn-warning ml-3" id="boardreport" type="submit"">신고해제</a>
+                                            	<a href="/admin/memberexpell?user_index=${userBlockedList.user_index }" class="btn btn-warning " id="boardreport" type="submit" >회원퇴출</a>
                                             </td>
                                         </tr>
                                     </c:forEach>

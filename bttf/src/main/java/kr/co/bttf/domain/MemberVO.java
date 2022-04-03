@@ -1,5 +1,7 @@
 package kr.co.bttf.domain;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +16,7 @@ public class MemberVO {
 	private String user_phone;
 	private String main_language;
 	private int avaliability_category_id;
-	private String user_regdate;
+	private Date user_regdate;
 	private String authority_name;
 	private int authority_code;
 	

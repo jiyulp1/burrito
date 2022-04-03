@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html>
 
-<html lang="ko" class="no-js">
+<html lang="ko" class="no-js bg_color">
 <!-- BEGIN HEAD -->
 
 <head>
@@ -34,7 +37,9 @@
 
     <!-- custom -->
     <link rel="stylesheet" href="../../resource/css/custom.css">
-
+	
+	<!-- datatable  -->
+	<link href="../../../resources/vendor/DataTables/datatables.css" >
 </head>
 <!-- END HEAD -->
 
@@ -53,94 +58,51 @@
    
 
     <!-- notice -->
-    <div class="bg-color-sky-light fixed_container">
+    <div class="bg-color-sky-light fixed_container" style="min-height: 100vh;">
         <div class="content-lg container" style="margin-top : 50px;">
             <!-- notice -->
             <h2>SPRING QnA</h2>
-            <div class="search_box">
-                <select class="selectpicker">
-                    <option value="all">전체</option>
-                	<option value="subject">제목</option> 
-                    <option value="author">작성자</option>
-                    <option value="hashtag">해시태그</option>
-                </select>
-                <form  novalidate required class="form-inline">
-                    <input class="search_input" type="text" name="search">
-                    <input class="btn btn-primary" type="button" value="검색">
-                </form>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <th>제목</th>
-                        <th>추천수</th>
-                        <th>작성자</th>
-                        <th>작성일자</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>asdasd</td>
-                            <td>11</td>
-                            <td>view1</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>asddfgdgf</td>
-                            <td>222</td>
-                            <td>view2</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>view3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <form>
+	            <div class="table-responsive">
+	                <table id="foo-table" class="table table-striped" data-order='[[ 1, "desc" ]]'>
+	                    <thead>
+	                    	<tr>
+		                        <th style="width: 10%;">번호</th>
+		                        <th style="width: 50%;">제목</th>
+		                        <th style="width: 10%;">작성자</th>
+		                        <th style="width: 10%;">조회수</th>
+		                        <th style="width: 20%;">날짜</th>
+	                    	</tr>
+	                    </thead>
+	                    <tbody>
+		                    <c:choose>
+		                    	<c:when test = "${announcements != null and fn:length(announcements) > 0 }">
+		                    		<c:forEach var="announcmentList" items="${announcements}">
+				                        <tr>
+				                            <td>${announcmentList.post_id }</td>
+				                            <td>
+				                            <a href="/admin/annview?post_id=${announcmentList.post_id }">${announcmentList.post_subject }</a>
+				                            </td>
+				                            <td>${announcmentList.user_nickname }</td>
+				                            <td>${announcmentList.post_vcount }</td>
+				                            <td><fmt:formatDate value="${announcmentList.post_regdate}" pattern="yyyy-MM-dd" /></td>
+				                        </tr>
+		                        	</c:forEach>
+		                        </c:when>
+		                        <c:otherwise>
+		                        	<tr>
+		                        		<td colspan="5" class="text-center">등록된 공지사항이 없습니다 </td>
+		                        	</tr>
+		                        </c:otherwise>
+		                    </c:choose>
+	                    </tbody>
+	                </table>
+	            </div>
+	            <!-- End notice -->
+	            <c:if test="${member!= null && member.authority_name == 'admin'}">
+	           		<a href="/admin/annwrite" class="btn btn-primary" type="submit">글 작성</a>
+	            </c:if>
+            </form>
             <!-- End notice -->
             <button class="btn btn-primary" type="submit">글쓰기</button>
         </div>
@@ -183,6 +145,20 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
+    
+    <!-- datatables -->
+	<script type="text/javascript" src="../../../resources/vendor/DataTables/datatables.js"></script>
+	<script type="text/javascript" src="../../../resources/vendor/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.js"></script>
+ 	<script type="text/javascript"> 
+	 	$(document).ready(function() {
+	 	    $('#foo-table').DataTable( {
+	 	    	bInfo : false,
+	 	       	bSortable : false,
+	 	       	bPaginate : true,
+	 	        displayLength : 10
+	 	    } );
+	 	} );	
+ 	</script>  
 </body>
 <!-- END BODY -->
 

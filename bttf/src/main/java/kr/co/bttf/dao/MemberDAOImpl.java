@@ -1,12 +1,16 @@
 package kr.co.bttf.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import kr.co.bttf.domain.BoardVO;
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.ReportVO;
@@ -53,8 +57,8 @@ public class MemberDAOImpl implements MemberDAO {
 	}	
 
 	@Override
-	public MemberVO readMember(String user_email) {
-		return sql.selectOne(namespace + ".readMember", user_email);
+	public MemberVO readMember(HashMap<String, String> map) {
+		return sql.selectOne(namespace + ".readMember", map);
 	}
 
 	@Override
@@ -67,21 +71,20 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public void updatePw(MemberVO vo) {
+	public void temporaryPw(MemberVO vo) {
+		sql.update(namespace + ".temporaryPw", vo);
+	}
+	
+	@Override
+	public String pwCheck(String user_pw) {
+		return sql.selectOne(namespace + ".readPw", user_pw);
+	}
+	
+	@Override
+	public void updatePw(HttpServletResponse response, MemberVO vo) {
 		sql.update(namespace + ".updatePw", vo);
 	}
 
-	@Override
-	public void memreportcnt( int user_index) throws Exception {
-		sql.update(namespace + ".memreportcnt", user_index);
-
-	}
-
-	@Override
-	public ReportVO memcategoryselect(int user_index) throws Exception {
-
-		return sql.selectOne(namespace + ".memcategoryselect", user_index);
-	}
 
 	@Override
 	public void memcategory2(int user_index) throws Exception {
@@ -89,17 +92,70 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	}
 
-	@Override
-	public void memcategory3(int user_index) throws Exception {
-		sql.update(namespace + ".memcategory3", user_index);
-		
-	}
 	
 	@Override
-	public void insert_report_user(HashMap<String, Integer> map) throws Exception {
+	public void memberreport(HashMap<String, Integer> map) throws Exception {
 		
-		sql.insert(namespace + ".insert_report_user", map);
+		sql.insert(namespace + ".memberreport", map);
 		
 	}
+
+	@Override
+	public int reportSuccess(HashMap<String, Integer> map) {
+		int result = sql.selectOne(namespace + ".reportSuccess",map);
+		
+		return result;
+	}
+	
+		@Override
+	public int mypostcnt(int user_index) throws Exception {
+
+		return sql.selectOne(namespace + ".mypostcnt", user_index);
+		
+	}
+
+	@Override
+	public int myreplycnt(String user_nickname) throws Exception {
+		
+		return sql.selectOne(namespace + ".myreplycnt", user_nickname);
+		
+	}
+
+	@Override
+	public List<BoardVO> mypostlist(int user_index) throws Exception{
+		
+		// 전체 게시글 목록
+		List<BoardVO> mypostlist = new ArrayList<BoardVO>();
+
+		// 각각의 게시글 목록
+		List<BoardVO> eachlist = new ArrayList<BoardVO>();			
+		
+		
+		for (int i = 0; i < 7; i++) {
+			eachlist = sql.selectList(namespace + ".mypostlist"+i, user_index );
+			
+			if(eachlist==null) {
+				continue;				
+			}
+			
+			for(int j = 0; j<eachlist.size(); j++) {
+				
+				BoardVO board = eachlist.get(j);
+								
+				mypostlist.add(board);
+			}
+		}
+		
+
+		
+		return mypostlist;
+	}
+
+	@Override
+	public MemberVO mypage_view(int user_index) {
+		
+		return sql.selectOne(namespace + ".mypage_view", user_index);
+	}
+	
 
 }

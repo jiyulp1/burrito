@@ -1,7 +1,11 @@
 package kr.co.bttf.service;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.bttf.controller.ScriptUtils;
 import kr.co.bttf.dao.MemberDAO;
+import kr.co.bttf.domain.BoardVO;
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.ReportVO;
@@ -63,6 +68,21 @@ public class MemberServiceImpl implements MemberService {
 		return loginSuccess;
 	}
 	
+	
+	@Override
+	public boolean reportSuccess(HashMap<String, Integer> map) {
+		boolean reportSuccess = false;
+		
+		 int Report = dao.reportSuccess(map);
+		
+		if(Report == 0) {
+			reportSuccess = true;
+		}
+		return reportSuccess;
+	}
+	
+	
+	
 	// 로그아웃
 	@Override
 	public void signout(HttpSession session) throws Exception {
@@ -107,10 +127,10 @@ public class MemberServiceImpl implements MemberService {
 			msg += vo.getUser_email() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
 			msg += "<p>임시 비밀번호 : ";
 			msg += vo.getUser_pw() + "</p></div>";
-			msg +="<p>하단 비밀번호 번경 버튼을 클릭하여 비밀번호 변경을 진행해주세요.</p>";
+			msg +="<p>하단 링크를 클릭하여 로그인 후 마이페이지에서 비밀번호 변경을 진행해주세요.</p>";
 			msg +="</div>";
 			msg +="<div>";
-			msg +="<a class='btn btn-primary' href='http://localhost:9090/member/updatepw'> 비밀번호 변경 </a>";
+			msg +="<a class='btn btn-primary' href='http://localhost:9090/member/signin'> 로그인 페이지로 이동 </a>";
 			msg +="</div>";
 			msg +="</div>";
 			msg +="</div>";
@@ -142,49 +162,46 @@ public class MemberServiceImpl implements MemberService {
 			System.out.println("메일발송 실패 : " + e);
 		}
 	}
-
+	
 	//비밀번호찾기
 	@Override
 	public void findpw(HttpServletResponse response, MemberVO vo) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
-		MemberVO ck = dao.readMember(vo.getUser_email());
+		HashMap<String, String>map = new HashMap<String, String>();
+		map.put("user_email", vo.getUser_email());
+		map.put("user_phone", vo.getUser_phone());
+		
+		MemberVO ck = dao.readMember(map);
 		PrintWriter out = response.getWriter();
-		// 가입된 이메일이 아니면
-		if(ck.getUser_email() == null) {
-			ScriptUtils.alertAndBackPage(response, "등록되지 않은 이메일입니다");
-			
-			out.close();
-		}else if(!vo.getUser_email().equals(ck.getUser_email())) {
-			ScriptUtils.alertAndBackPage(response, "등록되지 않은 이메일입니다");
-			out.close();
-		}else {
-			// 임시 비밀번호 생성
-			String pw = "";
-			for (int i = 0; i < 15; i++) {
-				pw += (char) ((Math.random() * 26) + 97);
+		// ck.getUser_email이 null이 찍혀서 NullPointerException이 떴다. 그래서 일단 try~catch로 임시방편으로 해결해논 상황이다.
+		try {
+			// 가입된 이메일이 아니면
+//			if(ck.getUser_email() == null) {
+//				ScriptUtils.alertAndBackPage(response, "등록되지 않은 이메일입니다");
+//				
+//				out.close();
+			if(!vo.getUser_email().equals(ck.getUser_email())) {
+				ScriptUtils.alertAndBackPage(response, "등록되지 않은 이메일입니다");
+				out.close();
+			}else {
+				// 임시 비밀번호 생성
+				String pw = "";
+				for (int i = 0; i < 15; i++) {
+					pw += (char) ((Math.random() * 26) + 97);
+				}
+				vo.setUser_pw(pw);
+				// 비밀번호 변경
+				dao.temporaryPw(vo);
+				// 비밀번호 변경 메일 발송
+				sendemail(vo, "findpw");
+				ScriptUtils.alertAndMovePage(response, "입력하신 이메일로 임시 비밀번호를 발송했습니다", "/");
 			}
-			vo.setUser_pw(pw);
-			// 비밀번호 변경
-			dao.updatePw(vo);
-			// 비밀번호 변경 메일 발송
-			sendemail(vo, "findpw");
-
-			ScriptUtils.alertAndMovePage(response, "입력하신 이메일로 임시 비밀번호를 발송했습니다", "/");
-		}
+			
+		} catch (NullPointerException e) {
+			ScriptUtils.alertAndBackPage(response, "입력하신 회원정보로 가입된 계정이 없습니다.");
+		} 
 	}
 
-	@Override
-	public void  memreportcnt( int user_index) throws Exception {
-			dao.memreportcnt(user_index);
-		
-		
-	}
-
-	@Override
-	public ReportVO memcategoryselect(int user_index) throws Exception {
-		
-		return dao.memcategoryselect(user_index);
-	}
 
 	@Override
 	public void memcategory2(int user_index) throws Exception {
@@ -192,20 +209,56 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+
 	@Override
-	public void memcategory3(int user_index) throws Exception {
-		dao.memcategory3(user_index);
+	public void memberreport(HashMap<String, Integer> map) throws Exception {
+		
+		dao.memberreport(map);
 		
 	}
 
+
+	
+	
 	@Override
-	public void insert_report_user( int report_category_id, int user_index) throws Exception {
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("report_category_id",report_category_id);
-		map.put("user_index",user_index);
-		dao.insert_report_user(map);
+	public void updatePw(HttpServletResponse response, MemberVO vo) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		String pw = dao.pwCheck(vo.getUser_pw());
+		PrintWriter out = response.getWriter();
+		System.out.println(pw);
+		if(!vo.getUser_pw().equals(pw)) {
+			ScriptUtils.alertAndBackPage(response, "임시비밀번호가 틀립니다.");
+			out.close();
+		}else {
+			dao.updatePw(response, vo);
+			ScriptUtils.alertAndMovePage(response, "비밀번호가 성공적으로 변경되었습니다.", "/");
+		}
+	} 
+	
+	@Override
+	public int mypostcnt(int user_index) throws Exception {
 		
+		return dao.mypostcnt(user_index);
 	}
+	
+	@Override
+	public int myreplycnt(String user_nickname) throws Exception {
+		
+		return dao.myreplycnt(user_nickname);
+	}
+	
+	@Override
+	public List<BoardVO> mypostlist(int user_index) throws Exception {
+		
+		return dao.mypostlist(user_index) ;
+	}
+	
+	@Override
+	public MemberVO mypage_view(int user_index) {
+
+		return dao.mypage_view(user_index);
+	}
+	
 
 	
 } 
