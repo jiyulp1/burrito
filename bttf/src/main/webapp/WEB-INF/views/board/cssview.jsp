@@ -107,11 +107,12 @@
                             </form>
 							
            					<!-- 댓글 작성 -->
-           					<div class="card" id="result">
+           					<div class="card" id="result ">
 	                            <div class="card-body">
 	                                <!-- Comment form-->
 	                                <form name="replyForm" method="post" class="mb-4 d-flex">
-	                                	<textarea class="form-control mr-5" rows="2" placeholder="댓글을 작성하세요"></textarea><a href="/reply/cssReplyList" class="btn btn-primary" style="height:44px; line-height:32px;">작성하기</a>
+	                                	<textarea id="replytext" class="form-control mr-5" rows="2" placeholder="댓글을 작성하세요"></textarea>
+	                                	<a href="/reply/cssReplyWrite" id="btnReply" class="btn btn-primary" style="height:44px; line-height:32px;">작성하기</a>
 	                                </form>
 	                                <!-- Comment with nested comments-->
 	                                <div class="d-flex mb-4 mt-10">
@@ -123,7 +124,7 @@
 	                                        <div class="fw-bold">
 			                                    <h3>Commenter Name</h3>
 	                                        	<div style=" clear: both; float: right; position: relative; top: 0; left: 4px;">
-		                                        	<a href="/reply/cssReplyModify" class="btn btn-info btn-sm">수정</a>
+		                                        	<a href="/reply/cssReplyModify" id="btnUpdate" class="btn btn-info btn-sm">수정</a>
 		                                        	<a href="/reply/cssReplyDelete" class="btn btn-danger btn-sm">삭제</a>
 	                                        	</div>
 	                                        </div>
