@@ -240,7 +240,7 @@ public class BoardController {
 					
 					if(reportSuccess ) {
 						memberService.memberreport(map);						
-						cssService.category2(post_id);
+						cssService.csscategory2(post_id);
 						memberService.memcategory2(user_index);
 						ScriptUtils.alertAndMovePage(response, "신고가 접수되었습니다. 메인화면으로 이동합니다.","http://localhost:9090/");
 					}else {

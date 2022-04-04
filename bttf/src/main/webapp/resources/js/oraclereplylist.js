@@ -7,9 +7,9 @@ $(document).ready(function(){
 	oracleReplyList("1");
 	//oracleReplyList("2");
 	$("#btnReply").click(function(){
-		var replytext = $("#replytext").val();
+		var reply_contents = $("#reply_contents").val();
 		var post_id="${oracleview.post_id}"
-		var param="replytext="+replytext+"&post_id="+post_id;
+		var param="reply_contents="+reply_contents+"&post_id="+post_id;
 		$.ajax({
 			type: "post",
 			url: "${path}/reply/oracleReplyWrite",

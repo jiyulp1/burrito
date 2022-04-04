@@ -43,7 +43,7 @@
 	
 	<sql id="pagingFooter">
 			)A
-		) where rn between #{start} and #{end}
+		) where rn limit #{end} offset #{start}
 	</sql>
 	
 	
@@ -52,7 +52,9 @@
 		<include refid="pagingHeader"/>
 	 		select *
 			from reply_oracle ro, user_all 
-			where ro.user_nickname = m.user_nickname and post_id = #{post_id} and avaliability_category_id = 1
+			where ro.user_nickname = m.user_nickname and 
+			post_id = #{post_id} and 
+			avaliability_category_id = 1
 			order by reply_id
 		<include refid="pagingFooter"/>
 		
