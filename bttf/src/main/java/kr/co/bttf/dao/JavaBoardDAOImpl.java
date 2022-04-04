@@ -49,7 +49,7 @@ public class JavaBoardDAOImpl implements JavaBoardDAO {
 
 	@Override
 	public void javacategory2(int post_id) throws Exception {
-		sql.update(namespace + ".category2", post_id);
+		sql.update(namespace + ".javacategory2", post_id);
 		
 	}
 }

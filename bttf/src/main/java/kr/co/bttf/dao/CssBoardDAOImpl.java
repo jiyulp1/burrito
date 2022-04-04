@@ -49,7 +49,7 @@ public class CssBoardDAOImpl implements CssBoardDAO {
 
 	@Override
 	public void csscategory2(int post_id) throws Exception {
-		sql.update(namespace + ".category2", post_id);
+		sql.update(namespace + ".csscategory2", post_id);
 		
 	}
 }

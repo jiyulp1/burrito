@@ -53,7 +53,7 @@ public class OracleBoardDAOImpl implements OracleBoardDAO {
 
 	@Override
 	public void oraclecategory2(int post_id) throws Exception {
-		sql.update(namespace + ".category2", post_id);
+		sql.update(namespace + ".oraclecategory2", post_id);
 		
 	}
 	
