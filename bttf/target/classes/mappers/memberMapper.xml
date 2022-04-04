@@ -42,7 +42,7 @@
 	</select>
 
 	<select id="readMember" resultType="kr.co.bttf.domain.MemberVO">
-		select * from user_all where user_email = #{user_email}
+		select * from user_all where user_email = #{user_email} and user_phone = #{user_phone}
 	</select>
 	
 	<select id="idCheck" resultType="_int">
