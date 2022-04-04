@@ -55,9 +55,10 @@ public class CssBoardServiceImpl implements CssBoardService {
 		dao.cssDelete(post_id);
 	}
 
+	// 게시글 신고(가용성 카테고리 변경)
 	@Override
-	public void category2(int post_id) throws Exception {
-		dao.category2(post_id);
+	public void csscategory2(int post_id) throws Exception {
+		dao.csscategory2(post_id);
 		
 	}
 

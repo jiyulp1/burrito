@@ -24,4 +24,8 @@ public interface OracleBoardService {
 	// 게시글 삭제
 	public void oracleDelete(int post_id) throws Exception;
 	
+	// 게시글 신고(가용성 카테고리 변경)
+	public void oraclecategory2(int post_id) throws Exception;
+
+
 }

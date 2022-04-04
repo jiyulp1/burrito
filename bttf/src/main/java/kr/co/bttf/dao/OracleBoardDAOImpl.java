@@ -49,6 +49,13 @@ public class OracleBoardDAOImpl implements OracleBoardDAO {
 	public void oracleDelete(int post_id) throws Exception {
 		sql.delete(namespace + ".oracledelete", post_id);
 	}
+
+
+	@Override
+	public void oraclecategory2(int post_id) throws Exception {
+		sql.update(namespace + ".category2", post_id);
+		
+	}
 	
 	
 	
