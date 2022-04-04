@@ -10,6 +10,48 @@
 			01. HTML
 ========================================
  -->
+ 	<!-- 2-1. 게시물 목록 -->
+	<select id="htmllist" resultType="kr.co.bttf.domain.HtmlBoardVO">
+		select * from html
+	</select>
+	
+	
+	<!-- 2-2. 게시물 작성 -->
+	<insert id="htmlwrite" parameterType="kr.co.bttf.domain.HtmlBoardVO">
+		insert into html (post_subject, post_contents, user_nickname, user_index)
+		values(#{post_subject}, #{post_contents}, #{user_nickname},#{user_index})
+	</insert>
+	
+	
+	<!-- 2-3. 게시물 조회 -->
+	<select id="htmlview" parameterType="_int" resultType="kr.co.bttf.domain.HtmlBoardVO">
+		select * from html
+		where post_id = #{post_id}
+	</select>
+
+	<!-- 2-3-1. 조회수 갱신 -->
+	<update id="htmlvcnt" parameterType="_int">
+			update html set post_vcount = post_vcount + 1 where post_id = #{post_id}
+	</update>		
+	
+	<!-- 2-4. 게시물 수정 -->
+	<update id="htmledit" parameterType="kr.co.bttf.domain.HtmlBoardVO">
+		update html set
+		post_subject = #{post_subject}, post_contents = #{post_contents}
+		where post_id = #{post_id}
+	</update>
+	
+	<!-- 2-5. 게시물 삭제 -->
+	<delete id="htmldelete" parameterType="int">
+		delete from html
+		where post_id = #{post_id}
+	</delete>
+
+	<!-- 2-6. 가용성 카테고리 수정 -->
+	
+	<update id="category2" parameterType="_int">
+		update html set avaliability_category_id = 2 where post_id = #{post_id}
+	</update>
 
 	
 <!-- 
@@ -100,6 +142,50 @@
 	<!-- 3-5. 게시물 삭제 -->
 	<delete id="jsdelete" parameterType="int">
 		delete from javascript
+		where post_id = #{post_id}
+	</delete>
+	
+	
+<!-- 
+========================================
+			04. JSP
+========================================
+ -->
+	<!-- 3-1. 게시물 목록 -->
+	<select id="jsplist" resultType="kr.co.bttf.domain.JspBoardVO">
+		select * from jsp
+	</select>
+	
+	
+	<!-- 3-2. 게시물 작성 -->
+	<insert id="jspwrite" parameterType="kr.co.bttf.domain.JspBoardVO">
+		insert into jsp (post_subject, post_contents, user_nickname)
+		values(#{post_subject}, #{post_contents}, #{user_nickname})
+	</insert>
+	
+	
+	<!-- 3-3. 게시물 조회 -->
+	<select id="jspview" parameterType="int" resultType="kr.co.bttf.domain.JspBoardVO">
+		select * from jsp
+		where post_id = #{post_id}
+	</select>
+
+	<!-- 3-3-1. 조회수 갱신 -->
+	<update id="jsptvcnt">
+			update jsp set post_vcount = post_vcount + 1 where post_id = #{post_id}
+	</update>	
+	
+	<!-- 3-4. 게시물 수정 -->
+	<update id="jspmodify" parameterType="kr.co.bttf.domain.JspBoardVO">
+		update jsp set
+		post_subject = #{post_subject}, post_contents = #{post_contents}, user_nickname = #{user_nickname}
+		where post_id = #{post_id}
+	</update>
+	
+	
+	<!-- 3-5. 게시물 삭제 -->
+	<delete id="jspdelete" parameterType="int">
+		delete from jsp
 		where post_id = #{post_id}
 	</delete>
 	
