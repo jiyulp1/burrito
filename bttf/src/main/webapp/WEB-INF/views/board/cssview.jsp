@@ -172,7 +172,10 @@
 	                                    </div>
 	                                    <div class="ms-3" style="width : 100%;">
 	                                        <div class="fw-bold">
-	                                        	<h3>Commenter Name</h3>
+	                                        <div class="d-flex">
+	                                        	<h3>Commenter Name</h3> 
+	                                        	<p style=" transform: translate(16%,20%); ">jiyulpjava</p>
+	                                        </div>
 	                                        	<div style=" clear: both; float: right; position: relative; top: 0; left: 4px;">
 		                                        	<a href="#" class="btn btn-info btn-sm">수정</a>
 		                                        	<a href="#" class="btn btn-danger btn-sm">삭제</a>

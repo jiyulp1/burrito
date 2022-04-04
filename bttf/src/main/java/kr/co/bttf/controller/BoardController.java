@@ -367,7 +367,7 @@ public class BoardController {
 			
 			OracleBoardVO vo = oracleService.oracleView(post_id);
 			model.addAttribute("oracleview", vo);
-			
+			<c:out value=${}>
 		}
 		
 		// 6-4. 게시물 수정 페이지 이동
