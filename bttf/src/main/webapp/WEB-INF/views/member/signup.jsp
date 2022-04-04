@@ -118,7 +118,7 @@
                                 <div class="col-auto">
                                     <label class="form-label" for="main_language">관심언어</label>
                                     <select class="form-control" name="main_language" id="pref">
-                                        <option value="JAVA">관심언어를 선택해주세요.</option>
+                                        <option value="deefault">관심언어를 선택해주세요.</option>
                                         <option value="JAVA">JAVA</option>
                                         <option value="JSP">JSP</option>
                                         <option value="SPRING">SPRING</option>
