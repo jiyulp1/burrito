@@ -49,7 +49,7 @@
 
 	<!-- 1-6. 가용성 카테고리 수정 -->
 	
-	<update id="category2" parameterType="_int">
+	<update id="htmlcategory2" parameterType="_int">
 		update html set avaliability_category_id = 2 where post_id = #{post_id}
 	</update>
 
@@ -97,8 +97,7 @@
 	</delete>
 
 	<!-- 2-6. 가용성 카테고리 수정 -->
-	
-	<update id="category2" parameterType="_int">
+	<update id="csscategory2" parameterType="_int">
 		update css set avaliability_category_id = 2 where post_id = #{post_id}
 	</update>
 	
@@ -145,6 +144,13 @@
 		where post_id = #{post_id}
 	</delete>
 	
+	
+	<!-- 3-6. 가용성 카테고리 수정 -->
+	<update id="javascriptcategory2" parameterType="_int">
+		update javascript set avaliability_category_id = 2 where post_id = #{post_id}
+	</update>
+	
+	
 <!-- 
 ========================================
 			04. JSP
@@ -189,36 +195,42 @@
 	</delete>
 	
 	
+	<!-- 4-6. 가용성 카테고리 수정 -->
+	<update id="jspcategory2" parameterType="_int">
+		update jsp set avaliability_category_id = 2 where post_id = #{post_id}
+	</update>
+	
+	
 <!-- 
 ========================================
 			05. JAVA
 ========================================
  -->
-	<!-- 4-1. 게시물 목록 -->
+	<!-- 5-1. 게시물 목록 -->
 	<select id="javalist" resultType="kr.co.bttf.domain.JavaBoardVO">
 		select * from java
 	</select>
 	
 	
-	<!-- 4-2. 게시물 작성 -->
+	<!-- 5-2. 게시물 작성 -->
 	<insert id="javawrite" parameterType="kr.co.bttf.domain.JavaBoardVO">
 		insert into java (post_subject, post_contents, user_nickname)
 		values(#{post_subject}, #{post_contents}, #{user_nickname})
 	</insert>
 	
 	
-	<!-- 4-3. 게시물 조회 -->
+	<!-- 5-3. 게시물 조회 -->
 	<select id="javaview" parameterType="int" resultType="kr.co.bttf.domain.JavaBoardVO">
 		select * from java
 		where post_id = #{post_id}
 	</select>
 
-	<!-- 4-3-1. 조회수 갱신 -->
+	<!-- 5-3-1. 조회수 갱신 -->
 	<update id="javavcnt">
 			update java set post_vcount = post_vcount + 1 where post_id = #{post_id}
 	</update>	
 	
-	<!-- 4-4. 게시물 수정 -->
+	<!-- 5-4. 게시물 수정 -->
 	<update id="javamodify" parameterType="kr.co.bttf.domain.JavaBoardVO">
 		update java set
 		post_subject = #{post_subject}, post_contents = #{post_contents}, user_nickname = #{user_nickname}
@@ -226,12 +238,17 @@
 	</update>
 	
 	
-	<!-- 4-5. 게시물 삭제 -->
+	<!-- 5-5. 게시물 삭제 -->
 	<delete id="javadelete" parameterType="int">
 		delete from java
 		where post_id = #{post_id}
 	</delete>
 	
+	
+	<!-- 5-6. 가용성 카테고리 수정 -->
+	<update id="javacategory2" parameterType="_int">
+		update java set avaliability_category_id = 2 where post_id = #{post_id}
+	</update>
 
 <!-- 
 ========================================
@@ -278,7 +295,11 @@
 		where post_id = #{post_id}
 	</delete>
 
-	
+
+	<!-- 6-6. 가용성 카테고리 수정 -->
+	<update id="oraclecategory2" parameterType="_int">
+		update oracle set avaliability_category_id = 2 where post_id = #{post_id}
+	</update>
 
 <!-- 
 ========================================
@@ -326,6 +347,10 @@
 	</delete>
 
 
+	<!-- 7-6. 가용성 카테고리 수정 -->
+	<update id="springcategory2" parameterType="_int">
+		update spring set avaliability_category_id = 2 where post_id = #{post_id}
+	</update>
 
 
 

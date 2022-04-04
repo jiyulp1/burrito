@@ -48,7 +48,6 @@
 	</delete>
 
 	<!-- 1-6. 가용성 카테고리 수정 -->
-	
 	<update id="htmlcategory2" parameterType="_int">
 		update html set avaliability_category_id = 2 where post_id = #{post_id}
 	</update>
@@ -175,12 +174,12 @@
 		where post_id = #{post_id}
 	</select>
 
-	<!-- 4-3-1. 조회수 갱신 -->
-	<update id="javascriptvcnt">
+	<!-- 3-3-1. 조회수 갱신 -->
+	<update id="jsptvcnt">
 			update jsp set post_vcount = post_vcount + 1 where post_id = #{post_id}
 	</update>	
 	
-	<!-- 43-4. 게시물 수정 -->
+	<!-- 3-4. 게시물 수정 -->
 	<update id="jspmodify" parameterType="kr.co.bttf.domain.JspBoardVO">
 		update jsp set
 		post_subject = #{post_subject}, post_contents = #{post_contents}, user_nickname = #{user_nickname}
