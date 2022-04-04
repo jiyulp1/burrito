@@ -1,9 +1,8 @@
 package kr.co.bttf.domain;
 
-import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter @Setter
 public class ReportVO {
 	
