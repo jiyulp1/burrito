@@ -49,7 +49,7 @@ public class HtmlBoardDAOImpl implements HtmlBoardDAO {
 
 	@Override
 	public void htmlcategory2(int post_id) throws Exception {
-		sql.update(namespace + ".category2", post_id);
+		sql.update(namespace + ".htmlcategory2", post_id);
 	}
 	
 }
