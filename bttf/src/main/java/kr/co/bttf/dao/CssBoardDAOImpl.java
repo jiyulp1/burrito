@@ -48,7 +48,7 @@ public class CssBoardDAOImpl implements CssBoardDAO {
 	}
 
 	@Override
-	public void category2(int post_id) throws Exception {
+	public void csscategory2(int post_id) throws Exception {
 		sql.update(namespace + ".category2", post_id);
 		
 	}
