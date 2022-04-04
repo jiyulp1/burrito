@@ -14,7 +14,7 @@ public class HtmlBoardDAOImpl implements HtmlBoardDAO {
 
 	@Inject
 	private SqlSession sql;
-	private static String namespace = "kr.co.bttf.mappers.boardMapper";
+	private static String namespace = "kr.co.bttf.mappers.board";
 	
 	@Override
 	public List<HtmlBoardVO> htmlList() throws Exception {
@@ -23,12 +23,12 @@ public class HtmlBoardDAOImpl implements HtmlBoardDAO {
 	
 	@Override
 	public void htmlWrite(HtmlBoardVO vo) throws Exception {
-		sql.insert(namespace + ".htmlwrite", vo);
+		sql.insert(namespace + "htmlwrite", vo);
 	}
 	
 	@Override
 	public HtmlBoardVO htmlView(int post_id) throws Exception {
-		return sql.selectOne(namespace + ".htmlview", post_id);
+		return sql.selectOne(namespace + "htmlview", post_id);
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class HtmlBoardDAOImpl implements HtmlBoardDAO {
 
 	@Override
 	public void htmlcategory2(int post_id) throws Exception {
-		sql.update(namespace + ".htmlcategory2", post_id);
+		sql.update(namespace + ".category2", post_id);
 	}
 	
 }

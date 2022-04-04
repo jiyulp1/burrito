@@ -19,37 +19,33 @@
 	<!-- 1-2. 게시물 작성 -->
 	<insert id="htmlwrite" parameterType="kr.co.bttf.domain.HtmlBoardVO">
 		insert into html (post_subject, post_contents, user_nickname, user_index)
-		values(#{post_subject}, #{post_contents}, #{user_nickname}, #{user_index})
+		values(#{post_subject}, #{post_contents}, #{user_nickname},#{user_index})
 	</insert>
 	
 	
 	<!-- 1-3. 게시물 조회 -->
-	<select id="htmlview" parameterType="int" resultType="kr.co.bttf.domain.HtmlBoardVO">
+	<select id="htmlview" parameterType="_int" resultType="kr.co.bttf.domain.HtmlBoardVO">
 		select * from html
 		where post_id = #{post_id}
 	</select>
 
-
 	<!-- 1-3-1. 조회수 갱신 -->
-	<update id="htmlvcnt">
+	<update id="htmlvcnt" parameterType="_int">
 			update html set post_vcount = post_vcount + 1 where post_id = #{post_id}
-	</update>
-	
+	</update>		
 	
 	<!-- 1-4. 게시물 수정 -->
-	<update id="htmlmodify" parameterType="kr.co.bttf.domain.HtmlBoardVO">
+	<update id="htmledit" parameterType="kr.co.bttf.domain.HtmlBoardVO">
 		update html set
 		post_subject = #{post_subject}, post_contents = #{post_contents}
 		where post_id = #{post_id}
 	</update>
-	
 	
 	<!-- 1-5. 게시물 삭제 -->
 	<delete id="htmldelete" parameterType="int">
 		delete from html
 		where post_id = #{post_id}
 	</delete>
-
 
 	<!-- 1-6. 가용성 카테고리 수정 -->
 	<update id="htmlcategory2" parameterType="_int">
