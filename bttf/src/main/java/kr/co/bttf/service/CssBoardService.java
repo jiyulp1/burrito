@@ -24,7 +24,8 @@ public interface CssBoardService {
 	//게시물 삭제
 	public void cssDelete(int post_id) throws Exception;
 
-	public void category2(int post_id) throws Exception;
+	// 게시글 신고(가용성 카테고리 변경)
+	public void csscategory2(int post_id) throws Exception;
 
 	
 }

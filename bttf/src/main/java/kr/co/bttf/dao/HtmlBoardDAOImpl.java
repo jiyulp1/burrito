@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.HtmlBoardVO;
 
 @Repository
@@ -31,6 +30,12 @@ public class HtmlBoardDAOImpl implements HtmlBoardDAO {
 	public HtmlBoardVO htmlView(int post_id) throws Exception {
 		return sql.selectOne(namespace + "htmlview", post_id);
 	}
+
+	@Override
+	public int htmlvcnt(int post_id) throws Exception {
+		return sql.update(namespace + ".htmlvcnt", post_id);
+
+	}
 	
 	@Override
 	public void htmlModify(HtmlBoardVO vo) throws Exception {
@@ -40,6 +45,11 @@ public class HtmlBoardDAOImpl implements HtmlBoardDAO {
 	@Override
 	public void htmlDelete(int post_id) throws Exception {
 		sql.delete(namespace + ".htmldelete", post_id);
+	}
+
+	@Override
+	public void htmlcategory2(int post_id) throws Exception {
+		sql.update(namespace + ".category2", post_id);
 	}
 	
 }
