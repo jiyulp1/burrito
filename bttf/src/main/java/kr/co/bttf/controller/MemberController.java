@@ -47,7 +47,7 @@ public class MemberController {
 		public int nickcheck(MemberVO vo) throws Exception {
 			int result2 = service.nickcheck(vo);
 			return result2;
-		}
+	}
 		
 	// 회원 가입 get
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
