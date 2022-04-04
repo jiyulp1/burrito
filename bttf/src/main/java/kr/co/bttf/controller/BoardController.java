@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.HtmlBoardVO;
@@ -354,15 +355,19 @@ public class BoardController {
 		// 6-3. 게시물 상세보기 페이지 이동
 		
 		@RequestMapping(value = "/oracleview", method = RequestMethod.GET)
-		public void oracleView(@RequestParam("post_id") int post_id, Model model) throws Exception {
+		public void oracleView(@RequestParam("post_id") int post_id, Model model, @RequestParam(defaultValue="1") int curPage, ModelAndView mav, HttpSession session) throws Exception {
 			
 			// 상세보기 시 조회수 갱신
 			int oraclevcnt = 0;
 			oracleService.oraclevcnt(post_id);
 			model.addAttribute("oraclevcnt", oraclevcnt);
 			
-			// 상세보기 시 댓글 조회
-			List<OracleReplyVO> oraclereplylist = oracleReplyService.oracleReplyList(post_id);
+			// 상세보기 시 댓글 조회 및 댓글페이징
+			int count = oracleReplyService.oracleCount(post_id);
+			ReplyPager replyPager = new ReplyPager(count, curPage);
+			int start = replyPager.getPageBegin();
+			int end = replyPager.getPageEnd();
+			List<OracleReplyVO> oraclereplylist = oracleReplyService.oracleReplyList(post_id, start, end, session);
 			model.addAttribute("oraclereplylist", oraclereplylist);
 			
 			OracleBoardVO vo = oracleService.oracleView(post_id);
@@ -372,20 +377,20 @@ public class BoardController {
 		
 		// 6-4. 게시물 수정 페이지 이동
 		
-		@RequestMapping(value = "/oraclemodify", method = RequestMethod.GET)
-		public void oracleModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
-
-			OracleBoardVO vo = oracleService.oracleView(post_id);
-			model.addAttribute("oracleview", vo);
-		}
-		
-
-		@RequestMapping(value = "/oraclemodify", method = RequestMethod.POST)
-		public String oracleModify(OracleBoardVO vo) throws Exception {
-
-			oracleService.oracleModify(vo);
-			return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
-		}
+//		@RequestMapping(value = "/oraclemodify", method = RequestMethod.GET)
+//		public void oracleModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
+//
+//			OracleBoardVO vo = oracleService.oracleView(post_id);
+//			model.addAttribute("oracleview", vo);
+//		}
+//		
+//
+//		@RequestMapping(value = "/oraclemodify", method = RequestMethod.POST)
+//		public String oracleModify(OracleBoardVO vo) throws Exception {
+//
+//			oracleService.oracleModify(vo);
+//			return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
+//		}
 
 		
 		// 6-5. vo가 없으니 get방식으로 삭제
