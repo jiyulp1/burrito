@@ -10,44 +10,45 @@
 			01. HTML
 ========================================
  -->
- 	<!-- 1-1. 게시물 목록 -->
+ 	<!-- 2-1. 게시물 목록 -->
 	<select id="htmllist" resultType="kr.co.bttf.domain.HtmlBoardVO">
 		select * from html
 	</select>
 	
 	
-	<!-- 1-2. 게시물 작성 -->
+	<!-- 2-2. 게시물 작성 -->
 	<insert id="htmlwrite" parameterType="kr.co.bttf.domain.HtmlBoardVO">
 		insert into html (post_subject, post_contents, user_nickname, user_index)
 		values(#{post_subject}, #{post_contents}, #{user_nickname},#{user_index})
 	</insert>
 	
 	
-	<!-- 1-3. 게시물 조회 -->
+	<!-- 2-3. 게시물 조회 -->
 	<select id="htmlview" parameterType="_int" resultType="kr.co.bttf.domain.HtmlBoardVO">
 		select * from html
 		where post_id = #{post_id}
 	</select>
 
-	<!-- 1-3-1. 조회수 갱신 -->
+	<!-- 2-3-1. 조회수 갱신 -->
 	<update id="htmlvcnt" parameterType="_int">
 			update html set post_vcount = post_vcount + 1 where post_id = #{post_id}
 	</update>		
 	
-	<!-- 1-4. 게시물 수정 -->
+	<!-- 2-4. 게시물 수정 -->
 	<update id="htmledit" parameterType="kr.co.bttf.domain.HtmlBoardVO">
 		update html set
 		post_subject = #{post_subject}, post_contents = #{post_contents}
 		where post_id = #{post_id}
 	</update>
 	
-	<!-- 1-5. 게시물 삭제 -->
+	<!-- 2-5. 게시물 삭제 -->
 	<delete id="htmldelete" parameterType="int">
 		delete from html
 		where post_id = #{post_id}
 	</delete>
 
-	<!-- 1-6. 가용성 카테고리 수정 -->
+	<!-- 2-6. 가용성 카테고리 수정 -->
+	
 	<update id="htmlcategory2" parameterType="_int">
 		update html set avaliability_category_id = 2 where post_id = #{post_id}
 	</update>
@@ -96,6 +97,7 @@
 	</delete>
 
 	<!-- 2-6. 가용성 카테고리 수정 -->
+	
 	<update id="csscategory2" parameterType="_int">
 		update css set avaliability_category_id = 2 where post_id = #{post_id}
 	</update>
@@ -113,7 +115,7 @@
 	
 	<!-- 3-2. 게시물 작성 -->
 	<insert id="jswrite" parameterType="kr.co.bttf.domain.JsBoardVO">
-		insert into javascript (post_subject, post_contents, user_nickname)
+		insert into css (post_subject, post_contents, user_nickname)
 		values(#{post_subject}, #{post_contents}, #{user_nickname})
 	</insert>
 	
@@ -144,31 +146,25 @@
 	</delete>
 	
 	
-	<!-- 3-6. 가용성 카테고리 수정 -->
-	<update id="javascriptcategory2" parameterType="_int">
-		update javascript set avaliability_category_id = 2 where post_id = #{post_id}
-	</update>
-	
-	
 <!-- 
 ========================================
 			04. JSP
 ========================================
  -->
-	<!-- 4-1. 게시물 목록 -->
+	<!-- 3-1. 게시물 목록 -->
 	<select id="jsplist" resultType="kr.co.bttf.domain.JspBoardVO">
 		select * from jsp
 	</select>
 	
 	
-	<!-- 4-2. 게시물 작성 -->
+	<!-- 3-2. 게시물 작성 -->
 	<insert id="jspwrite" parameterType="kr.co.bttf.domain.JspBoardVO">
 		insert into jsp (post_subject, post_contents, user_nickname)
 		values(#{post_subject}, #{post_contents}, #{user_nickname})
 	</insert>
 	
 	
-	<!-- 4-3. 게시물 조회 -->
+	<!-- 3-3. 게시물 조회 -->
 	<select id="jspview" parameterType="int" resultType="kr.co.bttf.domain.JspBoardVO">
 		select * from jsp
 		where post_id = #{post_id}
@@ -187,67 +183,12 @@
 	</update>
 	
 	
-	<!-- 4-5. 게시물 삭제 -->
+	<!-- 3-5. 게시물 삭제 -->
 	<delete id="jspdelete" parameterType="int">
 		delete from jsp
 		where post_id = #{post_id}
 	</delete>
 	
-	
-	<!-- 4-6. 가용성 카테고리 수정 -->
-	<update id="jspcategory2" parameterType="_int">
-		update jsp set avaliability_category_id = 2 where post_id = #{post_id}
-	</update>
-	
-	
-<!-- 
-========================================
-			05. JAVA
-========================================
- -->
-	<!-- 5-1. 게시물 목록 -->
-	<select id="javalist" resultType="kr.co.bttf.domain.JavaBoardVO">
-		select * from java
-	</select>
-	
-	
-	<!-- 5-2. 게시물 작성 -->
-	<insert id="javawrite" parameterType="kr.co.bttf.domain.JavaBoardVO">
-		insert into java (post_subject, post_contents, user_nickname)
-		values(#{post_subject}, #{post_contents}, #{user_nickname})
-	</insert>
-	
-	
-	<!-- 5-3. 게시물 조회 -->
-	<select id="javaview" parameterType="int" resultType="kr.co.bttf.domain.JavaBoardVO">
-		select * from java
-		where post_id = #{post_id}
-	</select>
-
-	<!-- 5-3-1. 조회수 갱신 -->
-	<update id="javavcnt">
-			update java set post_vcount = post_vcount + 1 where post_id = #{post_id}
-	</update>	
-	
-	<!-- 5-4. 게시물 수정 -->
-	<update id="javamodify" parameterType="kr.co.bttf.domain.JavaBoardVO">
-		update java set
-		post_subject = #{post_subject}, post_contents = #{post_contents}, user_nickname = #{user_nickname}
-		where post_id = #{post_id}
-	</update>
-	
-	
-	<!-- 5-5. 게시물 삭제 -->
-	<delete id="javadelete" parameterType="int">
-		delete from java
-		where post_id = #{post_id}
-	</delete>
-	
-	
-	<!-- 5-6. 가용성 카테고리 수정 -->
-	<update id="javacategory2" parameterType="_int">
-		update java set avaliability_category_id = 2 where post_id = #{post_id}
-	</update>
 
 <!-- 
 ========================================
@@ -295,61 +236,6 @@
 	</delete>
 
 
-	<!-- 6-6. 가용성 카테고리 수정 -->
-	<update id="oraclecategory2" parameterType="_int">
-		update oracle set avaliability_category_id = 2 where post_id = #{post_id}
-	</update>
-
-<!-- 
-========================================
-			07. SPRING
-========================================
- -->
-	<!-- 7-1. 게시물 목록 -->
-	<select id="springlist" resultType="kr.co.bttf.domain.SpringBoardVO">
-		select * from spring
-	</select>
-	
-	
-	<!-- 7-2. 게시물 작성 -->
-	<insert id="springwrite" parameterType="kr.co.bttf.domain.SpringBoardVO">
-		insert into spring (post_subject, post_contents, user_nickname, user_index)
-		values(#{post_subject}, #{post_contents}, #{user_nickname}, #{user_index})
-	</insert>
-	
-	
-	<!-- 7-3. 게시물 조회 -->
-	<select id="springview" parameterType="int" resultType="kr.co.bttf.domain.SpringBoardVO">
-		select * from spring
-		where post_id = #{post_id}
-	</select>
-
-
-	<!-- 7-3-1. 조회수 갱신 -->
-	<update id="springvcnt">
-			update spring set post_vcount = post_vcount + 1 where post_id = #{post_id}
-	</update>
-	
-	
-	<!-- 7-4. 게시물 수정 -->
-	<update id="springmodify" parameterType="kr.co.bttf.domain.SpringBoardVO">
-		update spring set
-		post_subject = #{post_subject}, post_contents = #{post_contents}
-		where post_id = #{post_id}
-	</update>
-	
-	
-	<!-- 7-5. 게시물 삭제 -->
-	<delete id="springdelete" parameterType="int">
-		delete from spring
-		where post_id = #{post_id}
-	</delete>
-
-
-	<!-- 7-6. 가용성 카테고리 수정 -->
-	<update id="springcategory2" parameterType="_int">
-		update spring set avaliability_category_id = 2 where post_id = #{post_id}
-	</update>
 
 
 

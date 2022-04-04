@@ -162,7 +162,7 @@
                     </thead>
                     <tbody>
 		    			<c:choose>
-	                    	<c:when test="${empty csslist }">
+	                    	<c:when test="${empty bookmark }">
 	                    		<tr>
 	                    		<td colspan="6" class="text-center">등록된 북마크가 없습니다.</td>
 	                    		</tr>

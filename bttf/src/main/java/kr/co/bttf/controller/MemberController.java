@@ -40,13 +40,14 @@ public class MemberController {
 		int result = service.emailcheck(vo);
 		return result;
 	}
+	
 	// 닉네임 중복체크
 		@ResponseBody
 		@RequestMapping(value = "/nickcheck", method = RequestMethod.POST)
 		public int nickcheck(MemberVO vo) throws Exception {
 			int result2 = service.nickcheck(vo);
 			return result2;
-		}
+	}
 		
 	// 회원 가입 get
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -153,6 +154,7 @@ public class MemberController {
 	//마이페이지 이동
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public void mypageModify(@RequestParam("user_index") int user_index, @RequestParam("user_nickname") String user_nickname, Model model) throws Exception {
+		logger.info("mypage");
 		
 		//작성한 글 수
 		int mypostcnt = service.mypostcnt(user_index);
@@ -175,9 +177,26 @@ public class MemberController {
 	// 마이페이지 - 수정하기
 	@RequestMapping(value = "/mypage_edit", method = RequestMethod.GET)
 	public void mypage_view(@RequestParam("user_index") int user_index, Model model) throws Exception{
+		logger.info("mypage edit");
 		
 		MemberVO member = service.mypage_view(user_index);
 		model.addAttribute("member", member);
+		
+	}
+	
+	// 마이페이지 - 수정한 정보 업데이트
+	@RequestMapping(value = "/mypage_update", method = RequestMethod.POST)
+	public String mypage_update(MemberVO member) throws Exception{
+		logger.info("mypage update");
+
+		System.out.println(member.getUser_index());
+		System.out.println(member.getUser_email());
+		System.out.println(member.getUser_pw());
+		System.out.println(member.getUser_nickname());
+		System.out.println(member.getUser_name());
+		System.out.println(member.getUser_phone());
+		System.out.println(member.getMain_language());
+		return null;
 		
 	}
 	

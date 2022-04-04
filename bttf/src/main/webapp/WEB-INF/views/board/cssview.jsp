@@ -91,12 +91,14 @@
                                 <div>
                                     <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; resize: none; background-color: #fff;" disabled>${cssview.post_contents }</pre>
                                 </div> 
-	                        	<div class="mb-5">
+	                        	<div class="mb-5 d-flex">
 									<c:if test="${member.user_nickname eq cssview.user_nickname}">
 		 		                    	<a href="/board/cssedit?post_id=${cssview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
 				                		<a href="/board/cssdelete?post_id=${cssview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
+				                		<p style=" transform: translate(1228%,62%); color: #000 !important; ">댓글 개수 : </p>
 									</c:if> 
 	                        		<a href="/board/csslist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
+	                        		<p style="transform: translate(1228%,62%); color: #000 !important;">댓글 개수 : </p>
 									<c:if test="${member.user_nickname != cssview.user_nickname && member != null && cssview.user_nickname != 'admin'}">
 										<a href="#" class="btn btn-default mt-4">북마크</a>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberreport" data-whatever="@getbootstrap" style="float: right;" >작성자 신고</button>
@@ -105,54 +107,57 @@
                             </form>
 							
            					<!-- 댓글 작성 -->
-           					<div class="card">
+           					<div class="card" id="result ">
 	                            <div class="card-body">
 	                                <!-- Comment form-->
 	                                <form name="replyForm" method="post" class="mb-4 d-flex">
-	                                	<textarea class="form-control mr-5" rows="2" placeholder="댓글을 작성하세요"></textarea><a href="#" class="btn btn-primary" style="height:44px; line-height:32px;">작성하기</a>
+	                                	<textarea id="replytext" class="form-control mr-5" rows="2" placeholder="댓글을 작성하세요"></textarea>
+	                                	<a href="/reply/cssReplyWrite" id="btnReply" class="btn btn-primary" style="height:44px; line-height:32px;">작성하기</a>
 	                                </form>
 	                                <!-- Comment with nested comments-->
 	                                <div class="d-flex mb-4 mt-10">
 	                                    <!-- Parent comment-->
 	                                    <div class="flex-shrink-0 mr-4">
-	                                    	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
+<!-- 	                                    	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /> -->
 	                                    </div>
 	                                    <div class="ms-3" style="width : 100%;">
 	                                        <div class="fw-bold">
 			                                    <h3>Commenter Name</h3>
 	                                        	<div style=" clear: both; float: right; position: relative; top: 0; left: 4px;">
-		                                        	<a href="#" class="btn btn-info btn-sm">수정</a>
-		                                        	<a href="#" class="btn btn-danger btn-sm">삭제</a>
+		                                        	<a href="/reply/cssReplyModify" id="btnUpdate" class="btn btn-info btn-sm">수정</a>
+		                                        	<a href="/reply/cssReplyDelete" class="btn btn-danger btn-sm">삭제</a>
 	                                        	</div>
 	                                        </div>
 	                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+	                                       
 	                                        <!-- Child comment 1-->
-	                                        <div class="d-flex">
-	                                            <div class="flex-shrink-0 mr-4">
-	                                            	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
+	                                        <div class="d-flex mt-4">
+	                                            <div class="flex-shrink-0 mr-4 col-sm-offset-1">
+<!-- 	                                            	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /> -->
 	                                            </div>
 	                                            <div class="ms-3" style="width : 100%;">
 	                                                <div class="fw-bold">
 			                                        	<h3>Commenter Name</h3>
 	                                                	<div style=" clear: both; float: right; position: relative; top: 0; left: 4px;">
-				                                        	<a href="#" class="btn btn-info btn-sm">수정</a>
-				                                        	<a href="#" class="btn btn-danger btn-sm">삭제</a>
+				                                        	<a href="/reply/cssReplyModify" class="btn btn-info btn-sm">수정</a>
+				                                        	<a href="/reply/cssReplyDelete" class="btn btn-danger btn-sm">삭제</a>
 			                                        	</div>
 	                                                </div>
 	                                                And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
 	                                            </div>
 	                                        </div>
+	                                        
 	                                        <!-- Child comment 2-->
-	                                        <div class="d-flex mt-4">
-	                                            <div class="flex-shrink-0 mr-4">
-	                                            	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
+	                                        <div class="d-flex mt-4 ">
+	                                            <div class="flex-shrink-0 mr-4 col-sm-offset-1">
+<!-- 	                                            	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /> -->
 	                                            </div>
 	                                            <div class="ms-3" style="width : 100%;">
 	                                                <div class="fw-bold">
 			                                        	<h3>Commenter Name</h3>
 		                                                <div style=" clear: both; float: right; position: relative; top: 0; left: 4px;">
-				                                        	<a href="#" class="btn btn-info btn-sm">수정</a>
-				                                        	<a href="#" class="btn btn-danger btn-sm">삭제</a>
+				                                        	<a href="/reply/cssReplyModify" class="btn btn-info btn-sm">수정</a>
+				                                        	<a href="/reply/cssReplyDelete" class="btn btn-danger btn-sm">삭제</a>
 			                                        	</div>
 	                                                </div>
                											When you put money directly to a problem, it makes a good headline.
@@ -162,7 +167,9 @@
 	                                </div>
 	                                <!-- Single comment-->
 	                                <div class="d-flex">
-	                                    <div class="flex-shrink-0 mr-4"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+	                                    <div class="flex-shrink-0 mr-4">
+<!-- 	                                    	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /> -->
+	                                    </div>
 	                                    <div class="ms-3" style="width : 100%;">
 	                                        <div class="fw-bold">
 	                                        	<h3>Commenter Name</h3>

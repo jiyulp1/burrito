@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,10 +20,11 @@ public class OracleReplyServiceImpl implements OracleReplyService {
 	@Inject
 	private OracleReplyDAO dao;
 
-	// 댓글 조회
+	// 댓글 목록
 	@Override
-	public List<OracleReplyVO> oracleReplyList(int post_id) throws Exception {
-		return dao.oracleReplyList(post_id);
+	public List<OracleReplyVO> oracleReplyList(int post_id, int start, int end, HttpSession session) throws Exception {
+		List<OracleReplyVO> oracleReplyList = dao.oracleReplyList(post_id, start, end, session);
+		return oracleReplyList;
 	}
 
 	// 댓글 작성
@@ -43,14 +45,11 @@ public class OracleReplyServiceImpl implements OracleReplyService {
 		dao.oracleReplyDelete(vo);
 		
 	}
-	
-//	@Override
-//	public void oracleReplyDelete(OracleReplyVO vo) throws Exception {
-//		HashMap<String, String> map = new HashMap<String, String>();
-//		int reply_id = vo.getReply_id();
-//		int post_id = vo.getPost_id();
-//		map.
-//	}
 
+
+	@Override
+	public int oracleCount(int post_id) throws Exception {
+		return dao.oracleCount(post_id);
+	}
 
 }
