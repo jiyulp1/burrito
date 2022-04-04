@@ -133,7 +133,6 @@
       return false;
    }
    
-     alert("user.js 마지막");
    
    document.joinForm.submit();
 }	
