@@ -98,7 +98,7 @@
 
 	<!-- 2-6. 가용성 카테고리 수정 -->
 	
-	<update id="category2" parameterType="_int">
+	<update id="category1" parameterType="_int">
 		update css set avaliability_category_id = 2 where post_id = #{post_id}
 	</update>
 	

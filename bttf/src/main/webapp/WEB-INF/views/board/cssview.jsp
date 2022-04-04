@@ -108,11 +108,11 @@
            					<div class="card">
 	                            <div class="card-body">
 	                                <!-- Comment form-->
-	                                <form name="replyForm" method="post" class="mb-4">
-	                                	<textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
+	                                <form name="replyForm" method="post" class="mb-4 d-flex">
+	                                	<textarea class="form-control mr-5" rows="2" placeholder="댓글을 작성하세요"></textarea><a href="#" class="btn btn-primary" style="height:44px; line-height:32px;">작성하기</a>
 	                                </form>
 	                                <!-- Comment with nested comments-->
-	                                <div class="d-flex mb-4">
+	                                <div class="d-flex mb-4 mt-10">
 	                                    <!-- Parent comment-->
 	                                    <div class="flex-shrink-0 mr-4">
 	                                    	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
@@ -127,7 +127,7 @@
 	                                        </div>
 	                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
 	                                        <!-- Child comment 1-->
-	                                        <div class="d-flex mt-4">
+	                                        <div class="d-flex">
 	                                            <div class="flex-shrink-0 mr-4">
 	                                            	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
 	                                            </div>
@@ -155,7 +155,7 @@
 				                                        	<a href="#" class="btn btn-danger btn-sm">삭제</a>
 			                                        	</div>
 	                                                </div>
-	                                                When you put money directly to a problem, it makes a good headline.
+               											When you put money directly to a problem, it makes a good headline.
 	                                            </div>
 	                                        </div>
 	                                    </div>
