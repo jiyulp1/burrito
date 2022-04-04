@@ -49,7 +49,7 @@ public class SpringBoardDAOImpl implements SpringBoardDAO {
 	
 	@Override
 	public void springcategory2(int post_id) throws Exception {
-		sql.update(namespace + ".category2", post_id);
+		sql.update(namespace + ".springcategory2", post_id);
 		
 	}
 	
