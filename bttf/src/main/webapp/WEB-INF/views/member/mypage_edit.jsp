@@ -91,7 +91,7 @@
                                 <div class="col-auto margin-b-50">
                                     <label for="user_nickname">닉네임</label>
                                 	<div style="display:flex;">
-                                    	<input  id="user_nickname" name="user_nickname" class="form-control mr-5" style="width:86%;" type="text" value="${member.user_nickname }" onchange="fn_change();">
+                                    	<input  id="user_nickname" name="user_nickname" class="form-control mr-5" style="width:86%;" type="text" value="${member.user_nickname }">
                                     	<button class="nickcheck btn btn-info" type="button" id="nickcheck" onclick="fn_nickcheck();" value="N">중복확인</button>
                                 	</div>
                                 </div>
@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <label for="user_phone">전화번호</label>
-                                    <input  id="user_phone" name = "user_phone" class="form-control margin-b-50" type="text" placeholder="전화번호" value="${member.user_phone }">
+                                    <input  id="user_phone" name = "user_phone" class="form-control margin-b-50" type="text" oninput="autoHyphen(this)" maxlength="13" placeholder="전화번호" value="${member.user_phone }">
                                 </div>
                                 <div class="col-auto">
                                     <label class="form-label" for="main_language">관심언어</label>
@@ -174,24 +174,36 @@
    	<!--validation -->
     <script src="../../../resources/js/user_update.js"></script>
     
+   <!--sweetalert -->
+   <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
 	<script type="text/javascript">
 		
+
 	const autoHyphen = (user_phone) => {
-			user_phone.value = user_phone.value
-			.replace(/[^0-9]/g, '')
-			.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
-		}
-	
-		
-	// 닉네임에 변화가 있을 때만 닉네임 중복확인 하고싶다..
-	function fn_change(){
-		
+		user_phone.value = user_phone.value
+		.replace(/[^0-9]/g, '')
+		.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
 	}
-		
+
+	
+	// 사용자가 입력한 이름 변수에 담아주기
+	var my_nickname = '<c:out value="${member.user_nickname }"/>'
+	
+	
+	// 닉네임이 같은 경우 중복확인 안눌러도 됨
+	if( user_nickname.value == my_nickname ){
+		$("#nickcheck").attr("value", "Y");
+	}
 	
 	// 닉네임 중복확인
 	function fn_nickcheck(){
-		var nickname = document.updateForm.user_nickname;
+		if( user_nickname.value == my_nickname ){
+			alert("기존의 닉네임과 동일합니다");
+			return;
+		}
+		
 		$.ajax({
 			url : "/member/nickcheck",
 			type : "post",
@@ -200,16 +212,16 @@
 			success : function(data){
 				if(data == 1){
 					alert("중복된 닉네임입니다.");
-				}else if(data == 0 && nickname.value != ''){
+				}else if(data == 0 && user_nickname.value != ''){
 					$("#nickcheck").attr("value", "Y");
 					alert("사용가능한 닉네임입니다.");
-				}else if(nickname.value == ''){
+				}else if(user_nickname.value == ''){
 					alert("닉네임을 입력해주세요");
 				}
 			}
 		})
-	}
 		
+	}
 	</script>
 	
 </body>

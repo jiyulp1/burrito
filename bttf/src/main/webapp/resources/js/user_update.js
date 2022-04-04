@@ -1,13 +1,11 @@
-   const sendit = function() {
-   
-	   const joinForm = document.getElementById('updateForm');
-	   const user_pw = document.updateForm.user_pw;
-	   const user_pw_re = document.updateForm.user_pw_re;
-	   const user_nickname = document.updateForm.user_nickname;
-	   const user_phone = document.updateForm.user_phone;
-   
+   const updateForm = document.getElementById('updateForm');
+   const user_pw = document.updateForm.user_pw;
+   const user_pw_re = document.updateForm.user_pw_re;
+   const user_nickname = document.updateForm.user_nickname;
+   const user_phone = document.updateForm.user_phone;
+		
 	
-	 	
+   const sendit = function() {
 	   // 비밀번호 공백 체크
 	   if (user_pw.value == '') {
 	      alert("비밀번호를 입력해주세요");
@@ -90,7 +88,5 @@
 	      return false;
 	   }
 	   
-     alert("user.js 마지막");
-   
    updateForm.submit();
 }	
