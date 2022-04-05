@@ -58,7 +58,7 @@ public class AdminController {
 	@RequestMapping(value = "/memberundo", method = RequestMethod.GET)
 	public void memberundo(@RequestParam("user_index") int user_index, Model model, HttpServletResponse response) throws Exception {
 		adminService.memberundo(user_index);
-		ScriptUtils.alertAndMovePage(response, "정상회원으로 변경되었습니다.","http://localhost:9090/admin/memberall");
+//		ScriptUtils.alertAndMovePage(response, "정상회원으로 변경되었습니다.","http://localhost:9090/admin/memberall");
 		//return "redirect:/admin/memberall";
 	}
 
@@ -67,7 +67,7 @@ public class AdminController {
 	@RequestMapping(value = "/memberexpell", method = RequestMethod.GET)
 	public void memberexpell(@RequestParam("user_index") int user_index, Model model,HttpServletResponse response) throws Exception {
 		adminService.memberexpell(user_index);
-		ScriptUtils.alertAndMovePage(response, "회원 퇴출이 완료되었습니다.","http://localhost:9090/admin/memberall");
+//		ScriptUtils.alertAndMovePage(response, "회원 퇴출이 완료되었습니다.","http://localhost:9090/admin/memberall");
 		//return "redirect:/admin/memberall";
 	}
 	

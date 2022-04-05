@@ -51,6 +51,95 @@
        		padding-bottom : 200px;
        }
     </style>
+<!--     <script type="text/javascript"> -->
+   
+    $(document).ready(function(){
+    	
+    	
+    	console.log("asdasdasd");
+    	oracleReplyList("1");
+    	//oracleReplyList("2");
+    	$("#btnReply").click(function(){
+	    		console.log("test0");
+	    		var reply_contents = $("#reply_contents").val();
+	    		var post_id="${oracleview.post_id}"
+	    		var param="reply_contents="+reply_contents+"&post_id="+post_id;
+	    		var url= "/reply/oracleReplyList";
+	    		$.ajax({
+	    			type: "post",
+	    			url: url,
+	    			data: param,
+	    			success: function(){
+	    				alert("댓글이 등록되었습니다.");
+	    				oracleReplyList("1");
+	    				//oracleReplyList("2");
+	    			}
+	    		});
+	    	});
+	    });
+
+
+   		function oracleReplyList(num){
+   			console.log("tlqkf");
+   			$.ajax({
+   				type: "post",
+   				url: "/board/oracleview?post_id=${oracleview.post_id}",
+   						
+   				success: function(result){
+   				console.log(result);
+   	//			$("#oracleReplyWrite").append("<a class=''btn btn-info''>dkdkdkdkd</a>");
+   				$("#oracleReplyWrite").html(result);
+   				
+   				
+   		}
+    		
+    		
+    	
+    		
+    	});
+    }
+
+
+<!--     </script> -->
+<script type="text/javascript">
+	function submit(){
+		console.log("tlqkfshadk whaehlfk ro")
+		$.ajax({
+			type : "GET",
+// 			url : "/reply/oracleReplyList",
+			url : "oracleReplyList",
+			data : {
+				user_nickname : ${user_nickname},
+				reply_regdate : ${reply_regdate},
+				reply_contents : ${reply_contents}
+			},
+			error : function(error){
+					console.log("error");
+			},
+			success : function(data){
+				console.log("{success}");
+			}
+		});
+	}
+
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js">
+
+$('.user_nickname').val(user_nickname);
+$('.reply_contents').val(reply_contents);
+
+$.ajax({
+    type : "POST",
+    url : "oracleReplyWrite", 
+    data : $('#replyForm').serialize(),
+    error : function(error) {
+    	console.log("error");
+    },
+    success : function(data) {
+	console.log("success");
+    }
+});
+</script>
 </head>
 <!-- END HEAD -->
 <!-- BODY -->
@@ -110,12 +199,14 @@
 							<div class="card" id="result ">
 	                            <div class="card-body">
 	                                <!-- Comment form-->
-	                                <form name="replyForm" method="post" class="mb-4 d-flex">
+	                                <form name="replyForm" id="replyForm" action="/reply/oracleReplyWrite" method="post" class="mb-4 d-flex">
+	                                	<input type="hidden" name="post_id" value="${oracleview.post_id }">
 	                                	<textarea id="reply_contents" name="reply_contents" class="form-control mr-5" rows="2" placeholder="댓글을 작성하세요"></textarea>
-	                                	<a href="/reply/oracleReplyWrite" id="btnReply" class="btn btn-primary" style="height:44px; line-height:32px;">작성하기</a>
+	                                	<button id="btnReply" class="btn btn-primary" style="height:44px; line-height:32px;" type="submit" onclick="submit()">작성하기</button>
 	                                </form>
 
 	                               	<!-- Comment with nested comments-->
+<<<<<<< Updated upstream
 	                                
 	                                <c:forEach var="row" items="${oraclereplylist}">
 	                                <div class="d-flex mb-4 mt-10">
@@ -156,11 +247,54 @@
 			                                            </div>
 			                                        </div>
 				                                </c:otherwise>
+=======
+	                        <c:choose>
+			                    <c:when test = "${map != null and fn:length(map) > 0 }">
+	                                <c:forEach var="row" items="${map}">
+				                    	<c:if test="${row.reply_depth ==0 }">
+		                                <div class="d-flex mb-4 mt-10">
+		                                    <!-- Parent comment-->
+		                                    <div class="flex-shrink-0 mr-4">
+	<!-- 	                                    	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /> -->
+>>>>>>> Stashed changes
 		                                    </div>
-	                                	</div>
-	                                </c:forEach>	                               
-	                            </div>
-	                        </div>                             
+			                                    <div class="ms-3" style="width : 100%;">
+			                                        <div class="fw-bold">
+			                                        	<div class="d-flex">
+						                                    <h3>${row.user_nickname}</h3>
+						                                    <p style="transform : translate(16% 20%);">
+						                                    	<fmt:formatDate value="${row.reply_regdate}" pattern="yyyy-MM-dd HH:mm" />
+						                                    </p>		                                        	
+			                                        	</div>
+			                                        	<div style=" clear: both; float: right; position: relative; top: 0; left: 4px;">
+				                                        	<a href="/reply/oracleReplyModify" id="btnUpdate" class="btn btn-info btn-sm">댓글수정</a>
+				                                        	<a href="/reply/oracleReplyDelete" class="btn btn-danger btn-sm">댓글삭제</a>
+			                                        	</div>
+			                                        </div>
+			                                        <p>${row.reply_contents }</p>
+			                                    </div>
+			                                </div>
+		                            	</c:if>	                               
+		                            </c:forEach>
+		                        </c:when>               
+                                <c:otherwise>
+                                       <div class="d-flex mt-4">
+                                           <div class="flex-shrink-0 mr-4 col-sm-offset-1">
+										<!--<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /> -->
+                                           </div>
+                                           <div class="ms-3" style="width : 100%;">
+                                               <div class="fw-bold">
+	                                        	<h3>${row.user_nickname}</h3>
+                                               	<div style=" clear: both; float: right; position: relative; top: 0; left: 4px;">
+		                                        	<a href="/reply/oracleReplyModify" class="btn btn-info btn-sm">대댓글수정</a>
+		                                        	<a href="/reply/oracleReplyDelete" class="btn btn-danger btn-sm">대댓글삭제</a>
+	                                        	</div>
+                                               </div>
+                                               <p>${row.reply_contents }</p>
+                                           </div>
+                                       </div>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                 </div>
@@ -169,6 +303,8 @@
             <!--// end row -->
         </div>
     </div>		
+    </div>
+    </div>
     <!-- End join Form -->
     <!--========== END PAGE LAYOUT ==========-->
 

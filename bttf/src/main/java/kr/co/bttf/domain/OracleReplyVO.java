@@ -10,7 +10,7 @@ public class OracleReplyVO {
 
 	private int reply_id;
 	private int reply_depth;
-	private int bundle_id;
+	private Date bundle_id;
 	private String reply_contents;
 	private String user_nickname;
 	private Date reply_regdate;

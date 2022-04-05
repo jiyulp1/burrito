@@ -68,7 +68,6 @@
 	                    	<tr>
 		                        <th style="width: 10%;">번호</th>
 		                        <th style="width: 50%;">제목</th>
-		                        <th style="width: 10%;">작성자</th>
 		                        <th style="width: 10%;">조회수</th>
 		                        <th style="width: 20%;">날짜</th>
 	                    	</tr>
@@ -76,18 +75,18 @@
 	                    <tbody>
 	                    	<c:choose>
 			                    <c:when test = "${oraclelist != null and fn:length(oraclelist) > 0 }">
-			                    		<c:forEach var="board" items="${oraclelist}">
-					                        <tr>
-					                            <td>${board.post_id }</td>
-					                            <td>
-					                            <a href="/board/oracleview?post_id=${board.post_id }">${board.post_subject }</a>
-					                            </td>
-					                            <td>${board.user_nickname }</td>
-					                            <td>${board.post_vcount }</td>
-					                            <td><fmt:formatDate value="${board.post_regdate}" pattern="yyyy-MM-dd" /></td>
-					                        </tr>
-			                        	</c:forEach>
-			                        </c:when>
+		                    		<c:forEach var="board" items="${oraclelist}">
+				                        <tr>
+				                            <td>${board.post_id }</td>
+				                            <td>
+				                            <a href="/board/oracleview?post_id=${board.post_id }">${board.post_subject }</a>
+				                            </td>
+				                            <td>${board.user_nickname }</td>
+				                            <td>${board.post_vcount }</td>
+				                            <td><fmt:formatDate value="${board.post_regdate}" pattern="yyyy-MM-dd" /></td>
+				                        </tr>
+		                        	</c:forEach>
+			                    </c:when>
 		                        <c:otherwise>
 		                        	<tr>
 		                        		<td colspan="5" class="text-center">등록된 게시물이 없습니다. </td>

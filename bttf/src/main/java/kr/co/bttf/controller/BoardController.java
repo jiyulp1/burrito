@@ -242,9 +242,9 @@ public class BoardController {
 						memberService.memberreport(map);						
 						cssService.csscategory2(post_id);
 						memberService.memcategory2(user_index);
-						ScriptUtils.alertAndMovePage(response, "신고가 접수되었습니다. 메인화면으로 이동합니다.","http://localhost:9090/");
+//						ScriptUtils.alertAndMovePage(response, "신고가 접수되었습니다. 메인화면으로 이동합니다.","http://localhost:9090/");
 					}else {
-						ScriptUtils.alertAndMovePage(response, "이미 신고된 회원입니다.","http://localhost:9090/");
+//						ScriptUtils.alertAndMovePage(response, "이미 신고된 회원입니다.","http://localhost:9090/");
 						
 					}
 				}
@@ -332,6 +332,7 @@ public class BoardController {
 		@RequestMapping(value = "/oraclelist", method = RequestMethod.GET)
 		public void oracleList(Model model) throws Exception{
 			List<OracleBoardVO> oraclelist = null;
+			
 			oraclelist = oracleService.oracleList();
 			model.addAttribute("oraclelist", oraclelist);
 		}
@@ -355,20 +356,12 @@ public class BoardController {
 		// 6-3. 게시물 상세보기 페이지 이동
 		
 		@RequestMapping(value = "/oracleview", method = RequestMethod.GET)
-		public void oracleView(@RequestParam("post_id") int post_id, Model model, @RequestParam(defaultValue="1") int curPage, ModelAndView mav, HttpSession session) throws Exception {
+		public void oracleView(@RequestParam("post_id") int post_id, Model model, ModelAndView mav, HttpSession session) throws Exception {
 			
 			// 상세보기 시 조회수 갱신
 			int oraclevcnt = 0;
 			oracleService.oraclevcnt(post_id);
 			model.addAttribute("oraclevcnt", oraclevcnt);
-			
-			// 상세보기 시 댓글 조회 및 댓글페이징
-			int count = oracleReplyService.oracleCount(post_id);
-			ReplyPager replyPager = new ReplyPager(count, curPage);
-			int start = replyPager.getPageBegin();
-			int end = replyPager.getPageEnd();
-			List<OracleReplyVO> oraclereplylist = oracleReplyService.oracleReplyList(post_id, start, end, session);
-			model.addAttribute("oraclereplylist", oraclereplylist);
 			
 			OracleBoardVO vo = oracleService.oracleView(post_id);
 			model.addAttribute("oracleview", vo);

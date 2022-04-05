@@ -2,6 +2,7 @@ package kr.co.bttf.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -20,16 +21,12 @@ public class OracleReplyServiceImpl implements OracleReplyService {
 	@Inject
 	private OracleReplyDAO dao;
 
-	// 댓글 목록
-	@Override
-	public List<OracleReplyVO> oracleReplyList(int post_id, int start, int end, HttpSession session) throws Exception {
-		List<OracleReplyVO> oracleReplyList = dao.oracleReplyList(post_id, start, end, session);
-		return oracleReplyList;
-	}
+	
 
 	// 댓글 작성
 	@Override
 	public void oracleReplyWrite(OracleReplyVO vo) throws Exception {
+		System.out.println("ser들어옴");
 		dao.oracleReplyWrite(vo);
 	}
 
@@ -46,10 +43,16 @@ public class OracleReplyServiceImpl implements OracleReplyService {
 		
 	}
 
-
+	//댓글 갯수
 	@Override
 	public int oracleCount(int post_id) throws Exception {
 		return dao.oracleCount(post_id);
+	}
+	
+	//댓글 리스트
+	@Override
+	public List<OracleReplyVO> oracleReplyList(Map<String, Object> map) {
+		return dao.oracleReplyList();
 	}
 
 }

@@ -42,11 +42,11 @@ public class MemberController {
 	}
 	
 	// 닉네임 중복체크
-		@ResponseBody
-		@RequestMapping(value = "/nickcheck", method = RequestMethod.POST)
-		public int nickcheck(MemberVO vo) throws Exception {
-			int result2 = service.nickcheck(vo);
-			return result2;
+	@ResponseBody
+	@RequestMapping(value = "/nickcheck", method = RequestMethod.POST)
+	public int nickcheck(MemberVO vo) throws Exception {
+		int result2 = service.nickcheck(vo);
+		return result2;
 	}
 		
 	// 회원 가입 get
@@ -67,7 +67,7 @@ public class MemberController {
 				return "/member/signup";
 			}else if(result == 0 && result2 == 0) {
 				service.signup(vo);
-				ScriptUtils.alertAndMovePage(response, "회원가입에 성공하였습니다.", "http://localhost:9090");
+//				ScriptUtils.alertAndMovePage(response, "회원가입에 성공하였습니다.", "http://localhost:9090");
 			}
 		} catch (Exception e) {
 			throw new RuntimeException();
@@ -94,11 +94,11 @@ public class MemberController {
 		if(loginSuccess) {
 			session.setAttribute("member", loginInfo);  // member 세션에 로그인 정보를 부여
 
-			ScriptUtils.alertAndMovePage(res, loginInfo.getUser_nickname()+"님 환영합니다.", "http://localhost:9090");
+//			ScriptUtils.alertAndMovePage(res, loginInfo.getUser_nickname()+"님 환영합니다.", "http://localhost:9090");
 		}else {
 			session.setAttribute("member", null);
 	        rttr.addFlashAttribute("msg", false);
-	        ScriptUtils.alertAndMovePage(res, "입력하신 회원정보가 틀립니다. 다시 로그인 해주세요.", "http://localhost:9090/member/signin");
+//	        ScriptUtils.alertAndMovePage(res, "입력하신 회원정보가 틀립니다. 다시 로그인 해주세요.", "http://localhost:9090/member/signin");
 		}
 
 		return "redirect:/";

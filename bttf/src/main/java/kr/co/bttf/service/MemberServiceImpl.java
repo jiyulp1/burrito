@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.stereotype.Service;
 
-import kr.co.bttf.controller.ScriptUtils;
+//import kr.co.bttf.controller.ScriptUtils;
 import kr.co.bttf.dao.MemberDAO;
 import kr.co.bttf.domain.BoardVO;
 import kr.co.bttf.domain.CssBoardVO;
@@ -181,7 +181,7 @@ public class MemberServiceImpl implements MemberService {
 //				
 //				out.close();
 			if(!vo.getUser_email().equals(ck.getUser_email())) {
-				ScriptUtils.alertAndBackPage(response, "등록되지 않은 이메일입니다");
+//				ScriptUtils.alertAndBackPage(response, "등록되지 않은 이메일입니다");
 				out.close();
 			}else {
 				// 임시 비밀번호 생성
@@ -194,11 +194,11 @@ public class MemberServiceImpl implements MemberService {
 				dao.temporaryPw(vo);
 				// 비밀번호 변경 메일 발송
 				sendemail(vo, "findpw");
-				ScriptUtils.alertAndMovePage(response, "입력하신 이메일로 임시 비밀번호를 발송했습니다", "/");
+//				ScriptUtils.alertAndMovePage(response, "입력하신 이메일로 임시 비밀번호를 발송했습니다", "/");
 			}
 			
 		} catch (NullPointerException e) {
-			ScriptUtils.alertAndBackPage(response, "입력하신 회원정보로 가입된 계정이 없습니다.");
+//			ScriptUtils.alertAndBackPage(response, "입력하신 회원정보로 가입된 계정이 없습니다.");
 		} 
 	}
 
@@ -227,11 +227,11 @@ public class MemberServiceImpl implements MemberService {
 		PrintWriter out = response.getWriter();
 		System.out.println(pw);
 		if(!vo.getUser_pw().equals(pw)) {
-			ScriptUtils.alertAndBackPage(response, "임시비밀번호가 틀립니다.");
+//			ScriptUtils.alertAndBackPage(response, "임시비밀번호가 틀립니다.");
 			out.close();
 		}else {
 			dao.updatePw(response, vo);
-			ScriptUtils.alertAndMovePage(response, "비밀번호가 성공적으로 변경되었습니다.", "/");
+//			ScriptUtils.alertAndMovePage(response, "비밀번호가 성공적으로 변경되었습니다.", "/");
 		}
 	} 
 	

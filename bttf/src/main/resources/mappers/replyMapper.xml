@@ -35,29 +35,8 @@
 
 	<!-- 1. 댓글 조회 --> 
 	
-	<sql id="pagingHeader">
-		select * from (
-			select rownum as rn, A.* from(
-	</sql>
-	
-	
-	<sql id="pagingFooter">
-			)A
-		) where rn limit #{end} offset #{start}
-	</sql>
-	
-	
-	<select id="oracleReplyList" parameterType="hashmap" resultType="kr.co.bttf.domain.OracleReplyVO">
-		
-		<include refid="pagingHeader"/>
-	 		select *
-			from reply_oracle ro, user_all 
-			where ro.user_nickname = m.user_nickname and 
-			post_id = #{post_id} and 
-			avaliability_category_id = 1
-			order by reply_id
-		<include refid="pagingFooter"/>
-		
+	<select id="oracleReplyList" resultType="kr.co.bttf.domain.OracleReplyVO">
+		SELECT * FROM reply_oracle 
 	</select>
 	
 	<select id="oracleCount" resultType="_int">
@@ -78,10 +57,6 @@
 	</update>
 
 	<!-- 4. 댓글 삭제 --> 
-<!--  	<delete id="oracle_reply_delete" parameterType="kr.co.bttf.domain.OracleReplyVO"> -->
-<!-- 		delete from reply_oracle -->
-<!-- 		where post_id = #{post_id} and reply_id = #{reply_id} -->
-<!-- 	</delete> -->
 
 	<update id="oracleReplyDelete" parameterType="kr.co.bttf.domain.OracleReplyVO">
 		update reply_oracle set
