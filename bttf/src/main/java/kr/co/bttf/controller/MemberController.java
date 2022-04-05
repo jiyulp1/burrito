@@ -84,7 +84,6 @@ public class MemberController {
 	
 	// 로그인 post
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-
 	public String postSignin(MemberVO vo, HttpServletResponse res, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		logger.info("post signin");
 		res.setContentType("text/html;charset=utf-8");
