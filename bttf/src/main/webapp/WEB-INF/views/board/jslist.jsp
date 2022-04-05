@@ -62,9 +62,7 @@
     <div class="bg-color-sky-light fixed_container">
         <div class="content-lg container" style="margin-top : 50px;">
    			<!-- notice -->
-   			
             <h2>JAVASCRIPT QnA</h2>
-
 			<form>
 	            <div class="table-responsive">
 	                <table id="foo-table" class="table table-striped" data-page-length='40' data-order='[[ 1, "desc" ]]'>
@@ -107,52 +105,16 @@
 	           	 <a href="${pageContext.request.contextPath }/pages/jswrite.js"class="btn btn-primary" type="submit">글쓰기</a>
 	            </c:if>
             </form>
-            
-            <!-- board pagination -->
-<!--             <nav aria-label="Page navigation" class="text-center"> -->
-<%-- 				<input type="hidden" name="post_id" value="${board.post_id }"> --%>
-<!-- 					<ul class="pagination"> -->
-<%-- 						<c:if test="${nowPage > 1 }"> --%>
-<!-- 							<li class="page-item">							 -->
-<%-- 								<a class="page-link" href="${pageContext.request.contextPath }/pages/jslist.js?page=${nowPage - 1 }">&lt;</a> --%>
-<!-- 							</li> -->
-<%-- 						</c:if> --%>
-<%-- 						<c:forEach var="i" begin="${startPage}" end="${endPage }"> --%>
-<%-- 							<c:choose> --%>
-<%-- 								<c:when test="${i == nowPage }"> --%>
-<!-- 									<li class="page-item"> -->
-<%-- 										<a class="page-link">${i }	</a>						 --%>
-<!-- 									</li> -->
-<%-- 								</c:when> --%>
-<%-- 								<c:otherwise> --%>
-<!-- 									<li class="page-item">									 -->
-<%-- 										<a class="page-link" href="${pageContext.request.contextPath }/pages/jslist.js?page=${i }">${i }</a> --%>
-<!-- 									</li> -->
-<%-- 								</c:otherwise> --%>
-<%-- 							</c:choose> --%>
-<%-- 						</c:forEach>	 --%>
-<%-- 						<c:if test="${nowPage<totalPage }"> --%>
-<!-- 							<li class="page-item"> -->
-<%-- 								<a class="page-link" href="${pageContext.request.contextPath }/pages/jslist.js?page=${nowPage + 1 }">&gt;</a> --%>
-<!-- 							</li> -->
-<%-- 						</c:if>						 --%>
-<!-- 					</ul> -->
-<!-- 				</nav> -->
-            <!-- end board pagination -->
-            
-    
     	<!--========== END PAGE LAYOUT ==========-->
-
-    	<!--========== FOOTER ==========-->
-	    <footer class="footer fixed_footer">
-	
-	        <!-- Copyright -->
-			<%@ include file="../include/footer_control.jsp" %>
-	        <!-- End Copyright -->
-	    </footer>
-	    <!--========== END FOOTER ==========-->
 		</div>
 	</div>
+	<!--========== FOOTER ==========-->
+	<footer class="footer fixed_footer">
+        <!-- Copyright -->
+		<%@ include file="../include/footer_control.jsp" %>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
     <!-- Back To Top -->
     <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
 

@@ -102,7 +102,7 @@
 										<a href="#" class="btn btn-default mt-4">북마크</a>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberreport" data-whatever="@getbootstrap" style="float: right;" >작성자 신고</button>
 									</c:if>
-	                        		<p style="transform: translate(0%,62%); color: #000 !important;">댓글 개수 : </p>
+<!-- 	                        		<p style="transform: translate(0%,62%); color: #000 !important;">댓글 개수 : </p> -->
                               	 </div>
                             </form>
 							
