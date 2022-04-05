@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.OracleBoardVO;
@@ -43,7 +44,7 @@ public class ReplyController {
 //	private JavaReplyService javaService;
 	
 	@Inject
-	private OracleReplyService oracleService;
+	private OracleReplyService OracleReplyService;
 	
 	@Inject
 	private OracleBoardService OracleBoardService;
@@ -56,24 +57,45 @@ public class ReplyController {
 				06. ORACLE
 	-------------------------------- */
 	
-	// 6-2. 댓글 작성
-	@RequestMapping(value = "/oracle_reply_write", method = RequestMethod.POST)
+	// 6-1. 댓글 작성
+	@RequestMapping(value = "/oracleReplyWrite", method = RequestMethod.POST)
 	public String oracleReplyWrite(OracleReplyVO vo , HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		vo.setUser_nickname(member.getUser_nickname());
-		oracleService.oracleReplyWrite(vo);
+		OracleReplyService.oracleReplyWrite(vo);
 	  return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
 	}
 	
+	// 6.2 댓글 목록
+	@RequestMapping(value = "/oracleReplyList", method = RequestMethod.GET)
+	public ModelAndView oracleReplyList(@RequestParam("post_id") int post_id, @RequestParam(defaultValue="1") int curPage, ModelAndView mav, HttpSession session) throws Exception {
+		
+		//페이징 처리
+		int count = OracleReplyService.oracleCount(post_id);
+		ReplyPager replyPager = new ReplyPager(count, curPage);
+		int start = replyPager.getPageBegin();
+		int end = replyPager.getPageEnd();
+		List<OracleReplyVO> list = OracleReplyService.oracleReplyList(post_id, start, end, session);
+		mav.setViewName("/board/oracleview");
+		mav.addObject("list", list);
+		mav.addObject("replyPager", replyPager);
+		return mav;
+		
+	}
+	
+	
+	
+	
+	
 	
 	// 6-3. 댓글 수정
-	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.POST)
+	@RequestMapping(value = "/oracleReplyModify", method = RequestMethod.POST)
 	public String oracleReplyModify(OracleReplyVO vo) throws Exception {
 		System.out.println("post reply modify controller");
 		System.out.println(vo.getReply_contents());
 		
-		oracleService.oracleReplyModify(vo);
+		OracleReplyService.oracleReplyModify(vo);
 		
 		return "redirect:/board/oracleview?post_id=" + vo.getPost_id();	
 		
@@ -96,15 +118,15 @@ public class ReplyController {
 //		return null;
 //	}
 	
-	// 6-4. 댓글 삭제
-	@RequestMapping(value = "/oracle_reply_delete", method = RequestMethod.GET)
+	// 6-4. 댓글 삭제 // 댓글삭제 경로 수정 확인
+	@RequestMapping(value = "/oracleReplyDelete", method = RequestMethod.GET)
 	public String oracleReplyDelete(@RequestParam("post_id") int post_id, OracleReplyVO vo, Model model) throws Exception {
-		oracleService.oracleReplyDelete(vo);
+		OracleReplyService.oracleReplyDelete(vo);
 		
-		List<OracleReplyVO> oraclereplylist = oracleService.oracleReplyList(post_id);
-		model.addAttribute("oraclereplylist", oraclereplylist);
+		//List<OracleReplyVO> oraclereplylist = OracleReplyService.oracleReplyList(post_id);
+		//model.addAttribute("oraclereplylist", oraclereplylist);
 		
-	  return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
+	  return "redirect:/board/oraclelist";
 	}
 	
 }

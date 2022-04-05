@@ -49,7 +49,7 @@ public class JsBoardDAOImpl implements JsBoardDAO {
 
 	@Override
 	public void jscategory2(int post_id) throws Exception {
-		sql.update(namespace + ".category2", post_id);
+		sql.update(namespace + ".jscategory2", post_id);
 		
 	}
 }
