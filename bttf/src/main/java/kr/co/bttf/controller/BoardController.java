@@ -375,6 +375,9 @@ public class BoardController {
 			
 		}
 		
+		
+		
+		
 		// 6-4. 게시물 수정 페이지 이동
 		
 //		@RequestMapping(value = "/oraclemodify", method = RequestMethod.GET)
