@@ -156,6 +156,23 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		return sql.selectOne(namespace + ".mypage_view", user_index);
 	}
+
+	@Override
+	public int mypage_update(MemberVO member) {
+
+		int result = sql.update(namespace + ".mypage_update", member);
+		
+		return result;
+
+	}
+
+	@Override
+	public int joinout(int user_index) {
+
+		int result = sql.update(namespace + ".joinout", user_index);
+		
+		return result;
+	}
 	
 
 }

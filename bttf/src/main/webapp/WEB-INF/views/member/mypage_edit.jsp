@@ -107,13 +107,13 @@
                                     <label class="form-label" for="main_language">관심언어</label>
                                     <select class="form-control" name="main_language" id="main_language">
                                         <option value="default">관심언어를 선택해주세요.</option>
-                                        <option value="JAVA" <c:if test="${member.main_language eq 'java'}">selected</c:if>>JAVA</option>
-                                        <option value="JSP" <c:if test="${member.main_language eq 'jsp'}">selected</c:if>>JSP</option>
-                                        <option value="SPRING" <c:if test="${member.main_language eq 'spring'}">selected</c:if>>SPRING</option>
-                                        <option value="ORACLE" <c:if test="${member.main_language eq 'oracle'}">selected</c:if>>ORACLE</option>
-                                        <option value="JAVASCRIPT" <c:if test="${member.main_language eq 'javascript'}">selected</c:if>>JAVASCRIPT</option>
-                                        <option value="CSS3" <c:if test="${member.main_language eq 'css'}">selected</c:if>>CSS3</option>
-                                        <option value="HTML5" <c:if test="${member.main_language eq 'html'}">selected</c:if>>HTML5</option>
+                                        <option value="java" <c:if test="${member.main_language eq 'java'}">selected</c:if>>JAVA</option>
+                                        <option value="jsp" <c:if test="${member.main_language eq 'jsp'}">selected</c:if>>JSP</option>
+                                        <option value="spring" <c:if test="${member.main_language eq 'spring'}">selected</c:if>>SPRING</option>
+                                        <option value="oracle" <c:if test="${member.main_language eq 'oracle'}">selected</c:if>>ORACLE</option>
+                                        <option value="javascript" <c:if test="${member.main_language eq 'javascript'}">selected</c:if>>JAVASCRIPT</option>
+                                        <option value="css" <c:if test="${member.main_language eq 'css'}">selected</c:if>>CSS3</option>
+                                        <option value="html" <c:if test="${member.main_language eq 'html'}">selected</c:if>>HTML5</option>
                                     </select>
                                 </div>
                                 <input class="btn btn-primary mt-5" type="submit" onclick="sendit()" value ="수정완료">
@@ -173,6 +173,7 @@
     
    	<!--validation -->
     <script src="../../../resources/js/user_update.js"></script>
+    <script src="../../../resources/js/confirm.js"></script>
     
    <!--sweetalert -->
    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>

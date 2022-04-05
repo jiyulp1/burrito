@@ -156,8 +156,6 @@
 			                                            </div>
 			                                        </div>
 				                                </c:otherwise>
-		                                        
-		                                        
 		                                    </div>
 	                                	</div>
 	                                </c:forEach>	                               

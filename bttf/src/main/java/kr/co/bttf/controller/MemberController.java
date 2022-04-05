@@ -84,7 +84,6 @@ public class MemberController {
 	
 	// 로그인 post
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-
 	public String postSignin(MemberVO vo, HttpServletResponse res, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		logger.info("post signin");
 		res.setContentType("text/html;charset=utf-8");
@@ -186,18 +185,62 @@ public class MemberController {
 	
 	// 마이페이지 - 수정한 정보 업데이트
 	@RequestMapping(value = "/mypage_update", method = RequestMethod.POST)
-	public String mypage_update(MemberVO member) throws Exception{
+	public void mypage_update(MemberVO member, HttpServletResponse res) throws Exception{
 		logger.info("mypage update");
-
-		System.out.println(member.getUser_index());
-		System.out.println(member.getUser_email());
-		System.out.println(member.getUser_pw());
-		System.out.println(member.getUser_nickname());
-		System.out.println(member.getUser_name());
-		System.out.println(member.getUser_phone());
-		System.out.println(member.getMain_language());
-		return null;
 		
+		 int update = service.mypage_update(member);
+		
+		 
+		 try {
+			 if(update==1) {
+				 
+				 ScriptUtils.alertAndMovePage(res, "회원정보가 수정되었습니다. 다시 로그인 해주세요", "http://localhost:9090/member/signin");
+				 
+			 } else {
+				 
+				 ScriptUtils.alertAndMovePage(res, "회원정보 수정을 실패했습니다. ", "http://localhost:9090/member/mypage_edit");
+				 
+			 }
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 
+		 
+		
+	}
+	
+	// 마이페이지 - 탈퇴하기
+	@RequestMapping(value = "/joinout", method = RequestMethod.GET)
+	public void joinout( HttpServletRequest req, HttpServletResponse res, HttpSession session) throws Exception {
+		
+		HttpSession sessionout = req.getSession();  // 현재 세션 정보를 가져옴
+		
+		MemberVO member = (MemberVO) sessionout.getAttribute("member");
+		int user_index = member.getUser_index();
+		
+		//일단 세션나오기
+		service.signout(session);
+		
+		//회원 탈퇴
+		int result = service.joinout(user_index);
+		
+		try {
+			 if(result==1) {
+				 
+				 ScriptUtils.alertAndMovePage(res, "회원탈퇴가 완료되었습니다.", "http://localhost:9090/");
+				 
+			 } else {
+				 
+				 ScriptUtils.alertAndMovePage(res, "회원탈퇴에 실패했습니다. ", "http://localhost:9090/");
+				 
+			 }
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 
+		 
 	}
 	
 		
