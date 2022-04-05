@@ -91,18 +91,18 @@
                                 <div>
                                     <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; resize: none; background-color: #fff;" disabled>${cssview.post_contents }</pre>
                                 </div> 
-	                        	<div class="mb-5 d-flex">
+	                        	<div class="mb-5">
 									<c:if test="${member.user_nickname eq cssview.user_nickname}">
 		 		                    	<a href="/board/cssedit?post_id=${cssview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
 				                		<a href="/board/cssdelete?post_id=${cssview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
-				                		<p style=" transform: translate(1228%,62%); color: #000 !important; ">댓글 개수 : </p>
+				                		<p style=" transform: translate(0%,62%); color: #000 !important; ">댓글 개수 : </p>
 									</c:if> 
 	                        		<a href="/board/csslist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
-	                        		<p style="transform: translate(1228%,62%); color: #000 !important;">댓글 개수 : </p>
 									<c:if test="${member.user_nickname != cssview.user_nickname && member != null && cssview.user_nickname != 'admin'}">
 										<a href="#" class="btn btn-default mt-4">북마크</a>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberreport" data-whatever="@getbootstrap" style="float: right;" >작성자 신고</button>
 									</c:if>
+	                        		<p style="transform: translate(0%,62%); color: #000 !important;">댓글 개수 : </p>
                               	 </div>
                             </form>
 							
