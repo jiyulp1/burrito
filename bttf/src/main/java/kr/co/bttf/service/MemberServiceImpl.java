@@ -259,6 +259,17 @@ public class MemberServiceImpl implements MemberService {
 		return dao.mypage_view(user_index);
 	}
 	
+	public int mypage_update(MemberVO member) {
+
+		return dao.mypage_update(member);
+	}
+	
+	@Override
+	public int joinout(int user_index) {
+		
+		return dao.joinout(user_index);
+	}
+	
 
 	
 } 
