@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 
 <html lang="ko" class="no-js">
@@ -310,7 +312,7 @@
 				                        </td>
 				                        <td>${announcmentList.user_nickname }</td>
 				                        <td>${announcmentList.post_vcount }</td>
-				                        <td>${announcmentList.post_regdate }</td>
+				                        <td><fmt:formatDate value="${announcmentList.post_regdate}" pattern="yyyy-MM-dd" /></td>
 				                    </tr>
 		                        </c:forEach>
 		                    </c:when>

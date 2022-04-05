@@ -35,7 +35,7 @@
 	</update>		
 	
 	<!-- 2-4. 게시물 수정 -->
-	<update id="htmledit" parameterType="kr.co.bttf.domain.HtmlBoardVO">
+	<update id="htmlmodify" parameterType="kr.co.bttf.domain.HtmlBoardVO">
 		update html set
 		post_subject = #{post_subject}, post_contents = #{post_contents}
 		where post_id = #{post_id}
@@ -115,7 +115,7 @@
 	
 	<!-- 3-2. 게시물 작성 -->
 	<insert id="jswrite" parameterType="kr.co.bttf.domain.JsBoardVO">
-		insert into css (post_subject, post_contents, user_nickname)
+		insert into javascript (post_subject, post_contents, user_nickname)
 		values(#{post_subject}, #{post_contents}, #{user_nickname})
 	</insert>
 	
@@ -127,14 +127,14 @@
 	</select>
 
 	<!-- 3-3-1. 조회수 갱신 -->
-	<update id="javascriptvcnt">
+	<update id="jsvcnt">
 			update javascript set post_vcount = post_vcount + 1 where post_id = #{post_id}
 	</update>	
 	
 	<!-- 3-4. 게시물 수정 -->
 	<update id="jsmodify" parameterType="kr.co.bttf.domain.JsBoardVO">
 		update javascript set
-		post_subject = #{post_subject}, post_contents = #{post_contents}, user_nickname = #{user_nickname}
+		post_subject = #{post_subject}, post_contents = #{post_contents}
 		where post_id = #{post_id}
 	</update>
 	
@@ -178,7 +178,7 @@
 	<!-- 3-4. 게시물 수정 -->
 	<update id="jspmodify" parameterType="kr.co.bttf.domain.JspBoardVO">
 		update jsp set
-		post_subject = #{post_subject}, post_contents = #{post_contents}, user_nickname = #{user_nickname}
+		post_subject = #{post_subject}, post_contents = #{post_contents}
 		where post_id = #{post_id}
 	</update>
 	

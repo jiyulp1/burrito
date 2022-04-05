@@ -86,7 +86,7 @@
                                 	<p class="margin-b-50 text-center" > 작성자 ${cssview.user_nickname }</p>
                                 </div>
                                 <div class="col-md-2">
-                                	<p class="margin-b-50 text-center" > ${cssview.post_regdate}</p>
+                                	<p class="margin-b-50 text-center" > <fmt:formatDate value="${cssview.post_regdate}" pattern="yyyy-MM-dd HH:mm" /></p>
                                 </div>
                                 <div>
                                     <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; resize: none; background-color: #fff;" disabled>${cssview.post_contents }</pre>
