@@ -78,28 +78,28 @@
                         <div class="my_box" data-height="height">
                             <form method="post">
                                 <div class="col-md-6">
-									<input type="hidden" name="post_id" value="${jsview.post_id }">
-                                    <p style="color: black; font-size: 2rem; font-weight:bold;">글 제목 : ${jsview.post_subject }</p>
+									<input type="hidden" name="post_id" value="${jspview.post_id }">
+                                    <p style="color: black; font-size: 2rem; font-weight:bold;">글 제목 : ${jspview.post_subject }</p>
                                 </div>
                                 <div class="col-md-2">
-                                	<p class="margin-b-50 text-center" >조회수 ${jsview.post_vcount }</p>
+                                	<p class="margin-b-50 text-center" >조회수 ${jspview.post_vcount }</p>
                                 </div>
                                 <div class="col-md-2">
-                                	<p class="margin-b-50 text-center" > 작성자 ${jsview.user_nickname }</p>
+                                	<p class="margin-b-50 text-center" > 작성자 ${jspview.user_nickname }</p>
                                 </div>
                                 <div class="col-md-2">
-                                	<p class="margin-b-50 text-center" > <fmt:formatDate value="${jsview.post_regdate}" pattern="yyyy-MM-dd HH:mm" /></p>
+                                	<p class="margin-b-50 text-center" > <fmt:formatDate value="${jspview.post_regdate}" pattern="yyyy-MM-dd HH:mm" /></p>
                                 </div>
                                 <div>
-                                    <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; resize: none; background-color: #fff;" disabled>${jsview.post_contents }</pre>
+                                    <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; resize: none; background-color: #fff;" disabled>${jspview.post_contents }</pre>
                                 </div> 
 	                        	<div class="mb-5">
-									<c:if test="${member.user_nickname eq jsview.user_nickname}">
-		 		                    	<a href="/board/jsmodify?post_id=${jsview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
-				                		<a href="/board/jsdelete?post_id=${jsview.post_id }&mypage=" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
+									<c:if test="${member.user_nickname eq jspview.user_nickname}">
+		 		                    	<a href="/board/jspmodify?post_id=${jspview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
+				                		<a href="/board/jspdelete?post_id=${jspview.post_id }&mypage=" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
 									</c:if> 
-	                        		<a href="/board/jslist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
-									<c:if test="${member.user_nickname != jsview.user_nickname && member != null && jsview.user_nickname != 'admin'}">
+	                        		<a href="/board/jsplist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
+									<c:if test="${member.user_nickname != jspview.user_nickname && member != null && jspview.user_nickname != 'admin'}">
 										<a href="#" class="btn btn-default mt-4">북마크</a>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberreport" data-whatever="@getbootstrap" style="float: right;" >작성자 신고</button>
 									</c:if>
@@ -107,8 +107,8 @@
                             </form>
 							
            					<!-- 댓글 작성 -->
-							<form action="/reply/js_reply_write " name="replyForm" method="post">
-								<input type="hidden" id = "post_id" name="post_id" value="${jsview.post_id }">
+							<form action="/reply/jsp_reply_write " name="replyForm" method="post">
+								<input type="hidden" id = "post_id" name="post_id" value="${jspview.post_id }">
 								<div class="col-auto" style="display: flex;">
 								<c:if test="${member != null }">
                            			<input id="reply_contents" name="reply_contents" class="form-control mt-5" style="width: 95%;" type="text" placeholder="댓글을 입력해 주세요.">
@@ -121,8 +121,8 @@
 								<!-- 댓글 리스트 -->
 								<div>	
 									<c:choose>
-										<c:when test="${jsreplylist != null and fn:length(jsreplylist) > 0 }">
-											<c:forEach var="reply" items="${jsreplylist }">
+										<c:when test="${jspreplylist != null and fn:length(jspreplylist) > 0 }">
+											<c:forEach var="reply" items="${jspreplylist }">
 												<div class="reply_box mt-5 col-md-12 col-sm-12">
 													<!-- 정상적인 접근 경로 -->
 														<div align="center" width="200px" >
@@ -136,7 +136,7 @@
 																<a class="btn btn-danger mt-4" href="javascript:updateReply( ${reply.reply_id} );">등록하기</a>
 <%-- 																<a class="btn btn-info  mt-4" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail" onchange="">수정하기</a> --%>
 																<a class="btn btn-info  mt-4" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a>
-																<a class="btn btn-danger mt-4" href="/reply/js_reply_delete?reply_id=${reply.reply_id }&post_id=${reply.post_id}" id="list" type="submit">삭제</a>
+																<a class="btn btn-danger mt-4" href="/reply/jsp_reply_delete?reply_id=${reply.reply_id }&post_id=${reply.post_id}" id="list" type="submit">삭제</a>
 															</c:if>
 															</div>
 														</div>

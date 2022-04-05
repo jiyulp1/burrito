@@ -23,12 +23,12 @@ public class JsBoardDAOImpl implements JsBoardDAO {
 	
 	@Override
 	public void jsWrite(JsBoardVO vo) throws Exception {
-		sql.insert(namespace + "jswrite", vo);
+		sql.insert(namespace + ".jswrite", vo);
 	}
 	
 	@Override
 	public JsBoardVO jsView(int post_id) throws Exception {
-		return sql.selectOne(namespace + "jsview", post_id);
+		return sql.selectOne(namespace + ".jsview", post_id);
 	}
 
 	@Override
