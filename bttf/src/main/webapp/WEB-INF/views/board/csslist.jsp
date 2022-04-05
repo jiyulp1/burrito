@@ -90,7 +90,7 @@
 				                            </td>
 				                            <td>${board.user_nickname }</td>
 				                            <td>${board.post_vcount }</td>
-				                            <td>${board.post_regdate}</td>
+				                            <td><fmt:formatDate value="${board.post_regdate}" pattern="yyyy-MM-dd" /></td>
 				                        </tr>
 		                        	</c:forEach>
 		                        </c:when>
