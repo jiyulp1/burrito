@@ -160,15 +160,8 @@
 	<!-- Load d3.js and c3.js -->
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
-	<script type="text/javascript">
-	
-	const autoHyphen = (user_phone) => {
-		user_phone.value = user_phone.value
-		.replace(/[^0-9]/g, '')
-		.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
-	}
-	
-	</script>
+	<!-- autohyphen -->
+    <script src="../../../resources/js/autoHyphen.js"></script>
 </body>
 <!-- END BODY -->
 

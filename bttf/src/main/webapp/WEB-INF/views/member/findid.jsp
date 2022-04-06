@@ -108,7 +108,7 @@
                     <h2 class="card-title" style="color:#f58b34;"><img src="../../../resources/img/home_logo.png"/></h2>
                 </div>     
                 <div class="card-body">
-                    <form class="form-signin" method="POST">
+                    <form class="form-signin" action="/member/findid_ok" name="findid" method="POST">
                         <input type="text" name="user_name" id="user_name" class="form-control" placeholder="이름" required><br>
                         <input type="tel" name="user_phone" id="user_phone" class="form-control" oninput="autoHyphen(this)" maxlength="13" placeholder="핸드폰번호" required><br>
                         <input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" value="이메일찾기" >
@@ -161,15 +161,8 @@
 
     <!-- sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript">
-	
-	const autoHyphen = (user_phone) => {
-		user_phone.value = user_phone.value
-		.replace(/[^0-9]/g, '')
-		.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
-	}
-	
-	</script>
+    <!-- autohyphen -->
+    <script src="../../../resources/js/autoHyphen.js"></script>
 </body>
 <!-- END BODY -->
 

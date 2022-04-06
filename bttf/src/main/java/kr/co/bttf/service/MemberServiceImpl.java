@@ -68,6 +68,10 @@ public class MemberServiceImpl implements MemberService {
 		return loginSuccess;
 	}
 	
+	// 아이디 찾기
+		public List<MemberVO> findid(MemberVO vo) throws Exception{
+			return dao.findid(vo);
+		}
 	
 	@Override
 	public boolean reportSuccess(HashMap<String, Integer> map) {

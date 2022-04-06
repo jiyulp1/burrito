@@ -55,6 +55,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return sql.selectOne(namespace + ".login", map);
 
 	}	
+	
+	@Override
+	public List<MemberVO> findid(MemberVO vo) throws Exception {
+		return sql.selectList(namespace + ".findid", vo);
+	}
 
 	@Override
 	public MemberVO readMember(HashMap<String, String> map) {

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 
 <html lang="ko" class="no-js">
@@ -51,11 +50,6 @@
 <!-- BODY -->
 
 <body class="page-on-scroll fixed_container">
-    <c:set var="bookmarkList" value="${requestScope.bookmarkList}"/>
-    <c:set var="mypostList" value="${requestScope.mypostList}"/>
-    <c:set var="mypostcount" value="${requestScope.getMyPostCount}"/>
-    <c:set var="myreplycount" value="${requestScope.getMyReplyCount}"/>
-    <c:set var="myrecomendcount" value="${requestScope.getMyRecomendCount}"/>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -85,7 +79,9 @@
                             </div>
                             <div class="my_box_my_page_info">
                                 <h3>아이디 찾기가 완료되었습니다.</h3>
-                                <p>회원님의 아이디는 입니다.</p>
+                            <c:forEach var="members" items="${members}">
+                                <p>회원님의 아이디는 ${members.user_email }입니다.</p>
+                            </c:forEach>
                             </div>
                         </div>
                     </div>
@@ -99,7 +95,7 @@
                             <div class="my_box_my_page_info">
                                 <h3>로그인</h3>
                             </div>
-                            <a href="html5.html" class="content-wrapper-link"></a>
+                            <a href="/member/signin" class="content-wrapper-link"></a>
                         </div>
                     </div>
                 </div>
@@ -112,7 +108,7 @@
                             <div class="my_box_my_page_info">
                                 <h3>비밀번호 찾기</h3>
                             </div>
-                            <a href="html5.html" class="content-wrapper-link"></a>
+                            <a href="/member/findpw" class="content-wrapper-link"></a>
                         </div>
                     </div>
                 </div>
