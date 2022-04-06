@@ -40,7 +40,12 @@
 		AND  board_category_id = #{board_category_id}
 		AND  post_id = #{post_id}
 	</select>
-
+	
+	<select id="findid" resultType="kr.co.bttf.domain.MemberVO">
+	select * from user_all 
+	where user_name = #{user_name} and user_phone = #{user_phone}
+	</select>
+	
 	<select id="readMember" resultType="kr.co.bttf.domain.MemberVO">
 		select * from user_all where user_email = #{user_email} and user_phone = #{user_phone}
 	</select>

@@ -1,13 +1,11 @@
 package kr.co.bttf.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.bttf.domain.BoardVO;
-import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.ReportVO;
 
@@ -25,6 +23,9 @@ public interface MemberDAO {
 	
 	// 로그인 성공여부
 	public MemberVO signin(HashMap<String, String> map) throws Exception;
+	
+	// 아이디 찾기
+	public List<MemberVO> findid(MemberVO vo) throws Exception;
 	
 	//비밀번호 찾기
 	// 등록된 회원이면 회원 정보 가져오기

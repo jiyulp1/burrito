@@ -189,62 +189,14 @@
     
 	<!--validation -->
     <script src="../../../resources/js/user.js"></script>
-	<!--checkid-->
-    <script src="../../../resources/js/checkId.js"  type="text/javascript"></script>
+	<!--중복확인-->
+    <script src="../../../resources/js/check.js"></script>
+    <!-- autohyphen -->
+    <script src="../../../resources/js/autoHyphen.js"></script>
     <!--sweetalert -->
    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
    
-   
-	<script type="text/javascript">
-		
-	const autoHyphen = (user_phone) => {
-			user_phone.value = user_phone.value
-			.replace(/[^0-9]/g, '')
-			.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
-		}
-	
-	function fn_emailcheck(){
-	var email = document.joinForm.user_email;
-		$.ajax({
-			url : "/member/emailcheck",
-			type : "post",
-			dataType : "json",
-			data : {"user_email" : $("#user_email").val()},
-			success : function(data){
-				if(data == 1){
-					alert("중복된 이메일입니다.");
-				}else if(data == 0 && email.value != ''){
-					$("#emailcheck").attr("value", "Y");
-					alert("사용가능한 이메일입니다.");
-				}else if(email.value == ''){
-					alert("이메일를 입력해주세요");
-				}
-			}
-		})
-	}
-		
-	function fn_nickcheck(){
-	var nickname = document.joinForm.user_nickname;
-		$.ajax({
-			url : "/member/nickcheck",
-			type : "post",
-			dataType : "json",
-			data : {"user_nickname" : $("#user_nickname").val()},
-			success : function(data){
-				if(data == 1){
-					alert("중복된 닉네임입니다.");
-				}else if(data == 0 && nickname.value != ''){
-					$("#nickcheck").attr("value", "Y");
-					alert("사용가능한 닉네임입니다.");
-				}else if(nickname.value == ''){
-					alert("닉네임을 입력해주세요");
-				}
-			}
-		})
-	}
-		
-	</script>
 </body>
 <!-- END BODY -->
 </html>

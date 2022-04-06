@@ -29,6 +29,9 @@ public interface MemberService {
 	// 성공여부
 	public boolean signin(HttpServletRequest req) throws Exception;
 	
+	// 아이디 찾기
+	public List<MemberVO> findid(MemberVO vo) throws Exception;
+	
 	//비밀번호 찾기
 	public void findpw(HttpServletResponse response, MemberVO member) throws Exception;
 	
