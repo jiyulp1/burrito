@@ -97,7 +97,6 @@
 	                    </tbody>
 	                </table>
 	            </div>
-			</form>
             <!-- End notice -->
 			<c:if test="${member != null }">
            		<a href="/board/jswrite"class="btn btn-primary" type="submit">글쓰기</a>
@@ -116,7 +115,6 @@
         <!-- End Copyright -->
     </footer>
     <!--========== END FOOTER ==========-->
-
     <!-- Back To Top -->
     <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
    
