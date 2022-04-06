@@ -306,120 +306,116 @@ public class BoardController {
 			03. JAVASCRIPT
 	-------------------------------- */
 	// 3-1 [GET] 게시물 목록
-		@RequestMapping(value = "/jslist", method = RequestMethod.GET)
-		public void jsList(Model model) throws Exception {
-
-			List<JsBoardVO> jslist = null;
-			jslist = jsService.jsList();
-			model.addAttribute("jslist", jslist);
-		}
-
-		// 3-2. write페이지이동
-		@RequestMapping(value = "/jswrite", method = RequestMethod.GET)
-		public void jsWrite() throws Exception {
-
-		}
-		
-		// 3-2-1. 게시물 작성
-		@RequestMapping(value = "/jswrite", method = RequestMethod.POST)
-		public String jsWrite(JsBoardVO vo, HttpServletRequest request) throws Exception {
-			HttpSession session = request.getSession();
-			MemberVO member = (MemberVO) session.getAttribute("member");
-			vo.setUser_nickname(member.getUser_nickname());
-			jsService.jsWrite(vo);
-		  return "redirect:/board/jslist";
-		}
-		
-
-		// 3-3. 게시물 상세보기 페이지 이동
-		@RequestMapping(value = "/jsview", method = RequestMethod.GET)
-		public void jsView(@RequestParam("post_id") int post_id, Model model) throws Exception {
-			
-			// 상세보기 시 조회수 갱신
-			int jsvcnt = 0;
-			jsService.jsvcnt(post_id);
-			model.addAttribute("jsvcnt", jsvcnt);
-			
-			JsBoardVO vo = jsService.jsView(post_id);
-			model.addAttribute("jsview", vo);
-		}
-		
-		// 3-4. 게시물 수정 페이지 이동
-		@RequestMapping(value = "/jsmodify", method = RequestMethod.GET)
-		public void jsModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
-
-			JsBoardVO vo = jsService.jsView(post_id);
-			model.addAttribute("jsview", vo);
-		}
-		
-		@RequestMapping(value = "/jsmodify", method = RequestMethod.POST)
-		public String jsModify(JsBoardVO vo) throws Exception {
-
-			jsService.jsModify(vo);
-			return "redirect:/board/jsview?post_id=" + vo.getPost_id();
-		}
-
-		// 3-5. vo가 없으니 get방식 삭제
-		@RequestMapping(value = "/jsdelete", method = RequestMethod.GET)
-		public String jsDelete(HttpServletRequest req, @RequestParam("post_id") int post_id, @RequestParam("mypage") String mypage) throws Exception {
-
-			String result = "";
-			
-			jsService.jsDelete(post_id);
-			
-			HttpSession session = req.getSession();
-			
-			MemberVO member = (MemberVO) session.getAttribute("member");
-			
-			
-			int user_index = member.getUser_index();
-			String user_nickname = member.getUser_nickname();
-			
-			
-			// mypage에서 글을 삭제하는 경우 > mypage에 남아있음
-			if( mypage.equals("right")) {
-				
-				result = "forward:/member/mypage?user_index=" + user_index + "&user_nickname=" +user_nickname;			
-			
-			// 게시판에서 글을 삭제하는 경우 > 게시판에 남아있음
-			} else {
-				
-				result = "redirect:/board/jslist";
-			}
-			return result;
-		}
-		
-		// 3-6. 게시글 신고(가용성 카테고리 변경)
-		@RequestMapping(value = "/jsreport", method = RequestMethod.GET)
-		public void jsmemberreport(@RequestParam List<Integer> checkbox, 
-				
-		@RequestParam("reportee_index") int reportee_index, 
-		@RequestParam("reportee_index") int user_index, 
-		@RequestParam("reporter_index") int reporter_index,
-		@RequestParam("board_category_id") int board_category_id,
-		@RequestParam("post_id") int post_id,
-		
-		HttpServletResponse response) throws Exception{
-			for (Integer c : checkbox) {
-				HashMap<String, Integer> map = new HashMap<String, Integer>();
-				map.put("report_category_id", c);
-				map.put("reportee_index", reportee_index);
-				map.put("reporter_index", reporter_index);
-				map.put("board_category_id", board_category_id);
-				map.put("post_id", post_id);
-				
-				boolean reportSuccess = memberService.reportSuccess(map);	
-				
-				if(reportSuccess ) {
-					memberService.memberreport(map);						
-					jsService.jscategory2(post_id);
-					memberService.memcategory2(user_index);
-					ScriptUtils.alertAndMovePage(response, "신고가 접수되었습니다. 메인화면으로 이동합니다.","http://localhost:9090/");
-				}else {
-					ScriptUtils.alertAndMovePage(response, "이미 신고된 회원입니다.","http://localhost:9090/");
-				}
+	@RequestMapping(value = "/jslist", method = RequestMethod.GET)
+	public void jsList(Model model) throws Exception {
+	
+	List<JsBoardVO> jslist = null;
+	jslist = jsService.jsList();
+	model.addAttribute("jslist", jslist);
+	}
+	
+	// 3-2. write페이지이동
+	@RequestMapping(value = "/jswrite", method = RequestMethod.GET)
+	public void jsWrite() throws Exception {
+	
+	}
+	
+	// 3-2-1. 게시물 작성
+	@RequestMapping(value = "/jswrite", method = RequestMethod.POST)
+	public String jsWrite(JsBoardVO vo, HttpServletRequest request) throws Exception {
+	HttpSession session = request.getSession();
+	MemberVO member = (MemberVO) session.getAttribute("member");
+	vo.setUser_nickname(member.getUser_nickname());
+	jsService.jsWrite(vo);
+	return "redirect:/board/jslist";
+	}
+	
+	// 3-3. 게시물 상세보기 페이지 이동
+	@RequestMapping(value = "/jsview", method = RequestMethod.GET)
+	public void jsView(@RequestParam("post_id") int post_id, Model model) throws Exception {
+	
+	// 상세보기 시 조회수 갱신
+	int jsvcnt = 0;
+	jsService.jsvcnt(post_id);
+	model.addAttribute("jsvcnt", jsvcnt);
+	
+	JsBoardVO vo = jsService.jsView(post_id);
+	model.addAttribute("jsview", vo);
+	}
+	
+	// 3-4. 게시물 수정 페이지 이동
+	@RequestMapping(value = "/jsmodify", method = RequestMethod.GET)
+	public void jsModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
+	
+		JsBoardVO vo = jsService.jsView(post_id);
+	model.addAttribute("jsview", vo);
+	}
+	
+	
+	@RequestMapping(value = "/jsmodify", method = RequestMethod.POST)
+	public String jsmodify(JsBoardVO vo) throws Exception {
+	
+	jsService.jsModify(vo);
+	return "redirect:/board/jsview?post_id=" + vo.getPost_id();
+	}
+	
+	// 3-5. vo가 없으니 get방식 삭제
+	@RequestMapping(value = "/jsdelete", method = RequestMethod.GET)
+	public String jsDelete(HttpServletRequest req, @RequestParam("post_id") int post_id, @RequestParam("mypage") String mypage) throws Exception {
+	
+	String result = "";
+	
+	jsService.jsDelete(post_id);
+	HttpSession session = req.getSession();
+	MemberVO member = (MemberVO) session.getAttribute("member");
+	
+	int user_index = member.getUser_index();
+	String user_nickname = member.getUser_nickname();
+	
+	// mypage에서 글을 삭제하는 경우 > mypage에 남아있음
+	if( mypage.equals("right")) {
+	
+	result = "forward:/member/mypage?user_index=" + user_index + "&user_nickname=" +user_nickname;			
+	
+	// 게시판에서 글을 삭제하는 경우 > 게시판에 남아있음
+	} else {
+	
+	result = "redirect:/board/jslist";
+	}
+	return result;
+	}
+	
+	// 3-6. 게시글 신고(가용성 카테고리 변경)
+	@RequestMapping(value = "/jsreport", method = RequestMethod.GET)
+	public void jsmemberreport(@RequestParam List<Integer> checkbox, 
+	
+	@RequestParam("reportee_index") int reportee_index, 
+	@RequestParam("reportee_index") int user_index, 
+	@RequestParam("reporter_index") int reporter_index,
+	@RequestParam("board_category_id") int board_category_id,
+	@RequestParam("post_id") int post_id,
+	
+	HttpServletResponse response) throws Exception{
+	for (Integer c : checkbox) {
+	HashMap<String, Integer> map = new HashMap<String, Integer>();
+	map.put("report_category_id", c);
+	map.put("reportee_index", reportee_index);
+	map.put("reporter_index", reporter_index);
+	map.put("board_category_id", board_category_id);
+	map.put("post_id", post_id);
+	
+	boolean reportSuccess = memberService.reportSuccess(map);	
+	
+	if(reportSuccess ) {
+		memberService.memberreport(map);						
+		jsService.jscategory2(post_id);
+		memberService.memcategory2(user_index);
+		ScriptUtils.alertAndMovePage(response, "신고가 접수되었습니다. 메인화면으로 이동합니다.","http://localhost:9090/");
+	}else {
+		ScriptUtils.alertAndMovePage(response, "이미 신고된 회원입니다.","http://localhost:9090/");
 			}
 		}
+	}
 	
 	
 	/* --------------------------------
@@ -779,7 +775,7 @@ public class BoardController {
 			}
 		}
 	}
-		
+
 		
 	
 	
@@ -896,7 +892,7 @@ public class BoardController {
 		ScriptUtils.alertAndMovePage(response, "이미 신고된 회원입니다.","http://localhost:9090/");
 			}
 		}
-	}	
+	}
 	
 
 	

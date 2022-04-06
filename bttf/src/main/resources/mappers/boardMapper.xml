@@ -115,8 +115,8 @@
 	
 	<!-- 3-2. 게시물 작성 -->
 	<insert id="jswrite" parameterType="kr.co.bttf.domain.JsBoardVO">
-		insert into javascript (post_subject, post_contents, user_nickname)
-		values(#{post_subject}, #{post_contents}, #{user_nickname})
+		insert into javascript (post_subject, post_contents, user_nickname, user_index)
+		values(#{post_subject}, #{post_contents}, #{user_nickname}, #{user_index})
 	</insert>
 	
 	
@@ -126,10 +126,12 @@
 		where post_id = #{post_id}
 	</select>
 
+
 	<!-- 3-3-1. 조회수 갱신 -->
 	<update id="jsvcnt">
 			update javascript set post_vcount = post_vcount + 1 where post_id = #{post_id}
-	</update>	
+	</update>
+	
 	
 	<!-- 3-4. 게시물 수정 -->
 	<update id="jsmodify" parameterType="kr.co.bttf.domain.JsBoardVO">
