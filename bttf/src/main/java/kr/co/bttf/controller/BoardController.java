@@ -17,18 +17,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bttf.domain.CssBoardVO;
 import kr.co.bttf.domain.HtmlBoardVO;
+import kr.co.bttf.domain.JavaBoardVO;
 import kr.co.bttf.domain.JsBoardVO;
 import kr.co.bttf.domain.JspBoardVO;
 import kr.co.bttf.domain.MemberVO;
 import kr.co.bttf.domain.OracleBoardVO;
 import kr.co.bttf.domain.OracleReplyVO;
+import kr.co.bttf.domain.SpringBoardVO;
 import kr.co.bttf.service.CssBoardService;
 import kr.co.bttf.service.HtmlBoardService;
+import kr.co.bttf.service.JavaBoardService;
 import kr.co.bttf.service.JsBoardService;
 import kr.co.bttf.service.JspBoardService;
 import kr.co.bttf.service.MemberService;
 import kr.co.bttf.service.OracleBoardService;
 import kr.co.bttf.service.OracleReplyService;
+import kr.co.bttf.service.SpringBoardService;
 
 @Controller
 @RequestMapping("/board/*")
@@ -49,8 +53,8 @@ public class BoardController {
 	@Inject
 	private JspBoardService jspService;
 	
-//	@Inject
-//	private JavaBoardService javaService;
+	@Inject
+	private JavaBoardService javaService;
 	
 	@Inject
 	private OracleBoardService oracleService;
@@ -58,8 +62,8 @@ public class BoardController {
 	@Inject
 	private OracleReplyService oracleReplyService;
 	
-//	@Inject
-//	private SpringBoardService springService;
+	@Inject
+	private SpringBoardService springService;
 	
 	/* --------------------------------
 				01. HTML
@@ -536,6 +540,116 @@ public class BoardController {
 	/* --------------------------------
 				05. JAVA
 	-------------------------------- */
+	// 5-1 [GET] 게시물 목록
+	@RequestMapping(value = "/javalist", method = RequestMethod.GET)
+	public void javaList(Model model) throws Exception{
+		List<JavaBoardVO> javalist = null;
+		javalist = javaService.javaList();
+		model.addAttribute("javalist", javalist);
+	}
+	
+	// 5-2. write페이지이동
+	@RequestMapping(value = "/javawrite", method = RequestMethod.GET)
+	public void javaWrite() throws Exception {
+
+	}
+	
+	// 5-2-1. 게시물 작성
+	@RequestMapping(value = "/javawrite", method = RequestMethod.POST)
+	public String javaWrite(JavaBoardVO vo, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		vo.setUser_nickname(member.getUser_nickname());
+		javaService.javaWrite(vo);
+	  return "redirect:/board/javalist";
+	}
+	
+	// 5-3. 게시물 상세보기 페이지 이동
+	@RequestMapping(value = "/javaview", method = RequestMethod.GET)
+	public void javaView(@RequestParam("post_id") int post_id, Model model, @RequestParam(defaultValue="1") int curPage, ModelAndView mav, HttpSession session) throws Exception {
+		
+		// 상세보기 시 조회수 갱신
+		int javavcnt = 0;
+		javaService.javavcnt(post_id);
+		model.addAttribute("javavcnt", javavcnt);
+	}	
+		
+	// 5-4. 게시물 수정 페이지 이동
+	@RequestMapping(value = "/javamodify", method = RequestMethod.GET)
+	public void javaModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
+
+		JavaBoardVO vo = javaService.javaView(post_id);
+		model.addAttribute("javaview", vo);
+	}
+	
+
+	@RequestMapping(value = "/javamodify", method = RequestMethod.POST)
+	public String javaModify(JavaBoardVO vo) throws Exception {
+
+		javaService.javaModify(vo);
+		return "redirect:/board/javaview?post_id=" + vo.getPost_id();
+	}
+
+	
+	// 5-5. vo가 없으니 get방식으로 삭제
+	@RequestMapping(value = "/javadelete", method = RequestMethod.GET)
+	public String javaDelete(HttpServletRequest req, @RequestParam("post_id") int post_id, @RequestParam("mypage") String mypage) throws Exception {
+
+		String result = "";
+		
+		javaService.javaDelete(post_id);
+		HttpSession session = req.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		
+		int user_index = member.getUser_index();
+		String user_nickname = member.getUser_nickname();
+		
+		// mypage에서 글을 삭제하는 경우 > mypage에 남아있음
+		if( mypage.equals("right")) {
+			
+			result = "forward:/member/mypage?user_index=" + user_index + "&user_nickname=" +user_nickname;			
+		
+		// 게시판에서 글을 삭제하는 경우 > 게시판에 남아있음
+		} else {
+			
+			result = "redirect:/board/javalist";
+			
+		}
+		return result;
+	}
+	
+	// 5-6. 게시글 신고(가용성 카테고리 변경)
+	@RequestMapping(value = "/javareport", method = RequestMethod.GET)
+	public void javamemberreport(@RequestParam List<Integer> checkbox, 
+			
+	@RequestParam("reportee_index") int reportee_index, 
+	@RequestParam("reportee_index") int user_index, 
+	@RequestParam("reporter_index") int reporter_index,
+	@RequestParam("board_category_id") int board_category_id,
+	@RequestParam("post_id") int post_id,
+	
+	HttpServletResponse response) throws Exception{
+		for (Integer c : checkbox) {
+			HashMap<String, Integer> map = new HashMap<String, Integer>();
+			map.put("report_category_id", c);
+			map.put("reportee_index", reportee_index);
+			map.put("reporter_index", reporter_index);
+			map.put("board_category_id", board_category_id);
+			map.put("post_id", post_id);
+			
+			boolean reportSuccess = memberService.reportSuccess(map);	
+			
+			if(reportSuccess ) {
+				memberService.memberreport(map);						
+				javaService.javacategory2(post_id);
+				memberService.memcategory2(user_index);
+				ScriptUtils.alertAndMovePage(response, "신고가 접수되었습니다. 메인화면으로 이동합니다.","http://localhost:9090/");
+			}else {
+				ScriptUtils.alertAndMovePage(response, "이미 신고된 회원입니다.","http://localhost:9090/");
+			}
+		}
+	}
+	
 	
 	/* --------------------------------
 				06. ORACLE
@@ -583,7 +697,7 @@ public class BoardController {
 		
 		OracleBoardVO vo = oracleService.oracleView(post_id);
 		model.addAttribute("oracleview", vo);
-		
+	}
 		
 		
 	// 6-4. 게시물 수정 페이지 이동
@@ -669,6 +783,119 @@ public class BoardController {
 	/* --------------------------------
 				07. SPRING
 	-------------------------------- */
+	// 1-1 [GET] 게시물 목록
+	@RequestMapping(value = "/springlist", method = RequestMethod.GET)
+	public void springList(Model model) throws Exception {
+	
+	List<SpringBoardVO> springlist = null;
+	springlist = springService.springList();
+	model.addAttribute("springlist", springlist);
+	}
+	
+	// 1-2. write페이지이동
+	@RequestMapping(value = "/springwrite", method = RequestMethod.GET)
+	public void springWrite() throws Exception {
+	
+	}
+	
+	// 1-2-1. 게시물 작성
+	@RequestMapping(value = "/springwrite", method = RequestMethod.POST)
+	public String springWrite(SpringBoardVO vo, HttpServletRequest request) throws Exception {
+	HttpSession session = request.getSession();
+	MemberVO member = (MemberVO) session.getAttribute("member");
+	vo.setUser_nickname(member.getUser_nickname());
+	springService.springWrite(vo);
+	return "redirect:/board/springlist";
+	}
+	
+	// 1-3. 게시물 상세보기 페이지 이동
+	@RequestMapping(value = "/springview", method = RequestMethod.GET)
+	public void springView(@RequestParam("post_id") int post_id, Model model) throws Exception {
+	
+	// 상세보기 시 조회수 갱신
+	int springvcnt = 0;
+	springService.springvcnt(post_id);
+	model.addAttribute("springvcnt", springvcnt);
+	
+	SpringBoardVO vo = springService.springView(post_id);
+	model.addAttribute("springview", vo);
+	}
+	
+	// 1-4. 게시물 수정 페이지 이동
+	@RequestMapping(value = "/springmodify", method = RequestMethod.GET)
+	public void springModify(@RequestParam("post_id") int post_id, Model model) throws Exception {
+	
+		SpringBoardVO vo = springService.springView(post_id);
+	model.addAttribute("springview", vo);
+	}
+	
+	
+	@RequestMapping(value = "/springmodify", method = RequestMethod.POST)
+	public String springmodify(SpringBoardVO vo) throws Exception {
+	
+	springService.springModify(vo);
+	return "redirect:/board/springview?post_id=" + vo.getPost_id();
+	}
+	
+	// 1-5. vo가 없으니 get방식 삭제
+	@RequestMapping(value = "/springdelete", method = RequestMethod.GET)
+	public String springDelete(HttpServletRequest req, @RequestParam("post_id") int post_id, @RequestParam("mypage") String mypage) throws Exception {
+	
+	String result = "";
+	
+	springService.springDelete(post_id);
+	HttpSession session = req.getSession();
+	MemberVO member = (MemberVO) session.getAttribute("member");
+	
+	int user_index = member.getUser_index();
+	String user_nickname = member.getUser_nickname();
+	
+	// mypage에서 글을 삭제하는 경우 > mypage에 남아있음
+	if( mypage.equals("right")) {
+	
+	result = "forward:/member/mypage?user_index=" + user_index + "&user_nickname=" +user_nickname;			
+	
+	// 게시판에서 글을 삭제하는 경우 > 게시판에 남아있음
+	} else {
+	
+	result = "redirect:/board/springlist";
+	}
+	return result;
+	}
+	
+	// 1-6. 게시글 신고(가용성 카테고리 변경)
+	@RequestMapping(value = "/springreport", method = RequestMethod.GET)
+	public void springmemberreport(@RequestParam List<Integer> checkbox, 
+	
+	@RequestParam("reportee_index") int reportee_index, 
+	@RequestParam("reportee_index") int user_index, 
+	@RequestParam("reporter_index") int reporter_index,
+	@RequestParam("board_category_id") int board_category_id,
+	@RequestParam("post_id") int post_id,
+	
+	HttpServletResponse response) throws Exception{
+	for (Integer c : checkbox) {
+	HashMap<String, Integer> map = new HashMap<String, Integer>();
+	map.put("report_category_id", c);
+	map.put("reportee_index", reportee_index);
+	map.put("reporter_index", reporter_index);
+	map.put("board_category_id", board_category_id);
+	map.put("post_id", post_id);
+	
+	boolean reportSuccess = memberService.reportSuccess(map);	
+	
+	if(reportSuccess ) {
+		memberService.memberreport(map);						
+		springService.springcategory2(post_id);
+		memberService.memcategory2(user_index);
+		ScriptUtils.alertAndMovePage(response, "신고가 접수되었습니다. 메인화면으로 이동합니다.","http://localhost:9090/");
+	}else {
+		ScriptUtils.alertAndMovePage(response, "이미 신고된 회원입니다.","http://localhost:9090/");
+	}
+	}
+	}	
+	
+
 	
 
 	
