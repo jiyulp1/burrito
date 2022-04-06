@@ -23,14 +23,20 @@ public class JsBoardDAOImpl implements JsBoardDAO {
 	
 	@Override
 	public void jsWrite(JsBoardVO vo) throws Exception {
-		sql.insert(namespace + "jswrite", vo);
+		sql.insert(namespace + ".jswrite", vo);
 	}
 	
 	@Override
 	public JsBoardVO jsView(int post_id) throws Exception {
-		return sql.selectOne(namespace + "jsview", post_id);
+		return sql.selectOne(namespace + ".jsview", post_id);
 	}
-	
+
+	@Override
+	public int jsvcnt(int post_id) throws Exception {
+		return sql.update(namespace + ".jsvcnt", post_id);
+
+	}
+
 	@Override
 	public void jsModify(JsBoardVO vo) throws Exception {
 		sql.update(namespace + ".jsmodify", vo);
@@ -39,5 +45,11 @@ public class JsBoardDAOImpl implements JsBoardDAO {
 	@Override
 	public void jsDelete(int post_id) throws Exception {
 		sql.delete(namespace + ".jsdelete", post_id);
+	}
+
+	@Override
+	public void jscategory2(int post_id) throws Exception {
+		sql.update(namespace + ".jscategory2", post_id);
+		
 	}
 }

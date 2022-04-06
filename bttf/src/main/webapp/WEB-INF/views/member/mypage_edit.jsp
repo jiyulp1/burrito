@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <!DOCTYPE html>
 
@@ -71,39 +72,51 @@
                             <div class="my_box_element">
                                 <i class="my_box_icon fas fa-id-card"></i>
                             </div>
-                            <form action="${PageContext.request.contextPath}/pages/MemberJoinUpdate.us" method="post" name="joinFormEdit">
+                            <form action="/member/mypage_update" method="post" name="updateForm">
+                            	<input type="hidden" name="user_index" value="${member.user_index }">
                                 <div class="col-auto">
-                                    <label for="user_email">아이디</label>
+                                    <label for="user_email">이메일</label>
                                     <div style="display: flex;">
-                                        <input id="user_email" class="form-control margin-b-50" type="text" placeholder="이메일" readonly value="${member.user_email }">
+                                        <input id="user_email" name = "user_email" class="form-control margin-b-50" type="text" placeholder="이메일" readonly value="${member.user_email }">
                                     </div>
                                 </div>
                                 <div class="col-auto">
                                     <label for="user_pw">비밀번호</label>
-                                    <input  id="user_pw" class="form-control margin-b-50" type="password" placeholder="8자이상 영문+숫자모두 포함">
+                                    <input  id="user_pw" name = "user_pw" class="form-control margin-b-50" type="password" placeholder="8자이상 영문+숫자모두 포함">
+                                </div>
+                           		<div class="col-auto">
+                                    <label for="user_pw_re">비밀번호확인</label>
+                                    <input  id="user_pw_re" name="user_pw_re" class="form-control margin-b-50" type="password" placeholder="비밀번호를 다시 입력해주세요">
+                                </div>
+                                <div class="col-auto margin-b-50">
+                                    <label for="user_nickname">닉네임</label>
+                                	<div style="display:flex;">
+                                    	<input  id="user_nickname" name="user_nickname" class="form-control mr-5" style="width:86%;" type="text" value="${member.user_nickname }">
+                                    	<button class="nickcheck btn btn-info" type="button" id="nickcheck" onclick="fn_nickcheck();" value="N">중복확인</button>
+                                	</div>
                                 </div>
                                 <div class="col-auto">
                                     <label for="user_name">이름</label>
-                                    <input  id="user_name" class="form-control margin-b-50" type="text" placeholder="이름" readonly value="${member.user_name}">
+                                    <input  id="user_name" name = "user_name" class="form-control margin-b-50" type="text" placeholder="이름" readonly value="${member.user_name}">
                                 </div>
                                 <div class="col-auto">
                                     <label for="user_phone">전화번호</label>
-                                    <input  id="user_phone" class="form-control margin-b-50" type="text" placeholder="전화번호" value="${member.user_phone }">
+                                    <input  id="user_phone" name = "user_phone" class="form-control margin-b-50" type="text" oninput="autoHyphen(this)" maxlength="13" placeholder="전화번호" value="${member.user_phone }">
                                 </div>
                                 <div class="col-auto">
                                     <label class="form-label" for="main_language">관심언어</label>
                                     <select class="form-control" name="main_language" id="main_language">
                                         <option value="default">관심언어를 선택해주세요.</option>
-                                        <option value="JAVA">JAVA</option>
-                                        <option value="JSP">JSP</option>
-                                        <option value="SPRING">SPRING</option>
-                                        <option value="ORACLE">ORACLE</option>
-                                        <option value="JAVASCRIPT">JAVASCRIPT</option>
-                                        <option value="CSS3">CSS3</option>
-                                        <option value="HTML5">HTML5</option>
+                                        <option value="java" <c:if test="${member.main_language eq 'java'}">selected</c:if>>JAVA</option>
+                                        <option value="jsp" <c:if test="${member.main_language eq 'jsp'}">selected</c:if>>JSP</option>
+                                        <option value="spring" <c:if test="${member.main_language eq 'spring'}">selected</c:if>>SPRING</option>
+                                        <option value="oracle" <c:if test="${member.main_language eq 'oracle'}">selected</c:if>>ORACLE</option>
+                                        <option value="javascript" <c:if test="${member.main_language eq 'javascript'}">selected</c:if>>JAVASCRIPT</option>
+                                        <option value="css" <c:if test="${member.main_language eq 'css'}">selected</c:if>>CSS3</option>
+                                        <option value="html" <c:if test="${member.main_language eq 'html'}">selected</c:if>>HTML5</option>
                                     </select>
                                 </div>
-                                <input class="btn btn-primary mt-5" value ="수정완료" type="submit">
+                                <input class="btn btn-primary mt-5" type="submit" onclick="sendit()" value ="수정완료">
                                 <input class="btn btn-danger mt-5" value ="탈퇴하기" onclick="confirm_joinout()" type="button">
                             </form>
                         </div>
@@ -158,7 +171,60 @@
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
     
+   	<!--validation -->
+    <script src="../../../resources/js/user_update.js"></script>
+    <script src="../../../resources/js/confirm.js"></script>
+    
+   <!--sweetalert -->
+   <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
+	<script type="text/javascript">
+		
 
+	const autoHyphen = (user_phone) => {
+		user_phone.value = user_phone.value
+		.replace(/[^0-9]/g, '')
+		.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+	}
+
+	
+	// 사용자가 입력한 이름 변수에 담아주기
+	var my_nickname = '<c:out value="${member.user_nickname }"/>'
+	
+	
+	// 닉네임이 같은 경우 중복확인 안눌러도 됨
+	if( user_nickname.value == my_nickname ){
+		$("#nickcheck").attr("value", "Y");
+	}
+	
+	// 닉네임 중복확인
+	function fn_nickcheck(){
+		if( user_nickname.value == my_nickname ){
+			alert("기존의 닉네임과 동일합니다");
+			return;
+		}
+		
+		$.ajax({
+			url : "/member/nickcheck",
+			type : "post",
+			dataType : "json",
+			data : {"user_nickname" : $("#user_nickname").val()},
+			success : function(data){
+				if(data == 1){
+					alert("중복된 닉네임입니다.");
+				}else if(data == 0 && user_nickname.value != ''){
+					$("#nickcheck").attr("value", "Y");
+					alert("사용가능한 닉네임입니다.");
+				}else if(user_nickname.value == ''){
+					alert("닉네임을 입력해주세요");
+				}
+			}
+		})
+		
+	}
+	</script>
+	
 </body>
 <!-- END BODY -->
 </html>

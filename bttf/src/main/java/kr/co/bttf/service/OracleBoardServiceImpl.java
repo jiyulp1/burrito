@@ -44,5 +44,12 @@ public class OracleBoardServiceImpl implements OracleBoardService {
 	public void oracleDelete(int post_id) throws Exception {
 		dao.oracleDelete(post_id);
 	}
+	
+	// 게시글 신고(가용성 카테고리 변경)
+	@Override
+	public void oraclecategory2(int post_id) throws Exception {
+		dao.oraclecategory2(post_id);
+		
+	}
 
 }

@@ -7,9 +7,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import kr.co.bttf.domain.CssBoardVO;
-import kr.co.bttf.domain.HtmlBoardVO;
-import kr.co.bttf.domain.JsBoardVO;
 import kr.co.bttf.domain.OracleBoardVO;
 
 @Repository
@@ -49,7 +46,10 @@ public class OracleBoardDAOImpl implements OracleBoardDAO {
 	public void oracleDelete(int post_id) throws Exception {
 		sql.delete(namespace + ".oracledelete", post_id);
 	}
-	
-	
-	
+
+	@Override
+	public void oraclecategory2(int post_id) throws Exception {
+		sql.update(namespace + ".oraclecategory2", post_id);
+		
+	}
 }

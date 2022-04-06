@@ -168,5 +168,12 @@
 		select * from user_all ua where user_index = #{user_index}
 	</select>
 	
+	<update id="mypage_update" parameterType="kr.co.bttf.domain.MemberVO">
+		update user_all set user_pw = #{user_pw}, user_nickname = #{user_nickname}, user_phone = #{user_phone}, 
+			main_language = #{main_language} where user_index = #{user_index}
+	</update>
 
+	<update id = "joinout" parameterType="_int">
+		update user_all set avaliability_category_id = 4 where user_index = #{user_index}
+	</update>
 </mapper>

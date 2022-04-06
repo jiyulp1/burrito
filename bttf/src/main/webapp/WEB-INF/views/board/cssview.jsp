@@ -40,6 +40,10 @@
 
     <!-- c3 chart -->
     <link href="../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
+    
+	<!--reply style -->
+    <link href="../../../resources/css/comment.css">
+    
     <style type="text/css">
        .remove{
           display : none;
@@ -82,7 +86,7 @@
                                 	<p class="margin-b-50 text-center" > 작성자 ${cssview.user_nickname }</p>
                                 </div>
                                 <div class="col-md-2">
-                                	<p class="margin-b-50 text-center" > ${cssview.post_regdate}</p>
+                                	<p class="margin-b-50 text-center" > <fmt:formatDate value="${cssview.post_regdate}" pattern="yyyy-MM-dd HH:mm" /></p>
                                 </div>
                                 <div>
                                     <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; resize: none; background-color: #fff;" disabled>${cssview.post_contents }</pre>
@@ -90,104 +94,95 @@
 	                        	<div class="mb-5">
 									<c:if test="${member.user_nickname eq cssview.user_nickname}">
 		 		                    	<a href="/board/cssedit?post_id=${cssview.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글수정</a>                          
-				                		<a href="/board/cssdelete?post_id=${cssview.post_id }&mypage=" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
+				                		<a href="/board/cssdelete?post_id=${cssview.post_id }" class="btn btn-danger mt-4" id="list" type="submit">글삭제</a>
+				                		<p style=" transform: translate(0%,62%); color: #000 !important; ">댓글 개수 : </p>
 									</c:if> 
 	                        		<a href="/board/csslist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
 									<c:if test="${member.user_nickname != cssview.user_nickname && member != null && cssview.user_nickname != 'admin'}">
-										<a href="#" class="btn btn-default mt-4">북마크</a>
+										<a href="/board/bookmark" class="btn btn-default mt-4">북마크</a>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberreport" data-whatever="@getbootstrap" style="float: right;" >작성자 신고</button>
 									</c:if>
+<!-- 	                        		<p style="transform: translate(0%,62%); color: #000 !important;">댓글 개수 : </p> -->
                               	 </div>
                             </form>
 							
            					<!-- 댓글 작성 -->
-							<form name="replyForm" method="post">
-								<!-- 라이브리 시티 설치 코드 -->
-								<div id="lv-container" data-id="city" data-uid="MTAyMC81NTkzNi8zMjM5OQ==">
-									
-								<noscript> 라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요</noscript>
-								</div>
-								<!-- 시티 설치 코드 끝 -->
-<%-- 								<input type="hidden" name="post_id" value="${cssview.post_id }"> --%>
-<!-- 								<div class="col-auto" style="display: flex;"> -->
-<!--                            			<input id="reply_contents" name="reply_contents" class="form-control mt-5" style="width: 95%;" type="text" placeholder="댓글을 작성해보세요"> -->
-<!--                            			<a href="javascript:document.replyForm.submit()" class="btn btn-default mt-5" style="height: 50px; margin-left: 20px; line-height:36px; ">댓글등록</a> -->
-<!--                          		</div> -->
-<!--                          		<div class="col-auto ml-7" style="display: flex;"> -->
-<!--                            			<input id="reply_contents" name="reply_contents" class="form-control mt-5" style="width: 100%;" type="text" placeholder="댓글을 작성해보세요"> -->
-<!--                            			<a href="javascript:document.replyForm.submit()" class="btn btn-default mt-5" style="height: 50px; margin-left: 20px; line-height:36px; ">댓글등록</a> -->
-<!--                          		</div> -->
-								<!-- 댓글 리스트 -->
-								<div>
-									<c:choose>
-										<c:when test="${replylist != null and fn:length(replylist) > 0 }">
-											<c:forEach var="reply" items="${replylist }">
-												<div class="reply_box mt-5 col-md-12 col-sm-12">
-													<!-- 정상적인 접근 경로 -->
-														<div align="center" width="200px" >
-															<p id="re_author" name="user_id" class="text-left reply_subject" style="display:hidden;">${reply.replyer }</p>
-														</div>
-													<c:if test="${member != null }" >
-														<div class="col-md-12 col-sm-12 row">
-<%-- 															<textarea id="reply${reply.reply_id }" class="reply_con_box" name="reply${reply.reply_id }" readonly>${reply.reply_contents }</textarea> --%>
-															<div class="row mt-5" style="padding-left:10px;">
-																<a class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})" id="editfail">수정완료</a>
-																<a class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a>
-																<a class="btn btn-danger" href="javascript:deleteReply( ${reply.reply_id})" id="deletefail">삭제</a>
-															</div>
-														</div>
-													</c:if>
-													<!-- 비정상적인 접근 경로 -->
-													<c:if test="${member == null }" >
-														<div >
-<%-- 															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" class="reply_con_box" style="text-align:left; border:0px; height:fit-content; resize:none;">${reply.reply_contents }</textarea> --%>
-														</div>
-													</c:if>
-												</div>
-											</c:forEach>
-										</c:when>
-										<c:otherwise>
-											<div>
-												<div align="center" style="board : none !important;">
-<!-- 													<input  class="form-control mb-3 mt-4"type="text" placeholder="등록된 댓글이 없습니다." readonly> -->
-												</div>
-											</div>
-										</c:otherwise>
-									</c:choose>     
-								</div>
-								<!-- reply pagination -->
-								<nav aria-label="Page navigation" class="text-center">
-									<ul class="pagination">
-										<c:if test="${nowPage > 1 }">
-											<li class="page-item">							
-												<a class="page-link" href="${pageContext.request.contextPath }/pages/cssBoardView.do?page=${nowPage - 1 }&post_id=${board.post_id }">&lt;</a>
-											</li>
-										</c:if>
-										<c:forEach var="i" begin="${startPage}" end="${endPage }">
-											<c:choose>
-												<c:when test="${i == nowPage }">
-													<li class="page-item">
-														<a class="page-link">${i }	</a>						
-													</li>
-												</c:when>
-												<c:otherwise>
-													<li class="page-item">									
-														<a class="page-link" href="${pageContext.request.contextPath }/pages/cssBoardView.do?page=${i }&post_id=${board.post_id }">${i }</a>
-													</li>
-												</c:otherwise>
-											</c:choose>
-										</c:forEach>	
-										<c:if test="${nowPage<totalPage }">
-											<li class="page-item">
-												<a class="page-link" href="${pageContext.request.contextPath }/pages/cssBoardView.do?page=${nowPage + 1 }&post_id=${board.post_id }">&gt;</a>
-											</li>
-										</c:if>						
-									</ul>
-								</nav>
-								<!-- end of reply pagination -->	
-							</form> 
-							
-							                               
+           					<div class="card" id="result ">
+	                            <div class="card-body">
+	                                <!-- Comment form-->
+	                                <form name="replyForm" method="post" class="mb-4 d-flex">
+	                                	<textarea id="replytext" class="form-control mr-5" rows="2" placeholder="댓글을 작성하세요"></textarea>
+	                                	<a href="/reply/cssReplyWrite" id="btnReply" class="btn btn-primary" style="height:44px; line-height:32px;">작성하기</a>
+	                                </form>
+	                                <!-- Comment with nested comments-->
+	                                <div class="d-flex mb-4 mt-10">
+	                                    <!-- Parent comment-->
+	                                    <div class="flex-shrink-0 mr-4">
+<!-- 	                                    	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /> -->
+	                                    </div>
+	                                    <div class="ms-3" style="width : 100%;">
+	                                        <div class="fw-bold">
+			                                    <h3>Commenter Name</h3>
+	                                        	<div style=" clear: both; float: right; position: relative; top: 0; left: 4px;">
+		                                        	<a href="/reply/cssReplyModify" id="btnUpdate" class="btn btn-info btn-sm">수정</a>
+		                                        	<a href="/reply/cssReplyDelete" class="btn btn-danger btn-sm">삭제</a>
+	                                        	</div>
+	                                        </div>
+	                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+	                                       
+	                                        <!-- Child comment 1-->
+	                                        <div class="d-flex mt-4">
+	                                            <div class="flex-shrink-0 mr-4 col-sm-offset-1">
+<!-- 	                                            	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /> -->
+	                                            </div>
+	                                            <div class="ms-3" style="width : 100%;">
+	                                                <div class="fw-bold">
+			                                        	<h3>Commenter Name</h3>
+	                                                	<div style=" clear: both; float: right; position: relative; top: 0; left: 4px;">
+				                                        	<a href="/reply/cssReplyModify" class="btn btn-info btn-sm">수정</a>
+				                                        	<a href="/reply/cssReplyDelete" class="btn btn-danger btn-sm">삭제</a>
+			                                        	</div>
+	                                                </div>
+	                                                And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+	                                            </div>
+	                                        </div>
+	                                        
+	                                        <!-- Child comment 2-->
+	                                        <div class="d-flex mt-4 ">
+	                                            <div class="flex-shrink-0 mr-4 col-sm-offset-1">
+<!-- 	                                            	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /> -->
+	                                            </div>
+	                                            <div class="ms-3" style="width : 100%;">
+	                                                <div class="fw-bold">
+			                                        	<h3>Commenter Name</h3>
+		                                                <div style=" clear: both; float: right; position: relative; top: 0; left: 4px;">
+				                                        	<a href="/reply/cssReplyModify" class="btn btn-info btn-sm">수정</a>
+				                                        	<a href="/reply/cssReplyDelete" class="btn btn-danger btn-sm">삭제</a>
+			                                        	</div>
+	                                                </div>
+               											When you put money directly to a problem, it makes a good headline.
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <!-- Single comment-->
+	                                <div class="d-flex">
+	                                    <div class="flex-shrink-0 mr-4">
+<!-- 	                                    	<img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /> -->
+	                                    </div>
+	                                    <div class="ms-3" style="width : 100%;">
+	                                        <div class="fw-bold">
+	                                        	<h3>Commenter Name</h3>
+	                                        	<div style=" clear: both; float: right; position: relative; top: 0; left: 4px;">
+		                                        	<a href="#" class="btn btn-info btn-sm">수정</a>
+		                                        	<a href="#" class="btn btn-danger btn-sm">삭제</a>
+	                                        	</div>
+	                                        </div>   
+	                                        When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
                         </div>
                     </div>
                 </div>
@@ -383,6 +378,7 @@ totalChecked = 0;
       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
       j.async = true;
 
+      0
       e.parentNode.insertBefore(j, e);
   })(document, 'script');
 </script>

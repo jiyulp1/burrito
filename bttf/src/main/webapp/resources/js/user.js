@@ -133,5 +133,6 @@
       return false;
    }
    
+   
    document.joinForm.submit();
 }	

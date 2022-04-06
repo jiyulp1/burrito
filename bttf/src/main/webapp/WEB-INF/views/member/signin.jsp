@@ -114,7 +114,6 @@ a {
 				</div>
 				<div class="card-body">
 					<form action="/member/signin" class="form-signin" method="POST">
-						
 						<input type="text" name="user_email" id="user_email" class="form-control" placeholder="이메일" style="margin-bottom : 48px; border-radius:10px; height : 55px; " autofocus required> 
 						<input type="password" name="user_pw" id="user_pw" class="form-control" style="border-radius:10px; height : 55px; margin-bottom : 48px;" placeholder="비밀번호" required>
 						<p id="check" class="check">${login_msg}</p>

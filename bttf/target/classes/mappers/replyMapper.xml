@@ -34,20 +34,44 @@
 -->
 
 	<!-- 1. 댓글 조회 --> 
-	<select id="oracle_reply_list" parameterType="_int" resultType="kr.co.bttf.domain.OracleReplyVO">
-		select *
-		from reply_oracle 
-		where post_id = #{post_id} and avaliability_category_id = 1
-	</select>
+	
+<!-- 	<sql id="pagingHeader"> -->
+<!-- 		select * from ( -->
+<!-- 			select rownum as rn, A.* from( -->
+<!-- 	</sql> -->
+	
+	
+<!-- 	<sql id="pagingFooter"> -->
+<!-- 			)A -->
+<!-- 		) where rn limit #{end} offset #{start} -->
+<!-- 	</sql> -->
+	
+	
+<!-- 	<select id="oracleReplyList" parameterType="hashmap" resultType="kr.co.bttf.domain.OracleReplyVO"> -->
+		
+<!-- 		<include refid="pagingHeader"/> -->
+<!-- 	 		select * -->
+<!-- 			from reply_oracle ro, user_all  -->
+<!-- 			where ro.user_nickname = m.user_nickname and  -->
+<!-- 			post_id = #{post_id} and  -->
+<!-- 			avaliability_category_id = 1 -->
+<!-- 			order by reply_id -->
+<!-- 		<include refid="pagingFooter"/> -->
+		
+<!-- 	</select> -->
+	
+<!-- 	<select id="oracleCount" resultType="_int"> -->
+<!-- 	 	select count(*) from reply_oracle where post_id = #{post_id} -->
+<!-- 	</select> -->
 
 	<!-- 2. 댓글 작성 --> 
-	<insert id="oracle_reply_write" parameterType="kr.co.bttf.domain.OracleReplyVO">
+	<insert id="oracleReplyWrite" parameterType="kr.co.bttf.domain.OracleReplyVO">
 		insert into reply_oracle(post_id, reply_id, user_nickname, reply_contents) 
 		values(#{post_id}, #{reply_id}, #{user_nickname}, #{reply_contents})
 	</insert>
 
 	<!-- 3. 댓글 수정 --> 
-	<update id="oracle_reply_modify" parameterType="kr.co.bttf.domain.OracleReplyVO">
+	<update id="oracleReplyModify" parameterType="kr.co.bttf.domain.OracleReplyVO">
 		update reply_oracle set
 		reply_contents = #{reply_contents}
 		where post_id = #{post_id} and reply_id = #{reply_id}
@@ -59,7 +83,7 @@
 <!-- 		where post_id = #{post_id} and reply_id = #{reply_id} -->
 <!-- 	</delete> -->
 
-	<update id="oracle_reply_delete" parameterType="kr.co.bttf.domain.OracleReplyVO">
+	<update id="oracleReplyDelete" parameterType="kr.co.bttf.domain.OracleReplyVO">
 		update reply_oracle set
 		avaliability_category_id = 4
 		where post_id = #{post_id} and reply_id = #{reply_id}

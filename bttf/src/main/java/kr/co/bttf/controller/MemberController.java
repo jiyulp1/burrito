@@ -40,13 +40,14 @@ public class MemberController {
 		int result = service.emailcheck(vo);
 		return result;
 	}
+	
 	// 닉네임 중복체크
 		@ResponseBody
 		@RequestMapping(value = "/nickcheck", method = RequestMethod.POST)
 		public int nickcheck(MemberVO vo) throws Exception {
 			int result2 = service.nickcheck(vo);
 			return result2;
-		}
+	}
 		
 	// 회원 가입 get
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -170,6 +171,7 @@ public class MemberController {
 	//마이페이지 이동
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public void mypageModify(@RequestParam("user_index") int user_index, @RequestParam("user_nickname") String user_nickname, Model model) throws Exception {
+		logger.info("mypage");
 		
 		//작성한 글 수
 		int mypostcnt = service.mypostcnt(user_index);
@@ -192,10 +194,71 @@ public class MemberController {
 	// 마이페이지 - 수정하기
 	@RequestMapping(value = "/mypage_edit", method = RequestMethod.GET)
 	public void mypage_view(@RequestParam("user_index") int user_index, Model model) throws Exception{
+		logger.info("mypage edit");
 		
 		MemberVO member = service.mypage_view(user_index);
 		model.addAttribute("member", member);
 		
+	}
+	
+	// 마이페이지 - 수정한 정보 업데이트
+	@RequestMapping(value = "/mypage_update", method = RequestMethod.POST)
+	public void mypage_update(MemberVO member, HttpServletResponse res) throws Exception{
+		logger.info("mypage update");
+		
+		 int update = service.mypage_update(member);
+		
+		 
+		 try {
+			 if(update==1) {
+				 
+				 ScriptUtils.alertAndMovePage(res, "회원정보가 수정되었습니다. 다시 로그인 해주세요", "http://localhost:9090/member/signin");
+				 
+			 } else {
+				 
+				 ScriptUtils.alertAndMovePage(res, "회원정보 수정을 실패했습니다. ", "http://localhost:9090/member/mypage_edit");
+				 
+			 }
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 
+		 
+		
+	}
+	
+	// 마이페이지 - 탈퇴하기
+	@RequestMapping(value = "/joinout", method = RequestMethod.GET)
+	public void joinout( HttpServletRequest req, HttpServletResponse res, HttpSession session) throws Exception {
+		
+		HttpSession sessionout = req.getSession();  // 현재 세션 정보를 가져옴
+		
+		MemberVO member = (MemberVO) sessionout.getAttribute("member");
+		int user_index = member.getUser_index();
+		
+		//일단 세션나오기
+		service.signout(session);
+		
+		//회원 탈퇴
+		int result = service.joinout(user_index);
+		
+		try {
+			 if(result==1) {
+				 
+				 ScriptUtils.alertAndMovePage(res, "회원탈퇴가 완료되었습니다.", "http://localhost:9090/");
+				 
+			 } else {
+				 
+				 ScriptUtils.alertAndMovePage(res, "회원탈퇴에 실패했습니다. ", "http://localhost:9090/");
+				 
+			 }
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 
+		 
 	}
 	
 		

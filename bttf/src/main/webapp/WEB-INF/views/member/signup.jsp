@@ -118,14 +118,14 @@
                                 <div class="col-auto">
                                     <label class="form-label" for="main_language">관심언어</label>
                                     <select class="form-control" name="main_language" id="pref">
-                                        <option value="JAVA">관심언어를 선택해주세요.</option>
-                                        <option value="JAVA">JAVA</option>
-                                        <option value="JSP">JSP</option>
-                                        <option value="SPRING">SPRING</option>
-                                        <option value="ORACLE">ORACLE</option>
-                                        <option value="JAVASCRIPT">JAVASCRIPT</option>
-                                        <option value="CSS3">CSS3</option>
-                                        <option value="HTML5">HTML5</option>
+                                        <option value="default">관심언어를 선택해주세요.</option>
+                                        <option value="java">JAVA</option>
+                                        <option value="jsp">JSP</option>
+                                        <option value="spring">SPRING</option>
+                                        <option value="oracle">ORACLE</option>
+                                        <option value="javascript">JAVASCRIPT</option>
+                                        <option value="css">CSS3</option>
+                                        <option value="html">HTML5</option>
                                     </select>
                                 </div>
 <!--                                 <a id="joinin" class="btn btn-primary" style="height: 50px; margin-top: 10px; line-height: 36px; "href = "java::void(0)" onclick="sendit()"> 회원가입하기</a> -->
