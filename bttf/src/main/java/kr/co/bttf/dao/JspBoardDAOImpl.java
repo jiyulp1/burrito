@@ -23,12 +23,12 @@ public class JspBoardDAOImpl implements JspBoardDAO {
 	
 	@Override
 	public void jspWrite(JspBoardVO vo) throws Exception {
-		sql.insert(namespace + "jspwrite", vo);
+		sql.insert(namespace + ".jspwrite", vo);
 	}
 	
 	@Override
 	public JspBoardVO jspView(int post_id) throws Exception {
-		return sql.selectOne(namespace + "jspview", post_id);
+		return sql.selectOne(namespace + ".jspview", post_id);
 	}
 
 	@Override

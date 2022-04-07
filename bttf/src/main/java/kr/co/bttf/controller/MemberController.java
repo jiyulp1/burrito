@@ -111,10 +111,28 @@ public class MemberController {
 	public void termsOfUse() throws Exception{
 		
 	}
-	// 아이디 찾기
+	// 아이디 찾기 페이지 이동
 	@RequestMapping(value = "/findid", method = RequestMethod.GET)
 	public void findid() throws Exception{
-		
+	}
+	
+	// 아이디 찾기후 값 넘기기
+//	@RequestMapping(value = "/findid", method = RequestMethod.POST)
+//	public String findid(MemberVO vo, Model model) throws Exception{
+//		System.out.println(vo.getUser_name());
+//		System.out.println(vo.getUser_phone());
+//		List<MemberVO> members = service.findid(vo);
+//		model.addAttribute("members", members);
+//		return "forward:/member/findid_ok";
+//	}
+	
+	
+	// 아이디 찾기후
+	@RequestMapping(value = "/findid_ok", method = RequestMethod.POST)
+	public void findid_ok(MemberVO vo, Model model) throws Exception{
+	
+		List<MemberVO> members = service.findid(vo);
+		model.addAttribute("members", members);
 	}
 	
 	// 비밀번호 찾기

@@ -23,12 +23,12 @@ public class JavaBoardDAOImpl implements JavaBoardDAO {
 	
 	@Override
 	public void javaWrite(JavaBoardVO vo) throws Exception {
-		sql.insert(namespace + "javawrite", vo);
+		sql.insert(namespace + ".javawrite", vo);
 	}
 	
 	@Override
 	public JavaBoardVO javaView(int post_id) throws Exception {
-		return sql.selectOne(namespace + "javaview", post_id);
+		return sql.selectOne(namespace + ".javaview", post_id);
 	}
 
 	@Override

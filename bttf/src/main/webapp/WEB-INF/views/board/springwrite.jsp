@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -15,28 +15,18 @@
 <meta content="" name="author" />
 
 <!-- GLOBAL MANDATORY STYLES -->
-<link
-	href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700"
-	rel="stylesheet" type="text/css">
-<link
-	href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css"
-	rel="stylesheet" type="text/css" />
-<link href="../../../resources/vendor/bootstrap/css/bootstrap.css"
-	rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+<link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
-<!-- font-Glyphicon -->
-<!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
 <!-- PAGE LEVEL PLUGIN STYLES -->
 <link href="../../../resources/css/animate.css" rel="stylesheet">
-<link href="../../../resources/vendor/swiper/css/swiper.min.css"
-	rel="stylesheet" type="text/css" />
+<link href="../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
 
 <!-- THEME STYLES -->
-<link href="../../../resources/css/layout.css" rel="stylesheet"
-	type="text/css" />
+<link href="../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="/resources/img/favicon/favicon-32x32.png" />
@@ -86,7 +76,7 @@
 						<div class="my_box" data-height="height">
 						
 							<!-- Start write Form -->
-							<form name = "csswrite" method="post">
+							<form name = "springwrite" method="post">
 								<input type="hidden" name="user_index" value="${member.user_index }">
 								<div class="col-auto">
 									<label for="subject">제목</label>
@@ -100,9 +90,9 @@
 									</c:if>
 									<%-- 로그인O--%>
 									<c:if test="${member != null }">
-<!-- 										<a href="javascript:document.csswrite.submit()" class="btn btn-info mt-4" id="writesuccess">작성완료</a> -->
+<!-- 										<a href="javascript:document.springwrite.submit()" class="btn btn-info mt-4" id="writesuccess">작성완료</a> -->
 										<button type="submit" class="btn btn-info mt-4" id="writesuccess">작성완료</button>
-<%-- 										<a href="${pageContext.request.contextPath }/pages/cssBoardUpdate.do" class="btn btn-default mt-4" id="editBoard">수정 하기</a> --%>
+<%-- 										<a href="${pageContext.request.contextPath }/pages/springBoardUpdate.do" class="btn btn-default mt-4" id="editBoard">수정 하기</a> --%>
 									</c:if>
 										<a class="btn btn-primary mt-4" id="list" onclick="confirm_backlist()">목록</a>
 							</form>
@@ -162,7 +152,7 @@
 	<script src="../../../resources/js/action.js"></script>
 	<!--<script src="vendor/ckeditor5-build-classic/translations/ko.js"></script>-->
 
-	<script src="../../../resources/vendor/ckeditor5-31.1.0-e38clgxocdpt/build/ckeditor.js"></script>
+	<script src="${contextPath}../../../resources/vendor/ckeditor5-31.1.0-e38clgxocdpt/build/ckeditor.js"></script>
 
 	<script>
         ClassicEditor
