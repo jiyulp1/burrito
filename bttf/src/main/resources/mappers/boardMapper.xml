@@ -48,11 +48,56 @@
 	</delete>
 
 	<!-- 1-6. 가용성 카테고리 수정 -->
-	
 	<update id="htmlcategory2" parameterType="_int">
 		update html set avaliability_category_id = 2 where post_id = #{post_id}
 	</update>
 
+	<!-- 1-7. 게시글 북마크 유무 확인-->
+	<select id ="htmlbookmarklist" parameterType = "hashmap" resultType="_int">
+		select count(*) from post_bookmark 
+		where post_id_html = #{post_id} and user_index = #{user_index}
+	</select>
+	
+	<!-- 1-8. 게시글 북마크 설정 -->
+	<insert id ="htmlbookmark" parameterType = "hashmap">
+		insert into post_bookmark (user_index, post_id_html, board_category_id  ) 
+		values (#{user_index} ,#{post_id} , 1) 
+	</insert>
+	
+	<!-- 1-9. 게시글 추천 유무 확인-->
+	<select id = "htmlRecommendCheck" parameterType="map" resultType="map" >
+		select recommend_check from recommend 
+		where post_id_html = #{post_id} and user_index = #{user_index};
+	</select>
+	
+	<!-- 1-10. 추천 테이블에 추천 추가 -->
+	<insert id = "htmlInsertRecBtn" parameterType="map">
+		insert into recommend 
+		(post_id_html, user_index , recommend_check) values 
+		(#{post_id}, #{user_index}, 1)
+	</insert>
+	
+	<!-- 1-11. 해당 게시글에 추천수 업데이트 -->
+	<update id ="htmlUpdateRecCntPlus" parameterType="map">
+		update html set post_rec = post_rec + 1 where post_id = #{post_id}
+	</update>
+	
+	
+	<!-- 1-12. 추천 테이블 recommend_check 업데이트 -->
+	<update id="htmlUpdateRecCheck" parameterType="map">
+		update recommend set recommend_check = #{recommend_check} 
+		where post_id_html = #{post_id} and user_index = #{user_index}
+	</update>
+	
+	<!-- 1-13. 해당 게시글에 추천수 업데이트 -->
+	<update id ="htmlUpdateRecCntMinus" parameterType="map">
+		update html set post_rec = post_rec -1 where post_id = #{post_id}
+	</update>
+	
+	<!-- 1-14 해당 게시글의 추천수 조회 -->
+	<select id = "htmlGetRecCnt" parameterType="map" resultType="_int">
+		select post_rec from html where post_id = #{post_id}
+	</select>
 	
 <!-- 
 ========================================
@@ -84,7 +129,7 @@
 	</update>		
 	
 	<!-- 2-4. 게시물 수정 -->
-	<update id="cssedit" parameterType="kr.co.bttf.domain.CssBoardVO">
+	<update id="cssmodify" parameterType="kr.co.bttf.domain.CssBoardVO">
 		update css set
 		post_subject = #{post_subject}, post_contents = #{post_contents}
 		where post_id = #{post_id}
@@ -97,10 +142,56 @@
 	</delete>
 
 	<!-- 2-6. 가용성 카테고리 수정 -->
-	
 	<update id="csscategory2" parameterType="_int">
 		update css set avaliability_category_id = 2 where post_id = #{post_id}
 	</update>
+	
+	<!-- 2-7. 게시글 북마크 유무 확인-->
+	<select id ="cssbookmarklist" parameterType = "hashmap" resultType="_int">
+		select count(*) from post_bookmark 
+		where post_id_css = #{post_id} and user_index = #{user_index}
+	</select>
+	
+	<!-- 2-8. 게시글 북마크 설정 -->
+	<insert id ="cssbookmark" parameterType = "hashmap">
+		insert into post_bookmark (user_index, post_id_css ,board_category_id  ) 
+		values (#{user_index} ,#{post_id} , 2) 
+	</insert>
+	
+	<!-- 2-9. 게시글 추천 유무 확인-->
+	<select id = "cssRecommendCheck" parameterType="map" resultType="map" >
+		select recommend_check from recommend 
+		where post_id_css = #{post_id} and user_index = #{user_index};
+	</select>
+
+	<!-- 2-10. 추천 테이블에 추천 추가 -->
+	<insert id = "cssInsertRecBtn" parameterType="map">
+		insert into recommend 
+		(post_id_css, user_index , recommend_check) values 
+		(#{post_id}, #{user_index}, 1)
+	</insert>
+	
+	<!-- 	2-11. 해당 게시글에 추천수 업데이트 -->
+	<update id ="cssUpdateRecCntPlus" parameterType="map">
+		update css set post_rec = post_rec + 1 where post_id = #{post_id}
+	</update>
+	
+	
+	<!-- 	2-12. 추천 테이블 recommend_check 업데이트 -->
+	<update id="cssUpdateRecCheck" parameterType="map">
+		update recommend set recommend_check = #{recommend_check} 
+		where post_id_css = #{post_id} and user_index = #{user_index}
+	</update>
+	
+	<!-- 	2-13. 해당 게시글에 추천수 업데이트 -->
+	<update id ="cssUpdateRecCntMinus" parameterType="map">
+		update css set post_rec = post_rec -1 where post_id = #{post_id}
+	</update>
+	
+	<!-- 	2.14 해당 게시글의 추천수 조회 -->
+	<select id = "cssGetRecCnt" parameterType="map" resultType="_int">
+		select post_rec from css where post_id = #{post_id}
+	</select>
 	
 <!-- 
 ========================================
@@ -116,22 +207,20 @@
 	<!-- 3-2. 게시물 작성 -->
 	<insert id="jswrite" parameterType="kr.co.bttf.domain.JsBoardVO">
 		insert into javascript (post_subject, post_contents, user_nickname, user_index)
-		values(#{post_subject}, #{post_contents}, #{user_nickname}, #{user_index})
+		values(#{post_subject}, #{post_contents}, #{user_nickname},#{user_index})
 	</insert>
 	
 	
 	<!-- 3-3. 게시물 조회 -->
-	<select id="jsview" parameterType="int" resultType="kr.co.bttf.domain.JsBoardVO">
+	<select id="javascriptView" parameterType="int" resultType="kr.co.bttf.domain.JsBoardVO">
 		select * from javascript
 		where post_id = #{post_id}
 	</select>
 
-
 	<!-- 3-3-1. 조회수 갱신 -->
 	<update id="jsvcnt">
 			update javascript set post_vcount = post_vcount + 1 where post_id = #{post_id}
-	</update>
-	
+	</update>	
 	
 	<!-- 3-4. 게시물 수정 -->
 	<update id="jsmodify" parameterType="kr.co.bttf.domain.JsBoardVO">
@@ -147,37 +236,88 @@
 		where post_id = #{post_id}
 	</delete>
 	
+	<!-- 3-6. 가용성 카테고리 수정 -->
+	<update id="jscategory2" parameterType="_int">
+		update javascript set avaliability_category_id = 2 where post_id = #{post_id}
+	</update>
+	
+	<!-- 3-7. 게시글 북마크 유무 확인-->
+	<select id ="jsbookmarklist" parameterType = "hashmap" resultType="_int">
+		select count(*) from post_bookmark 
+		where post_id_javascript = #{post_id} and user_index = #{user_index}
+	</select>
+	
+	<!-- 3-8. 게시글 북마크 설정 -->
+	<insert id ="jsbookmark" parameterType = "hashmap">
+		insert into post_bookmark (user_index, post_id_javascript ,board_category_id  ) 
+		values (#{user_index} ,#{post_id} , 3) 
+	</insert>
+	
+	<!-- 3-9. 게시글 추천 유무 확인-->
+	<select id = "jsRecommendCheck" parameterType="map" resultType="map" >
+		select recommend_check from recommend 
+		where post_id_javascript = #{post_id} and user_index = #{user_index};
+	</select>
+
+	<!-- 3-10. 추천 테이블에 추천 추가 -->
+	<insert id = "jsInsertRecBtn" parameterType="map">
+		insert into recommend 
+		(post_id_javascript, user_index , recommend_check) values 
+		(#{post_id}, #{user_index}, 1)
+	</insert>
+	
+	<!-- 3-11. 해당 게시글에 추천수 업데이트 -->
+	<update id ="jsUpdateRecCntPlus" parameterType="map">
+		update javascript set post_rec = post_rec + 1 where post_id = #{post_id}
+	</update>
+	
+	
+	<!-- 3-12. 추천 테이블 recommend_check 업데이트 -->
+	<update id="jsUpdateRecCheck" parameterType="map">
+		update recommend set recommend_check = #{recommend_check} 
+		where post_id_javascript = #{post_id} and user_index = #{user_index}
+	</update>
+	
+	<!-- 3-13. 해당 게시글에 추천수 업데이트 -->
+	<update id ="jsUpdateRecCntMinus" parameterType="map">
+		update javascript set post_rec = post_rec -1 where post_id = #{post_id}
+	</update>
+	
+	<!-- 3-14 해당 게시글의 추천수 조회 -->
+	<select id = "jsGetRecCnt" parameterType="map" resultType="_int">
+		select post_rec from javascript where post_id = #{post_id}
+	</select>
 	
 <!-- 
 ========================================
 			04. JSP
 ========================================
  -->
-	<!-- 3-1. 게시물 목록 -->
+	<!-- 4-1. 게시물 목록 -->
 	<select id="jsplist" resultType="kr.co.bttf.domain.JspBoardVO">
 		select * from jsp
 	</select>
 	
 	
-	<!-- 3-2. 게시물 작성 -->
+	<!-- 4-2. 게시물 작성 -->
 	<insert id="jspwrite" parameterType="kr.co.bttf.domain.JspBoardVO">
-		insert into jsp (post_subject, post_contents, user_nickname)
-		values(#{post_subject}, #{post_contents}, #{user_nickname})
+		insert into jsp (post_subject, post_contents, user_nickname, user_index)
+		values(#{post_subject}, #{post_contents}, #{user_nickname},#{user_index})
 	</insert>
 	
 	
-	<!-- 3-3. 게시물 조회 -->
+	<!-- 4-3. 게시물 조회 -->
 	<select id="jspview" parameterType="int" resultType="kr.co.bttf.domain.JspBoardVO">
 		select * from jsp
 		where post_id = #{post_id}
 	</select>
 
-	<!-- 3-3-1. 조회수 갱신 -->
+	<!-- 4-3-1. 조회수 갱신 -->
 	<update id="jspvcnt">
 		update jsp set post_vcount = post_vcount + 1 where post_id = #{post_id}
 	</update>	
 	
-	<!-- 3-4. 게시물 수정 -->
+	<!-- 4-4. 게시물 수정 -->
 	<update id="jspmodify" parameterType="kr.co.bttf.domain.JspBoardVO">
 		update jsp set
 		post_subject = #{post_subject}, post_contents = #{post_contents}
@@ -185,13 +325,63 @@
 	</update>
 	
 	
-	<!-- 3-5. 게시물 삭제 -->
+	<!-- 4-5. 게시물 삭제 -->
 	<delete id="jspdelete" parameterType="int">
 		delete from jsp
 		where post_id = #{post_id}
 	</delete>
 	
+	<!-- 4-6. 가용성 카테고리 수정 -->
+	<update id="jspcategory2" parameterType="_int">
+		update jsp set avaliability_category_id = 2 where post_id = #{post_id}
+	</update>
 	
+	<!-- 4-7. 게시글 북마크 유무 확인-->
+	<select id ="jspbookmarklist" parameterType = "hashmap" resultType="_int">
+		select count(*) from post_bookmark 
+		where post_id_jsp = #{post_id} and user_index = #{user_index}
+	</select>
+	
+	<!-- 4-8. 게시글 북마크 설정 -->
+	<insert id ="jspbookmark" parameterType = "hashmap">
+		insert into post_bookmark (user_index, post_id_jsp ,board_category_id  ) 
+		values (#{user_index} ,#{post_id} , 4) 
+	</insert>
+	
+	<!-- 4-9. 게시글 추천 유무 확인-->
+	<select id = "jspRecommendCheck" parameterType="map" resultType="map" >
+		select recommend_check from recommend 
+		where post_id_jsp = #{post_id} and user_index = #{user_index};
+	</select>
+
+	<!-- 4-10. 추천 테이블에 추천 추가 -->
+	<insert id = "jspInsertRecBtn" parameterType="map">
+		insert into recommend 
+		(post_id_jsp, user_index , recommend_check) values 
+		(#{post_id}, #{user_index}, 1)
+	</insert>
+	
+	<!-- 4-11. 해당 게시글에 추천수 업데이트 -->
+	<update id ="jspUpdateRecCntPlus" parameterType="map">
+		update jsp set post_rec = post_rec + 1 where post_id = #{post_id}
+	</update>
+	
+	
+	<!-- 4-12. 추천 테이블 recommend_check 업데이트 -->
+	<update id="jspUpdateRecCheck" parameterType="map">
+		update recommend set recommend_check = #{recommend_check} 
+		where post_id_jsp = #{post_id} and user_index = #{user_index}
+	</update>
+	
+	<!-- 4-13. 해당 게시글에 추천수 업데이트 -->
+	<update id ="jspUpdateRecCntMinus" parameterType="map">
+		update jsp set post_rec = post_rec -1 where post_id = #{post_id}
+	</update>
+	
+	<!-- 4-14 해당 게시글의 추천수 조회 -->
+	<select id = "jspGetRecCnt" parameterType="map" resultType="_int">
+		select post_rec from jsp where post_id = #{post_id}
+	</select>
 <!-- 
 ========================================
 			05. JAVA
@@ -237,7 +427,57 @@
 		where post_id = #{post_id}
 	</delete>
 	
+	<!-- 5-6. 가용성 카테고리 수정 -->
+	<update id="javacategory2" parameterType="_int">
+		update java set avaliability_category_id = 2 where post_id = #{post_id}
+	</update>
+	
+	<!-- 5-7. 게시글 북마크 유무 확인-->
+	<select id ="javabookmarklist" parameterType = "hashmap" resultType="_int">
+		select count(*) from post_bookmark 
+		where post_id_java = #{post_id} and user_index = #{user_index}
+	</select>
+	
+	<!-- 5-8. 게시글 북마크 설정 -->
+	<insert id ="javabookmark" parameterType = "hashmap">
+		insert into post_bookmark (user_index, post_id_java ,board_category_id  ) 
+		values (#{user_index} ,#{post_id} , 5) 
+	</insert>
+	
+	<!-- 5-9. 게시글 추천 유무 확인-->
+	<select id = "javaRecommendCheck" parameterType="map" resultType="map" >
+		select recommend_check from recommend 
+		where post_id_java = #{post_id} and user_index = #{user_index};
+	</select>
 
+	<!-- 5-10. 추천 테이블에 추천 추가 -->
+	<insert id = "javaInsertRecBtn" parameterType="map">
+		insert into recommend 
+		(post_id_java, user_index , recommend_check) values 
+		(#{post_id}, #{user_index}, 1)
+	</insert>
+	
+	<!-- 5-11. 해당 게시글에 추천수 업데이트 -->
+	<update id ="javaUpdateRecCntPlus" parameterType="map">
+		update java set post_rec = post_rec + 1 where post_id = #{post_id}
+	</update>
+	
+	
+	<!-- 5-12. 추천 테이블 recommend_check 업데이트 -->
+	<update id="javaUpdateRecCheck" parameterType="map">
+		update recommend set recommend_check = #{recommend_check} 
+		where post_id_java = #{post_id} and user_index = #{user_index}
+	</update>
+	
+	<!-- 5-13. 해당 게시글에 추천수 업데이트 -->
+	<update id ="javaUpdateRecCntMinus" parameterType="map">
+		update java set post_rec = post_rec -1 where post_id = #{post_id}
+	</update>
+	
+	<!-- 5-14 해당 게시글의 추천수 조회 -->
+	<select id = "javaGetRecCnt" parameterType="map" resultType="_int">
+		select post_rec from java where post_id = #{post_id}
+	</select>
 <!-- 
 ========================================
 			06. ORACLE
@@ -282,8 +522,58 @@
 		delete from oracle
 		where post_id = #{post_id}
 	</delete>
+	
+	<!-- 6-6. 가용성 카테고리 수정 -->
+	<update id="oraclecategory2" parameterType="_int">
+		update oracle set avaliability_category_id = 2 where post_id = #{post_id}
+	</update>
 
+	<!-- 6-7. 게시글 북마크 유무 확인-->
+	<select id ="oraclebookmarklist" parameterType = "hashmap" resultType="_int">
+		select count(*) from post_bookmark 
+		where post_id_oracle = #{post_id} and user_index = #{user_index}
+	</select>
+	
+	<!-- 6-8. 게시글 북마크 설정 -->
+	<insert id ="oraclebookmark" parameterType = "hashmap">
+		insert into post_bookmark (user_index, post_id_oracle ,board_category_id  ) 
+		values (#{user_index} ,#{post_id} , 6) 
+	</insert>
+	
+	<!-- 6-9. 게시글 추천 유무 확인-->
+	<select id = "oracleRecommendCheck" parameterType="map" resultType="map" >
+		select recommend_check from recommend 
+		where post_id_oracle = #{post_id} and user_index = #{user_index};
+	</select>
 
+	<!-- 6-10. 추천 테이블에 추천 추가 -->
+	<insert id = "oracleInsertRecBtn" parameterType="map">
+		insert into recommend 
+		(post_id_oracle, user_index , recommend_check) values 
+		(#{post_id}, #{user_index}, 1)
+	</insert>
+	
+	<!-- 6-11. 해당 게시글에 추천수 업데이트 -->
+	<update id ="oracleUpdateRecCntPlus" parameterType="map">
+		update oracle set post_rec = post_rec + 1 where post_id = #{post_id}
+	</update>
+	
+	
+	<!-- 6-12. 추천 테이블 recommend_check 업데이트 -->
+	<update id="oracleUpdateRecCheck" parameterType="map">
+		update recommend set recommend_check = #{recommend_check} 
+		where post_id_oracle = #{post_id} and user_index = #{user_index}
+	</update>
+	
+	<!-- 6-13. 해당 게시글에 추천수 업데이트 -->
+	<update id ="oracleUpdateRecCntMinus" parameterType="map">
+		update oracle set post_rec = post_rec -1 where post_id = #{post_id}
+	</update>
+	
+	<!-- 6-14 해당 게시글의 추천수 조회 -->
+	<select id = "oracleGetRecCnt" parameterType="map" resultType="_int">
+		select post_rec from oracle where post_id = #{post_id}
+	</select>
 	
 
 <!-- 
@@ -331,7 +621,57 @@
 		where post_id = #{post_id}
 	</delete>
 
+	<!-- 7-6. 가용성 카테고리 수정 -->
+	<update id="springcategory2" parameterType="_int">
+		update spring set avaliability_category_id = 2 where post_id = #{post_id}
+	</update>
 
+	<!-- 7-7. 게시글 북마크 유무 확인-->
+	<select id ="springbookmarklist" parameterType = "hashmap" resultType="_int">
+		select count(*) from post_bookmark 
+		where post_id_spring = #{post_id} and user_index = #{user_index}
+	</select>
+	
+	<!-- 7-8. 게시글 북마크 설정 -->
+	<insert id ="springbookmark" parameterType = "hashmap">
+		insert into post_bookmark (user_index, post_id_spring ,board_category_id  ) 
+		values (#{user_index} ,#{post_id} , 7) 
+	</insert>
+	
+	<!-- 7-9. 게시글 추천 유무 확인-->
+	<select id = "springRecommendCheck" parameterType="map" resultType="map" >
+		select recommend_check from recommend 
+		where post_id_spring = #{post_id} and user_index = #{user_index};
+	</select>
+
+	<!-- 7-10. 추천 테이블에 추천 추가 -->
+	<insert id = "springInsertRecBtn" parameterType="map">
+		insert into recommend 
+		(post_id_spring, user_index , recommend_check) values 
+		(#{post_id}, #{user_index}, 1)
+	</insert>
+	
+	<!-- 7-11. 해당 게시글에 추천수 업데이트 -->
+	<update id ="springUpdateRecCntPlus" parameterType="map">
+		update spring set post_rec = post_rec + 1 where post_id = #{post_id}
+	</update>
+	
+	
+	<!-- 7-12. 추천 테이블 recommend_check 업데이트 -->
+	<update id="springUpdateRecCheck" parameterType="map">
+		update recommend set recommend_check = #{recommend_check} 
+		where post_id_spring = #{post_id} and user_index = #{user_index}
+	</update>
+	
+	<!-- 7-13. 해당 게시글에 추천수 업데이트 -->
+	<update id ="springUpdateRecCntMinus" parameterType="map">
+		update spring set post_rec = post_rec -1 where post_id = #{post_id}
+	</update>
+	
+	<!-- 7-14 해당 게시글의 추천수 조회 -->
+	<select id = "springGetRecCnt" parameterType="map" resultType="_int">
+		select post_rec from spring where post_id = #{post_id}
+	</select>
 
 
 

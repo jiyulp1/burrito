@@ -146,6 +146,15 @@
 }
 /*margin-right end*/
 
+/*padding none*/
+.p-0{
+	padding : 0px !important;
+	
+}
+
+
+/*end padding none*/
+
 
 /*padding-top*/
 .pt-1{
@@ -1162,6 +1171,35 @@ pre{
 
 /* reply style end */
 
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0 !important;
+    background-color: #000;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1 !important; 
+  background-color: rgba(255,255,255,0) !important;
+  display :none;
+}
+.modal-backdrop.fade {
+  filter: none !important;
+  opacity: 1 !important;
+}
+.modal-backdrop.in {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
 
 /* manager_language page */
 .manager_lnb_box{
@@ -1527,6 +1565,10 @@ pre{
   visibility: hidden !important;
 }
 
+.primary-font{
+	font-size : 17px;
+}
+
 /* end Reply_content */
 
 
@@ -1556,6 +1598,9 @@ pre{
 /* 4. footer end */
 
 
+.cen_img {
+	display:block; margin:auto; 
+}
 
 
 

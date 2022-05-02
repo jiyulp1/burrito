@@ -8,6 +8,8 @@
             }
         });
     });
+    
+   
     // 우측 클릭 방지 
     document.onmousedown = disableclick;
     status = "Right click is not available.";

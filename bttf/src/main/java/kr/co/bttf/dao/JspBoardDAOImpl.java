@@ -1,6 +1,8 @@
 package kr.co.bttf.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -51,5 +53,53 @@ public class JspBoardDAOImpl implements JspBoardDAO {
 	public void jspcategory2(int post_id) throws Exception {
 		sql.update(namespace + ".jspcategory2", post_id);
 		
+	}
+	
+	@Override
+	public int jspbookmarklist(HashMap<String, Integer> postid_useridx) throws Exception {
+
+		return sql.selectOne(namespace +".jspbookmarklist", postid_useridx);
+	}
+
+	@Override
+	public void jspbookmark(HashMap<String, Integer> postid_useridx) {
+		
+		sql.insert(namespace + ".jspbookmark", postid_useridx);
+	}
+	
+	@Override
+	public Map<String, Object> jspRecommendCheck(Map<String, Object> post_useridx) {
+		return sql.selectOne(namespace + ".jspRecommendCheck", post_useridx);
+	}
+
+	@Override
+	public void jspInsertRecBtn(Map<String, Object> post_useridx) throws Exception {
+
+		sql.insert(namespace +".jspInsertRecBtn", post_useridx);
+		
+	}
+
+	@Override
+	public void jspUpdateRecCntPlus(Map<String, Object> post_useridx) throws Exception {
+
+		sql.update(namespace + ".jspUpdateRecCntPlus", post_useridx);
+	}
+
+	@Override
+	public void jspUpdateRecCheck(Map<String, Object> post_useridx) throws Exception  {
+
+		sql.update(namespace + ".jspUpdateRecCheck", post_useridx);
+	}
+
+	@Override
+	public void jspUpdateRecCntMinus(Map<String, Object> post_useridx) throws Exception  {
+
+		sql.update(namespace + ".jspUpdateRecCntMinus", post_useridx);
+	}
+
+	@Override
+	public int jspGetRecCnt(Map<String, Object> post_useridx) throws Exception {
+
+		return sql.selectOne(namespace + ".jspGetRecCnt", post_useridx);
 	}
 }

@@ -1,6 +1,8 @@
 package kr.co.bttf.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -38,8 +40,8 @@ public class CssBoardDAOImpl implements CssBoardDAO {
 	}
 
 	@Override
-	public void cssEdit(CssBoardVO vo) throws Exception {
-		sql.update(namespace + ".cssedit", vo);
+	public void cssModify(CssBoardVO vo) throws Exception {
+		sql.update(namespace + ".cssmodify", vo);
 	}
 
 	@Override
@@ -51,5 +53,53 @@ public class CssBoardDAOImpl implements CssBoardDAO {
 	public void csscategory2(int post_id) throws Exception {
 		sql.update(namespace + ".csscategory2", post_id);
 		
+	}
+	
+	@Override
+	public int cssbookmarklist(HashMap<String, Integer> postid_useridx) throws Exception {
+
+		return sql.selectOne(namespace +".cssbookmarklist", postid_useridx);
+	}
+
+	@Override
+	public void cssbookmark(HashMap<String, Integer> postid_useridx) throws Exception {
+		
+		sql.insert(namespace + ".cssbookmark", postid_useridx);
+	}
+	
+	@Override
+	public Map<String, Object> cssRecommendCheck(Map<String, Object> post_useridx) {
+		return sql.selectOne(namespace + ".cssRecommendCheck", post_useridx);
+	}
+
+	@Override
+	public void cssInsertRecBtn(Map<String, Object> post_useridx) throws Exception {
+
+		sql.insert(namespace +".cssInsertRecBtn", post_useridx);
+		
+	}
+
+	@Override
+	public void cssUpdateRecCntPlus(Map<String, Object> post_useridx) throws Exception {
+
+		sql.update(namespace + ".cssUpdateRecCntPlus", post_useridx);
+	}
+
+	@Override
+	public void cssUpdateRecCheck(Map<String, Object> post_useridx) throws Exception  {
+
+		sql.update(namespace + ".cssUpdateRecCheck", post_useridx);
+	}
+
+	@Override
+	public void cssUpdateRecCntMinus(Map<String, Object> post_useridx) throws Exception  {
+
+		sql.update(namespace + ".cssUpdateRecCntMinus", post_useridx);
+	}
+
+	@Override
+	public int cssGetRecCnt(Map<String, Object> post_useridx) throws Exception {
+
+		return sql.selectOne(namespace + ".cssGetRecCnt", post_useridx);
 	}
 }

@@ -3,6 +3,7 @@ package kr.co.bttf.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
@@ -112,7 +113,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 	}
 	
-		@Override
+	@Override
 	public int mypostcnt(int user_index) throws Exception {
 
 		return sql.selectOne(namespace + ".mypostcnt", user_index);
@@ -125,6 +126,13 @@ public class MemberDAOImpl implements MemberDAO {
 		return sql.selectOne(namespace + ".myreplycnt", user_nickname);
 		
 	}
+	
+	@Override
+	public int myrecommendcnt(int user_index) throws Exception {
+
+		return sql.selectOne(namespace + ".myrecommendcnt", user_index);
+		
+	}
 
 	@Override
 	public List<BoardVO> mypostlist(int user_index) throws Exception{
@@ -132,28 +140,22 @@ public class MemberDAOImpl implements MemberDAO {
 		// 전체 게시글 목록
 		List<BoardVO> mypostlist = new ArrayList<BoardVO>();
 
-		// 각각의 게시글 목록
-		List<BoardVO> eachlist = new ArrayList<BoardVO>();			
-		
-		
-		for (int i = 0; i < 7; i++) {
-			eachlist = sql.selectList(namespace + ".mypostlist"+i, user_index );
+			mypostlist = sql.selectList(namespace + ".mypostlist", user_index );
 			
-			if(eachlist==null) {
-				continue;				
-			}
+		return mypostlist;
+	}
+	
+	
+	@Override
+	public List<BoardVO> mybookmarks(int user_index) {
 			
-			for(int j = 0; j<eachlist.size(); j++) {
-				
-				BoardVO board = eachlist.get(j);
-								
-				mypostlist.add(board);
-			}
-		}
-		
+		// 전체 게시글 목록
+		List<BoardVO> mybookmarks = new ArrayList<BoardVO>();
+
+			mybookmarks = sql.selectList(namespace + ".mybookmarks", user_index );
 
 		
-		return mypostlist;
+		return mybookmarks;
 	}
 
 	@Override
@@ -176,6 +178,18 @@ public class MemberDAOImpl implements MemberDAO {
 
 		int result = sql.update(namespace + ".joinout", user_index);
 		
+		return result;
+	}
+
+	@Override
+	public int bookmarkdelete(Map<String, Object> board_category_nameid) throws Exception {
+		
+		String board_category_name = (String) board_category_nameid.get("board_category_name");
+		
+		Integer results = sql.delete(namespace + ".bookmarkdelete_"+board_category_name, board_category_nameid);
+		
+		int result = results.intValue();
+				
 		return result;
 	}
 	

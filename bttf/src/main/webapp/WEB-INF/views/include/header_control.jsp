@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -78,7 +79,7 @@
                     <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/admin/announcements">Notice</a></li>
 					<li class="nav-item">
 						<c:if test="${member != null && member.authority_name != 'admin' }" >
-							<a class="nav-item-child nav-item-hover" href="/member/mypage?user_index=${member.user_index }&user_nickname=${member.user_nickname }">MyPage</a>
+							<a class="nav-item-child nav-item-hover" href="/member/mypage?user_index=${member.user_index }">MyPage</a>
 						</c:if>
 					</li>
 					<li class="nav-item ">

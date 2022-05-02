@@ -129,7 +129,7 @@
 	</select>
 	
 	<select id="boardblockjs" resultType="kr.co.bttf.domain.JsBoardVO">
-		select * from js where avaliability_category_id =2 
+		select * from javascript where avaliability_category_id =2 
 	</select>
 	
 	<select id="boardblockjava" resultType="kr.co.bttf.domain.JavaBoardVO">

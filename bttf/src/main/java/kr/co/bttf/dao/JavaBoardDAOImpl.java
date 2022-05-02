@@ -1,6 +1,8 @@
 package kr.co.bttf.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -51,5 +53,53 @@ public class JavaBoardDAOImpl implements JavaBoardDAO {
 	public void javacategory2(int post_id) throws Exception {
 		sql.update(namespace + ".javacategory2", post_id);
 		
+	}
+	
+	@Override
+	public int javabookmarklist(HashMap<String, Integer> postid_useridx) throws Exception {
+
+		return sql.selectOne(namespace +".javabookmarklist", postid_useridx);
+	}
+
+	@Override
+	public void javabookmark(HashMap<String, Integer> postid_useridx) {
+		
+		sql.insert(namespace + ".javabookmark", postid_useridx);
+	}
+	
+	@Override
+	public Map<String, Object> javaRecommendCheck(Map<String, Object> post_useridx) {
+		return sql.selectOne(namespace + ".javaRecommendCheck", post_useridx);
+	}
+
+	@Override
+	public void javaInsertRecBtn(Map<String, Object> post_useridx) throws Exception {
+
+		sql.insert(namespace +".javaInsertRecBtn", post_useridx);
+		
+	}
+
+	@Override
+	public void javaUpdateRecCntPlus(Map<String, Object> post_useridx) throws Exception {
+
+		sql.update(namespace + ".javaUpdateRecCntPlus", post_useridx);
+	}
+
+	@Override
+	public void javaUpdateRecCheck(Map<String, Object> post_useridx) throws Exception  {
+
+		sql.update(namespace + ".javaUpdateRecCheck", post_useridx);
+	}
+
+	@Override
+	public void javaUpdateRecCntMinus(Map<String, Object> post_useridx) throws Exception  {
+
+		sql.update(namespace + ".javaUpdateRecCntMinus", post_useridx);
+	}
+
+	@Override
+	public int javaGetRecCnt(Map<String, Object> post_useridx) throws Exception {
+
+		return sql.selectOne(namespace + ".javaGetRecCnt", post_useridx);
 	}
 }

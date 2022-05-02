@@ -6,88 +6,86 @@
 <!-- BEGIN HEAD -->
 
 <head>
-    <meta charset="utf-8" />
-    <title>Home4 - Homebrew Community</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="" name="description" />
-    <meta content="" name="author" />
+<meta charset="utf-8" />
+<title>Home4 - Homebrew Community</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
 
-    <!-- GLOBAL MANDATORY STYLES -->
-	<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-	<link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-	<link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<!-- GLOBAL MANDATORY STYLES -->
+<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+<link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
-	<!-- font-Glyphicon -->
-	<!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+<!-- font-Glyphicon -->
+<!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
-	<!-- PAGE LEVEL PLUGIN STYLES -->
-	<link href="../../../resources/css/animate.css" rel="stylesheet">
-	<link href="../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+<!-- PAGE LEVEL PLUGIN STYLES -->
+<link href="../../../resources/css/animate.css" rel="stylesheet">
+<link href="../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
 
-	<!-- THEME STYLES -->
-	<link href="../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
+<!-- THEME STYLES -->
+<link href="../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="../../../resources/img/favicon/favicon-32x32.png" />
+<!-- Favicon -->
+<link rel="shortcut icon" href="../../../resources/img/favicon/favicon-32x32.png" />
 
-	<!-- custom -->
-	<link rel="stylesheet" href="../../../resources/css/custom.css">
+<!-- custom -->
+<link rel="stylesheet" href="../../../resources/css/custom.css">
 
-	<!-- c3 chart -->
-	<link href="../../../resources/vendor/c3-0.7.20/c3.css" rel="stylesheet">
-    <style>
+<style>
+html {
+   height: 100%;
+}
+
+body {
+    width:100%;
+    height:100%;
+    margin: 0;
+     padding-top: 200px;
+     padding-bottom: 40px;
+     font-family: "Nanum Gothic", arial, helvetica, sans-serif;
+     background-repeat: no-repeat;
+}
+
+ .card {
+     margin: 0 auto; /* Added */
+     float: none; /* Added */
    
-        html {
-           height: 100%;
-        }
-        
-        body {
-            width:100%;
-            height:100%;
-            margin: 0;
-             padding-top: 200px;
-             padding-bottom: 40px;
-             font-family: "Nanum Gothic", arial, helvetica, sans-serif;
-             background-repeat: no-repeat;
-        }
-        
-         .card {
-             margin: 0 auto; /* Added */
-             float: none; /* Added */
-           
-        }
-     
-         #btn-Yes{
-             background-color: #17bed2;
-             border: none;
-         }
-        
-        .form-signin .form-control {
-             position: relative;
-             height: auto;
-             -webkit-box-sizing: border-box;
-             -moz-box-sizing: border-box;
-                 box-sizing: border-box;
-             padding: 10px;
-             font-size: 16px;
-        }
-         .card-title{
-             margin-left: 30px;
-         }
-         .links{
-             text-align: center;
-             margin-bottom: 10px;
-         }
-     
-         a{ 
-            color: #17bed2; text-decoration: none; 
-         }
-         .text2{
-            color : blue;
-         }
-    </style>
+}
+
+ #btn-Yes{
+     background-color: #17bed2;
+     border: none;
+ }
+
+.form-signin .form-control {
+     position: relative;
+     height: auto;
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box;
+     padding: 10px;
+     font-size: 16px;
+}
+ .card-title{
+     margin: 30px;
+ }
+ .links{
+     text-align: center;
+     margin-bottom: 10px;
+ }
+
+ a{ 
+    color: #17bed2; 
+    text-decoration: none; 
+ }
+ .text2{
+    color : blue;
+ }
+</style>
 </head>
 <!-- END HEAD -->
 
@@ -105,17 +103,19 @@
         <div class="row">
             <div class="card align-middle col-md-3 login_card" >
                 <div class="card-title" style="margin-top:30px;">         
-                    <h2 class="card-title" style="color:#f58b34;"><img src="../../../resources/img/home_logo.png"/></h2>
+                    <h2 class="card-title text-center" style="color:#f58b34;">
+                    	<img src="../../../resources/img/home_logo.png"/>
+                    </h2>
                 </div>     
                 <div class="card-body">
-                    <form class="form-signin" action="/member/findid_ok" name="findid" method="POST">
-                        <input type="text" name="user_name" id="user_name" class="form-control" placeholder="이름" required><br>
-                        <input type="tel" name="user_phone" id="user_phone" class="form-control" oninput="autoHyphen(this)" maxlength="13" placeholder="핸드폰번호" required><br>
-                        <input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" value="이메일찾기" >
+                    <form action="/member/findid_ok" class="form-signin" name="findid" method="POST">
+                        <input type="text" name="user_name" id="user_name" class="form-control" placeholder="이름" style="margin-bottom : 48px; border-radius:10px; height : 55px; " autofocus required>
+                        <input type="tel" name="user_phone" id="user_phone" class="form-control" oninput="autoHyphen(this)" maxlength="13" style="border-radius:10px; height : 55px; margin-bottom : 48px;" placeholder="핸드폰번호" required>
+                        <input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" style="line-height:28px !important; margin-bottom: 20px;" value="이메일찾기" >
                     </form>
                 </div>
                 <div class="links" style="padding: 10px 20px;">
-                    <a href="/member/findpw">비밀번호 찾기</a> | <a onclick="history.go(-1);">로그인</a> | <a href="/member/signup">회원가입</a>
+                    <a href="/member/findpw">비밀번호 찾기</a> | <a href="/member/signin"">로그인</a> | <a href="/member/signup">회원가입</a>
                 </div>
             </div>
         </div>
@@ -158,7 +158,7 @@
 	<!-- Load d3.js and c3.js -->
 	<script src="../../../resources/vendor/c3-0.7.20/c3.js"></script>
 	<script src="../../../resources/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
-
+	
     <!-- sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- autohyphen -->

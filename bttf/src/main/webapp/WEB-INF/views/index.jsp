@@ -120,9 +120,9 @@
                             <div class="service-info">
                                 <h3>JAVASCRIPT</h3>
                                 <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-                                <a class="link" href="#">Read More</a>
+                                <a class="link" href="/board/jslist">Read More</a>
                             </div>
-                            <a href="#" class="content-wrapper-link"></a>
+                            <a href="/board/jslist" class="content-wrapper-link"></a>
                         </div>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
 	                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
 	                                <a class="link" href="#">Read More</a>
 	                            </div>
-	                            <a href="#" class="content-wrapper-link"></a>
+	                            <a href="/board/javalist" class="content-wrapper-link"></a>
 	                        </div>
 	                    </div>
 	                </div>
@@ -152,9 +152,9 @@
 	                            <div class="service-info">
 	                                <h3>JSP</h3>
 	                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-	                                <a class="link" href="#">Read More</a>
+	                                <a class="link" href="/board/jsplist">Read More</a>
 	                            </div>
-	                            <a href="#" class="content-wrapper-link"></a>
+	                            <a href="/board/jsplist" class="content-wrapper-link"></a>
 	                        </div>
 	                    </div>
 	                </div>
@@ -162,14 +162,14 @@
 	                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".5s">
 	                        <div class="service" data-height="height">
 	                            <div class="service-element">
-	                                <i class="service-icon fas fa-leaf"></i>
+	                                <i class="service-icon fas fa-database"></i>
 	                            </div>
 	                            <div class="service-info">
-	                                <h3>SPRING</h3>
+	                                <h3>ORACLE</h3>
 	                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-	                                <a class="link" href="#">Read More</a>
+	                                <a class="link" href="/board/oraclelist">Read More</a>
 	                            </div>
-	                            <a href="#" class="content-wrapper-link"></a>
+	                            <a href="/board/oraclelist" class="content-wrapper-link"></a>
 	                        </div>
 	                    </div>
 	                </div>
@@ -177,14 +177,14 @@
 	                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".6s">
 	                        <div class="service" data-height="height">
 	                            <div class="service-element">
-	                                <i class="service-icon fas fa-database"></i>
+	                                <i class="service-icon fas fa-leaf"></i>
 	                            </div>
 	                            <div class="service-info">
-	                                <h3>ORACLE</h3>
+	                                <h3>SPRING</h3>
 	                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-	                                <a class="link" href="#">Read More</a>
+	                                <a class="link" href="/board/springlist">Read More</a>
 	                            </div>
-	                            <a href="#" class="content-wrapper-link"></a>
+	                            <a href="/board/springlist" class="content-wrapper-link"></a>
 	                        </div>
 	                    </div>
 	                </div>
@@ -211,7 +211,7 @@
                         <img class="img-responsive" src="../../resources/img/970x647/01.jpg" alt="Latest Products Image">
                     </div>
                 </div>
-                <h4><a href="#">박지율</a> <span class="text-uppercase margin-l-20">리더</span></h4>
+                <h4><a>박지율</a> <span class="text-uppercase margin-l-20">리더</span></h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
                     consequat siad esqudiat dolor</p>
             </div>
@@ -224,7 +224,7 @@
                         <img class="img-responsive" src="../../resources/img/970x647/content_sub2.png" alt="Latest Products Image">
                     </div>
                 </div>
-                <h4><a href="#">이초록</a> <span class="text-uppercase margin-l-20">부 리더</span></h4>
+                <h4><a>이초록</a> <span class="text-uppercase margin-l-20">부 리더</span></h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
                     consequat siad esqudiat dolor</p>
             </div>
@@ -237,7 +237,7 @@
                         <img class="img-responsive" src="../../resources/img/970x647/03.jpg" alt="Latest Products Image">
                     </div>
                 </div>
-                <h4><a href="#">조선익</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
+                <h4><a>조선익</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
                     consequat siad esqudiat dolor</p>
             </div>
@@ -252,7 +252,7 @@
                         <img class="img-responsive" src="../../resources/img/970x647/01.jpg" alt="Latest Products Image">
                     </div>
                 </div>
-                <h4><a href="#">주수진</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
+                <h4><a>주수진</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
                     consequat siad esqudiat dolor</p>
             </div>
@@ -265,7 +265,7 @@
                         <img class="img-responsive" src="../../resources/img/970x647/02.jpg" alt="Latest Products Image">
                     </div>
                 </div>
-                <h4><a href="#">정진형</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
+                <h4><a>정진형</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
                     consequat siad esqudiat dolor</p>
             </div>
@@ -276,7 +276,19 @@
                         <img class="img-responsive" src="../../resources/img/970x647/03.jpg" alt="Latest Products Image">
                     </div>
                 </div>
-                <h4><a href="#">김선경</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
+                <h4><a>김선경</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
+                    consequat siad esqudiat dolor</p>
+            </div>
+            <!-- End Latest Products -->
+            <!-- Latest Products -->
+            <div class="col-sm-4 sm-margin-b-50 mt-4">
+                <div class="margin-b-20">
+                    <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+                        <img class="img-responsive" src="../../resources/img/970x647/02.jpg" alt="Latest Products Image">
+                    </div>
+                </div>
+                <h4><a>이다인</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
                     consequat siad esqudiat dolor</p>
             </div>
@@ -341,37 +353,8 @@
     <!--========== END FOOTER ==========-->
 
     <!-- Back To Top -->
-	<div class="layer_popup">
-<!-- 	    <a href="javascript:void(0);" class="js_chatting_btn chat_btn chat_btn-is-visible chatting_btn" style="z-index: 100000;">실시간 채팅</a> -->
-   		<p><button class="js_chatting_btn chat_btn chat_btn-is-visible chatting_btn" >채팅방</button></p>
-        <div class="popup">
-            <div class="chorok-dialog">
-				<div class="chorok-content">
-					<div class="chorok_header">
-						<button type="button" class="close close_chat chorok_btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="chorok-title" id="exampleModalLabel">New message</h4>
-					</div>
-					<div class="chorok-body">
-						<form>
-							<div class="form-group">
-								<input type="text" class="chorok-form-control" id="recipient-name" readonly="readonly">
-							</div>
-							<div class="form-group">
-								<label for="message-text" class="control-label" style="color:#000 !important; ">Message:</label>
-								<textarea class="form-control" id="message-text"></textarea>
-							</div>
-						</form>
-					</div>
-					<div class="chorok-footer">
-<!-- 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-						<button type="button" class="btn btn-primary">Send message</button>
-					</div>
-				</div>
-			</div>     
-        </div>
-    </div>
-<!-- <p><button class="close_chat">닫기</button></p> -->
     <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    
     <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- CORE PLUGINS -->
     

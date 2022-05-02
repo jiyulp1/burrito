@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 
 <html lang="ko" class="no-js">
@@ -68,7 +70,7 @@
         <div class="content-lg container" style="margin-top : 50px;">
             <h1 class="pt-4">
                 <i class="fas fa-user-circle title_subject_icon"></i>
-                	아이디 찾기
+                	이메일 찾기
             </h1>
             <div class="row row-space-1 margin-b-2">
                 <div class="col-sm-12 sm-margin-b-2" style="margin-bottom: 20px;">
@@ -78,10 +80,19 @@
                                 <i class="my_box_my_page_icon fas fa-id-card"></i>
                             </div>
                             <div class="my_box_my_page_info">
-                                <h3>아이디 찾기가 완료되었습니다.</h3>
-                            <c:forEach var="members" items="${members}">
-                                <p>회원님의 아이디는 ${members.user_email }입니다.</p>
-                            </c:forEach>
+                            <c:choose>
+		                    	<c:when test = "${members != null and fn:length(members) > 0 }">
+                               		<h3>이메일 찾기가 완료되었습니다.</h3>
+		                    		<c:forEach var="members" items="${members}">
+                                		<p>회원님의 이메일은 ${members.user_email }입니다.</p>
+                            		</c:forEach>
+		                        </c:when>
+		                        <c:otherwise>
+		                        	<h3>이메일 찾기로 돌아가기</h3>
+		                        	<p>입력하신 회원정보로 조회되는 이메일이 없습니다.</p>
+		                        	<a href="/member/findid" class="content-wrapper-link"></a>
+		                        </c:otherwise>
+		                    </c:choose>
                             </div>
                         </div>
                     </div>

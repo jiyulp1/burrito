@@ -129,7 +129,7 @@
                                     </select>
                                 </div>
 <!--                                 <a id="joinin" class="btn btn-primary" style="height: 50px; margin-top: 10px; line-height: 36px; "href = "java::void(0)" onclick="sendit()"> 회원가입하기</a> -->
-                                <input id="joinin" class="btn btn-primary" style="height: 50px; margin-top: 10px; line-height: 36px;" type="submit" onclick="sendit()" value="회원가입하기">
+                                <input id="joinin" class="btn btn-primary" style="height: 50px; margin-top: 20px; line-height: 36px;" type="submit" onclick="sendit()" value="회원가입하기">
                             </form>
                         </div>
                     </div>

@@ -13,21 +13,19 @@
 <meta content="" name="author" />
 
 <!-- GLOBAL MANDATORY STYLES -->
-<!-- GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
 <link href="../../../resources/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-
 <link href="../../../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+
 <!-- font-Glyphicon -->
 <!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
 <!-- PAGE LEVEL PLUGIN STYLES -->
-
 <link href="../../../resources/css/animate.css" rel="stylesheet">
 <link href="../../../resources/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
-<!-- THEME STYLES -->
 
+<!-- THEME STYLES -->
 <link href="../../../resources/css/layout.css" rel="stylesheet" type="text/css" />
 
 <!-- Favicon -->
@@ -35,7 +33,6 @@
 
 <!-- custom -->
 <link rel="stylesheet" href="../../../resources/css/custom.css">
-
 
 <style>
 html {
@@ -114,14 +111,14 @@ a {
 				</div>
 				<div class="card-body">
 					<form action="/member/signin" class="form-signin" method="POST">
-						<input type="text" name="user_email" id="user_email" class="form-control" placeholder="이메일" style="margin-bottom : 48px; border-radius:10px; height : 55px; " autofocus required> 
+						<input type="text" name="user_email" id="user_email" class="form-control" placeholder="이메일" style="margin-bottom : 48px; border-radius:10px; height : 55px;" autofocus required> 
 						<input type="password" name="user_pw" id="user_pw" class="form-control" style="border-radius:10px; height : 55px; margin-bottom : 48px;" placeholder="비밀번호" required>
 						<p id="check" class="check">${login_msg}</p>
-						<input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" style="line-height:28px !important; margin-bottom: 20px;" VALUE="로그인">
-						<div class="links" style="padding: 10px 20px;">
-							<a href="/member/findid">이메일 찾기</a> | <a href="/member/findpw">비밀번호 찾기</a> | <a href="/member/signup">회원가입</a>
-						</div>
+						<input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" style="line-height:28px !important; margin-bottom: 20px;" value="로그인">
 					</form>
+				</div>
+				<div class="links" style="padding: 10px 20px;">
+					<a href="/member/findid">이메일 찾기</a> | <a href="/member/findpw">비밀번호 찾기</a> | <a href="/member/signup">회원가입</a>
 				</div>
 			</div>
 		</div>

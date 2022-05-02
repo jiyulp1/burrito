@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -90,9 +90,7 @@
 									</c:if>
 									<%-- 로그인O--%>
 									<c:if test="${member != null }">
-<!-- 										<a href="javascript:document.javawrite.submit()" class="btn btn-info mt-4" id="writesuccess">작성완료</a> -->
 										<button type="submit" class="btn btn-info mt-4" id="writesuccess">작성완료</button>
-<%-- 										<a href="${pageContext.request.contextPath }/pages/javaBoardUpdate.do" class="btn btn-default mt-4" id="editBoard">수정 하기</a> --%>
 									</c:if>
 										<a class="btn btn-primary mt-4" id="list" onclick="confirm_backlist()">목록</a>
 							</form>

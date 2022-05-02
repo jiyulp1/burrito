@@ -1,8 +1,7 @@
 // 회원탈퇴 확인 confirm
 
 
-// 사용자가 입력한 이름 변수에 담아주기
-//var user_index = '<c:out value="${member.user_index }"/>'
+
 	
 function confirm_joinout() {
 	if (confirm('정말로 탈퇴하시겠습니까?')) {
@@ -50,3 +49,5 @@ function alert_boardwrite() {
 	alert("게시글 작성 완료")
 	frm.submit();
 }
+
+

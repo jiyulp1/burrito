@@ -1,6 +1,8 @@
 package kr.co.bttf.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -50,6 +52,54 @@ public class HtmlBoardDAOImpl implements HtmlBoardDAO {
 	@Override
 	public void htmlcategory2(int post_id) throws Exception {
 		sql.update(namespace + ".htmlcategory2", post_id);
+	}
+	
+	@Override
+	public int htmlbookmarklist(HashMap<String, Integer> postid_useridx) throws Exception {
+
+		return sql.selectOne(namespace +".htmlbookmarklist", postid_useridx);
+	}
+
+	@Override
+	public void htmlbookmark(HashMap<String, Integer> postid_useridx) {
+		
+		sql.insert(namespace + ".htmlbookmark", postid_useridx);
+	}
+	
+	@Override
+	public Map<String, Object> htmlRecommendCheck(Map<String, Object> post_useridx) {
+		return sql.selectOne(namespace + ".htmlRecommendCheck", post_useridx);
+	}
+
+	@Override
+	public void htmlInsertRecBtn(Map<String, Object> post_useridx) throws Exception {
+
+		sql.insert(namespace +".htmlInsertRecBtn", post_useridx);
+		
+	}
+
+	@Override
+	public void htmlUpdateRecCntPlus(Map<String, Object> post_useridx) throws Exception {
+
+		sql.update(namespace + ".htmlUpdateRecCntPlus", post_useridx);
+	}
+
+	@Override
+	public void htmlUpdateRecCheck(Map<String, Object> post_useridx) throws Exception  {
+
+		sql.update(namespace + ".htmlUpdateRecCheck", post_useridx);
+	}
+
+	@Override
+	public void htmlUpdateRecCntMinus(Map<String, Object> post_useridx) throws Exception  {
+
+		sql.update(namespace + ".htmlUpdateRecCntMinus", post_useridx);
+	}
+
+	@Override
+	public int htmlGetRecCnt(Map<String, Object> post_useridx) throws Exception {
+
+		return sql.selectOne(namespace + ".htmlGetRecCnt", post_useridx);
 	}
 	
 }

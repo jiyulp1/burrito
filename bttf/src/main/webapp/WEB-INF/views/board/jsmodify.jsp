@@ -78,12 +78,12 @@
                         <div class="my_box" data-height="height">
                             <!-- Start write Form -->
 							<form name = "jsmodify" action="${pageContext.request.contextPath }/board/jsmodify" method="post">
-								<input type="hidden" name="post_id" value="${jsview.post_id }">
+								<input type="hidden" name="post_id" value="${javascriptview.post_id }">
 								<div class="col-auto">
 									<label for="subject">제목</label>
-									<input id="subject" name="post_subject" class="form-control margin-b-50" type="text" placeholder="제목" value="${jsview.post_subject }">
+									<input id="subject" name="post_subject" class="form-control margin-b-50" type="text" placeholder="제목" value="${javascriptview.post_subject }">
 									<textarea id="editor" name="post_contents" class="form-control" placeholder="내용을 입력해 주세요." 
-									style="height: 650px; resize: none;">${jsview.post_contents }</textarea>
+									style="height: 650px; resize: none;">${javascriptview.post_contents }</textarea>
                                 </div> 
                             <a href="javascript:document.jsmodify.submit()" class="btn btn-info mt-4" id="writesuccess">작성완료</a>
                         	<a href="${pageContext.request.contextPath }/board/jslist" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>

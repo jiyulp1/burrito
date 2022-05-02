@@ -1,6 +1,8 @@
 package kr.co.bttf.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -91,17 +93,17 @@ public class MemberController {
 		boolean loginSuccess = service.signin(req);
 		MemberVO loginInfo = service.signin(vo);  // MemverVO형 변수 login에 로그인 정보를 저장
 		
-		if(loginSuccess) {
+		if(loginSuccess == true) {
 			session.setAttribute("member", loginInfo);  // member 세션에 로그인 정보를 부여
-
 			ScriptUtils.alertAndMovePage(res, loginInfo.getUser_nickname()+"님 환영합니다.", "http://localhost:9090");
-		}else {
+		}else if(loginInfo == null) {
 			session.setAttribute("member", null);
-	        rttr.addFlashAttribute("msg", false);
-	        ScriptUtils.alertAndMovePage(res, "입력하신 회원정보가 틀립니다. 다시 로그인 해주세요.", "http://localhost:9090/member/signin");
+		rttr.addFlashAttribute("msg", false);
+		ScriptUtils.alertAndMovePage(res, "입력하신 회원정보가 틀립니다. 다시 로그인 해주세요.", "http://localhost:9090/member/signin");
+		}else if (loginSuccess == false){
+			ScriptUtils.alertAndMovePage(res, "신고가 접수되어 계정정지가 이루어졌습니다 홈페이지 하단 담당자에게 문의바랍니다.", "http://localhost:9090");
 		}
-
-		return "redirect:/";
+			return "redirect:/";
 	}
 	
 	
@@ -111,29 +113,20 @@ public class MemberController {
 	public void termsOfUse() throws Exception{
 		
 	}
+	
 	// 아이디 찾기 페이지 이동
 	@RequestMapping(value = "/findid", method = RequestMethod.GET)
 	public void findid() throws Exception{
+		logger.info("get findid");
 	}
-	
-	// 아이디 찾기후 값 넘기기
-//	@RequestMapping(value = "/findid", method = RequestMethod.POST)
-//	public String findid(MemberVO vo, Model model) throws Exception{
-//		System.out.println(vo.getUser_name());
-//		System.out.println(vo.getUser_phone());
-//		List<MemberVO> members = service.findid(vo);
-//		model.addAttribute("members", members);
-//		return "forward:/member/findid_ok";
-//	}
-	
 	
 	// 아이디 찾기후
-	@RequestMapping(value = "/findid_ok", method = RequestMethod.POST)
-	public void findid_ok(MemberVO vo, Model model) throws Exception{
-	
-		List<MemberVO> members = service.findid(vo);
-		model.addAttribute("members", members);
-	}
+   @RequestMapping(value = "/findid_ok", method = RequestMethod.POST)
+   public void findid_ok(MemberVO vo, Model model) throws Exception{
+	logger.info("POST findid_ok");
+      List<MemberVO> members = service.findid(vo);
+      model.addAttribute("members", members);
+   }
 	
 	// 비밀번호 찾기
 	@RequestMapping(value = "/findpw", method = RequestMethod.GET)
@@ -170,8 +163,15 @@ public class MemberController {
 	
 	//마이페이지 이동
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public void mypageModify(@RequestParam("user_index") int user_index, @RequestParam("user_nickname") String user_nickname, Model model) throws Exception {
+	public void mypageModify(@RequestParam("user_index") int user_index, Model model, 
+							HttpServletRequest req, HttpSession session) throws Exception {
+		
 		logger.info("mypage");
+		
+		HttpSession sessionout = req.getSession();  // 현재 세션 정보를 가져옴
+		
+		MemberVO member = (MemberVO) sessionout.getAttribute("member");
+		String user_nickname = member.getUser_nickname();
 		
 		//작성한 글 수
 		int mypostcnt = service.mypostcnt(user_index);
@@ -182,13 +182,39 @@ public class MemberController {
 		model.addAttribute("myreplycnt", myreplycnt);
 		
 		//받은 추천 수
+		int myrecommendcnt = service.myrecommendcnt(user_index);
+		model.addAttribute("myrecommendcnt", myrecommendcnt);
 		
 		//북마크한 글 list
+		List<BoardVO> mybookmarks = service.mybookmarks(user_index);
+		model.addAttribute("mybookmarks", mybookmarks);
 		
 		//내가 작성한 글 list
 		List<BoardVO> mypostlist = service.mypostlist(user_index);
 		model.addAttribute("mypostlist", mypostlist);
 	}
+	
+	//마이페이지 - 북마크한 글 삭제하기
+	@RequestMapping (value = "/bookmarkdelete", method = RequestMethod.GET)
+	public String bookmarkdelete(@RequestParam("board_category_name") String board_category_name, 
+								@RequestParam("post_id") int post_id,  
+								@RequestParam("user_index") int user_index) throws Exception {
+
+		Map<String, Object> board_category_nameid = new HashMap<String, Object>();
+		
+		board_category_nameid.put("user_index", user_index);
+		board_category_nameid.put("post_id", post_id);
+		board_category_nameid.put("board_category_name", board_category_name);
+			
+		int result = service.bookmarkdelete(board_category_nameid);
+	
+		if(result==1){
+			return "redirect:/member/mypage?user_index="+user_index;
+		} else {
+			return "redirect:/index";
+		}
+	}
+
 	
 	
 	// 마이페이지 - 수정하기

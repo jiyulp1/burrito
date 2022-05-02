@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -252,26 +253,46 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
+	public int myrecommendcnt(int user_index) throws Exception {
+		
+		return dao.myrecommendcnt(user_index);
+	}
+	
+	@Override
 	public List<BoardVO> mypostlist(int user_index) throws Exception {
 		
 		return dao.mypostlist(user_index) ;
 	}
 	
+	
 	@Override
-	public MemberVO mypage_view(int user_index) {
+	public List<BoardVO> mybookmarks(int user_index) throws Exception {
+
+		return dao.mybookmarks(user_index);
+	}
+	
+	@Override
+	public MemberVO mypage_view(int user_index) throws Exception {
 
 		return dao.mypage_view(user_index);
 	}
 	
-	public int mypage_update(MemberVO member) {
+	public int mypage_update(MemberVO member) throws Exception {
 
 		return dao.mypage_update(member);
 	}
 	
 	@Override
-	public int joinout(int user_index) {
+	public int joinout(int user_index) throws Exception {
 		
 		return dao.joinout(user_index);
+	}
+	
+	@Override
+	public int bookmarkdelete(Map<String, Object> board_category_nameid) throws Exception {
+
+		return dao.bookmarkdelete(board_category_nameid);
+		
 	}
 	
 

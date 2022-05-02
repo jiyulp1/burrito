@@ -1,132 +1,98 @@
 package kr.co.bttf.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.bttf.domain.MemberVO;
-import kr.co.bttf.domain.OracleBoardVO;
-import kr.co.bttf.domain.OracleReplyVO;
-import kr.co.bttf.service.MemberService;
-import kr.co.bttf.service.OracleBoardService;
-import kr.co.bttf.service.OracleReplyService;
+import kr.co.bttf.domain.ReplyVO;
+import kr.co.bttf.service.ReplyService;
 
-@Controller
+@RestController
 @RequestMapping("/reply/*")
 public class ReplyController {
 
 	@Inject
-	private MemberService memberService;
+	private ReplyService service;
 	
-//	@Inject
-//	private HtmlReplyService htmlService;
+	@PostMapping(value = "/new/{urls}", consumes = "application/json;charset=utf-8", produces = {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> create(@RequestBody ReplyVO reply){
+		if (service.register(reply) == 1) {
+			return new ResponseEntity<>("success", HttpStatus.OK);
+			
+		}else
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
 	
-//	@Inject
-//	private CssReplyService cssService;
-	
-//	@Inject
-//	private JsReplyService jsService;
-	
-//	@Inject
-//	private JspReplyService jspService;
-	
-//	@Inject
-//	private JavaReplyService javaService;
-	
-	@Inject
-	private OracleReplyService OracleReplyService;
-	
-	@Inject
-	private OracleBoardService OracleBoardService;
-	
-//	@Inject
-//	private SpringReplyService springService;
-	
-	
-	/* --------------------------------
-				06. ORACLE
-	-------------------------------- */
-	
-	// 6-1. 댓글 작성
-	@RequestMapping(value = "/oracleReplyWrite", method = RequestMethod.POST)
-	public String oracleReplyWrite(OracleReplyVO vo , HttpServletRequest request) throws Exception {
-		HttpSession session = request.getSession();
-		MemberVO member = (MemberVO) session.getAttribute("member");
-		vo.setUser_nickname(member.getUser_nickname());
-		OracleReplyService.oracleReplyWrite(vo);
-	  return "redirect:/board/oracleview?post_id=" + vo.getPost_id();
+	@GetMapping(value = "/page/{board_category_id}/{post_id}/{page}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<List<ReplyVO>> getList(			
+			@PathVariable("board_category_id") int board_category_id,
+			@PathVariable("page") int page,
+			@PathVariable("post_id") Long post_id){
+		
+		Map <String, Object> reply_id_category = new HashMap<String, Object>();
+		
+		reply_id_category.put("post_id", post_id);
+		reply_id_category.put("board_category_id", board_category_id);
+				
+		Criteria crit = new Criteria(page, 10);
+		return new ResponseEntity<>(service.getList(crit, reply_id_category), HttpStatus.OK);
 	}
 	
-	// 6.2 댓글 목록
-	@RequestMapping(value = "/oracleReplyList", method = RequestMethod.GET)
-	public ModelAndView oracleReplyList(@RequestParam("post_id") int post_id, @RequestParam(defaultValue="1") int curPage, ModelAndView mav, HttpSession session) throws Exception {
+	@GetMapping(value = "/{reply_id}/{board_category_id}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<ReplyVO> get(@PathVariable("reply_id") Long reply_id, @PathVariable("board_category_id") int board_category_id){
 		
-		//페이징 처리
-		int count = OracleReplyService.oracleCount(post_id);
-		ReplyPager replyPager = new ReplyPager(count, curPage);
-		int start = replyPager.getPageBegin();
-		int end = replyPager.getPageEnd();
-		List<OracleReplyVO> list = OracleReplyService.oracleReplyList(post_id, start, end, session);
-		mav.setViewName("/board/oracleview");
-		mav.addObject("list", list);
-		mav.addObject("replyPager", replyPager);
-		return mav;
+		Map <String, Object> reply_id_category = new HashMap<String, Object>();
 		
+		reply_id_category.put("reply_id", reply_id);
+		reply_id_category.put("board_category_id", board_category_id);
+		
+		return new ResponseEntity<>(service.get(reply_id_category), HttpStatus.OK);
 	}
 	
-	
-	
-	
-	
-	
-	// 6-3. 댓글 수정
-	@RequestMapping(value = "/oracleReplyModify", method = RequestMethod.POST)
-	public String oracleReplyModify(OracleReplyVO vo) throws Exception {
-		System.out.println("post reply modify controller");
-		System.out.println(vo.getReply_contents());
+	@PostMapping(value = "/{board_category_id}/{reply_id}", produces = {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> remove(@PathVariable("reply_id") Long reply_id, @PathVariable("board_category_id") int board_category_id){
 		
-		OracleReplyService.oracleReplyModify(vo);
+
+		Map <String, Object> reply_id_category2 = new HashMap<String, Object>();
 		
-		return "redirect:/board/oracleview?post_id=" + vo.getPost_id();	
-		
+		reply_id_category2.put("reply_id", reply_id);
+		reply_id_category2.put("board_category_id", board_category_id);
+				
+		return service.remove(reply_id_category2) == 1?
+				new ResponseEntity<>("success", HttpStatus.OK) :
+					new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+
 	
-	
-	
-	// 6-3. 댓글 수정(GET)
-//	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.GET)
-//	public String oracleReplyModify(OracleReplyVO vo, HttpServletRequest request, Model model) throws Exception {
-//		
-//		model.addAttribute("oracleReplyModify", oracleService.oracleReplyList(vo.getReply_id()));
-//		
-//		return null;
-//	}
-	
-	// 6-3-1. 댓글 수정(POST)
-//	@RequestMapping(value = "/oracle_reply_modify", method = RequestMethod.POST)
-//	public String oracleReplyModifyOK(OracleReplyVO vo, HttpServletRequest request) throws Exception {
-//		return null;
-//	}
-	
-	// 6-4. 댓글 삭제 // 댓글삭제 경로 수정 확인
-	@RequestMapping(value = "/oracleReplyDelete", method = RequestMethod.GET)
-	public String oracleReplyDelete(@RequestParam("post_id") int post_id, OracleReplyVO vo, Model model) throws Exception {
-		OracleReplyService.oracleReplyDelete(vo);
-		
-		//List<OracleReplyVO> oraclereplylist = OracleReplyService.oracleReplyList(post_id);
-		//model.addAttribute("oraclereplylist", oraclereplylist);
-		
-	  return "redirect:/board/oraclelist";
+	@PostMapping(value = "/{board_category_id}/{reply_id}/{reply_contents}")
+	public Map<String, Object> replyupdate(@PathVariable int board_category_id, @PathVariable int reply_id, @PathVariable String reply_contents) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			ReplyVO replybean = new ReplyVO();
+			replybean.setReply_id(reply_id);
+			replybean.setBoard_category_id(board_category_id);
+			replybean.setReply_contents(reply_contents);
+			
+			service.replyupdate(replybean);
+			map.put("result", "success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("result", "fail");
+		}
+		return map;
 	}
 	
 }

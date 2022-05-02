@@ -100,9 +100,7 @@
 									</c:if>
 									<%-- 로그인O--%>
 									<c:if test="${member != null }">
-<!-- 										<a href="javascript:document.csswrite.submit()" class="btn btn-info mt-4" id="writesuccess">작성완료</a> -->
 										<button type="submit" class="btn btn-info mt-4" id="writesuccess">작성완료</button>
-<%-- 										<a href="${pageContext.request.contextPath }/pages/cssBoardUpdate.do" class="btn btn-default mt-4" id="editBoard">수정 하기</a> --%>
 									</c:if>
 										<a class="btn btn-primary mt-4" id="list" onclick="confirm_backlist()">목록</a>
 							</form>

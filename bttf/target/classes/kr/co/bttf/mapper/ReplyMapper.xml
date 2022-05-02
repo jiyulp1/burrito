@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.co.bttf.mapper.ReplyMapper">
+
+<!-- 댓글 추가 -->
+	<insert id="insert_html" parameterType="kr.co.bttf.domain.ReplyVO">
+		insert into reply_html (post_id, reply_contents, user_nickname, board_category_id) values ( #{post_id}, #{reply_contents}, #{user_nickname}, #{board_category_id})
+	</insert>
+	
+	<insert id="insert_css" parameterType="kr.co.bttf.domain.ReplyVO">
+		insert into reply_css (post_id, reply_contents, user_nickname, board_category_id) values ( #{post_id}, #{reply_contents}, #{user_nickname}, #{board_category_id})
+	</insert>
+	
+	<insert id="insert_javascript" parameterType="kr.co.bttf.domain.ReplyVO">
+		insert into reply_javascript (post_id, reply_contents, user_nickname, board_category_id) values ( #{post_id}, #{reply_contents}, #{user_nickname}, #{board_category_id})
+	</insert>
+	
+	<insert id="insert_jsp" parameterType="kr.co.bttf.domain.ReplyVO">
+		insert into reply_jsp (post_id, reply_contents, user_nickname, board_category_id) values ( #{post_id}, #{reply_contents}, #{user_nickname}, #{board_category_id})
+	</insert>
+	
+	<insert id="insert_java" parameterType="kr.co.bttf.domain.ReplyVO">
+		insert into reply_java (post_id, reply_contents, user_nickname, board_category_id) values ( #{post_id}, #{reply_contents}, #{user_nickname}, #{board_category_id})
+	</insert>
+	
+	<insert id="insert_oracle" parameterType="kr.co.bttf.domain.ReplyVO">
+		insert into reply_oracle (post_id, reply_contents, user_nickname, board_category_id) values ( #{post_id}, #{reply_contents}, #{user_nickname}, #{board_category_id})
+	</insert>
+	
+	<insert id="insert_spring" parameterType="kr.co.bttf.domain.ReplyVO">
+		insert into reply_spring (post_id, reply_contents, user_nickname, board_category_id) values ( #{post_id}, #{reply_contents}, #{user_nickname}, #{board_category_id})
+	</insert>
+	
+	
+	<select id="get_html" parameterType="map" resultType="kr.co.bttf.domain.ReplyVO">
+		select * from reply_html where reply_id = #{reply_id}
+	</select>
+	
+	<select id="get_css" parameterType="map" resultType="kr.co.bttf.domain.ReplyVO">
+		select * from reply_css where reply_id = #{reply_id}
+	</select>
+	
+	<select id="get_javascript" parameterType="map" resultType="kr.co.bttf.domain.ReplyVO">
+		select * from reply_javascript where reply_id = #{reply_id}
+	</select>
+	
+	<select id="get_jsp" parameterType="map" resultType="kr.co.bttf.domain.ReplyVO">
+		select * from reply_jsp where reply_id = #{reply_id}
+	</select>
+	
+	<select id="get_java" parameterType="map" resultType="kr.co.bttf.domain.ReplyVO">
+		select * from reply_java where reply_id = #{reply_id}
+	</select>
+	
+	<select id="get_oracle" parameterType="map" resultType="kr.co.bttf.domain.ReplyVO">
+		select * from reply_oracle where reply_id = #{reply_id}
+	</select>
+	
+	<select id="get_spring" parameterType="map" resultType="kr.co.bttf.domain.ReplyVO">
+		select * from reply_spring where reply_id = #{reply_id}
+	</select>
+	
+	
+	<select id="getListWithPaging_html" resultType="kr.co.bttf.domain.ReplyVO">
+		select reply_id, post_id, reply_contents, user_nickname, reply_regdate, reply_regdate_modified, board_category_id from reply_html
+			where post_id = #{post_id} order by reply_id asc
+	</select>
+	
+	<select id="getListWithPaging_css" resultType="kr.co.bttf.domain.ReplyVO">
+		select reply_id, post_id, reply_contents, user_nickname, reply_regdate, reply_regdate_modified, board_category_id from reply_css
+			where post_id = #{post_id} order by reply_id asc
+	</select>
+	
+	<select id="getListWithPaging_javascript" resultType="kr.co.bttf.domain.ReplyVO">
+		select reply_id, post_id, reply_contents, user_nickname, reply_regdate, reply_regdate_modified, board_category_id from reply_javascript
+			where post_id = #{post_id} order by reply_id asc
+	</select>
+	
+	<select id="getListWithPaging_jsp" resultType="kr.co.bttf.domain.ReplyVO">
+		select reply_id, post_id, reply_contents, user_nickname, reply_regdate, reply_regdate_modified, board_category_id from reply_jsp
+			where post_id = #{post_id} order by reply_id asc
+	</select>
+	
+	<select id="getListWithPaging_java" resultType="kr.co.bttf.domain.ReplyVO">
+		select reply_id, post_id, reply_contents, user_nickname, reply_regdate, reply_regdate_modified, board_category_id from reply_java
+			where post_id = #{post_id} order by reply_id asc
+	</select>
+	
+	<select id="getListWithPaging_oracle" resultType="kr.co.bttf.domain.ReplyVO">
+		select reply_id, post_id, reply_contents, user_nickname, reply_regdate, reply_regdate_modified, board_category_id from reply_oracle
+			where post_id = #{post_id} order by reply_id asc
+	</select>
+	
+	<select id="getListWithPaging_spring" resultType="kr.co.bttf.domain.ReplyVO">
+		select reply_id, post_id, reply_contents, user_nickname, reply_regdate, reply_regdate_modified, board_category_id from reply_spring
+			where post_id = #{post_id} order by reply_id asc
+	</select>
+	
+	
+	<delete id="delete_html">
+		delete from reply_html where reply_id = #{reply_id}
+	</delete>
+	
+	<delete id="delete_css">
+		delete from reply_css where reply_id = #{reply_id}
+	</delete>
+	
+	<delete id="delete_javascript">
+		delete from reply_javascript where reply_id = #{reply_id}
+	</delete>
+	
+	<delete id="delete_jsp">
+		delete from reply_jsp where reply_id = #{reply_id}
+	</delete>
+	
+	<delete id="delete_java">
+		delete from reply_java where reply_id = #{reply_id}
+	</delete>
+	
+	<delete id="delete_oracle">
+		delete from reply_oracle where reply_id = #{reply_id}
+	</delete>
+	
+	<delete id="delete_spring">
+		delete from reply_spring where reply_id = #{reply_id}
+	</delete>
+	
+	
+	<update id="replyupdate_html" parameterType="kr.co.bttf.domain.ReplyVO">
+		update reply_html set reply_contents = #{reply_contents}, reply_regdate_modified = sysdate() 
+		where reply_id = #{reply_id}
+	</update>
+	
+	<update id="replyupdate_css" parameterType="kr.co.bttf.domain.ReplyVO">
+		update reply_css set reply_contents = #{reply_contents}, reply_regdate_modified = sysdate() 
+		where reply_id = #{reply_id}
+	</update>
+	
+	<update id="replyupdate_javascript" parameterType="kr.co.bttf.domain.ReplyVO">
+		update reply_javascript set reply_contents = #{reply_contents}, reply_regdate_modified = sysdate() 
+		where reply_id = #{reply_id} 
+	</update>
+	
+	<update id="replyupdate_jsp" parameterType="kr.co.bttf.domain.ReplyVO">
+		update reply_jsp set reply_contents = #{reply_contents}, reply_regdate_modified = sysdate() 
+		where reply_id = #{reply_id}
+	</update>
+	
+	<update id="replyupdate_java" parameterType="kr.co.bttf.domain.ReplyVO">
+		update reply_java set reply_contents = #{reply_contents}, reply_regdate_modified = sysdate() 
+		where reply_id = #{reply_id}
+	</update>
+	
+	<update id="replyupdate_oracle" parameterType="kr.co.bttf.domain.ReplyVO">
+		update reply_oracle set reply_contents = #{reply_contents}, reply_regdate_modified = sysdate() 
+		where reply_id = #{reply_id}
+	</update>
+	
+	<update id="replyupdate_spring" parameterType="kr.co.bttf.domain.ReplyVO">
+		update reply_spring set reply_contents = #{reply_contents}, reply_regdate_modified = sysdate() 
+		where reply_id = #{reply_id} 
+	</update>
+
+</mapper>
+
+

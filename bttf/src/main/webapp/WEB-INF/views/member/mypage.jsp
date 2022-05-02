@@ -91,9 +91,7 @@
                             <div class="my_box_my_page_info">
                                 <h3>작성한 글 수</h3>
                                 <p class="margin-b-5">${mypostcnt} 개</p>
-                                <!-- <a class="link" href="html5.html">Read More</a> -->
                             </div>
-                            <!-- <a href="html5.html" class="content-wrapper-link"></a> -->
                         </div>
                     </div>
                 </div>
@@ -106,9 +104,7 @@
                             <div class="my_box_my_page_info">
                                 <h3>작성한 댓글 수</h3>
                                 <p class="margin-b-5">${myreplycnt} 개</p>
-                                <!-- <a class="link" href="html5.html">Read More</a> -->
                             </div>
-                            <!-- <a href="html5.html" class="content-wrapper-link"></a> -->
                         </div>
                     </div>
                 </div>
@@ -120,10 +116,8 @@
                             </div>
                             <div class="my_box_my_page_info">
                                 <h3>받은 추천 수</h3>
-                                <p class="margin-b-5">${myrecomendcount}</p>
-                                <!-- <a class="link" href="html5.html">Read More</a> -->
+                                <p class="margin-b-5">${myrecommendcnt} 개</p>
                             </div>
-                            <!-- <a href="html5.html" class="content-wrapper-link"></a> -->
                         </div>
                     </div>
                 </div>
@@ -132,7 +126,6 @@
             <!--// end row -->
         </div>
     </div>
-
     
     <!-- End Service -->
 
@@ -157,28 +150,28 @@
 	                        <th>추천수</th>
 	                        <th>작성자</th>
 	                        <th>작성일자</th>
-							<th>내 게시물관리</th>
+							<th>북마크 게시물관리</th>
 	                    </tr>
                     </thead>
                     <tbody>
 		    			<c:choose>
-	                    	<c:when test="${empty bookmark }">
-	                    		<tr>
-	                    		<td colspan="6" class="text-center">등록된 북마크가 없습니다.</td>
-	                    		</tr>
-	                    	</c:when>
-	                    	<c:when test="${bookmark != null and fn:length(bookmark) > 0 }">
-			                    <c:forEach var="bookmark" items="${bookmark}">
+	                    	<c:when test="${mybookmarks != null and fn:length(mybookmarks) > 0 }">
+			                    <c:forEach var="mybookmarks" items="${mybookmarks}">
 			                    	<tr>
-										<td>css 테스트</td>
-			                    		<td><a href="/board/cssview?post_id=${bookmark.post_id}">${bookmark.post_subject}</a></td>
-			                    		<td>${bookmark.post_rec}</td>
-			                    		<td>${bookmark.user_nickname}</td>
-			                    		<td><fmt:formatDate value="${bookmark.post_regdate}" pattern="yyyy-MM-dd" /></td>
-			                    		<td><a class="btn btn-danger" href="#">삭제</a></td>
+										<td>${mybookmarks.board_category_name }</td>
+			                    		<td><a href="/board/${mybookmarks.board_category_name }view?post_id=${mybookmarks.post_id}">${mybookmarks.post_subject}</a></td>
+			                    		<td>${mybookmarks.post_rec}</td>
+			                    		<td>${mybookmarks.user_nickname}</td>
+			                    		<td><fmt:formatDate value="${mybookmarks.post_regdate}" pattern="yyyy-MM-dd" /></td>
+			                    		<td><a class="btn btn-danger" href="/member/bookmarkdelete?board_category_name=${mybookmarks.board_category_name}&post_id=${mybookmarks.post_id }&user_index=${member.user_index}">삭제</a></td>
 			                    	</tr>
 			                    </c:forEach>
 	                    	</c:when>
+	                    	<c:otherwise>
+	                    		<tr>
+		                    		<td colspan="6" class="text-center">등록된 북마크가 없습니다.</td>
+	                    		</tr>
+	                    	</c:otherwise>
                    		</c:choose>
                     </tbody>
                 </table>
@@ -203,16 +196,11 @@
 	                        <th>추천수</th>
 	                        <th>작성자</th>
 	                        <th>작성일자</th>
-							<th>내 게시물관리</th>
+							<th>내가 쓴 게시물관리</th>
 	                    </tr>
                     </thead>
                     <tbody>
 		    			<c:choose>
-	                    	<c:when test="${empty mypostlist }">
-	                    		<tr>
-	                    			<td colspan="6" class="text-center">작성한 글이 없습니다.</td>
-	                    		</tr>
-	                    	</c:when>
 	                    	<c:when test="${mypostlist != null and fn:length(mypostlist) > 0 }">
 			                    <c:forEach var="mypostlist" items="${mypostlist}">
 			                    	<tr>
@@ -225,6 +213,11 @@
 			                    	</tr>
 			                    </c:forEach>
 	                    	</c:when>
+	                    	<c:otherwise>
+	                    		<tr>
+	                    			<td colspan="6" class="text-center">작성한 글이 없습니다.</td>
+	                    		</tr>
+	                    	</c:otherwise>
                     	</c:choose>
                     </tbody>
                 </table>
@@ -271,13 +264,31 @@
 	<script src="../../../resources/js/components/swiper.min.js" type="text/javascript"></script>
 	<script src="../../../resources/js/components/masonry.min.js" type="text/javascript"></script>
 	<script src="../../../resources/js/action.js"></script>
-	<script src="../../../resources/js/foo1.js"></script>
-	<script src="../../../resources/js/foo.js"></script>
+<!-- 	<script src="../../../resources/js/foo1.js"></script> -->
+<!-- 	<script src="../../../resources/js/foo.js"></script> -->
 	<!-- F12 ,right click block-->
 	<!-- <script src="js/Prevention.js"></script> -->
      <!-- datatables -->
     <script type="text/javascript" src="../../../resources/vendor/DataTables/datatables.js"></script>
 	<script type="text/javascript" src="../../../resources/vendor/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.js"></script>
+
+	<script>
+//  	$(document).ready(function() {
+ 	    $('#foo-table').DataTable( {
+ 	    	bInfo : false,
+	    	bSortable : true,
+ 	       	bPaginate : true,
+ 	        displayLength : 10
+ 	    } );
+ 	    
+ 	   $('#foo-table1').DataTable( {
+	    	bInfo : false,
+	    	bSortable : true,
+	       	bPaginate : true,
+	        displayLength : 10
+	    } );
+ 	} );	
+	</script>
 </body>
 <!-- END BODY -->
 

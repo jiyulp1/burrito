@@ -6,7 +6,6 @@
    const user_name = document.joinForm.user_name;
    const user_nickname = document.joinForm.user_nickname;
    const user_phone = document.joinForm.user_phone;
-   const emailcheck = document.getElementById('emailcheck');
    
    // 이메일 공백 체크
    if (user_email.value == '') {

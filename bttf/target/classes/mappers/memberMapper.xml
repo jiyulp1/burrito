@@ -22,8 +22,7 @@
 	
 	<select id="signin" resultType="kr.co.bttf.domain.MemberVO">
 		SELECT * FROM USER_ALL
-		WHERE user_email = #{user_email} AND user_pw = #{user_pw} AND
-		avaliability_category_id = 1
+		WHERE user_email = #{user_email} AND user_pw = #{user_pw}
 	</select>
 
 	<select id="login" resultType="kr.co.bttf.domain.MemberVO">
@@ -97,72 +96,121 @@
 			+ (select count(*) from reply_spring where user_nickname = #{user_nickname})
 	</select>
 	
-	<select id="mypostlist0" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+	<select id="myrecommendcnt" parameterType="_int" resultType="_int">
+		select (select IFNULL(sum(post_rec), 0) from html where user_index = #{user_index})
+			+ (select IFNULL(sum(post_rec), 0) from css where user_index = #{user_index})
+			+ (select IFNULL(sum(post_rec), 0) from javascript where user_index = #{user_index})
+			+ (select IFNULL(sum(post_rec), 0) from jsp where user_index = #{user_index})
+			+ (select IFNULL(sum(post_rec), 0) from java where user_index = #{user_index})
+			+ (select IFNULL(sum(post_rec), 0) from oracle where user_index = #{user_index})
+			+ (select IFNULL(sum(post_rec), 0) from spring where user_index = #{user_index})
+	</select>
+	
+	<select id="mypostlist" parameterType="_int" resultType="kr.co.bttf.domain.HtmlBoardVO">
 		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate ,post_id
 			from html h
 			left join board_category bc 
 			on h.board_category_id = bc.board_category_id  
 		where user_index = #{user_index}
-		order by post_regdate desc
-	</select>
-	
-	<select id="mypostlist1" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+		union
 		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate ,post_id
 			from css h
 			left join board_category bc 
 			on h.board_category_id = bc.board_category_id  
 		where user_index = #{user_index}
-		order by post_regdate desc
-	</select>
-	
-	
-	<select id="mypostlist2" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+		union
 		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate ,post_id
 			from javascript h
 			left join board_category bc 
 			on h.board_category_id = bc.board_category_id  
 		where user_index = #{user_index}
-		order by post_regdate desc
-	</select>
-	
-	
-	<select id="mypostlist3" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+		union
 		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate ,post_id
 			from jsp h
 			left join board_category bc 
 			on h.board_category_id = bc.board_category_id  
 		where user_index = #{user_index}
-		order by post_regdate desc
-	</select>
-	
-	
-	<select id="mypostlist4" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+		union 
 		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate ,post_id
 			from java h
 			left join board_category bc 
 			on h.board_category_id = bc.board_category_id  
 		where user_index = #{user_index}
-		order by post_regdate desc
-	</select>
-	
-	
-	<select id="mypostlist5" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+		union 
 		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate ,post_id
 			from oracle h
 			left join board_category bc 
 			on h.board_category_id = bc.board_category_id  
 		where user_index = #{user_index}
-		order by post_regdate desc
-	</select>
-	
-	<select id="mypostlist6" parameterType="_int" resultType="kr.co.bttf.domain.CssBoardVO">
+		union
 		select board_category_name, post_subject, post_rec ,user_nickname ,post_regdate,post_id
 			from spring h
 			left join board_category bc 
 			on h.board_category_id = bc.board_category_id  
-		where user_index = #{user_index}
-		order by post_regdate desc
+		where user_index = #{user_index} order by post_regdate desc ;
 	</select>
+	
+	
+	<select id = "mybookmarks" parameterType="_int" resultType="kr.co.bttf.domain.HtmlBoardVO">
+		select bc.board_category_name ,post_subject , post_rec, user_nickname , post_regdate, h.post_id, pb.user_index, pb.bookmark_regdate 
+			from html h
+			inner join post_bookmark pb 
+			on h.post_id  = pb.post_id_html
+			inner join board_category bc 
+			on bc.board_category_id = pb.board_category_id  
+			having pb.user_index = #{user_index}
+		union 
+			select bc.board_category_name ,post_subject , post_rec, user_nickname , post_regdate, h.post_id, pb.user_index, pb.bookmark_regdate 
+			from css h
+			inner join post_bookmark pb 
+			on h.post_id  = pb.post_id_css
+			inner join board_category bc 
+			on bc.board_category_id = pb.board_category_id  
+			having pb.user_index = #{user_index}
+		union
+			select bc.board_category_name ,post_subject , post_rec, user_nickname , post_regdate, h.post_id, pb.user_index, pb.bookmark_regdate 
+			from javascript h
+			inner join post_bookmark pb 
+			on h.post_id  = pb.post_id_javascript
+			inner join board_category bc 
+			on bc.board_category_id = pb.board_category_id  
+			having pb.user_index = #{user_index}
+		union 
+			select bc.board_category_name ,post_subject , post_rec, user_nickname , post_regdate, h.post_id, pb.user_index, pb.bookmark_regdate 
+			from jsp h
+			inner join post_bookmark pb 
+			on h.post_id  = pb.post_id_jsp
+			inner join board_category bc 
+			on bc.board_category_id = pb.board_category_id  
+			having pb.user_index = #{user_index}
+		union 
+			select bc.board_category_name ,post_subject , post_rec, user_nickname , post_regdate, h.post_id, pb.user_index, pb.bookmark_regdate 
+			from java h
+			inner join post_bookmark pb 
+			on h.post_id  = pb.post_id_java
+			inner join board_category bc 
+			on bc.board_category_id = pb.board_category_id  
+			having pb.user_index = #{user_index}
+		union
+			select bc.board_category_name ,post_subject , post_rec, user_nickname , post_regdate, h.post_id, pb.user_index, pb.bookmark_regdate 
+			from oracle h
+			inner join post_bookmark pb 
+			on h.post_id  = pb.post_id_oracle
+			inner join board_category bc 
+			on bc.board_category_id = pb.board_category_id  
+			having pb.user_index = #{user_index}
+		union 
+			select bc.board_category_name ,post_subject , post_rec, user_nickname , post_regdate, h.post_id, pb.user_index, pb.bookmark_regdate 
+			from spring h
+			inner join post_bookmark pb 
+			on h.post_id  = pb.post_id_spring
+			inner join board_category bc 
+			on bc.board_category_id = pb.board_category_id  
+			having pb.user_index = #{user_index}
+			order by bookmark_regdate desc;
+	</select>
+	
+	
 	
 	<select id="mypage_view" parameterType="_int" resultType="kr.co.bttf.domain.MemberVO">
 		select * from user_all ua where user_index = #{user_index}
@@ -176,4 +224,48 @@
 	<update id = "joinout" parameterType="_int">
 		update user_all set avaliability_category_id = 4 where user_index = #{user_index}
 	</update>
+	
+	<delete id ="bookmarkdelete_html" parameterType="map">
+		delete from post_bookmark 
+		where board_category_id = 1 and post_id_html = #{post_id} and user_index = #{user_index}
+	</delete>
+	
+	
+	<delete id ="bookmarkdelete_css" parameterType="map">
+		delete from post_bookmark 
+		where board_category_id = 2 and post_id_css = #{post_id} and user_index = #{user_index}
+	</delete>
+	
+	
+	<delete id ="bookmarkdelete_javascript" parameterType="map">
+		delete from post_bookmark 
+		where board_category_id = 3 and post_id_javascript = #{post_id} and user_index = #{user_index}
+	</delete>
+	
+	
+	<delete id ="bookmarkdelete_jsp" parameterType="map">
+		delete from post_bookmark 
+		where board_category_id = 4 and post_id_jsp = #{post_id} and user_index = #{user_index}
+	</delete>
+	
+	
+	<delete id ="bookmarkdelete_java" parameterType="map">
+		delete from post_bookmark 
+		where board_category_id = 5 and post_id_java = #{post_id} and user_index = #{user_index}
+	</delete>
+	
+	
+	<delete id ="bookmarkdelete_oracle" parameterType="map">
+		delete from post_bookmark 
+		where board_category_id = 6 and post_id_oracle = #{post_id} and user_index = #{user_index}
+	</delete>
+	
+	
+	<delete id ="bookmarkdelete_spring" parameterType="map">
+		delete from post_bookmark 
+		where board_category_id = 7 and post_id_spring = #{post_id} and user_index = #{user_index}
+	</delete>
+	
+	
+
 </mapper>

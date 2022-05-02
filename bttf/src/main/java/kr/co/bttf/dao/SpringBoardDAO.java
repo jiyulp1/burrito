@@ -1,6 +1,8 @@
 package kr.co.bttf.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import kr.co.bttf.domain.SpringBoardVO;
 
@@ -27,5 +29,28 @@ public interface SpringBoardDAO {
 	// 게시글 신고(가용성 카테고리 변경)
 	public void springcategory2(int post_id) throws Exception;
 
+	// 게시글 북마크 유무 확인
+	public int springbookmarklist(HashMap<String, Integer> postid_useridx) throws Exception;
+	
+	// 게시글 북마크 설정
+	public void springbookmark(HashMap<String, Integer> postid_useridx) throws Exception;
 
+	// 게시글 좋아요 확인
+	public Map<String, Object> springRecommendCheck(Map<String, Object> post_useridx);
+
+	// 추천 테이블 인서트
+	public void springInsertRecBtn(Map<String, Object> post_useridx) throws Exception;
+
+	// 게시글 추천수 +1 업데이트
+	public void springUpdateRecCntPlus(Map<String, Object> post_useridx) throws Exception;
+
+	// 추천 테이블 recommend_check 업데이트
+	public void springUpdateRecCheck(Map<String, Object> post_useridx) throws Exception ;
+
+	// 게시글 추천수 -1 업데이트
+	public void springUpdateRecCntMinus(Map<String, Object> post_useridx) throws Exception ;
+
+	//게시글 추천수 조회
+	public int springGetRecCnt(Map<String, Object> post_useridx) throws Exception;
+	
 }
