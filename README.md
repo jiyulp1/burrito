@@ -1,8 +1,8 @@
-# Dillinger
-## _The Last Markdown Editor, Ever_
-Developer community project
+# Developer community project
+## _Development Environment_
 
-Development Environment
+
+
 
 IDE - eclipse-jee-2020-12-R-win32-x86_64
 
